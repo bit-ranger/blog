@@ -1,3 +1,6 @@
 hr {
 border-top: 1px solid rgba(102,128,153,0.6);
 }
+img {
+max-width: 100%;height: auto;
+}
