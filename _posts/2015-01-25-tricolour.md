@@ -1,6 +1,6 @@
 ---
 layout: default
-title:三色旗
+title: 三色旗
 ---
 
 ###三色旗
