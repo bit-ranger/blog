@@ -2,17 +2,38 @@
 title: 雨夜
 ---
 <!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>{{ page.title }}</title>
-</head>
-<body>
-	<ul>
-		{% for post in site.posts %}
-		<li>{{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a></li>
-		{% endfor %}
-	</ul>
-</body>
-</html>
+　　<html>
+　　<head>
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{{ page.title }}</title>
+    </head>
+　　<body>
+　　	<div class="container">
+        <div class="page-header">
+            <h1>雨夜</h1>
+            <h4><small>初从文，三年不中；后习武，校场发一矢，中鼓吏，逐之出；遂学医，有所成。自撰一良方，服之，卒。</small></h4>
+        </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading">最新文章</div>
+            <ul class="list-group">
+                {% for post in site.posts %}
+                <li>{{ post.date | date_to_string }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+　　</body>
+　　</html>
