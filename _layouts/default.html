@@ -15,15 +15,17 @@
 	<title>{{ page.title }}</title>
 　　</head>
 　　<body>
-　　	<div class="container">
+　　	<div class="container" style="margin-bottom:70px;">
   		<h3>{{page.title}}</h3>{{ page.date | date_to_string }}
   		<div>
   		{{ content }}	
   		</div>
-  		<div class="navbar navbar-default navbar-fixed-bottom container text-center" role="navigation">
+	</div>
+	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+	 	<div class="container text-center">
     			<button type="button" class="btn btn-success" onclick="window.location='/'">首页</button>
 			<button type="button" class="btn btn-success" onclick="window.location='#'">顶部</button>
   		</div>
-	</div>
+	</nav>
 　　</body>
 　　</html>
