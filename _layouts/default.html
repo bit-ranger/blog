@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 　　<html>
 　　<head>
+　　	<!-- 代码高亮 -->
 	<link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>{{ page.title }}</title>
 　　</head>
@@ -10,6 +19,13 @@
 	
 　　　　{{ content }}
 
-	<div class="foot"><a href="/">首页</a><a href="#">顶部</a></div>
+
+
+	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  		<div class="container">
+	    		<button type="button" class="btn btn-success">首页</button>
+			<button type="button" class="btn btn-success">顶部</button>
+  		</div>
+	</nav>
 　　</body>
 　　</html>
