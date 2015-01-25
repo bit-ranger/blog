@@ -1,4 +1,9 @@
 pygments: true
 markdown: redcarpet
 redcarpet:
-    extensions: ["fenced_code_blocks", "tables", "highlight", "strikethrough"]
+  extensions:
+    - hard_wrap
+    - no_intra_emphasis
+    - autolink
+    - strikethrough
+    - fenced_code_blocks
