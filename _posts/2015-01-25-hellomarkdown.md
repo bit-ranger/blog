@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 你好，世界
+title: 你好，MarkDown
 ---
 
 ###{{ page.title }}
 
-#####{{ page.date | date_to_string }}</p>
+#####{{ page.date | date_to_string }}
 
 ```java
 print("hello markdown);
