@@ -18,14 +18,13 @@
 　　	<div class="container">
   		<h3>{{page.title}}</h3>{{ page.date | date_to_string }}
 　　　　	{{ content }}
+	
+		<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  			<div class="container text-center">
+	    			<button type="button" class="btn btn-success" onclick="window.location='/'">首页</button>
+				<button type="button" class="btn btn-success" onclick="window.location='#'">顶部</button>
+  			</div>
+		</nav>
 	</div>
-
-
-	<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  		<div class="container text-center">
-	    		<button type="button" class="btn btn-success" onclick="window.location='/'">首页</button>
-			<button type="button" class="btn btn-success" onclick="window.location='#'">顶部</button>
-  		</div>
-	</nav>
 　　</body>
 　　</html>
