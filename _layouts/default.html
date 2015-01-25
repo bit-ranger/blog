@@ -10,17 +10,21 @@
 	<title>{{ page.title }}</title>
 　　</head>
 　　<body>
-　　	<div class="container">
-  		<h2>{{page.title}}</h2>
-  		{{ page.date | date_to_string }}
-  		<hr/>
-  		<div>
-  			{{ content }}	
-  		</div>
-  	 	<div class="text-center">
-    			<button type="button" class="btn btn-primary" onclick="window.location='/'">首页</button>
-			<button type="button" class="btn btn-primary" onclick="window.location='#'">顶部</button>
-  		</div>
+　　	<div class="container-fluid">
+　　	    <div class="row">
+	        <div class="col-lg-8 col-lg-offset-4">
+	            <h2>{{page.title}}</h2>
+	            {{ page.date | date_to_string }}
+	            <hr/>
+	            <div>
+	                {{ content }}
+	            </div>
+	            <div class="text-center">
+	                <button type="button" class="btn btn-primary" onclick="window.location='/'">首页</button>
+	                <button type="button" class="btn btn-primary" onclick="window.location='#'">顶部</button>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
