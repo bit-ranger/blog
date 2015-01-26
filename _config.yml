@@ -7,6 +7,7 @@ redcarpet:
     - autolink
     - strikethrough
     - fenced_code_blocks
+layout: default
 globalTitle: "雨夜"
 author: "雨夜"
 
