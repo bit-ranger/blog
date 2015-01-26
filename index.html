@@ -22,11 +22,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <div class="btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-                    {% for category in site.categories %}
-                        <a class="btn btn-primary" href="#{{ category | first }}">{{ category | first }}</a>
-                    {% endfor %}
-	            </div>
+                    <div class="row">
+                        <div class="btn-group btn-group-lg" role="group" aria-label="...">
+                            {% for category in site.categories %}
+                                <a class="btn btn-primary col-lg-1 col-xs-4 col-md-2" href="#{{ category | first }}">{{ category | first }}</a>
+                            {% endfor %}
+	                </div>
+                    </div>
 	        </div>
             </div>
         </div>
