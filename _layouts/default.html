@@ -31,7 +31,7 @@
 	                    	{% if page.next.url == null or page.next.url == '' %}
 	                    	    <li class="previous disabled"><a href="javascript:void(0);"><span aria-hidden="true">&larr;</span> prev</a></li>
 	                    	{% endif %}
-	                    	    
+	                    	    <li class="text-center"><a href="#" class="btn btn-success btn-sm">top</a> <a href="/" class="btn btn-success btn-sm">home</a></li>
 	                    	{% if page.previous.url != null and page.previous.url != '' %}
 	                    	    <li class="next"><a href="{{ page.previous.url }}">next <span aria-hidden="true">&rarr;</span></a></li>
 	                    	{% endif %}
