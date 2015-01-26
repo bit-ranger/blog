@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="keywords" content="{{ site.globalTitle }},{% for category in site.categories %}{{ category | first }},{% endfor %}
         {% for tag in site.tags %}{{ tag | first }},{% endfor %}">
-    <meta name="description" content="{{ site.globalTitle }},{% for category in site.categories %}{{ category | first }},{% endfor %}
-        {% for tag in site.tags %}{{ tag | first }}{% endfor %}"">
+    <meta name="description" content="{{ site.globalTitle }} {% for category in site.categories %}{{ category | first }} {% endfor %}
+        {% for tag in site.tags %}{{ tag | first }} {% endfor %}"">
     <meta name="author" content="{{ site.author }}">
     <title>{{ site.globalTitle }}</title>
 </head>
