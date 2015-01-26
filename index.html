@@ -23,7 +23,7 @@
             <ul class="nav nav-pills">
             {% for category in site.categories %}
                 <li role="presentation" class="active">
-                    <a href="#{{ category | first }}" class="btn btn-primary">{{ category | first }}</a>
+                    <a href="#{{ category | first }}">{{ category | first }}</a>
                 </li>
             {% endfor %}
             </ul>
