@@ -22,11 +22,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <div class="row">
+                    <div class="container-fluid">
+                        <div class="row">
                             {% for category in site.categories %}
                                 <a class="btn btn-primary btn-lg col-xs-4 col-sm-3 col-md-2 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
                             {% endfor %}
-                    </div>
+                        </div>
+                    </div    
 	        </div>
             </div>
         </div>
