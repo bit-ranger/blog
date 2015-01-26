@@ -12,7 +12,10 @@
     <link rel="icon" href="/css/favicon.ico">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content="{{ site.globalTitle }}">
+    <meta name="keywords" content="{{ site.globalTitle }},
+        {% for tag in site.tags %}
+            {{ tag }},
+        {% endfor %}">
     <meta name="description" content="{{ site.globalTitle }}">
     <meta name="author" content="{{ site.author }}">
     <title>{{ site.globalTitle }}</title>
