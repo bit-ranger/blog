@@ -27,13 +27,15 @@
 	                    <ul class="pager">
 	                    	{% if page.next.url != null and page.next.url != '' %}
 	                    	    <li class="previous"><a href="{{ page.next.url }}"><span aria-hidden="true">&larr;</span> prev</a></li>
-	                    	<% else %>
+	                    	{% endif %}
+	                    	{% if page.next.url == null or page.next.url == '' %}
 	                    	    <li class="previous disabled"><a href="{{ page.next.url }}"><span aria-hidden="true">&larr;</span> prev</a></li>
 	                    	{% endif %}
 	                    	    
 	                    	{% if page.previous.url != null and page.previous.url != '' %}
 	                    	    <li class="next"><a href="{{ page.previous.url }}">next <span aria-hidden="true">&rarr;</span></a></li>
-	                    	<% else %>
+	                    	{% endif %}
+	                    	{% if page.previous.url == null or page.previous.url == '' %}
 	                    	    <li class="next disabled"><a href="{{ page.previous.url }}">next <span aria-hidden="true">&rarr;</span></a></li>
 	                    	{% endif %}
 	                    </ul>
