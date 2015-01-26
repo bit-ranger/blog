@@ -4,3 +4,6 @@ border-top: 1px solid rgba(102,128,153,0.6);
 img {
 max-width: 100%;height: auto;
 }
+h1,h2,h3,h4,h5,h6 {
+  font-weight: bold;
+}
