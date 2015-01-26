@@ -25,17 +25,17 @@
 	            </div>
 	                <nav>
 	                    <ul class="pager">
-	                        {% assign prevable = 'disabled' %}
-	                        {% assign nextable = 'disabled' %}
+	                    	{% if page.next.url != null and page.next.url != '' %}
+	                    	    <li class="previous"><a href="{{ page.next.url }}"><span aria-hidden="true">&larr;</span> prev</a></li>
+	                    	<% else %>
+	                    	    <li class="previous disabled"><a href="{{ page.next.url }}"><span aria-hidden="true">&larr;</span> prev</a></li>
+	                    	{% endif %}
+	                    	    
 	                    	{% if page.previous.url != null and page.previous.url != '' %}
-	                    	    {% nextable = '' %}
+	                    	    <li class="next"><a href="{{ page.previous.url }}">next <span aria-hidden="true">&rarr;</span></a></li>
+	                    	<% else %>
+	                    	    <li class="next disabled"><a href="{{ page.previous.url }}">next <span aria-hidden="true">&rarr;</span></a></li>
 	                    	{% endif %}
-	                    	{% if page.prevable.url != null and page.prevable.url != '' %}
-	                    	    {% prevable = '' %}
-	                    	{% endif %}
-	                    	    <li class="previous {{ prevable }}"><a href="{{ page.next.url }}"><span aria-hidden="true">&larr;</span> prev</a></li>
-	                    	    <li class="next {{ nextable }}"><a href="{{ page.previous.url }}">next <span aria-hidden="true">&rarr;</span></a></li>
-	                    	
 	                    </ul>
 	                </nav>
 	        </div>
