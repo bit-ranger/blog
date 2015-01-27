@@ -49,7 +49,7 @@
                 </div>
                 {% for category in site.categories %}
                     <div class="list-group" id="{{ category | first }}">
-                        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item list-group-item-{{ site.skin }} h4">{{ category | first }}</a>
+                        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item list-group-item-{{ site.skin }}">{{ category | first }}</a>
                         <div id="collapse-{{ category | first }}" class="collapse in">
                             {% for post in category.last %}
                             <li class="list-group-item"><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
