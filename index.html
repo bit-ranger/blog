@@ -33,7 +33,7 @@
                                 <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary bth-block">
                                     所有分类
                                 </button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="width:100%;">
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                 {% for category in site.categories %}
                                     <li><a href="#{{ category | first }}" class="btn bth-block">{{ category | first }}</a></li>
                                 {% endfor %}
