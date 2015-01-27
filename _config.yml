@@ -1,3 +1,4 @@
+permalink: /:year:month:day_:title
 pygments: true
 markdown: redcarpet
 redcarpet:
