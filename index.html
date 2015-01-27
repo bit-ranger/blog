@@ -22,17 +22,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-                    <div class="row">
-                        <div class="dropdown" >
-                            <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.navSkin }} navbar-btn">
-                                <span class="glyphicon glyphicon-menu-hamburger"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            {% for category in site.categories %}
-                                <li><a href="#{{ category | first }}" class="btn bth-block">{{ category | first }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        </div>                        	
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="dropdown" >
+                                <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.navSkin }} navbar-btn">
+                                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                {% for category in site.categories %}
+                                    <li><a href="#{{ category | first }}" class="btn bth-block">{{ category | first }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            </div>                        	
+                        </div>
                     </div>
 	        </div>
             </div>
