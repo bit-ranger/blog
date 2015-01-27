@@ -1,4 +1,4 @@
-permalink: /:title:year:month:day
+permalink: /:year:month:day:title.
 pygments: true
 markdown: redcarpet
 redcarpet:
