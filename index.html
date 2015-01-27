@@ -42,10 +42,12 @@
                 </div>
                 {% for category in site.categories %}
                     <div class="list-group" id="{{ category | first }}">
-                        <a href="javascript:void(0);" class="list-group-item active">{{ category | first }}</a>
-                        {% for post in category.last %}
-                        <li class="list-group-item"><a href="{{ post.url }}">{{ post.title }}</a></li>
-                        {% endfor %}
+                        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active">{{ category | first }}</a>
+                        <div id="collapse-{{ category | first }}">
+                            {% for post in category.last %}
+                            <li class="list-group-item"><a href="{{ post.url }}">{{ post.title }}</a></li>
+                            {% endfor %}
+                        </div>
                     </div>
                 {% endfor %}
             </div>
