@@ -30,12 +30,12 @@
                         </div>
                         <div class="row hidden-sm hidden-md hidden-lg">
                             <div class="dropdown col-xs-4" >
-                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary bth-block">
                                     所有分类
                                 </button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="width:100%;">
                                 {% for category in site.categories %}
-                                    <li><a href="#{{ category | first }}">{{ category | first }}</a></li>
+                                    <li><a href="#{{ category | first }}" class="btn bth-block">{{ category | first }}</a></li>
                                 {% endfor %}
                                 </ul>
                             </div>                        	
@@ -57,7 +57,7 @@
                         <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active">{{ category | first }}</a>
                         <div id="collapse-{{ category | first }}" class="collapse in">
                             {% for post in category.last %}
-                            <li class="list-group-item"><a href="{{ post.url }}">{{ post.title }}</a></li>
+                            <li class="list-group-item"><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
                             {% endfor %}
                         </div>
                     </div>
