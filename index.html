@@ -43,7 +43,7 @@
                 {% for category in site.categories %}
                     <div class="list-group" id="{{ category | first }}">
                         <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active">{{ category | first }}</a>
-                        <div id="collapse-{{ category | first }}">
+                        <div id="collapse-{{ category | first }}" class="collapse in">
                             {% for post in category.last %}
                             <li class="list-group-item"><a href="{{ post.url }}">{{ post.title }}</a></li>
                             {% endfor %}
