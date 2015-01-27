@@ -18,21 +18,14 @@
     <title>{{ site.globalTitle }}</title>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="min-height: 35px;">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                     <div class="container-fluid">
-                        <div class="row hidden-xs col-sm">
-                            <div class="btn-group col-lg-12" role="group" >
-                                {% for category in site.categories %}
-                                    <a class="btn btn-{{ site.navSkin }} col-md-1 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
-                                {% endfor %}
-                            </div>    
-                        </div>
-                        <div class="row hidden-md hidden-lg">
+                        <div class="row">
                             <div class="dropdown" >
-                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.navSkin-xs }} bth-block">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.navSkin }} navbar-btn bth-block">
                                     所有分类
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
