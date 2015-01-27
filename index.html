@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row hidden-xs">
                             {% for category in site.categories %}
                                 <a class="btn btn-primary col-xs-3 col-sm-2 col-md-2 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
                             {% endfor %}
