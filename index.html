@@ -25,12 +25,12 @@
                     <div class="container-fluid">
                         <div class="row hidden-xs">
                             {% for category in site.categories %}
-                                <a class="btn btn-{{ site.skin }} col-sm-2 col-md-1 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
+                                <a class="btn btn-{{ site.navSkin }} col-sm-2 col-md-1 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
                             {% endfor %}
                         </div>
                         <div class="row hidden-sm hidden-md hidden-lg">
                             <div class="dropdown" >
-                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.skin }} bth-block">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.navSkin-xs }} bth-block">
                                     所有分类
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
