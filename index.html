@@ -28,7 +28,17 @@
                                 <a class="btn btn-primary col-xs-3 col-sm-2 col-md-2 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
                             {% endfor %}
                         </div>
-                    </div    
+                        <div class="dropdown hidden-sm hidden-md hidden-lg" >
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary">
+                                所有分类
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            {% for category in site.categories %}
+                                <li><a class="btn btn-primary col-xs-3 col-sm-2 col-md-2 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>    
 	        </div>
             </div>
         </div>
