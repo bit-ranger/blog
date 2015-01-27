@@ -17,7 +17,7 @@
 　　	<div class="container-fluid">
 　　	    <div class="row">
 	        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-	            <h2>{{page.title}} <a href="/" class="btn btn-success btn-sm pull-right"><span class="glyphicon glyphicon-home"></span></a></h2>
+	            <h2>{{page.title}} <a href="/" class="btn btn-success pull-right"><span class="glyphicon glyphicon-home"></span></a></h2>
 	            <span class="text-success">{{ page.date | date_to_string }}</span>
 	            <hr/>
 	            <div>
@@ -31,9 +31,7 @@
                     	    {% if page.next.url == null or page.next.url == '' %}
                     	        <li class="previous disabled"><a href="javascript:void(0);"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> prev</a></li>
                     	    {% endif %}
-                    	    	<li class="btn-block">
-                    			<a href="#" class="btn btn-success btn-block"> apex </a>	
-                    	    	</li>
+                    		<a href="#" class="btn btn-success btn-block"> apex </a>	
                     	    {% if page.previous.url != null and page.previous.url != '' %}
                     	        <li class="next"><a href="{{ page.previous.url }}">next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></li>
                     	    {% endif %}
