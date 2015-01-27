@@ -16,9 +16,9 @@
 <body>
 　　	<div class="container-fluid">
 　　	    <div class="row">
-	        <div class="col-lg-8 col-lg-offset-2">
-	            <h2>{{page.title}} <a href="/" class="btn btn-success btn-sm float-right">home</a></h2>
-	            {{ page.date | date_to_string }}
+	        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            <h2>{{page.title}} <a href="/" class="btn btn-success btn-sm pull-right">home</a></h2>
+	            <span class="text-success">{{ page.date | date_to_string }}</span>
 	            <hr/>
 	            <div>
 	                {{ content }}
