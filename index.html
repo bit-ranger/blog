@@ -25,12 +25,12 @@
                     <div class="container-fluid">
                         <div class="row hidden-xs">
                             {% for category in site.categories %}
-                                <a class="btn btn-primary col-xs-3 col-sm-2 col-md-2 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
+                                <a class="btn btn-{{ site.skin }} col-sm-2 col-md-1 col-lg-1 " href="#{{ category | first }}">{{ category | first }}</a>
                             {% endfor %}
                         </div>
                         <div class="row hidden-sm hidden-md hidden-lg">
                             <div class="dropdown" >
-                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary bth-block">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.skin }} bth-block">
                                     所有分类
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -54,7 +54,7 @@
                 </div>
                 {% for category in site.categories %}
                     <div class="list-group" id="{{ category | first }}">
-                        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active">{{ category | first }}</a>
+                        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item list-group-item-{{ site.skin }}">{{ category | first }}</a>
                         <div id="collapse-{{ category | first }}" class="collapse in">
                             {% for post in category.last %}
                             <li class="list-group-item"><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
