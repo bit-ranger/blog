@@ -26,17 +26,17 @@
                     <nav class="row">
                         <ul class="pager">
                     	    {% if page.next.url != null and page.next.url != '' %}
-                    	        <li class="previous col-lg-1"><a href="{{ page.next.url }}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> prev</a></li>
+                    	        <li class="previous col-lg-4 col-md-4 col-sm-4 col-xs-4"><a href="{{ page.next.url }}"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> prev</a></li>
                     	    {% endif %}
                     	    {% if page.next.url == null or page.next.url == '' %}
-                    	        <li class="previous disabled col-lg-1"><a href="javascript:void(0);"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> prev</a></li>
+                    	        <li class="previous disabled col-lg-4 col-md-4 col-sm-4 col-xs-4"><a href="javascript:void(0);"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> prev</a></li>
                     	    {% endif %}
-                    		<a href="#" class="btn btn-success btn-block col-lg-6 col-lg-offset-3"> apex </a>	
+                    		<a href="#" class="btn btn-success col-lg-4 col-md-4 col-sm-4 col-xs-4"> apex </a>	
                     	    {% if page.previous.url != null and page.previous.url != '' %}
-                    	        <li class="next col-lg-1"><a href="{{ page.previous.url }}">next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></li>
+                    	        <li class="next col-lg-4 col-md-4 col-sm-4 col-xs-4"><a href="{{ page.previous.url }}">next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></li>
                     	    {% endif %}
                     	    {% if page.previous.url == null or page.previous.url == '' %}
-                    	        <li class="next disabled col-lg-1"><a href="javascript:void(0);">next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></li>
+                    	        <li class="next disabled col-lg-4 col-md-4 col-sm-4 col-xs-4"><a href="javascript:void(0);">next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a></li>
                     	    {% endif %}
                         </ul>
                     </nav>
