@@ -17,6 +17,26 @@
 　　	<div class="container-fluid">
 　　	    <div class="row">
 	        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+	            <div class="row">
+                        <span >
+                    	    {% if page.next.url != null and page.next.url != '' %}
+                    	        <a href="{{ page.next.url }}" class="btn btn-default pull-left">
+                    	    {% endif %}
+                    	    {% if page.next.url == null or page.next.url == '' %}
+                    	        <a href="javascript:void(0);" class="btn btn-default pull-left disabled">
+                    	    {% endif %}
+                    	    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> prev</a>
+                    	</span>
+			<span >
+                    	    {% if page.previous.url != null and page.previous.url != '' %}
+                    	        <a href="{{ page.previous.url }}" class="btn btn-default pull-right">
+                    	    {% endif %}
+                    	    {% if page.previous.url == null or page.previous.url == '' %}
+                    	        <a href="javascript:void(0);" class="btn btn-default pull-right disabled">
+                    	    {% endif %}
+                    	    next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                    	</span>
+                    </div>
 	            <h2>{{page.title}} <a href="/" class="btn btn-success pull-right"><span class="glyphicon glyphicon-home"></span></a></h2>
 	            <span class="text-success">{{ page.date | date_to_string }}</span>
 	            <hr/>
@@ -41,10 +61,10 @@
 			</span >
 			<span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     	    {% if page.previous.url != null and page.previous.url != '' %}
-                    	        <a href="{{ page.previous.url }}" class="btn btn-default pull-left">
+                    	        <a href="{{ page.previous.url }}" class="btn btn-default pull-right">
                     	    {% endif %}
                     	    {% if page.previous.url == null or page.previous.url == '' %}
-                    	        <a href="javascript:void(0);" class="btn btn-default pull-left disabled">
+                    	        <a href="javascript:void(0);" class="btn btn-default pull-right disabled">
                     	    {% endif %}
                     	    next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                     	</span>
