@@ -11,7 +11,7 @@ title: 雨夜
     </div>
     {% for category in site.categories %}
     <div class="list-group well well-sm" id="{{ category | first }}">
-        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active font-md ">{{ category | first }}</a>
+        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active font-md "><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp;{{ category | first }}</a>
         <div id="collapse-{{ category | first }}" class="collapse in">
             {% for post in category.last %}
             <a class="list-group-item font-sm" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
