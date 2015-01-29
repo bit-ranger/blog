@@ -1,66 +1,23 @@
 ---
-
+layout: default
+date: 2015/01/01
+title: 雨夜
 ---
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/css/syntax.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css" >
-    <link rel="icon" href="/css/favicon.ico">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content="{{ site.globalTitle }},{% for category in site.categories %}{{ category | first }},{% endfor %}{% for tag in site.tags %}{{ tag | first }},{% endfor %}">
-    <meta name="description" content="{{ site.globalTitle }} {% for category in site.categories %}{{ category | first }} {% endfor %}{% for tag in site.tags %}{{ tag | first }} {% endfor %}">
-    <meta name="author" content="{{ site.author }}">
-    <title>{{ site.globalTitle }}</title>
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="dropdown pull-right" >
-                                <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-{{ site.navSkin }} navbar-btn">
-                                    <span class="glyphicon glyphicon-link"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                {% for category in site.categories %}
-                                    <li><a href="#{{ category | first }}" class="btn bth-block">{{ category | first }}</a></li>
-                                {% endfor %}
-                                </ul>
-                            </div>                        	
-                        </div>
-                    </div>
-	        </div>
-            </div>
-        </div>
-    </nav>
-　　<div class="container-fluid">
-　　	<div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-                <div class="page-header">
-                    <h1>{{ site.globalTitle }}</h1>
-                    <h4><small>{{ site.globalDesc }}</small></h4>
-                </div>
-                {% for category in site.categories %}
-                    <div class="list-group" id="{{ category | first }}">
-                        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item list-group-item-{{ site.skin }}">{{ category | first }}</a>
-                        <div id="collapse-{{ category | first }}" class="collapse in">
-                            {% for post in category.last %}
-                            <a class="list-group-item list-group-item-default" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-	</div>
+<div class="well-lg">
+    <div class="page-header">
+        <h1>{{ page.title }}</h1>
+        <h4><small>{{ site.desc }}</small></h4>
     </div>
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    {% for category in site.categories %}
+    <div class="list-group well well-sm" id="{{ category | first }}">
+        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active font-md ">{{ category | first }}</a>
+        <div id="collapse-{{ category | first }}" class="collapse in">
+            {% for post in category.last %}
+            <a class="list-group-item font-sm" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
