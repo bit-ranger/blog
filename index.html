@@ -10,11 +10,11 @@ title: 雨夜
         <h4><small>{{ site.desc }}</small></h4>
     </div>
     {% for category in site.categories %}
-    <div class="list-group well well-sm" id="{{ category | first }}">
-        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item active font-sm"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp;{{ category | first }}</a>
+    <div class="list-group well-sm box-shadow" id="{{ category | first }}">
+        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item clear-background font-sm"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp;{{ category | first }}</a>
         <div id="collapse-{{ category | first }}" class="collapse in">
             {% for post in category.last %}
-            <a class="list-group-item" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+            <a class="list-group-item clear-background" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
             {% endfor %}
         </div>
     </div>
