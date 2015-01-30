@@ -45,7 +45,7 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
             <!-- << 只在手机端显示的菜单 -->
             <div class="hidden-lg hidden-md hidden-sm">
-                <a href="#" class="btn glyphicon glyphicon-option-vertical font-md fixed-right-top" data-toggle="collapse" data-target="#nav-collapse"></a>
+                <a href="#" class="btn btn-lg glyphicon glyphicon-option-vertical font-md fixed-right-top" data-toggle="collapse" data-target="#nav-collapse"></a>
                 <div id="nav-collapse" class="collapse">
                 　　<div class="container-fluid">
                 　　    <div class="row">
@@ -64,10 +64,10 @@
                     <span class="text-success">{{ page.date | date_to_string }}</span>
                     <hr>
                     {% if page.next.url != null and page.next.url != '' %}
-                        <a href="{{ page.next.url }}" class="btn glyphicon glyphicon-menu-left circular-corner fixed-left title"></a>
+                        <a href="{{ page.next.url }}" class="btn btn-lg glyphicon glyphicon-menu-left circular-corner fixed-left title"></a>
                     {% endif %}
                     {% if page.previous.url != null and page.previous.url != '' %}
-                        <a href="{{ page.previous.url }}" class="btn glyphicon glyphicon-menu-right circular-corner fixed-right title"></a>
+                        <a href="{{ page.previous.url }}" class="btn btn-lg glyphicon glyphicon-menu-right circular-corner fixed-right title"></a>
                     {% endif %}
                 {% endif %}
                 {{ content }}
