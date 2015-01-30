@@ -70,8 +70,11 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 @media screen and (max-width: 768px) {
-    .overspread{
+    .overspread {
         padding: 0px 0px 0px 0px;
+    }
+    a.list-group-item:hover {
+        background: none;
     }
 }
 
