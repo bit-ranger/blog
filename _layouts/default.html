@@ -24,10 +24,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <ul class="nav nav-pills hidden-xs pull-right" >
-                            <li role="presentation"><a href="#" title="Archive" class="font-md text-white"><span class='glyphicon glyphicon-book'></span></a></li>
-                            <li role="presentation"><a href="/" title="Categories" class="font-md text-white"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
-                            <li role="presentation"><a href="#" title="Tags" class="font-md text-white"><span class='glyphicon glyphicon-tags'></span></a></li>
-                            <li role="presentation"><a href="#" title="About" class="font-md text-white"><span class='glyphicon glyphicon-user'></span></a></li>
+                            <li role="presentation"><a href="/" title="Categories" class="font-md title"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
+                            <li role="presentation"><a href="#" title="Tags" class="font-md title"><span class='glyphicon glyphicon-tags'></span></a></li>
+                            <li role="presentation"><a href="#" title="Archive" class="font-md title"><span class='glyphicon glyphicon-book'></span></a></li>
+                            <li role="presentation"><a href="#" title="About" class="font-md title"><span class='glyphicon glyphicon-user'></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,27 +42,33 @@
 <!-- >> 顶部导航条,手机屏幕不显示 -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
             <!-- << 只在手机端显示的菜单 -->
-            <div class="hidden-lg hidden-md hidden-sm text-white">
-                <a href="#" class="btn glyphicon glyphicon-option-vertical font-md fixed-right-top text-white" data-toggle="collapse" data-target="#nav-collapse"></a>
+            <div class="hidden-lg hidden-md hidden-sm">
+                <a href="#" class="btn glyphicon glyphicon-option-vertical font-md fixed-right-top" data-toggle="collapse" data-target="#nav-collapse"></a>
                 <div id="nav-collapse" class="collapse">
                 　　<div class="container-fluid">
                 　　    <div class="row">
-                            <a href="#" title="Archive" class="col-xs-3 text-center font-lg text-white"><span class='glyphicon glyphicon-book'></span></a>
-                            <a href="/" title="Categories" class="col-xs-3 text-center font-lg text-white"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
-                            <a href="#" title="Tags" class="col-xs-3 text-center  font-lg text-white"><span class='glyphicon glyphicon-tags'></span></a>
-                            <a href="#" title="About" class="col-xs-3 text-center  font-lg text-white"><span class='glyphicon glyphicon-user'></span></a>
+                            <a href="#" title="About" class="col-xs-3 text-center  font-lg title"><span class='glyphicon glyphicon-user'></span></a>
+                            <a href="#" title="Archive" class="col-xs-3 text-center font-lg title"><span class='glyphicon glyphicon-book'></span></a>
+                            <a href="#" title="Tags" class="col-xs-3 text-center  font-lg title"><span class='glyphicon glyphicon-tags'></span></a>
+                            <a href="/" title="Categories" class="col-xs-3 text-center font-lg title"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- >> 只在手机端显示的菜单 -->
-            <div class="wrapper {% if page.url == "/index.html" %}clear-background{% endif %}">
+            <div class="wrapper {% if page.url == '/index.html' %}clear-background{% endif %}">
                 {% if page.url != "/index.html" %}
                     <h2>{{page.title}}</h2>
                     <span class="text-success">{{ page.date | date_to_string }}</span>
                     <hr>
+                    {% if page.next.url != null and page.next.url != '' %}
+                        <a href="{{ page.next.url }}" class="btn glyphicon glyphicon-menu-left circular-corner fixed-left title"></a>
+                    {% endif %}
+                    {% if page.previous.url != null and page.previous.url != '' %}
+                        <a href="{{ page.previous.url }}" class="btn glyphicon glyphicon-menu-right circular-corner fixed-right title"></a>
+                    {% endif %}
                 {% endif %}
                 {{ content }}
             </div>

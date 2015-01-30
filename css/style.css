@@ -1,23 +1,34 @@
 hr {
-border-top: 1px solid rgba(102,128,153,0.6);
+    border-top: 1px solid rgba(102,128,153,0.6);
 }
 img {
-max-width: 100%;height: auto;
+    max-width: 100%;height: auto;
 }
 h1,h2,h3,h4,h5,h6 {
-  font-weight: bold;
+    font-weight: bold;
 }
 .circular-corner {
-  border-radius: 15px;
+    border-radius: 15px;
 }
 .fixed-right-top{
     position: fixed;
     right: 0;
-    z-index: 9999;
+    z-index: 999;
+}
+.fixed-right{
+    position: fixed;
+    right: 0;
+    top:50%;
+    z-index: 999;
+}
+.fixed-left{
+    position: fixed;
+    left: 0;
+    top:50%;
+    z-index: 999;
 }
 .wrapper {
     padding: 10px 10px 20px 10px;
-    margin: 5px 0 15px;
     background-color: rgba(255,255,255,0.96);
     border: 1px solid rgba(0,0,0,0.16667);
     box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
@@ -38,21 +49,30 @@ h1,h2,h3,h4,h5,h6 {
     position:fixed;
     z-index:-999;
 }
- /*当屏幕尺寸大于600px时,加载图片*/
-@media screen and (min-width: 768px) {
-  .fixed-background {
-    background-image: url(/css/background-img.jpg);
-  }
-}
-
 .clear-background {
-  background: none;
+    background: none;
 }
 .shadow {
-  box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
 }
-.text-white{
-  color:#fff;
+.text{
+    color:#fff;
+}
+.title{
+    color:#fff;
+}
+
+
+/****  response  ****/
+@media screen and (min-width: 768px) {
+    .fixed-background {
+        background-image: url(/css/background-img.jpg);
+    }
+}
+@media screen and (max-width: 768px) {
+    .overspread{
+        padding: 0px 0px 0px 0px;
+    }
 }
 
 
