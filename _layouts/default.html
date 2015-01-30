@@ -13,7 +13,9 @@
     <meta name="author" content="{{ site.author }}">
     <title>{{ page.title }}</title>
 </head>
-<body style="background:#e6e6e6">
+<body>
+<!-- 背景 -->
+<div style="fixed-background"></div>
 <!-- << 顶部导航条,手机屏幕不显示 -->
 <nav class="navbar navbar-fixed-top hidden-xs" role="navigation">
     <div class="container-fluid">
@@ -56,7 +58,7 @@
                 </div>
             </div>
             <!-- >> 只在手机端显示的菜单 -->
-            <div class="wrapper">
+            <div class="wrapper clear-background">
                 {% if page.url != "/index.html" %}
                     <h2>{{page.title}}</h2>
                     <span class="text-success">{{ page.date | date_to_string }}</span>
