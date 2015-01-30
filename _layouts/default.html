@@ -44,7 +44,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
             <!-- << 只在手机端显示的菜单 -->
-            <div class="hidden-lg hidden-md hidden-sm">
+            <div class="hidden-lg hidden-md hidden-sm tool-bar">
                 <a href="#" class="btn btn-lg glyphicon glyphicon-option-vertical font-md fixed-right-top" data-toggle="collapse" data-target="#nav-collapse"></a>
                 <div id="nav-collapse" class="collapse">
                 　　<div class="container-fluid">
@@ -64,10 +64,10 @@
                     <span class="text-success">{{ page.date | date_to_string }}</span>
                     <hr>
                     {% if page.next.url != null and page.next.url != '' %}
-                        <a href="{{ page.next.url }}" class="btn btn-lg glyphicon glyphicon-menu-left circular-corner fixed-left title"></a>
+                        <a href="{{ page.next.url }}" class="btn btn-lg glyphicon glyphicon-menu-left circular-corner fixed-left title pager-btn"></a>
                     {% endif %}
                     {% if page.previous.url != null and page.previous.url != '' %}
-                        <a href="{{ page.previous.url }}" class="btn btn-lg glyphicon glyphicon-menu-right circular-corner fixed-right title"></a>
+                        <a href="{{ page.previous.url }}" class="btn btn-lg glyphicon glyphicon-menu-right circular-corner fixed-right title pager-btn"></a>
                     {% endif %}
                 {% endif %}
                 {{ content }}
@@ -77,5 +77,6 @@
 </div>
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/scripts/custom.js"></script>
 </body>
 </html>

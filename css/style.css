@@ -61,7 +61,14 @@ h1,h2,h3,h4,h5,h6 {
 .title{
     color:#fff;
 }
-
+.pager-btn {
+    background-color: rgba(0,0,0,.2);
+    color:#fff;
+}
+.pager-btn:hover {
+    background-color: rgba(0,0,0,.3);
+    color:#fff;
+}
 
 /****  response  ****/
 @media screen and (min-width: 768px) {
@@ -73,10 +80,17 @@ h1,h2,h3,h4,h5,h6 {
     .overspread {
         padding: 0px 0px 0px 0px;
     }
+    .pager-btn {
+        display: none;
+    }
 }
 
 
 /**** 改变预设的颜色 ****/
 a.list-group-item {
   color: #fff;
+}
+a.list-group-item:hover {
+    background-color: rgba(0,0,0,.3);
+    color:#fff;
 }
