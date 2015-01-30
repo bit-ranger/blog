@@ -32,6 +32,7 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 120%;
 }
 .fixed-background {
+    background-color: #F5870E;
     background-image: url(/css/background-img.jpg);
     width:100%;
     height:100%;
