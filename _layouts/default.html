@@ -58,7 +58,10 @@
                 </div>
             </div>
             <!-- >> 只在手机端显示的菜单 -->
-            <div class="wrapper clear-background">
+            <div class="wrapper 
+                {% if page.url == "/index.html" %}
+                clear-background
+                {% endif %}">
                 {% if page.url != "/index.html" %}
                     <h2>{{page.title}}</h2>
                     <span class="text-success">{{ page.date | date_to_string }}</span>
