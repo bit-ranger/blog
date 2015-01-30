@@ -31,3 +31,12 @@ h1,h2,h3,h4,h5,h6 {
 .font-sm {
     font-size: 120%;
 }
+.fixed-background {
+    background-image: url(/css/background-img.jpg);
+    width:100%;
+    height:100%;
+    position:fixed;
+}
+.clear-background {
+  background: none;
+}
