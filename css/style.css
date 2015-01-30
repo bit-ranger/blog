@@ -43,7 +43,7 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 120%;
 }
 .fixed-background {
-    background-color: #4A3F46;
+    background-color: #444;
     width:100%;
     height:100%;
     position:fixed;
