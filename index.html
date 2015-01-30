@@ -10,7 +10,7 @@ title: 雨夜
         <h4><small>{{ site.desc }}</small></h4>
     </div>
     {% for category in site.categories %}
-    <div class="list-group well-sm box-shadow" id="{{ category | first }}">
+    <div class="list-group well-sm shadow" id="{{ category | first }}">
         <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item clear-background font-sm"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp;{{ category | first }}</a>
         <div id="collapse-{{ category | first }}" class="collapse in">
             {% for post in category.last %}
