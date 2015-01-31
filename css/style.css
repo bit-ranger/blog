@@ -29,7 +29,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .wrapper {
     padding: 10px 10px 20px 10px;
-    background-color: rgba(255,255,255,0.92);
+    background-color: rgba(255,255,255,0.9);
     border: 1px solid rgba(0,0,0,0.16667);
     box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
     border-radius: 10px;
@@ -45,11 +45,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 .fixed-background {
     background-color: #222;
+    background-image: url(/css/background-img.jpg);
     width:100%;
     height:100%;
     position:fixed;
-    z-index:-999;
     background-size: cover;
+    z-index:-999;
 }
 .clear-background {
     background: none;
@@ -62,24 +63,16 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
 }
 .pager-btn {
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,0.2);
     color:#fff;
 }
 .pager-btn:hover {
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,0.3);
     color:#fff;
 }
 
 /****  response  ****/
-@media screen and (min-width: 768px) {
-    .fixed-background {
-        background-image: url(/css/background-img.jpg);
-    }
-}
 @media screen and (max-width: 768px) {
-    .fixed-background {
-        background-image: url(/css/background-img-mobile.jpg);
-    }
     .overspread {
         padding: 0px 0px 0px 0px;
     }
@@ -94,6 +87,6 @@ a.list-group-item {
   color: #fff;
 }
 a.list-group-item:hover {
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0,0,0,0.3);
     color:#fff;
 }
