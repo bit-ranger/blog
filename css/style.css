@@ -47,7 +47,7 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #222;
     background-image: url(/css/background-img.jpg);
     width:100%;
-    height:100%;
+    height:110%;
     position:fixed;
     background-size: cover;
     z-index:-999;
