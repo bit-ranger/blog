@@ -60,7 +60,7 @@
             <!-- >> 只在手机端显示的菜单 -->
             <div class="wrapper circular-corner {% if page.url == '/index.html' %}clear-background{% endif %}">
                 {% if page.url != "/index.html" %}
-                    <h2 class="text-center"><a href="{{page.url}}">{{page.title}}</a></h2>
+                    <h2 class="text-center">{{page.title}}</h2>
                     <h5 class="text-success text-center">{{ page.date | date_to_string }}</h5>
                     <hr>
                     {% if page.next.url != null and page.next.url != '' %}
