@@ -5,7 +5,7 @@ tags: tomcat https ssl
 categories: java
 ---
 
-####`1`.生成服务端证书库
+####`1`.生成秘钥库
 
 ```bash
 keytool 
@@ -19,7 +19,7 @@ keytool
             c=国家双字母代码"
     -alias 别名(非必选项)
     -keypass 密码
-    -keystore 生成的证书库名.jks
+    -keystore 秘钥库文件名
     -storepass 密码
     -validity 有效天数
 ```
@@ -29,39 +29,39 @@ keytool
 ```bash
 keytool
     -export 
-    -keystore 服务端证书库文件名
-    -alias 服务端证书库别名(非必选项)
-    -storepass 服务端证书库密码
-    -file 生成的证书文件名.crt
+    -keystore 秘钥库文件名
+    -alias 秘钥库别名(非必选项)
+    -storepass 秘钥库密码
+    -file 证书文件名
 ```
 
-####`3`.生成证书私钥文件
+####`3`.生成私钥文件
 
 ```bash
 keytool 
     -importkeystore 
-    -srckeystore 服务端证书库文件名
-    -destkeystore p12文件名.p12
+    -srckeystore 秘钥库文件名
     -deststoretype PKCS12
+    -destkeystore p12文件名
 
 openssl 
 	pkcs12 
 	-in p12文件名
-	-out 生成的pem文件名.pem 
+	-out pem文件名
 	-nodes
 ```
 
 ####`4`.Tomcat配置
 
 打开 %CATALINA_HOME%/conf/server.xml 
-解开注释或添加代码
+解开注释或添加代码(443为https默认端口，不会在URL中显示)
 
 ```xml
-<Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+<Connector port="443" protocol="HTTP/1.1" SSLEnabled="true"
     maxThreads="150" scheme="https" secure="true"
     clientAuth="false" sslProtocol="TLS" 
-    SSLCertificateFile="浏览器证书文件.crt"   
-    SSLCertificateKeyFile="证书私钥文件.pem"/>
+    SSLCertificateFile="证书文件名"   
+    SSLCertificateKeyFile="pem文件名"/>
 ```
 
 ####`5`.强制https访问
