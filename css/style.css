@@ -4,9 +4,6 @@ hr {
 img {
     max-width: 100%;height: auto;
 }
-h1,h2,h3,h4,h5,h6 {
-    font-weight: bold;
-}
 .circular-corner {
     border-radius: 15px;
 }
@@ -62,7 +59,7 @@ h1,h2,h3,h4,h5,h6 {
 .shadow {
     box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
 }
-.title{
+.entry{
     color:#fff;
     font-weight: bold;
 }
