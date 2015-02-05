@@ -35,15 +35,6 @@ img {
     box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
-.font-lg {
-    font-size: 180%;
-}
-.font-md {
-    font-size: 150%;
-}
-.font-sm {
-    font-size: 120%;
-}
 .fixed-background {
     background-color: #222;
     background-image: url(/css/background-img.jpg);
@@ -61,7 +52,6 @@ img {
 }
 .entry{
     color:#fff;
-    font-weight: bold;
 }
 .pager-btn {
     background-color: rgba(0,0,0,0.2);
@@ -87,6 +77,9 @@ img {
 
 
 /**** 改变预设的颜色 ****/
+a.list-group-item{
+    color:#fff;
+}
 a.list-group-item:hover {
     background-color: rgba(0,0,0,0.3);
     color:#fff;
