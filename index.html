@@ -30,7 +30,7 @@ title: rainynight
         </div>
         <div class="article-categories col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 hidden-xs">
             <div class="list-group shadow" id="{{ category | first }}">
-                <a href="#collapse-categories" data-toggle="collapse"  class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp; categories</a>
+                <a data-target="#collapse-categories" data-toggle="collapse"  class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp; categories</a>
                 <div id="collapse-categories" class="collapse in">
                     {% for category in site.categories %}
                     <a class="list-group-item" href="#{{ category[0]}}">{{ category[0] }}</a>
