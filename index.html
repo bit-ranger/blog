@@ -1,20 +1,20 @@
 ---
 layout: default
 date: 2015/01/01
-title: RainyNight
+title: rainynight
 ---
 
 <div class="well-sm">
     <div>
-        <h1 class="title">{{ page.title }}</h1>
-        <h4><small class="title">{{ site.desc }}</small></h4>
+        <h1 class="entry">{{ page.title }}</h1>
+        <h4><small class="entry">{{ site.desc }}</small></h4>
     </div>
     {% for category in site.categories %}
     <div class="list-group well-sm shadow" id="{{ category | first }}">
         <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item clear-background font-sm title"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp;{{ category | first }}</a>
         <div id="collapse-{{ category | first }}" class="collapse in">
             {% for post in category.last %}
-            <a class="list-group-item clear-background title" href="{{ post.url }}" target="_blank">{{ post.title }}<span class="pull-right">{{ post.date | date_to_string}}</span></a>
+            <a class="list-group-item clear-background" href="{{ post.url }}" target="_blank">{{ post.title }}<span class="pull-right">{{ post.date | date_to_string}}</span></a>
             {% endfor %}
         </div>
     </div>
