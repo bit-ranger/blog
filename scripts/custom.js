@@ -17,4 +17,5 @@ $("a[href*='#']").click(function() {
     $root.animate({
         scrollTop: $(tar).offset().top - 100
     }, 800);
+    return false;
 });
