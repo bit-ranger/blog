@@ -87,9 +87,6 @@ img {
 
 
 /**** 改变预设的颜色 ****/
-a.list-group-item {
-  color: #fff;
-}
 a.list-group-item:hover {
     background-color: rgba(0,0,0,0.3);
     color:#fff;
