@@ -73,6 +73,38 @@ img {
     background-color: rgba(0,0,0,0.3);
     color:#fff;
 }
+.article-list{
+    padding: 4%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.article-list ul {
+    list-style-type: square;
+}
+.article-list li {
+    line-height: 220%;
+    font-size: 120%;
+}
+.article-list li a{
+    color: #222;
+    text-decoration: underline;
+}
+.article-list .small {
+    color: #888;
+    
+}
+.article-categories .list-group-item{
+    background: rgba(0,0,0,0);
+    color: #222;
+    text-align: center;
+    font-size: 120%;
+}
+.article-categories .list-group-item:hover{
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+}
 
 /****  response  ****/
 @media screen and (max-width: 768px) {
@@ -82,18 +114,4 @@ img {
     .pager-btn {
         display: none;
     }
-}
-
-
-/**** 改变预设的颜色 ****/
-a.list-group-item{
-    color:#fff;
-}
-a.list-group-item:hover {
-    background-color: rgba(0,0,0,0.3);
-    color:#fff;
-}
-a.list-group-item:focus {
-    background-color: rgba(0,0,0,0.3);
-    color:#fff;
 }

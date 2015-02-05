@@ -4,19 +4,39 @@ date: 2015/01/01
 title: rainynight
 ---
 
-<div class="well-sm">
-    <div>
-        <h1 class="entry">{{ page.title }}</h1>
-        <h4><small class="entry">{{ site.desc }}</small></h4>
+<div class="well-sm container-fluid">
+    <div class="dropdown">
+        <span class="h2">Rainynight&nbsp;  »  &nbsp;</span><a class="h3 dropdown-toggle" data-toggle="dropdown" aria-expanded="true">分类</a>
+        <ul class="dropdown-menu" role="menu">
+            {% for category in site.categories %}
+            <li role="presentation"><a class="text-center" role="menuitem" tabindex="-1" href="#{{ category[0]}}">{{ category[0] }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
-    {% for category in site.categories %}
-    <div class="list-group well-sm shadow" id="{{ category | first }}">
-        <a href="#collapse-{{ category | first }}" data-toggle="collapse"  class="list-group-item clear-background h4"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp;{{ category | first }}</a>
-        <div id="collapse-{{ category | first }}" class="collapse in">
-            {% for post in category.last %}
-            <a class="list-group-item clear-background" href="{{ post.url }}" target="_blank">{{ post.title }}<span class="pull-right">{{ post.date | date_to_string}}</span></a>
+    
+    <div class="row">
+        <div class="article-lists col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            {% for category in site.categories %}
+            <div id="{{ category[0]}}" class="article-list">
+                <div class="text-center"><a class="h3"  href="#">{{ category[0]}}</a></div>
+                <hr>
+                <ul >
+                    {% for post in category.last %}
+                    <li><a  href="{{ post.url }}" target="_blank">{{ post.title }}</a>&nbsp;<span class="small pull-right">{{ post.date | date_to_string}}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
             {% endfor %}
         </div>
+        <div class="article-categories col-lg-offset-1 col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 hidden-xs">
+            <div class="list-group shadow" id="{{ category | first }}">
+                <a href="#collapse-categories" data-toggle="collapse"  class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp; categories</a>
+                <div id="collapse-categories" class="collapse in">
+                    {% for category in site.categories %}
+                    <a class="list-group-item" href="#{{ category[0]}}">{{ category[0] }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-    {% endfor %}
 </div>

@@ -8,3 +8,14 @@ $("body").click(
         }
     }
 );
+var $root = $("html, body");
+$("a[href*='#']").click(function() {
+    var tar = $.attr(this, 'href');
+    if(tar == "#" || !tar){
+        tar = $root;
+    }
+    $root.animate({
+        scrollTop: $(tar).offset().top
+    }, 800);
+    return false;
+});
