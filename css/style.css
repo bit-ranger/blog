@@ -4,6 +4,18 @@ hr {
 img {
     max-width: 100%;height: auto;
 }
+.font-enlarge-lg {
+    font-size: 180%;
+}
+.font-enlarge-md {
+    font-size: 160%;
+}
+.font-enlarge-sm {
+    font-size: 140%;
+}
+.font-enlarge-xs {
+    font-size: 120%;
+}
 .circular-corner {
     border-radius: 15px;
 }
