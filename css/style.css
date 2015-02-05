@@ -84,3 +84,7 @@ a.list-group-item:hover {
     background-color: rgba(0,0,0,0.3);
     color:#fff;
 }
+a.list-group-item:focus {
+    background-color: rgba(0,0,0,0.3);
+    color:#fff;
+}
