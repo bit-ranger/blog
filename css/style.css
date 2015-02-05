@@ -36,6 +36,7 @@ h1,h2,h3,h4,h5,h6 {
     background-color: rgba(255,255,255,0.9);
     border: 1px solid rgba(0,0,0,0.16667);
     box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 .font-lg {
     font-size: 180%;
