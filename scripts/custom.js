@@ -10,7 +10,9 @@ $("body").click(
 );
 var $root = $("html, body");
 $("a[href*='#']").click(function() {
-    var tar = $.attr(this, 'href');
+    var $obj = $(this);
+    $obj.parents(".dropdown").removeClass("open");
+    var tar = $obj.attr('href');
     if(tar == "#" || !tar){
         tar = $root;
     }
