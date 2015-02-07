@@ -2,7 +2,7 @@
 layout: default
 title: Tomcat Https 配置
 tags: tomcat https ssl
-categories: java
+categories: Java
 ---
 
 ####`1`.生成秘钥库

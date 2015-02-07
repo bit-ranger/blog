@@ -42,9 +42,9 @@ img {
 }
 .wrapper {
     padding: 4%;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.94);
     border: 1px solid rgba(0,0,0,0.16667);
-    box-shadow: 0 1px 10px rgba(0,0,0,0.33333);
+    box-shadow: -10px -10px 10px rgba(0,0,0,0.33333);
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 .fixed-background {
@@ -65,6 +65,16 @@ img {
 .entry{
     color:#fff;
 }
+.author:hover{
+    text-decoration: none;
+    color: #222;
+}
+.text-block {
+    display: block;
+    min-height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
 .pager-btn {
     background-color: rgba(0,0,0,0.2);
     color:#fff;
@@ -76,7 +86,7 @@ img {
 .article-list{
     padding: 4%;
     border-radius: 4px;
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+    box-shadow: -10px -10px 10px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -93,7 +103,9 @@ img {
 }
 .article-list .small {
     color: #888;
-    
+}
+.article-categories {
+    margin-top: 20px;
 }
 .article-categories .list-group-item{
     background: rgba(0,0,0,0);
@@ -105,8 +117,11 @@ img {
     background: rgba(0,0,0,0.4);
     color: #fff;
 }
-.dropdown-menu li a{
-    line-height: 220%;
+.article-dropdown .btn {
+    min-width: 160px;
+}
+.article-dropdown li a{
+    line-height: 300%;
 }
 /****  response  ****/
 @media screen and (max-width: 768px) {

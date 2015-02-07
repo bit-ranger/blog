@@ -1,19 +1,22 @@
 ---
 layout: default
 date: 2015/01/01
-title: rainynight
+title: RainyNight
 ---
 
 <div class="well-sm container-fluid">
-    <div class="dropdown">
-        <span class="h2">Rainynight&nbsp;  »  &nbsp;</span><a class="h3 dropdown-toggle" data-toggle="dropdown" aria-expanded="true">分类</a>
+    <div class="lead text-primary hidden-xs">
+        {{ site.desc  }}
+    </div>
+    <div class="article-dropdown dropdown hidden-lg hidden-md hidden-sm">
+        <a class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="true">categories</a>
         <ul class="dropdown-menu" role="menu">
             {% for category in site.categories %}
             <li role="presentation"><a class="text-center" role="menuitem" tabindex="-1" href="#{{ category[0]}}">{{ category[0] }}</a></li>
             {% endfor %}
         </ul>
     </div>
-    
+
     <div class="row">
         <div class="article-lists col-lg-8 col-md-8 col-sm-8 col-xs-12">
             {% for category in site.categories %}
