@@ -11,13 +11,16 @@ $("body").click(
 var $root = $("html, body");
 $("a[href*='#']").click(function() {
     var $obj = $(this);
+    if($obj.attr("scroll") == "false"){
+        return true;
+    }
     $obj.parents(".dropdown").removeClass("open");
     var tar = $obj.attr('href');
     if(tar == "#" || !tar){
         tar = $root;
     }
     $root.animate({
-        scrollTop: $(tar).offset().top - 100
+        scrollTop: $(tar).offset().top - 50
     }, 800);
     return false;
 });
