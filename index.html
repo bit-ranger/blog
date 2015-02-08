@@ -21,7 +21,7 @@ title: RainyNight
         <div class="article-lists col-lg-8 col-md-8 col-sm-8 col-xs-12">
             {% for category in site.categories %}
             <div id="{{ category[0]}}" class="article-list">
-                <div class="text-center"><a class="h3"  href="#">{{ category[0]}}</a></div>
+                <div class="text-center"><a class="h3"  href="#">{{ category[0] | capitalize}}</a></div>
                 <hr>
                 <ul >
                     {% for post in category.last %}
@@ -36,7 +36,7 @@ title: RainyNight
                 <a data-target="#collapse-categories" data-toggle="collapse"  class="list-group-item"><span class="glyphicon glyphicon-folder-open"></span> &nbsp;&nbsp; categories</a>
                 <div id="collapse-categories" class="collapse in">
                     {% for category in site.categories %}
-                    <a class="list-group-item" href="#{{ category[0]}}">{{ category[0] }}</a>
+                    <a class="list-group-item" href="#{{ category[0]}}">{{ category[0] | capitalize }}</a>
                     {% endfor %}
                 </div>
             </div>

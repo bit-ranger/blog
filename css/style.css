@@ -4,6 +4,22 @@ hr {
 img {
     max-width: 100%;height: auto;
 }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    max-width: 100%;
+    background-color: transparent;
+    display: table;
+    border-color: gray;
+}
+table th,td{
+    text-align: center;
+    white-space: nowrap;
+    padding: .5em;
+    border: 1px solid #ddd;
+    line-height: 1.5;
+}
 .font-enlarge-lg {
     font-size: 180%;
 }
