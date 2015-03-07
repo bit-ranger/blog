@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" >
+    <link rel="icon" href="/css/favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="杨辉三角,算法,算法,algorithm,杨辉三角,帕斯卡三角,">
+    <meta name="description" content="杨辉三角 算法 算法 algorithm 杨辉三角 帕斯卡三角 ">
+    <meta name="author" content="RainyNight">
+    <title>杨辉三角</title>
+</head>
+<body>
+<!-- 背景 -->
+<div class="fixed-background"></div>
+<!-- << 顶部导航条,手机屏幕不显示 -->
+<nav class="navbar navbar-fixed-top hidden-xs" role="navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4  col-md-4  col-sm-4">
+                <a href="/" class="author entry">
+                    <div class="text-block">
+                        <span class="lead">
+                            RainyNight
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-7  col-md-7  col-sm-7">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="nav nav-pills hidden-xs pull-right" >
+                            <li role="presentation"><a href="/" title="Categories" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
+                            <li role="presentation"><a href="#" title="Tags" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-tags'></span></a></li>
+                            <li role="presentation"><a href="#" title="Archive" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-book'></span></a></li>
+                            <li role="presentation"><a href="#" title="About" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-user'></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav >
+<!-- 导航条的半透明底座 -->
+<div class="hidden-xs" style="background-color:rgba(0,0,0,.3); width:100%; min-height:50px; z-index:999; position:fixed; border-radius:4px;"></div>
+<!-- 一个垫子,用来产生正文与导航条的间隔 -->
+<div class="pad hidden-xs"></div>
+<!-- >> 顶部导航条,手机屏幕不显示 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
+            <!-- << 只在手机端显示的菜单 -->
+            <div class="hidden-lg hidden-md hidden-sm">
+                <a href="#" class="btn btn-sm glyphicon glyphicon-option-vertical fixed-right-top" data-toggle="collapse" data-target="#nav-collapse" scroll="false"></a>
+                <div id="nav-collapse" class="collapse">
+                　　<div class="container-fluid">
+                　　    <div class="row">
+                            <a href="#" title="About" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-user'></span></a>
+                            <a href="#" title="Archive" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-book'></span></a>
+                            <a href="#" title="Tags" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-tags'></span></a>
+                            <a href="/" title="Categories" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- >> 只在手机端显示的菜单 -->
+            <div class="wrapper">
+                
+                    <h1 class="text-center">杨辉三角</h1>
+                    <h5 class="text-success text-center">28 Jan 2015</h5>
+                    <hr>
+                    
+                        <a href="/20150201knight-tour" class="btn btn-lg glyphicon glyphicon-menu-left circular-corner fixed-left title pager-btn"></a>
+                    
+                    
+                        <a href="/20150127hanoi" class="btn btn-lg glyphicon glyphicon-menu-right circular-corner fixed-right title pager-btn"></a>
+                    
+                
+                <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pascal</span> <span class="kd">extends</span> <span class="n">JFrame</span><span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">maxRow</span><span class="o">;</span>
+
+    <span class="n">Pascal</span><span class="o">(</span><span class="kt">int</span> <span class="n">maxRow</span><span class="o">){</span>
+        <span class="n">setBackground</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">white</span><span class="o">);</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">&quot;杨辉三角&quot;</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">520</span><span class="o">,</span> <span class="mi">350</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="n">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">maxRow</span> <span class="o">=</span> <span class="n">maxRow</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * 获取值</span>
+<span class="cm">     * @param row 行号 从0开始</span>
+<span class="cm">     * @param col 列号 从0开始</span>
+<span class="cm">     * @return</span>
+<span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">value</span><span class="o">(</span><span class="kt">int</span> <span class="n">row</span><span class="o">,</span><span class="kt">int</span> <span class="n">col</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">col</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="o">(</span><span class="n">row</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="n">i</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">v</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="o">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">r</span><span class="o">,</span> <span class="n">c</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">maxRow</span><span class="o">;</span> <span class="n">r</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="o">;</span> <span class="n">c</span><span class="o">++){</span>
+                <span class="n">g</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">value</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="n">c</span><span class="o">)),</span> <span class="o">(</span><span class="n">maxRow</span> <span class="o">-</span> <span class="n">r</span><span class="o">)</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="mi">40</span><span class="o">,</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">50</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">Pascal</span><span class="o">(</span><span class="mi">12</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+            </div>
+            <div class="pad hidden-xs"></div>
+        </div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/scripts/custom.js"></script>
+</body>
+</html>

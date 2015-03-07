@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" >
+    <link rel="icon" href="/css/favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="骑士周游,算法,算法,algorithm,骑士周游,knight,tour,">
+    <meta name="description" content="骑士周游 算法 算法 algorithm 骑士周游 knight tour ">
+    <meta name="author" content="RainyNight">
+    <title>骑士周游</title>
+</head>
+<body>
+<!-- 背景 -->
+<div class="fixed-background"></div>
+<!-- << 顶部导航条,手机屏幕不显示 -->
+<nav class="navbar navbar-fixed-top hidden-xs" role="navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4  col-md-4  col-sm-4">
+                <a href="/" class="author entry">
+                    <div class="text-block">
+                        <span class="lead">
+                            RainyNight
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-7  col-md-7  col-sm-7">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="nav nav-pills hidden-xs pull-right" >
+                            <li role="presentation"><a href="/" title="Categories" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
+                            <li role="presentation"><a href="#" title="Tags" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-tags'></span></a></li>
+                            <li role="presentation"><a href="#" title="Archive" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-book'></span></a></li>
+                            <li role="presentation"><a href="#" title="About" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-user'></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav >
+<!-- 导航条的半透明底座 -->
+<div class="hidden-xs" style="background-color:rgba(0,0,0,.3); width:100%; min-height:50px; z-index:999; position:fixed; border-radius:4px;"></div>
+<!-- 一个垫子,用来产生正文与导航条的间隔 -->
+<div class="pad hidden-xs"></div>
+<!-- >> 顶部导航条,手机屏幕不显示 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
+            <!-- << 只在手机端显示的菜单 -->
+            <div class="hidden-lg hidden-md hidden-sm">
+                <a href="#" class="btn btn-sm glyphicon glyphicon-option-vertical fixed-right-top" data-toggle="collapse" data-target="#nav-collapse" scroll="false"></a>
+                <div id="nav-collapse" class="collapse">
+                　　<div class="container-fluid">
+                　　    <div class="row">
+                            <a href="#" title="About" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-user'></span></a>
+                            <a href="#" title="Archive" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-book'></span></a>
+                            <a href="#" title="Tags" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-tags'></span></a>
+                            <a href="/" title="Categories" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- >> 只在手机端显示的菜单 -->
+            <div class="wrapper">
+                
+                    <h1 class="text-center">骑士周游</h1>
+                    <h5 class="text-success text-center">01 Feb 2015</h5>
+                    <hr>
+                    
+                        <a href="/20150208linux-power" class="btn btn-lg glyphicon glyphicon-menu-left circular-corner fixed-left title pager-btn"></a>
+                    
+                    
+                        <a href="/20150128pascal" class="btn btn-lg glyphicon glyphicon-menu-right circular-corner fixed-right title pager-btn"></a>
+                    
+                
+                <p>骑士只能按照如图所示的方法前进,且每个格子只能路过一次,现在指定一个起点,判断骑士能否走完整个棋盘.</p>
+
+<p>思路:对任意一个骑士所在的位置,找出其所有可用的出口,若无可用出口则周游失败,再对每个出口找出其可用的子出口,然后骑士移动至子出口最少的出口处,重复以上过程.</p>
+
+<p><img src="http://img.blog.csdn.net/20130710174118812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhamlheW91YmE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.Point</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">System</span><span class="o">.</span><span class="na">out</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">KnightTour</span> <span class="o">{</span>
+
+    <span class="c1">// 對應騎士可走的八個方向</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">Point</span><span class="o">[]</span> <span class="n">relatives</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">[]{</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(-</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="mi">2</span><span class="o">,-</span><span class="mi">1</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,-</span><span class="mi">2</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(-</span><span class="mi">1</span><span class="o">,-</span><span class="mi">2</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(-</span><span class="mi">2</span><span class="o">,-</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">};</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">direct</span> <span class="o">=</span> <span class="mi">8</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">KnightTour</span><span class="o">(</span><span class="kt">int</span> <span class="n">sideLen</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">sideLen</span> <span class="o">=</span> <span class="n">sideLen</span><span class="o">;</span>
+        <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">sideLen</span><span class="o">][</span><span class="n">sideLen</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">sideLen</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">board</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">travel</span><span class="o">(</span><span class="kt">int</span> <span class="n">startX</span><span class="o">,</span> <span class="kt">int</span> <span class="n">startY</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">// 当前出口的位置集</span>
+        <span class="n">Point</span><span class="o">[]</span> <span class="n">nexts</span><span class="o">;</span>
+
+        <span class="c1">// 记录每个出口的可用出口個數</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">exits</span><span class="o">;</span>
+
+        <span class="c1">//当前位置</span>
+        <span class="n">Point</span> <span class="n">current</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="n">startX</span><span class="o">,</span> <span class="n">startY</span><span class="o">);</span>
+
+        <span class="n">board</span><span class="o">[</span><span class="n">current</span><span class="o">.</span><span class="na">x</span><span class="o">][</span><span class="n">current</span><span class="o">.</span><span class="na">y</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="c1">//当前步的编号</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="n">Math</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="n">board</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span> <span class="n">m</span><span class="o">++)</span> <span class="o">{</span>
+
+            <span class="c1">//清空每个出口的可用出口数</span>
+            <span class="n">nexts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point</span><span class="o">[</span><span class="n">direct</span><span class="o">];</span>
+            <span class="n">exits</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">direct</span><span class="o">];</span>
+
+            <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="c1">// 試探八個方向</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">direct</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">tmpX</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">x</span> <span class="o">+</span> <span class="n">relatives</span><span class="o">[</span><span class="n">k</span><span class="o">].</span><span class="na">x</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">tmpY</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="na">y</span> <span class="o">+</span> <span class="n">relatives</span><span class="o">[</span><span class="n">k</span><span class="o">].</span><span class="na">y</span><span class="o">;</span>
+
+                <span class="c1">// 如果這個方向可走，記錄下來</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">accessable</span><span class="o">(</span><span class="n">tmpX</span><span class="o">,</span> <span class="n">tmpY</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">nexts</span><span class="o">[</span><span class="n">count</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="n">tmpX</span><span class="o">,</span><span class="n">tmpY</span><span class="o">);</span>
+                    <span class="c1">// 可走的方向加一個</span>
+                    <span class="n">count</span><span class="o">++;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">//可用出口数最少的出口在exits中的索引</span>
+            <span class="kt">int</span> <span class="n">minI</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 记录每个出口的可用出口數</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">count</span><span class="o">;</span> <span class="n">l</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">direct</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="kt">int</span> <span class="n">tmpX</span> <span class="o">=</span> <span class="n">nexts</span><span class="o">[</span><span class="n">l</span><span class="o">].</span><span class="na">x</span> <span class="o">+</span> <span class="n">relatives</span><span class="o">[</span><span class="n">k</span><span class="o">].</span><span class="na">x</span><span class="o">;</span>
+                        <span class="kt">int</span> <span class="n">tmpY</span> <span class="o">=</span> <span class="n">nexts</span><span class="o">[</span><span class="n">l</span><span class="o">].</span><span class="na">y</span> <span class="o">+</span> <span class="n">relatives</span><span class="o">[</span><span class="n">k</span><span class="o">].</span><span class="na">y</span><span class="o">;</span>
+                        <span class="k">if</span><span class="o">(</span><span class="n">accessable</span><span class="o">(</span><span class="n">tmpX</span><span class="o">,</span> <span class="n">tmpY</span><span class="o">)){</span>
+                            <span class="n">exits</span><span class="o">[</span><span class="n">l</span><span class="o">]++;</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+
+                <span class="c1">// 從可走的方向中尋找最少出路的方向</span>
+                <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">exits</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+                <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="n">count</span><span class="o">;</span> <span class="n">l</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">exits</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">tmp</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">tmp</span> <span class="o">=</span> <span class="n">exits</span><span class="o">[</span><span class="n">l</span><span class="o">];</span>
+                        <span class="n">minI</span> <span class="o">=</span> <span class="n">l</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 走最少出路的方向</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="n">nexts</span><span class="o">[</span><span class="n">minI</span><span class="o">]);</span>
+            <span class="n">board</span><span class="o">[</span><span class="n">current</span><span class="o">.</span><span class="na">x</span><span class="o">][</span><span class="n">current</span><span class="o">.</span><span class="na">y</span><span class="o">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">accessable</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">sideLen</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">sideLen</span> <span class="o">&amp;&amp;</span> <span class="n">board</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">sideLen</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+        <span class="n">KnightTour</span> <span class="n">knight</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">KnightTour</span><span class="o">(</span><span class="n">sideLen</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">knight</span><span class="o">.</span><span class="na">travel</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">2</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;遊歷完成！&quot;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;遊歷失敗！&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">sideLen</span><span class="o">;</span> <span class="n">y</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">sideLen</span><span class="o">;</span> <span class="n">x</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;%3d &quot;</span><span class="o">,</span> <span class="n">knight</span><span class="o">.</span><span class="na">board</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]);</span>
+            <span class="o">}</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+            </div>
+            <div class="pad hidden-xs"></div>
+        </div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/scripts/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" >
+    <link rel="icon" href="/css/favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="目录与文件,linux,linux,命令,">
+    <meta name="description" content="目录与文件 linux linux 命令 ">
+    <meta name="author" content="RainyNight">
+    <title>目录与文件</title>
+</head>
+<body>
+<!-- 背景 -->
+<div class="fixed-background"></div>
+<!-- << 顶部导航条,手机屏幕不显示 -->
+<nav class="navbar navbar-fixed-top hidden-xs" role="navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4  col-md-4  col-sm-4">
+                <a href="/" class="author entry">
+                    <div class="text-block">
+                        <span class="lead">
+                            RainyNight
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-7  col-md-7  col-sm-7">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="nav nav-pills hidden-xs pull-right" >
+                            <li role="presentation"><a href="/" title="Categories" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
+                            <li role="presentation"><a href="#" title="Tags" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-tags'></span></a></li>
+                            <li role="presentation"><a href="#" title="Archive" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-book'></span></a></li>
+                            <li role="presentation"><a href="#" title="About" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-user'></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav >
+<!-- 导航条的半透明底座 -->
+<div class="hidden-xs" style="background-color:rgba(0,0,0,.3); width:100%; min-height:50px; z-index:999; position:fixed; border-radius:4px;"></div>
+<!-- 一个垫子,用来产生正文与导航条的间隔 -->
+<div class="pad hidden-xs"></div>
+<!-- >> 顶部导航条,手机屏幕不显示 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
+            <!-- << 只在手机端显示的菜单 -->
+            <div class="hidden-lg hidden-md hidden-sm">
+                <a href="#" class="btn btn-sm glyphicon glyphicon-option-vertical fixed-right-top" data-toggle="collapse" data-target="#nav-collapse" scroll="false"></a>
+                <div id="nav-collapse" class="collapse">
+                　　<div class="container-fluid">
+                　　    <div class="row">
+                            <a href="#" title="About" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-user'></span></a>
+                            <a href="#" title="Archive" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-book'></span></a>
+                            <a href="#" title="Tags" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-tags'></span></a>
+                            <a href="/" title="Categories" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- >> 只在手机端显示的菜单 -->
+            <div class="wrapper">
+                
+                    <h1 class="text-center">目录与文件</h1>
+                    <h5 class="text-success text-center">25 Jan 2015</h5>
+                    <hr>
+                    
+                        <a href="/20150125sort" class="btn btn-lg glyphicon glyphicon-menu-left circular-corner fixed-left title pager-btn"></a>
+                    
+                    
+                
+                <blockquote>
+<p><code>.</code><br>
+代表此层目录<br>
+<code>..</code><br>
+代表上一层目录<br>
+<code>-</code><br>
+代表前一个工作目录<br>
+<code>~</code><br>
+代表『目前使用者身份』所在的家目录<br>
+<code>~account</code><br>
+代表 account 这个使用者的家目录(account是个帐号名称)</p>
+</blockquote>
+
+<hr>
+
+<h2><code>cd</code></h2>
+
+<p><strong>变换目录</strong></p>
+
+<hr>
+
+<h2><code>pwd</code></h2>
+
+<p><strong>显示目前所在的目录</strong><br>
+[root@www ~]# <code>pwd [-Pl]</code><br>
+选项与参数：<br>
+<code>-P</code>：显示出真实的路径，而非使用连结 (link) 路径。<br>
+<code>-l</code> : 显示逻辑路径(默认)</p>
+
+<hr>
+
+<h2><code>mkdir</code></h2>
+
+<p><strong>创建新目录</strong><br>
+[root@www ~]# <code>mkdir [-mp]</code> 目录名称<br>
+选项与参数：<br>
+<code>-m</code> ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～<br>
+<code>-p</code> ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！ </p>
+
+<hr>
+
+<h2><code>rmdir</code></h2>
+
+<p><strong>删除『空』的目录</strong><br>
+[root@www ~]# <code>rmdir [-p]</code> 目录名称<br>
+选项与参数：<br>
+<code>-p</code> ：连同上一级『空的』目录也一起删除</p>
+
+<hr>
+
+<h2><code>$PATH</code></h2>
+
+<p><strong>环境变量</strong><br>
+不同身份使用者默认的PATH不同，默认能够随意运行的命令也不同(如root与vbird)；<br>
+PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运行某些位於/sbin或/usr/sbin下的命令来查询；<br>
+使用绝对路径或相对路径直接指定某个命令的档名来运行，会比搜寻PATH来的正确；<br>
+命令应该要放置到正确的目录下，运行才会比较方便；本目录(.)最好不要放到PATH当中。</p>
+
+<hr>
+
+<h2><code>ls</code></h2>
+
+<p><strong>查看文件与目录</strong><br>
+[root@linux ~]# <code>ls [-aAdfFhilRS]</code> 目录名称 <br>
+[root@linux ~]# <code>ls [--color={none,auto,always}]</code> 目录名称 <br>
+[root@linux ~]# <code>ls [--full-time]</code> 目录名称 <br>
+选项与参数：<br>
+<code>-a</code> ：全部的档案，连同隐藏档( 开头为 . 的档案) 一起列出来～ <br>
+<code>-A</code> ：全部的档案，连同隐藏档，但不包括 . 与 .. 这两个目录，一起列出来～ <br>
+<code>-d</code> ：仅列出目录本身，而不是列出目录内的档案数据 <br>
+<code>-f</code> ：直接列出结果，而不进行排序 (ls 预设会以档名排序！) <br>
+<code>-F</code> ：根据档案、目录等信息，给予附加数据结构  </p>
+
+<blockquote>
+<p>例如： <code>*</code>：代表可执行档； <code>/</code>：代表目录； <code>=</code>：代表 socket 档案； <code>|</code>：代表 FIFO 档案</p>
+</blockquote>
+
+<p><code>-h</code> ：将档案容量以人类较易读的方式(例如 GB, KB 等等)列出来<br>
+<code>-i</code> ：列出 inode 位置，而非列出档案属性 <br>
+<code>-l</code> ：长数据串行出，包含档案的属性等等数据； <br>
+<code>-n</code> ：列出 UID 与 GID 而非使用者与群组的名称 <br>
+<code>-r</code> ：将排序结果反向输出<br>
+<code>-R</code> ：连同子目录内容一起列出来； <br>
+<code>-S</code> ：以档案容量大小排序！ <br>
+<code>-t</code> ：依时间排序 <br>
+<code>--color=never</code> ：不要依据档案特性给予颜色显示； <br>
+<code>--color=always</code> ：显示颜色 <br>
+<code>--color=auto</code> ：让系统自行依据设定来判断是否给予颜色 <br>
+<code>--full-time</code> ：以完整时间模式 (包含年、月、日、时、分) 输出 <br>
+<code>--time={atime,ctime}</code> ：输出 access 时间或 改变权限属性时间 (ctime) 而非内容变更时间 (modification time)      </p>
+
+<hr>
+
+<h2><code>cp</code></h2>
+
+<p><strong>复制文件或目录</strong><br>
+[root@www ~]# <code>cp [-adfilprsu]</code> 来源档(source) 目标档(destination)<br>
+[root@www ~]# <code>cp [options]</code> source1 source2 source3 .... directory<br>
+选项与参数：<br>
+<code>-a</code> ：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)<br>
+<code>-d</code>  ：若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；<br>
+<code>-f</code>  ：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；<br>
+<code>-i</code>  ：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)<br>
+<code>-l</code>  ：进行硬式连结(hard link)的连结档创建，而非复制文件本身；<br>
+<code>-p</code>  ：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；<br>
+<code>-r</code>  ：递回持续复制，用於目录的复制行为；(常用)<br>
+<code>-s</code>  ：复制成为符号连结档 (symbolic link)，亦即『捷径』文件；<br>
+<code>-u</code>  ：若 destination 比 source 旧才升级 destination ！<br>
+最后需要注意的，如果来源档有两个以上，则最后一个目的档一定要是『目录』才行！</p>
+
+<hr>
+
+<h2><code>rm</code></h2>
+
+<p><strong>移除文件或目录</strong><br>
+[root@www ~]# <code>rm [-fir]</code> 文件或目录<br>
+选项与参数：<br>
+<code>-f</code>  ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；<br>
+<code>-i</code>  ：互动模式，在删除前会询问使用者是否动作<br>
+<code>-r</code>  ：递回删除啊！最常用在目录的删除了！这是非常危险的选项！！！</p>
+
+<hr>
+
+<h2><code>mv</code></h2>
+
+<p><strong>移动文件与目录，或更名</strong><br>
+[root@www ~]# <code>mv [-fiu]</code> source destination<br>
+[root@www ~]# <code>mv [options]</code> source1 source2 source3 .... directory<br>
+选项与参数：<br>
+<code>-f</code>  ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；<br>
+<code>-i</code>  ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！<br>
+<code>-u</code>  ：若目标文件已经存在，且 source 比较新，才会升级 (update)</p>
+
+<hr>
+
+<h2><code>basename</code>，<code>dirname</code></h2>
+
+<p><strong>取得路径的文件名称与目录名称</strong><br>
+[root@www ~]# <code>basename</code> /etc/sysconfig/network<br>
+network        &lt;== 很简单！就取得最后的档名～<br>
+[root@www ~]# <code>dirname</code> /etc/sysconfig/network<br>
+/etc/sysconfig  &lt;== 取得的变成目录名了！ </p>
+
+<hr>
+
+<h2><code>cat</code></h2>
+
+<p><strong>查看文件</strong><br>
+[root@www ~]# <code>cat [-AbEnTv]</code><br>
+选项与参数：<br>
+<code>-A</code>  ：相当於 -vET 的整合选项，可列出一些特殊字符而不是空白而已；<br>
+<code>-b</code>  ：列出行号，仅针对非空白行做行号显示，空白行不标行号！<br>
+<code>-E</code>  ：将结尾的断行字节 $ 显示出来；<br>
+<code>-n</code>  ：列印出行号，连同空白行也会有行号，与 -b 的选项不同；<br>
+<code>-T</code>  ：将 [tab] 按键以 ^I 显示出来；<br>
+<code>-v</code>  ：列出一些看不出来的特殊字符</p>
+
+<h2><code>tac</code></h2>
+
+<p><strong>反向显示</strong> </p>
+
+<hr>
+
+<h2><code>nl</code></h2>
+
+<p><strong>添加行号显示</strong><br>
+[root@www ~]# <code>nl [-bnw]</code> 文件<br>
+选项与参数：<br>
+<code>-b</code> ：指定行号指定的方式，主要有两种：</p>
+
+<blockquote>
+<p><code>-b a</code> ：表示不论是否为空行，也同样列出行号(类似 cat -n)；<br>
+  <code>-b t</code> ：如果有空行，空的那一行不要列出行号(默认值)；</p>
+</blockquote>
+
+<p><code>-n</code> ：列出行号表示的方法，主要有三种：</p>
+
+<blockquote>
+<p><code>-n ln</code> ：行号在萤幕的最左方显示；<br>
+ <code>-n rn</code> ：行号在自己栏位的最右方显示，且不加 0 ；<br>
+ <code>-n rz</code> ：行号在自己栏位的最右方显示，且加 0 ；</p>
+</blockquote>
+
+<p><code>-w</code> ：行号栏位的占用的位数。</p>
+
+<hr>
+
+<h2><code>more</code></h2>
+
+<p><strong>一页一页翻动</strong><br>
+[root@www ~]# <code>more</code> /etc/man.config<br>
+在more查看文件时可在最底行输入:<br>
+空白键 (<code>space</code>)：代表向下翻一页；<br>
+<code>Enter</code>         ：代表向下翻『一行』；<br>
+<code>/</code>字串         ：代表在这个显示的内容当中，向下搜寻『字串』这个关键字；<br>
+<code>:f</code>            ：立刻显示出档名以及目前显示的行数；<br>
+<code>q</code>             ：代表立刻离开 more ，不再显示该文件内容。<br>
+<code>b</code> 或 <code>[ctrl]-b</code> ：代表往回翻页，不过这动作只对文件有用，对管线无用。 </p>
+
+<hr>
+
+<h2><code>less</code></h2>
+
+<p><strong>一页一页翻动</strong><br>
+[root@www ~]# <code>less</code> /etc/man.config<br>
+在more查看文件时可在最底行输入:<br>
+空白键(<code>space</code>)    ：向下翻动一页；<br>
+[<code>pagedown</code>]：向下翻动一页；<br>
+[<code>pageup</code>]  ：向上翻动一页；<br>
+<code>/</code>字串     ：向下搜寻『字串』的功能；<br>
+<code>?</code>字串     ：向上搜寻『字串』的功能；<br>
+<code>n</code>         ：重复前一个搜寻 (与 / 或 ? 有关！)<br>
+<code>N</code>         ：反向的重复前一个搜寻 (与 / 或 ? 有关！)<br>
+<code>q</code>         ：离开 less 这个程序； </p>
+
+<hr>
+
+<h2><code>head</code></h2>
+
+<p><strong>取出前面几行</strong><br>
+[root@www ~]# <code>head [-n number]</code> 文件 <br>
+选项与参数：<br>
+<code>-n</code>  ：后面接数字，代表显示几行的意思</p>
+
+<hr>
+
+<h2><code>tail</code></h2>
+
+<p><strong>取出后面几行</strong><br>
+[root@www ~]# <code>tail [-n number]</code> 文件 <br>
+选项与参数：<br>
+<code>-n</code>  ：后面接数字，代表显示几行的意思<br>
+<code>-f</code>  ：表示持续侦测后面所接的档名，要等到按下[ctrl]-c才会结束tail的侦测</p>
+
+<hr>
+
+<h2><code>od</code></h2>
+
+<p><strong>非纯文字档</strong><br>
+[root@www ~]# <code>od [-t TYPE]</code> 文件<br>
+选项或参数：<br>
+<code>-t</code>  ：后面可以接各种『类型 (TYPE)』的输出，例如：</p>
+
+<blockquote>
+<p><code>a</code>         ：利用默认的字节来输出；<br>
+<code>c</code>         ：使用 ASCII 字节来输出<br>
+<code>d</code>[size] ：利用十进位(decimal)来输出数据，每个整数占用 size bytes<br>
+<code>f</code>[size] ：利用浮点数值(floating)来输出数据，每个数占用 size bytes<br>
+<code>o</code>[size] ：利用八进位(octal)来输出数据，每个整数占用 size bytes<br>
+<code>x</code>[size] ：利用十六进位(hexadecimal)来输出数据，每个整数占用 size bytes</p>
+</blockquote>
+
+<hr>
+
+<h2><code>touch</code></h2>
+
+<p><strong>修改文件时间或建置新档</strong><br>
+[root@www ~]# <code>touch [-acdmt]</code> 文件<br>
+选项与参数：<br>
+<code>-a</code>  ：仅修订 access time；<br>
+<code>-c</code>  ：仅修改文件的时间，若该文件不存在则不创建新文件；<br>
+<code>-d</code>  ：后面可以接欲修订的日期而不用目前的日期，也可以使用 --date=&quot;日期或时间&quot;<br>
+<code>-m</code>  ：仅修改 mtime ；<br>
+<code>-t</code>  ：后面可以接欲修订的时间而不用目前的时间，格式为[YYMMDDhhmm] </p>
+
+<hr>
+
+<h2><code>file</code></h2>
+
+<p><strong>查看文件类型</strong><br>
+[root@www ~]# <code>file</code> 文件</p>
+
+            </div>
+            <div class="pad hidden-xs"></div>
+        </div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/scripts/custom.js"></script>
+</body>
+</html>

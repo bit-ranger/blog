@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/syntax.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" >
+    <link rel="icon" href="/css/favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="权限管理,linux,linux,命令,">
+    <meta name="description" content="权限管理 linux linux 命令 ">
+    <meta name="author" content="RainyNight">
+    <title>权限管理</title>
+</head>
+<body>
+<!-- 背景 -->
+<div class="fixed-background"></div>
+<!-- << 顶部导航条,手机屏幕不显示 -->
+<nav class="navbar navbar-fixed-top hidden-xs" role="navigation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4  col-md-4  col-sm-4">
+                <a href="/" class="author entry">
+                    <div class="text-block">
+                        <span class="lead">
+                            RainyNight
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-7  col-md-7  col-sm-7">
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="nav nav-pills hidden-xs pull-right" >
+                            <li role="presentation"><a href="/" title="Categories" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
+                            <li role="presentation"><a href="#" title="Tags" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-tags'></span></a></li>
+                            <li role="presentation"><a href="#" title="Archive" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-book'></span></a></li>
+                            <li role="presentation"><a href="#" title="About" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-user'></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav >
+<!-- 导航条的半透明底座 -->
+<div class="hidden-xs" style="background-color:rgba(0,0,0,.3); width:100%; min-height:50px; z-index:999; position:fixed; border-radius:4px;"></div>
+<!-- 一个垫子,用来产生正文与导航条的间隔 -->
+<div class="pad hidden-xs"></div>
+<!-- >> 顶部导航条,手机屏幕不显示 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 overspread">
+            <!-- << 只在手机端显示的菜单 -->
+            <div class="hidden-lg hidden-md hidden-sm">
+                <a href="#" class="btn btn-sm glyphicon glyphicon-option-vertical fixed-right-top" data-toggle="collapse" data-target="#nav-collapse" scroll="false"></a>
+                <div id="nav-collapse" class="collapse">
+                　　<div class="container-fluid">
+                　　    <div class="row">
+                            <a href="#" title="About" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-user'></span></a>
+                            <a href="#" title="Archive" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-book'></span></a>
+                            <a href="#" title="Tags" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-tags'></span></a>
+                            <a href="/" title="Categories" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- >> 只在手机端显示的菜单 -->
+            <div class="wrapper">
+                
+                    <h1 class="text-center">权限管理</h1>
+                    <h5 class="text-success text-center">08 Feb 2015</h5>
+                    <hr>
+                    
+                    
+                        <a href="/20150201knight-tour" class="btn btn-lg glyphicon glyphicon-menu-right circular-corner fixed-right title pager-btn"></a>
+                    
+                
+                <h2><code>chmod</code></h2>
+
+<p><strong>改变权限</strong><br>
+<em>数字法</em></p>
+
+<blockquote>
+<p>root@www ~]# <code>chmod [-R] xyz</code> 文件或目录<br>
+选项与参数：<br>
+<code>xyz</code> : 就是刚刚提到的数字类型的权限属性，为 rwx 属性数值的相加。<br>
+<code>-R</code> : 进行递归(recursive)的持续变更，亦即连同次目录下的所有文件都会变更</p>
+</blockquote>
+
+<p><em>符号法</em></p>
+
+<table>
+<tr>
+<td>chmod</td>
+<td>ugoa</td>
+<td>+(加入) -(除去) =(设定)</td>
+<td>rwx</td>
+<td>文件或目录</td>
+</tr>
+</table>
+
+<blockquote>
+<p>例:<br>
+[root@www ~]# chmod  u=rwx,go=rx  .bashrc<br>
+# 注意！那个 u=rwx,go=rx 是连在一起的，中间并没有任何空格！</p>
+</blockquote>
+
+<hr>
+
+<h2><code>chgrp</code></h2>
+
+<p><strong>改变所属群组</strong><br>
+chgrp [root@www ~]# <code>chgrp [-R] filename ...</code><br>
+选项与参数： <br>
+<code>-R</code> : 进行递归(recursive)的持续变更，亦即连同次目录下的所有文件、目录 都更新成为这个群组之意。常常用在变更某一目录内所有的文件之情况。</p>
+
+<hr>
+
+<h2><code>chown</code></h2>
+
+<p><strong>改变文件拥有者</strong><br>
+[root@www ~]# <code>chown [-R]</code> 账号名称 文件或目录<br>
+[root@www ~]# <code>chown [-R]</code> 账号名称:组名 文件或目录<br>
+选项与参数：<br>
+<code>-R</code> : 进行递归(recursive)的持续变更，亦即连同次目录下的所有文件都变更</p>
+
+<hr>
+
+<h2><code>chattr</code></h2>
+
+<p><strong>配置文件隐藏属性</strong><br>
+[root@www ~]# <code>chattr [+-=][ASacdistu]</code> 文件或目录名称<br>
+选项与参数：<br>
+<code>+</code>   ：添加某一个特殊参数，其他原本存在参数则不动。<br>
+<code>-</code>   ：移除某一个特殊参数，其他原本存在参数则不动。<br>
+<code>=</code>   ：配置一定，且仅有后面接的参数</p>
+
+<blockquote>
+<p><code>A</code>  ：当配置了 A 这个属性时，若你有存取此文件(或目录)时，他的存取时间 atime将不会被修改，可避免I/O较慢的机器过度的存取磁碟。这对速度较慢的计算机有帮助。<br>
+<code>S</code>  ：一般文件是非同步写入磁碟的(原理请参考第五章sync的说明)，如果加上 S 这个属性时，当你进行任何文件的修改，该更动会『同步』写入磁碟中。<br>
+<code>a</code>  ：当配置 a 之后，这个文件将只能添加数据，而不能删除也不能修改数据，只有root才能配置这个属性。 <br>
+<code>c</code> ：这个属性配置之后，将会自动的将此文件『压缩』，在读取的时候将会自动解压缩，但是在储存的时候，将会先进行压缩后再储存(看来对於大文件似乎蛮有用的！)<br>
+<code>d</code>  ：当 dump 程序被运行的时候，配置 d 属性将可使该文件(或目录)不会被 dump 备份<br>
+<code>i</code>  ：这个 i 可就很厉害了！他可以让一个文件『不能被删除、改名、配置连结也无法写入或新增数据！』对於系统安全性有相当大的助益！只有 root 能配置此属性<br>
+<code>s</code>  ：当文件配置了 s 属性时，如果这个文件被删除，他将会被完全的移除出这个硬盘空间，所以如果误删了，完全无法救回来了喔！<br>
+<code>u</code>  ：与 s 相反的，当使用 u 来配置文件时，如果该文件被删除了，则数据内容其实还存在磁碟中，可以使用来救援该文件喔！<br>
+注意：属性配置常见的是 a 与 i 的配置值，而且很多配置值必须要身为 root 才能配置</p>
+</blockquote>
+
+<hr>
+
+<h2><code>lsattr</code></h2>
+
+<p><strong>显示文件隐藏属性</strong><br>
+[root@www ~]# <code>lsattr [-adR]</code> 文件或目录<br>
+选项与参数：<br>
+<code>-a</code> ：将隐藏档的属性也秀出来；<br>
+<code>-d</code> ：如果接的是目录，仅列出目录本身的属性而非目录内的档名；<br>
+<code>-R</code> ：连同子目录的数据也一并列出来！ </p>
+
+<hr>
+
+<h2><code>umask</code></h2>
+
+<p><strong>被排除的权限默认值</strong><br>
+<em>目前使用者在创建文件或目录时候的被排除的权限默认值</em><br>
+[root@www ~]# <code>umask</code>      显示<code>数字</code>型态的权限配置分数<br>
+0022          &lt;==与一般权限有关的是后面三个数字，表示在777中被排除的权限，即该目录中新增文件或目录的默认权限为755，又因为新增文件默认不具有x权限，所以该目录中新增目录的默认权限为755，文件的默认权限为644<br>
+[root@www ~]# <code>umask -S</code>    以<code>符号</code>类型的方式来显示出权限<br>
+u=rwx,g=rx,o=rx<br>
+[root@www ~]# <code>umask 002</code>  <code>指定</code>权限配置分数<br>
+<code>!</code> 异或运算可排除权限</p>
+
+<hr>
+
+<h2>文件特殊权限</h2>
+
+<p><strong><code>SUID</code></strong></p>
+
+<blockquote>
+<p><code>1</code> SUID 权限仅对二进位程序(binary program)有效；(对目录无效)<br>
+<code>2</code> 运行者对於该程序需要具有 x 权限；<br>
+<code>3</code> 运行者将具有该程序拥有者 (owner) 的权限，该权限仅在运行该程序的过程中有效 (run-time)<br>
+例如：/etc/shadow只有root能够访问，但是普通用户对于passwd有s权限，passwd的owner是root，所以普通用户可以在运行passwd时暂时获得root权限对/etc/shadow进行操作。<br>
+<code>!</code> SUID权限指的是文件权限中owner部分x权限的特殊版<br>
+<code>! chmod 4***</code> 可以赋予SUID权限，若不具备x权限，s将变成S</p>
+</blockquote>
+
+<p><strong><code>SGID</code></strong><br>
+<em>当为文件时</em></p>
+
+<blockquote>
+<p><code>1</code> SGID 仅对二进位程序有用；<br>
+<code>2</code> 运行者对於该程序需具有x 权限；<br>
+<code>3</code> 运行者在运行的过程中将会获得该程序群组（group）的权限,该权限仅在运行该程序的过程中有效 (run-time) --- 基本同SUID</p>
+</blockquote>
+
+<p><em>当为目录时</em></p>
+
+<blockquote>
+<p><code>1</code> 使用者若对於此目录具有 r 与 x 的权限时，该使用者能够进入此目录；<br>
+<code>2</code> 使用者在此目录下的有效群组(effective group)将会变成该目录所属的群组；用途：若使用者在此目录下具有 w 的权限(可以新建文件)，则使用者所创建的新文件的群组与此目录所属的群组相同。</p>
+</blockquote>
+
+<p><code>!</code> SGID权限指的是文件或目录权限中group部分x权限的特殊版<br>
+<code>! chmod 2***</code> 可以赋予SGID权限，若不具备x权限，s将变成S</p>
+
+<p><strong><code>SBIT</code></strong><br>
+·SBIT权限仅对目录有效；（对文件无效）<br>
+·使用者对於此目录需要具有 w, x 权限；<br>
+·当使用者在该目录下创建文件或目录时，仅有自己与 root 才有权力删除该文件<br>
+<code>! chmod 1***</code> 可以赋予SBIT权限，若不具备x权限，s将变成S</p>
+
+            </div>
+            <div class="pad hidden-xs"></div>
+        </div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/scripts/custom.js"></script>
+</body>
+</html>
