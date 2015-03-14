@@ -1,1 +1,1 @@
-[Click Me](http://blog.rainynight.top/)
+<http://blog.rainynight.top/>
