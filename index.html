@@ -25,7 +25,7 @@ title: RainyNight
                 <hr>
                 <ul >
                     {% for post in category.last %}
-                    <li><a  href="{{ post.url }}" target="_blank">{{ post.title }}</a>&nbsp;<span class="small pull-right">{{ post.date | date_to_string}}</span></li>
+                    <li><a  href="{{ site.baseurl}}{{ post.url }}" target="_blank">{{ post.title }}</a>&nbsp;<span class="small pull-right">{{ post.date | date_to_string}}</span></li>
                     {% endfor %}
                 </ul>
             </div>

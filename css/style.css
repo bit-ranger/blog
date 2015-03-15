@@ -65,7 +65,7 @@ table th,td{
 }
 .fixed-background {
     background-color: #222;
-    background-image: url(/css/background-img.jpg);
+    background-image: url(../css/background-img.jpg);
     width:100%;
     height:120%;
     position:fixed;

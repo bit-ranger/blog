@@ -3,9 +3,9 @@
 <head>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/css/syntax.css" type="text/css">
-    <link rel="stylesheet" href="/css/style.css" type="text/css" >
-    <link rel="icon" href="/css/favicon.ico">
+    <link rel="stylesheet" href="{{ site.baseurl}}/css/syntax.css" type="text/css">
+    <link rel="stylesheet" href="{{ site.baseurl}}/css/style.css" type="text/css" >
+    <link rel="icon" href="{{ site.baseurl}}/css/favicon.ico">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="keywords" content="{{ page.title }},{% for category in page.categories %}{{ category }},{% endfor %}{% for tag in page.tags %}{{ tag }},{% endfor %}">
@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4  col-md-4  col-sm-4">
-                <a href="/" class="author entry">
+                <a href="{{ site.baseurl}}/" class="author entry">
                     <div class="text-block">
                         <span class="lead">
                             {{ site.author }}
@@ -33,7 +33,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <ul class="nav nav-pills hidden-xs pull-right" >
-                            <li role="presentation"><a href="/" title="Categories" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
+                            <li role="presentation"><a href="{{ site.baseurl}}/" title="Categories" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a></li>
                             <li role="presentation"><a href="#" title="Tags" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-tags'></span></a></li>
                             <li role="presentation"><a href="#" title="Archive" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-book'></span></a></li>
                             <li role="presentation"><a href="#" title="About" class="font-enlarge-sm entry"><span class='glyphicon glyphicon-user'></span></a></li>
@@ -61,7 +61,7 @@
                             <a href="#" title="About" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-user'></span></a>
                             <a href="#" title="Archive" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-book'></span></a>
                             <a href="#" title="Tags" class="col-xs-3 text-center  font-enlarge-lg entry"><span class='glyphicon glyphicon-tags'></span></a>
-                            <a href="/" title="Categories" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
+                            <a href="{{ site.baseurl}}/" title="Categories" class="col-xs-3 text-center font-enlarge-lg entry"><span class='glyphicon glyphicon-menu-hamburger'></span></a>
                         </div>
                     </div>
                 </div>
@@ -87,6 +87,6 @@
 </div>
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="/scripts/custom.js"></script>
+<script src="{{ site.baseurl}}/scripts/custom.js"></script>
 </body>
 </html>
