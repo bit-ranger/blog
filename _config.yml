@@ -11,4 +11,5 @@ redcarpet:
     - fenced_code_blocks
 desc: "征途：星辰大海！"
 author: "RainyNight"
-rssLink: /feed.xml
+rssLink: "/feed"
+github: "https://github.com/dubuyuye/blog"
