@@ -1,15 +1,2 @@
-<script language="javascript">
- var target = "/";
+<script language="javascript">window.location.href="/";</script>
 
- var browser = navigator.userAgent;
-
- if (/MSIE (\d+\.\d+);/.test(browser) || /MSIE(\d+\.\d+);/.test(browser)){
-  var tarLink = document.createElement('a');
-  tarLink.href = target;
-  document.body.appendChild(tarLink);
-  tarLink.click();
- }else{
-  window.location.href=target;
- } 
-
-</script>
