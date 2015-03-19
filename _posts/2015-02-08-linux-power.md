@@ -14,16 +14,11 @@ categories: Linux
 `-R` : 进行递归(recursive)的持续变更，亦即连同次目录下的所有文件都会变更
 
 *符号法*
-
-<table>
-<tr>
-<td>chmod</td>
-<td>ugoa</td>
-<td>+(加入) -(除去) =(设定)</td>
-<td>rwx</td>
-<td>文件或目录</td>
-</tr>
-</table>
+>chmod
+ugoa
++(加入) -(除去) =(设定)
+rwx
+文件或目录
 
 >例:
 [root@www ~]# chmod  u=rwx,go=rx  .bashrc
