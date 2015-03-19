@@ -1,5 +1,5 @@
 baseurl: ""
-permalink: /:year::month-::day::title
+permalink: /:year-:month-:day/:title
 highlighter: pygments
 markdown: redcarpet
 redcarpet:
