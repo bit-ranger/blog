@@ -11,11 +11,11 @@
 			<item>
 				<title>{{ post.title | xml_escape }}</title>
 				{% if site.author %}
-					<dc:creator>{{ site.author | xml_escape }}</dc:creator>
-				{% endif %}        
-				<description>{{ post.content | xml_escape }}</description>
+				<dc:creator>{{ site.author | xml_escape }}</dc:creator>
+				{% endif %}
 				<pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
 				<link>{{ site.url }}{{ post.url }}</link>
+				<description>{{ post.content | xml_escape }}</description>
 				<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
 			</item>
 		{% endfor %}
