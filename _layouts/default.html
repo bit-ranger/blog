@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ site.baseurl}}/css/syntax.css" type="text/css">
     <link rel="stylesheet" href="{{ site.baseurl}}/css/style.css" type="text/css" >
     <link rel="shortcut icon" href="{{ site.baseurl}}/css/favicon.ico">
-    <link rel="alternate" type="application/atom+xml" href="{{ site.baseurl}}/feed" title="Atom feed">
+    <link rel="alternate" type="application/atom+xml" href="{{ site.rssLink }}" title="Atom feed">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="keywords" content="{{ page.title }},{% for category in page.categories %}{{ category }},{% endfor %}{% for tag in page.tags %}{{ tag }},{% endfor %}">
@@ -40,7 +40,7 @@
                             <li role="presentation"><a href="#" title="Archive" class="font-enlarge-sm entry"><span class="mega-octicon octicon-repo"></span></a></li>
                             <li role="presentation"><a href="#" title="About" class="font-enlarge-sm entry"><span class="mega-octicon octicon-person"></span></a></li>
                             <li role="presentation"><a href="#" title="Github" class="font-enlarge-sm entry"><span class="mega-octicon octicon-mark-github"></span></a></li>
-                            <li role="presentation"><a href="#" title="Rss" class="font-enlarge-sm entry"><span class="mega-octicon octicon-rss"></span></a></li>
+                            <li role="presentation"><a href="{{ site.rssLink }}" title="Rss" class="font-enlarge-sm entry"><span class="mega-octicon octicon-rss"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                 <div id="nav-collapse" class="collapse">
                 　　<div class="container-fluid">
                 　　    <div class="row">
-                            <a href="#" title="Rss" class="col-xs-2 text-center  font-enlarge-lg entry"><span class="mega-octicon octicon-rss"></span></a>
+                            <a href="{{ site.rssLink }}" title="Rss" class="col-xs-2 text-center  font-enlarge-lg entry"><span class="mega-octicon octicon-rss"></span></a>
                             <a href="#" title="About" class="col-xs-2 text-center  font-enlarge-lg entry"><span class="mega-octicon octicon-mark-github"></span></a>
                             <a href="#" title="About" class="col-xs-2 text-center  font-enlarge-lg entry"><span class="mega-octicon octicon-person"></span></a>
                             <a href="#" title="Archive" class="col-xs-2 text-center font-enlarge-lg entry"><span class="mega-octicon octicon-repo"></span></a>
