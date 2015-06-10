@@ -9,7 +9,7 @@ redcarpet:
     - autolink
     - strikethrough
     - fenced_code_blocks
-desc: "征途：星辰大海！"
+desc: "我们的征途是星辰大海！"
 author: "RainyNight"
 rssLink: "/feed"
 github: "https://github.com/dubuyuye/blog"
