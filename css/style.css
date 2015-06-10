@@ -64,8 +64,7 @@ table th,td{
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 .fixed-background {
-    background-color: #222;
-    background-image: url(../css/background-img.jpg);
+    background-color: #CC691F;
     width:100%;
     height:120%;
     position:fixed;
