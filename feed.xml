@@ -6,14 +6,14 @@
     <title>{{ site.author | xml_escape }}</title>
     <description>{% if site.desc %}{{ site.desc | xml_escape }}{% endif %}</description>		
     <link>{{ site.rssLink }}</link>
-    <atom:link href="{{ site.baseurl }}/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="{{site.feedRoot}}{{ site.baseurl }}/feed.xml" rel="self" type="application/rss+xml" />
       {% for post in site.posts limit:10 %}<item>
         <title>{{ post.title | xml_escape }}</title>
         {% if site.author %}<dc:creator>{{ site.author | xml_escape }}</dc:creator>{% endif %}
         <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-        <link>{{ site.baseurl }}{{ post.url }}</link>
+        <link>{{site.feedRoot}}{{ site.baseurl }}{{ post.url }}</link>
         <description>{{ post.content | xml_escape }}</description>
-        <guid isPermaLink="true">{{ site.baseurl }}{{ post.url }}</guid>
+        <guid isPermaLink="true">{{site.feedRoot}}{{ site.baseurl }}{{ post.url }}</guid>
       </item>{% endfor %}
   </channel>
 </rss>

@@ -1,4 +1,5 @@
-baseurl: "http://blog.rainynight.top/"
+baseurl: ""
+feedRoot: "http://blog.rainynight.top/"
 permalink: /:year-:month-:day/:title
 highlighter: pygments
 markdown: redcarpet
