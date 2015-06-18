@@ -1,4 +1,4 @@
-baseurl: ""
+baseurl: "www.rainynight.top"
 permalink: /:year-:month-:day/:title
 highlighter: pygments
 markdown: redcarpet
