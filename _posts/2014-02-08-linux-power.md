@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 权限管理
+title: Linux权限管理
 tags: linux 命令
 categories: Linux
 ---

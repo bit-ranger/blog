@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 目录与文件
+title: Linux目录与文件
 tags: linux 命令
 categories: Linux
 ---
