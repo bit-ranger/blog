@@ -225,12 +225,14 @@ categories: Java
 >* 数组是`具体化`的，因此数组在运行时才知道并检查它的元素类型约束；而泛型则是通过擦除（erasure）来实现的，泛型只在编译时强化类型信息，并在运行时擦除元素类型信息，擦除可以使泛型与早期无泛型的代码兼容。
 
 `2`.泛型与数组不能混合使用，因为泛型数组不是类型安全的。（因为数组是协变的，所以数组可以自动向上转型，我们可以往向上转型后的数组中插入与转型前不同的类型的数据，而借转型前数组名义取出的对象将会产生CalssCastException）
+
 ```java
 List<String>[] stringLists = new List<String>[];
 List<Integer> intList = Arrays.asList(42);
 Object[] objects = stringLists;
 objects[0] = intList;
 String s = stringLists[0].get(0);
+
 ```
 `3`.每当调用可变参数方法时，就会创建一个数组来存放参数，如果这个数组的元素类型不是可具体化的，就会得到一条警告，除了禁止这个警告，别无他法。
 `4`.数组提供了运行时的类型安全，但是没有提供编译时的类型安全；泛型提供了编译时的类型安全，但是没有提供运行时的类型安全。
@@ -536,6 +538,7 @@ String s = stringLists[0].get(0);
 
 ##`68`.executor和task优先于线程
 1.`Executor Framework` 
+
 ```java
 ExecutorService executor = Executors.newSingleThreadExecutor();
 executor.execute(runnable);
@@ -544,6 +547,7 @@ invokeAny
 invokeAll
 awaitTermination
 ExecutorCompletionService
+
 ```
 `2`.如果编写的是小程序，或者轻载服务器，使用`Executors.newCachedThreadPool`
 `3`.在大负载的产品服务器中，使用`Executors.newFixedThreadPool`
