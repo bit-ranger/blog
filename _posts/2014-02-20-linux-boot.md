@@ -3,6 +3,7 @@ layout: default
 title: Linux启动流程
 tags: linux boot
 categories: Linux
+published: false
 ---
 
 ![](http://image.beekka.com/blog/201308/bg2013081708.png)
