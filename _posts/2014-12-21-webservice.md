@@ -5,7 +5,6 @@ tags: WebService
 categories: Java
 ---
 
-***
 **WSDL**
 `definitions` 为根节点，属性为
 >`name`：WS 名称，默认为“实现类 + Service”
@@ -40,6 +39,7 @@ CXF：http://cxf.apache.org/
 ##`1`.发布
 
 ###定义接口
+
 ```java
 //此注解必须
 @WebService
@@ -48,6 +48,7 @@ public interface HelloService {
 }
 ```
 ###实现接口
+
 ```java
 @WebService(serviceName = "HelloService",
         portName = "HelloServicePort",
@@ -60,6 +61,7 @@ public class HelloServiceImpl implements HelloService {
 }
 ```
 ###发布服务
+
 ```java
 public class Server {
     public static void main(String[] args){
@@ -77,6 +79,7 @@ public class Server {
  `wsimport http://localhost:8080/ws/soap/hello?wsdl`//通过 WSDL 地址生成 class 文件
  `jar -cf client.jar .` //通过 jar 命令将若干 class 文件压缩为一个 jar 包
 `rmdir /s/q demo `//删除生成的 class 文件（删除根目录即可）
+
 ```java
 public static void main(String[] args){
      HelloService_Service hss = new HelloService_Service();
@@ -86,6 +89,7 @@ public static void main(String[] args){
 ```
 ###动态代理客户端
 只需提供`HelloService`接口，无需jar
+
 ```java
 public static void main(String[] args){
     try {
@@ -110,6 +114,7 @@ web发布示例集成spring
 ##`1.`SOAP风格
 
 ###定义接口
+
 ```java
 package top.rainynight.sitews.user.ws;
 
@@ -124,6 +129,7 @@ public interface UserWS {
 
 ```
 ###实现接口
+
 ```java
 package top.rainynight.sitews.user.ws;
 
@@ -165,6 +171,7 @@ public class UserWSImpl implements UserWS {
 </dependencies>
 ```
 #####发布
+
 ```java
 public class JaxWsServer {
     public static void main(String[] args) {
@@ -259,6 +266,7 @@ public class JaxWsServer {
 ###调用服务
 
 ####①静态客户端
+
 ```java
 public class JaxWsClient {
 
@@ -275,6 +283,7 @@ public class JaxWsClient {
 ```
 
 ####②动态代理客户端
+
 ```java
 public class JaxWsDynamicClient {
 
@@ -294,6 +303,7 @@ public class JaxWsDynamicClient {
 
 ####③通用动态代理客户端
 既可调用 JAX-WS 服务，也可调用 Simple 服务
+
 ```java
 public class DynamicClient {
 
@@ -327,6 +337,7 @@ public class DynamicClient {
 
 </beans>
 ```
+
 ```java
 public class UserWSClient{
 
@@ -349,6 +360,7 @@ public class UserWSClient{
 数据格式注解，包括：`@Consumes`（输入）、`@Produces`（输出），可使用 `MediaType` 常量
 相关参数注解，包括：`@PathParam`（路径参数）、`@FormParam`（表单参数），此外还有 `@QueryParam`（请求参数）
 
+
 ```java
 package top.rainynight.sitews.user.ws;
 
@@ -367,6 +379,7 @@ public interface UserWS {
 ```
 
 ###实现接口
+
 ```java
 package top.rainynight.sitews.user.ws;
 
@@ -414,6 +427,7 @@ public class UserWSImpl implements UserWS {
 </dependencies>
 ```
 #####发布
+
 ```java
 public class Server {
 
@@ -525,6 +539,7 @@ public class Server {
 ###调用服务
 
 ####①JAX-RS 1.0 客户端
+
 ```java
 public class JAXRSClient {
 
@@ -541,6 +556,7 @@ public class JAXRSClient {
 ```
 
 ####②JAX-RS 2.0 客户端
+
 ```java
 public class JAXRS20Client {
 
@@ -560,6 +576,7 @@ public class JAXRS20Client {
 ```
 
 ####③WebClient 客户端
+
 ```java
 public class CXFWebClient {
 
@@ -579,6 +596,7 @@ public class CXFWebClient {
 ```
 
 ####④AJAX客户端
+
 ```javascript
  $.ajax({
       type: 'get',
@@ -614,6 +632,7 @@ public class CXFWebClient {
     </jaxrs:outInterceptors>
 </jaxrs:server>
 ```
+
 ```javascript
 $.ajax({
     type: 'get',
@@ -636,6 +655,7 @@ $.ajax({
     <version>${cxf.version}</version>
 </dependency>
 ```
+
 ```java
 <jaxrs:server address="/rs/user">
     <jaxrs:serviceBeans>

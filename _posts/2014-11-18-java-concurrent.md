@@ -116,6 +116,7 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 ##定制 ThreadPoolExecutor
 通过使用包含 `ThreadFactory` 变量的工厂方法或构造函数的版本，可以定义池线程的创建。ThreadFactory 是工厂对象，其构造执行程序要使用的新线程。
+
 ```java
 public class DaemonThreadFactory implements ThreadFactory {
 
@@ -157,6 +158,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 ##使用 Future 构建缓存
 该示例利用 ConcurrentHashMap 中的原子 `putIfAbsent()` 方法，确保仅有一个线程试图计算给定关键字的值。如果其他线程随后请求同一关键字的值，它仅能等待（通过 Future.get() 的帮助）第一个线程完成。因此两个线程不会计算相同的值。
+
 ```java
 public class Cache {
     ConcurrentMap map = new ConcurrentHashMap();
@@ -186,6 +188,7 @@ public class Cache {
 * `CompletionService` 将执行服务与类似 Queue 的接口组合，从任务执行中删除任务结果的处理。CompletionService 接口包含用来提交将要执行的任务的 submit() 方法和用来询问下一完成任务的 `take()`/`poll()` 方法。
 * CompletionService 允许应用程序结构化，使用 `Producer`/`Consumer` 模式，其中生产者创建任务并提交，消费者请求完成任务的结果并处理这些结果。CompletionService 接口由 `ExecutorCompletionService` 类实现，该类使用 Executor 处理任务并从 CompletionService 导出 `submit`/`poll`/`take` 方法。
 * 下列代码使用 Executor 和 CompletionService 来启动许多"solver"任务，并使用第一个生成非空结果的任务的结果，然后取消其余任务：
+
 ```java
 void solve(Executor e, Collection solvers) throws InterruptedException {
         CompletionService ecs = new ExecutorCompletionService(e);
@@ -239,6 +242,7 @@ void solve(Executor e, Collection solvers) throws InterruptedException {
 * `CyclicBarrier` 类可以帮助同步，它允许一组线程等待整个线程组到达公共屏障点。CyclicBarrier 是使用整型变量构造的，其确定组中的线程数。当一个线程到达屏障时（通过调用 CyclicBarrier.await()），它会被阻塞，直到所有线程都到达屏障，然后在该点允许所有线程继续执行。该操作与许多家庭逛商业街相似 -- 每个家庭成员都自己走，并商定 1:00 在电影院集合。当您到电影院但不是所有人都到了时，您会坐下来等其他人到达。然后所有人一起离开。
 * 认为屏障是循环的是因为它可以重新使用；一旦所有线程都已经在屏障处集合并释放，则可以将该屏障重新初始化到它的初始状态。 还可以指定在屏障处等待时的超时；如果在该时间内其余线程还没有到达屏障，则认为屏障被打破，所有正在等待的线程会收到 `BrokenBarrierException`。
 * 下列代码将创建 CyclicBarrier 并启动一组线程，每个线程将计算问题的一部分，等待所有其他线程结束之后，再检查解决方案是否达成一致。该例将使用 CyclicBarrier 变量，它允许注册 Runnable，在所有线程到达屏障但还没有释放任何线程时执行 Runnable，该Runnable在每个屏障点只执行一次。
+
 ```java
 class Solver { // Code sketch
     void solve(final Problem p, int nThreads) {
@@ -271,6 +275,7 @@ class Solver { // Code sketch
 * `CountdownLatch` 类与 CyclicBarrier 相似，因为它的角色是对已经在它们中间分摊了问题的一组线程进行协调。它也是使用整型变量构造的，指明计数的初始值，但是与 CyclicBarrier 不同的是，CountdownLatch 不能重新使用。
 * 其中，CyclicBarrier 是到达屏障的所有线程的大门，只有当所有线程都已经到达屏障或屏障被打破时，才允许这些线程通过。CountdownLatch 将到达和等待功能分离，任何线程都可以通过调用 countDown() 减少当前计数，这种方式不会阻塞线程，而只是减少计数。await() 方法的行为与 CyclicBarrier.await() 稍微有所不同，调用 await() 任何线程都会被阻塞，直到闩锁计数减少为零，在该点等待的所有线程才被释放，对 await() 的后续调用将立即返回。
 *  当问题已经分解为许多部分，每个线程都被分配一部分计算时，CountdownLatch 非常有用。在工作线程结束时，它们将减少计数，协调线程可以在闩锁处等待当前这一批计算结束，然后继续移至下一批计算。
+
 ```java
 public static long time(Executor exe, int concurrency, final Runable action){
 	final CountDownLatch ready = new CountDownLatch(concurrency);
@@ -298,6 +303,7 @@ public static long time(Executor exe, int concurrency, final Runable action){
 * `Exchanger` 类方便了两个共同操作线程之间的双向交换；这样，就像具有计数为 2 的 CyclicBarrier，并且两个线程在都到达屏障时可以"交换"一些状态。（Exchanger 模式有时也称为聚集。）
 * Exchanger 通常用于一个线程填充缓冲（通过读取 socket），而另一个线程清空缓冲（通过处理从 socket 收到的命令）的情况。当两个线程在屏障处集合时，它们交换缓冲。
 * 下列代码说明了这项技术：
+
 ```java
 class FillAndEmpty {
    Exchanger exchanger = new Exchanger();
@@ -345,6 +351,7 @@ class FillAndEmpty {
 * `ReentrantLock` 是具有与隐式监视器锁定（使用 synchronized 方法和语句访问）相同的基本行为和语义的 Lock 的实现，但它具有扩展的能力。
 * 在竞争条件下，ReentrantLock 的实现要比现在的 synchronized 实现更具有可伸缩性。这意味着当许多线程都竞争相同锁定时，使用 ReentrantLock 的吞吐量通常要比 synchronized 好。
 *  虽然 ReentrantLock 类有许多优点，但是与同步相比，它有一个主要**缺点** -- 它可能忘记释放锁定。建议当获得和释放 ReentrantLock 时使用下列结构：
+
 ```java
 Lock lock = new ReentrantLock();
 ...

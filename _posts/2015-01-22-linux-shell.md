@@ -61,7 +61,8 @@ shell变量是由shell程序设置的特殊变量。shell变量中有一部分�
 
 ##命令替换
 命令替换是指Shell可以先执行命令，将输出结果暂时保存，在适当的地方输出。
-```shell
+
+```
 #!/bin/bash
 
 DATE=`date`
@@ -72,6 +73,7 @@ echo "Logged in user are $USERS"
 
 UP=`date ; uptime`
 echo "Uptime is $UP"
+
 ```
 
 
@@ -86,11 +88,13 @@ echo "Uptime is $UP"
 #运算符
 原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。
 expr 是一款表达式计算工具，使用它能完成表达式的求值操作。
-```shell
+
+```
 #!/bin/bash
 
 val=`expr 2 + 2`
 echo "Total value : $val"
+
 ```
 * 表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。
 * 完整的表达式要被 \` \` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。
@@ -156,31 +160,39 @@ sh里没有多行注释，只能每一行加一个#号。可以把这一段要�
 * 双引号里可以出现转义字符
 
 拼接字符串
-```shell
+
+```
 your_name="qinjx"
 greeting="hello, "$your_name" !"
 greeting_1="hello, ${your_name} !"
 
 echo $greeting $greeting_1
+
 ```
 
 获取字符串长度
-```shell
+
+```
 string="abcd"
 echo ${#string} #输出 4
+
 ```
 
 提取子字符串
-```shell
+
+```
 string="alibaba is a great company"
 echo ${string:1:4} #输出liba
+
 ```
 
 查找子字符串
 `expr index String1 String2` 返回 String1 中包含 String2 中任意字符的第一个位置。（从1开始数）
-```shell
+
+```
 string="alibaba is a great company"
 echo `expr index "$string" is`
+
 ```
 
 #数组
@@ -188,7 +200,8 @@ bash支持一维数组（不支持多维数组），并且没有限定数组的�
 
 ##定义
 在Shell中，用括号来表示数组，数组元素用“空格”符号分割开。定义数组的一般形式为：array_name=(value1 ... valuen)
-```shell
+
+```
 array_name=(value0 value1 value2 value3)
 
 array_name=(
@@ -201,26 +214,33 @@ value3
 array_name[0]=value0
 array_name[1]=value1
 array_name[2]=value2
+
 ```
 
 ##读取
-```shell
+
+```
 valuen=${array_name[2]}
+
 ```
 使用`@`或 `*` 可以获取数组中的所有元素
-```shell
+
+```
 ${array_name[*]}
 ${array_name[@]}
+
 ```
 
 ##长度
-```shell
+
+```
 # 取得数组元素的个数
 length=${#array_name[@]}
 # 或者
 length=${#array_name[*]}
 # 取得数组单个元素的长度
 lengthn=${#array_name[n]}
+
 ```
 
 #echo
@@ -244,26 +264,34 @@ echo是Shell的一个内部指令，用于在屏幕上打印出指定的字符�
 
 ##原样输出字符串
 若需要原样输出字符串（不进行转义），请使用单引号
-```shell
+
+```
 echo '$name\"'
+
 ```
 ##显示命令执行结果
-```shell
+
+```
 echo `date`
+
 ```
 
 #printf
 printf 命令用于格式化输出， 是echo命令的增强版。它是C语言printf()库函数的一个有限的变形，并且在语法上有些不同。
 注意：printf 由 POSIX 标准所定义，移植性要比 echo 好。
 printf 不像 echo 那样会自动换行，必须显式添加换行符(\n)。
-```shell
+
+```
 $printf "Hello, Shell\n"
 Hello, Shell
 $
+
 ```
 printf 命令的语法
-```shell
+
+```
 printf  format-string  [arguments...]
+
 ```
 format-string 为格式控制字符串，arguments 为参数列表。
 
@@ -285,25 +313,30 @@ Shell 有三种 if ... else 语句：
 最后必须以 fi 来结尾闭合 if，fi 就是 if 倒过来拼写，后面也会遇见。
 注意：expression 和方括号([ ])之间必须有空格，否则会有语法错误。
 ##if  
-```shell
+
+```
 if [ expression ]
 then
    statements
 fi
+
 ```
 
 ##if else
-```shell
+
+```
 if [ expression ]
 then
    Statements
 else
    Statements
 fi
+
 ```
 
 ##if  elif  fi
-```shell
+
+```
 if [ expression 1 ]
 then
    Statements
@@ -316,18 +349,22 @@ then
 else
    Statements
 fi
+
 ```
 if ... else 语句也可以写成一行，以命令的方式来运行，经常与 test 命令结合使用
 `test` 命令用于检查某个条件是否成立，与方括号([ ])类似。
-```shell
+
+```
 if test $[2*3] -eq $[1+5]; then echo 'The two numbers are equal!'; fi;
+
 ```
 
 #多分枝选择
 case ... esac 与其他语言中的 switch ... case 语句类似，是一种多分枝选择结构。
 case 语句匹配一个值或一个模式，如果匹配成功，执行相匹配的命令。
 
-```shell
+
+```
 case 值 in
 模式1)
     command1
@@ -345,11 +382,13 @@ case 值 in
     command3
     ;;
 esac
+
 ```
 取值后面必须为关键字 `in`
 每一模式必须以`)`结束
 `;;` 与其他语言中的 break 类似
-```shell
+
+```
 #!/bin/bash
 
 option="${1}"
@@ -365,12 +404,14 @@ case ${option} in
       exit 1 # Command to come out of the program with status 1
       ;;
 esac
+
 ```
 
 #循环
 
 ##for
-```shell
+
+```
 for 变量 in 列表
 do
     command1
@@ -378,57 +419,70 @@ do
     ...
     commandN
 done
+
 ```
 列表是一组值（数字、字符串等）组成的序列，每个值通过空格分隔。每循环一次，就将列表中的下一个值赋给变量。
-```shell
+
+```
 #!/bin/bash
 
 for loop in 1 2 3 4 5
 do
     echo "The value is: $loop"
 done
+
 ```
-```shell
+
+```
 #!/bin/bash
 
 for FILE in $HOME/.bash*
 do
    echo $FILE
 done
+
 ```
 
 ##while
-```shell
+
+```
 while command
 do
    statements
 done
+
 ```
-```shell
+
+```
 COUNTER=0
 while [ $COUNTER -lt 5 ]
 do
     COUNTER=`expr $COUNTER+1`
     echo $COUNTER
 done
+
 ```
 while循环可用于读取键盘信息
-```shell
+
+```
 echo 'type <CTRL-D> to terminate'
 echo -n 'enter your most liked film: '
 while read FILM
 do
     echo "Yeah! great film the $FILM"
 done
+
 ```
 
 ##until
 until 循环执行一系列命令直至条件为 `true` 时`停止`。until 循环与 while 循环在处理方式上刚好相反。一般while循环优于until循环，但在某些时候，也只是极少数情况下，until 循环更加有用。
-```shell
+
+```
 until command
 do
    statements
 done
+
 ```
 
 ##跳出循环
@@ -442,7 +496,8 @@ continue跳出当次循环
 
 #函数
 ##定义
-```shell
+
+```
 function_name () {
     list of commands
     [ return value ]
@@ -454,12 +509,14 @@ function function_name () {
     [ return value ]
 }
 #函数返回值，可以显式增加return语句；如果不加，会将最后一条命令运行结果作为返回值。
+
 ```
 Shell 函数返回值只能是整数，一般用来表示函数执行成功与否，0表示成功，其他值表示失败。如果 return 其他数据，比如一个字符串，往往会得到错误提示：“numeric argument required”。
 
 如果一定要让函数返回字符串，那么可以先定义一个变量，用来接收函数的计算结果，脚本在需要的时候访问这个变量来获得函数返回值。
 
-```shell
+
+```
 #!/bin/bash
 funWithReturn(){
     echo "The function is to get the sum of two numbers..."
@@ -475,12 +532,14 @@ funWithReturn
 # Capture value returnd by last command
 ret=$?
 echo "The sum of two numbers is $ret !"
+
 ```
 调用函数只需要给出函数名，不需要加括号。
 函数返回值在调用该函数后通过 `$?` 来获得。
 
 ##嵌套
-```shell
+
+```
 #!/bin/bash
 
 # Calling one function from another
@@ -494,16 +553,20 @@ number_two () {
 }
 
 number_one
+
 ```
 
 ##删除
-```shell
+
+```
 unset .f function_name
+
 ```
 
 ##参数
 在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 `$n` 的形式来获取参数的值，例如，`$1`表示第一个参数，`$2`表示第二个参数...
-```shell
+
+```
 #!/bin/bash
 funWithParam(){
     echo "The value of the first parameter is $1 !"
@@ -515,6 +578,7 @@ funWithParam(){
     echo "The string of the parameters is $* !"  # 传递给函数的所有参数
 }
 funWithParam 1 2 3 4 5 6 7 8 9 34 73
+
 ```
 注意，`$10` 不能获取第十个参数，获取第十个参数需要`${10}`。当n>=10时，需要使用`${n}`来获取参数。
 
@@ -525,9 +589,11 @@ funWithParam 1 2 3 4 5 6 7 8 9 34 73
 `$?`	函数的返回值。
 
 #IO重定向
-```shell
+
+```
 command > file
 command < file
+
 ```
 一般情况下，每个 Unix/Linux 命令运行时都会打开三个文件：
 * 标准输入文件(`stdin`)：stdin的文件描述符为`0`，Unix程序默认从stdin读取数据。
@@ -535,13 +601,17 @@ command < file
 * 标准错误文件(`stderr`)：stderr的文件描述符为`2`，Unix程序会向stderr流中写入错误信息。
 
  stderr 重定向到 file
-```shell
+
+```
  command 2 > file
+
 ```
 
 将 stdout 和 stderr 合并后重定向到 file
-```shell
+
+```
 command > file 2>&1
+
 ```
 
 默认情况下，command > file 将 stdout 重定向到 file，command < file 将stdin 重定向到 file。
@@ -557,10 +627,12 @@ command > file 2>&1
 `<< tag`	将开始标记 tag 和结束标记 tag 之间的内容作为输入。
 
 ##Here Document
-```shell
+
+```
 command << delimiter
     document
 delimiter
+
 ```
 它的作用是将两个 delimiter 之间的内容(document) 作为输入传递给 command。
 注意：
@@ -570,27 +642,35 @@ delimiter
 ##/dev/null 
 /dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出“的效果。
 屏蔽 stdout 和 stderr
-```shell
+
+```
 command > /dev/null 2>&1
+
 ```
 
 #文件包含
 Shell 也可以包含外部脚本，将外部脚本的内容合并到当前脚本
-```shell
+
+```
 . filename
 #或
 source filename
+
 ```
 两种方式的效果相同，简单起见，一般使用点号(.)，但是注意点号(.)和文件名中间有一空格
 
 
 脚本 subscript.sh
-```shell
+
+```
 url="http://see.xidian.edu.cn/cpp/view/2738.html"
+
 ```
 引入当前目录下的subscript.sh脚本
-```shell
+
+```
 #!/bin/bash
 . ./subscript.sh
 echo $url
+
 ```

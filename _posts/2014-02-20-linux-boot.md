@@ -3,7 +3,6 @@ layout: default
 title: Linux启动流程
 tags: linux boot
 categories: Linux
-published: false
 ---
 
 ![](http://image.beekka.com/blog/201308/bg2013081708.png)
@@ -103,7 +102,8 @@ non-login shell 是用户最常接触的shell，它会读入用户自己的bash�
 
 `*` 如果不启动 non-login shell ， ～/.bashrc 照样会运行，文件 ~/.profile 中存在下面的代码
 
-```shell
+
+```
 　　if [ -n "$BASH_VERSION" ]; then
 　　　　if [ -f "$HOME/.bashrc" ]; then
 　　　　　　. "$HOME/.bashrc"
@@ -113,7 +113,8 @@ non-login shell 是用户最常接触的shell，它会读入用户自己的bash�
 
 因此，只要运行～/.profile文件，～/.bashrc文件就会连带运行，但是如果存在～/.bash_profile文件，那么有可能不会运行～/.profile文件。解决办法是把下面代码写入 ～/.bash_profile，让 ～/.profile 始终能够运行。
 
-```shell
+
+```
 　　if [ -f ~/.profile ]; then
 　　　　. ~/.profile
 　　fi

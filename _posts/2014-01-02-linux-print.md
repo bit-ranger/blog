@@ -3,7 +3,6 @@ layout: default
 title: Linux打印
 tags:  Linux 打印
 categories: Linux
-published: false
 ---
 
 #echo
@@ -29,22 +28,28 @@ echo是Shell的一个内部指令，用于在屏幕上打印出指定的字符�
 
 ##原样输出字符串
 若需要原样输出字符串（不进行转义），请使用单引号
-```shell
+
+```
 echo '$name\"'
+
 ```
 ##显示命令执行结果
-```shell
+
+```
 echo `date`
+
 ```
 
 #printf
 printf 命令用于格式化输出， 是echo命令的增强版。它是C语言printf()库函数的一个有限的变形，并且在语法上有些不同。
 注意：printf 由 POSIX 标准所定义，移植性要比 echo 好。
 printf 不像 echo 那样会自动换行，必须显式添加换行符(\n)。
-```shell
+
+```
 $printf "Hello, Shell\n"
 Hello, Shell
 $
+
 ```
 printf 命令的语法
 `printf  format-string  [arguments...]`
