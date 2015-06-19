@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: post
 title: 斐波那契数列
 tags: fibonacci 斐波那契数列 算法 algorithm
 categories: 算法
 ---
 
-```java
+~~~
 public class Fibonacci {
 
     private int[] src ;
@@ -43,4 +43,4 @@ public class Fibonacci {
         }
     }
 }
-```
+~~~

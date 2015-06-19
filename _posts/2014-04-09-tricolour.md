@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: 三色旗
 tags: 三色旗 算法 algorithm
 categories: 算法 
@@ -10,7 +10,7 @@ categories: 算法
 
 解决思路:遍历元素,如果元素该放到左边就与左边交换,该放到右边就与右边交换,左右边界动态调整,剩余的正好属于中间
 
-```java
+~~~
 public class Tricolour {
 
     private final static String leftColor = "b";
@@ -75,4 +75,4 @@ public class Tricolour {
         }
     }
 }
-```
+~~~

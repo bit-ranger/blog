@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: 骑士周游
 tags: 算法 algorithm 骑士周游 knight tour
 categories: 算法
@@ -11,7 +11,7 @@ categories: 算法
 
 ![](http://img.blog.csdn.net/20130710174118812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamlhamlheW91YmE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
-```java
+~~~
 import java.awt.Point;
 import static java.lang.System.out;
 
@@ -130,4 +130,4 @@ public class KnightTour {
         }
     }
 }
-```
+~~~

@@ -1,16 +1,23 @@
-baseurl: ""
-feedRoot: "http://blog.rainynight.top"
-permalink: /:year-:month-:day/:title
-highlighter: pygments
-markdown: redcarpet
-redcarpet:
-  extensions:
-    - hard_wrap
-    - no_intra_emphasis
-    - autolink
-    - strikethrough
-    - fenced_code_blocks
-desc: "我们的征途是星辰大海！"
-author: "RainyNight"
-rssLink: "/feed"
-github: "https://github.com/dubuyuye/blog"
+# Site settings
+title: RainyNight
+email: dubuyuye@yeah.net
+description: 我们的征途是星辰大海
+# > # this means to ignore newlines until "baseurl:"
+#   Write an awesome description for your new site here. You can edit this
+#   line in _config.yml. It will appear in your document head meta (for
+#   Google search results) and in your feed.xml site description.
+
+# baseurl: "" # the subpath of your site, e.g. /blog/
+# url: "http://yourdomain.com" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username:  dubuyuye
+permalink: /:year-:month-:day/:title/
+
+# Build settings
+markdown: kramdown
+
+# highlight
+# 本地用rouge, github上用pygments
+# highlighter: pygments
+# highlighter: rouge
+# highlighter: false

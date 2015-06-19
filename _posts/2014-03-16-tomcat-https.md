@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Tomcat Https 配置
 tags: tomcat https ssl
 categories: Java
@@ -7,7 +7,7 @@ categories: Java
 
 ####`1`.生成秘钥库
 
-```bash
+~~~
 keytool 
     –genkey
     –keyalg 算法(通常用RSA)
@@ -22,22 +22,22 @@ keytool
     -keystore 秘钥库文件名
     -storepass 密码
     -validity 有效天数
-```
+~~~
  
 ####`2`.生成浏览器证书文件
 
-```bash
+~~~
 keytool
     -export 
     -keystore 秘钥库文件名
     -alias 秘钥库别名(非必选项)
     -storepass 秘钥库密码
     -file 证书文件名
-```
+~~~
 
 ####`3`.生成私钥文件
 
-```bash
+~~~
 keytool 
     -importkeystore 
     -srckeystore 秘钥库文件名
@@ -49,27 +49,29 @@ openssl
 	-in p12文件名
 	-out pem文件名
 	-nodes
-```
+~~~
 
 ####`4`.Tomcat配置
 
-打开 %CATALINA_HOME%/conf/server.xml 
+打开 %CATALINA_HOME%/conf/server.xml
+
 解开注释或添加代码(443为https默认端口，不会在URL中显示)
 
-```xml
+~~~
 <Connector port="443" protocol="HTTP/1.1" SSLEnabled="true"
     maxThreads="150" scheme="https" secure="true"
     clientAuth="false" sslProtocol="TLS" 
     SSLCertificateFile="证书文件名"   
     SSLCertificateKeyFile="pem文件名"/>
-```
+~~~
 
 ####`5`.强制https访问
 
-打开 %CATALINA_HOME%/conf/web.xml 
+打开 %CATALINA_HOME%/conf/web.xml
+
 添加代码
 
-```xml
+~~~
 <!-- SSL -->
 <login-config>  
     <!-- Authorization setting for SSL -->  
@@ -86,4 +88,4 @@ openssl
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>  
     </user-data-constraint>  
 </security-constraint> 
-```
+~~~
