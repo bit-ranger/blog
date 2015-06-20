@@ -696,4 +696,4 @@ IE8 中使用 jQuery 发送 AJAX 请求时，需要配置 `$.support.cors = true
 
 
 ##`～～`警告`～～`
-`!warning` 极重要，cxf在wsdl中发布的`targetNamespace`是实现类路径，而被调用时却只接受接口路径。所以，请将接口与实现类放在同一路径下，或者在实现类中指定`targetNamespace`为接口的路径；否则客户端将抛出 org.apache.cxf.common.i18n.UncheckedException: No operation was found with the name ... 异常
+`!warning` 极重要，cxf在wsdl中发布的`targetNamespace`是实现类路径，而被调用时却只接受接口路径。所以，请将接口与实现类放在同一路径下，或者在实现类中指定`targetNamespace`为接口的路径；否则客户端将抛出 ..common.i18n.UncheckedException: No operation was found with the name ... 异常
