@@ -12,7 +12,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
-      <p class="navbar-text">Develop Engineer</p>
+      <p class="navbar-text">{{ site.description }}</p>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -23,7 +23,7 @@
           {% else %}
           <li>
         {% endif %}
-          <a href="{{ site.baseurl }}/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="{{ site.baseurl }}/"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Blog</a></li>
 
         {% for p in site.pages %}
           {% if p.title %}
