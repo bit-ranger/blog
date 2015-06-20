@@ -2,7 +2,7 @@
 layout: post
 title: 骑士周游
 tags: 算法 algorithm 骑士周游 knight tour
-categories: 算法
+categories: algorithm
 ---
 
 骑士只能按照如图所示的方法前进,且每个格子只能路过一次,现在指定一个起点,判断骑士能否走完整个棋盘.

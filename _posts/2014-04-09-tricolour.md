@@ -2,7 +2,7 @@
 layout: post
 title: 三色旗
 tags: 三色旗 算法 algorithm
-categories: 算法 
+categories: algorithm
 ---
 
 问题描述:一条绳子上悬挂了一组旗帜,旗帜分为三种颜色,现在需要把旗帜按顺序将相同的颜色的放在一起,没有旗帜的临时存放点,只能在绳子上操作,每次只能交换两个旗帜 

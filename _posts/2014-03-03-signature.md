@@ -2,7 +2,7 @@
 layout: post
 title: 数字签名
 tags: 数字签名
-categories: 通用
+categories: common
 ---
 
 `1`.鲍勃有两把钥匙，一把是公钥，另一把是私钥
