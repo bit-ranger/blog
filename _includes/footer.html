@@ -2,22 +2,22 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <a href="mailto:{{ site.email }}"><span class="octicon octicon-mail"></span>&nbsp;{{ site.email }}</a>
+        <a href="mailto:{{ site.email }}" target="_blank"><span class="octicon octicon-mail"></span>&nbsp;{{ site.email }}</a>
 
         {% if site.github_username %}
           <span class="point"> · </span>
-          <a href="https://github.com/{{ site.github_username }}">
+          <a href="https://github.com/{{ site.github_username }}" target="_blank">
               <span class="octicon octicon-mark-github"></span>&nbsp;Github
           </a>
         {% endif %}
 
           <span class="point"> · </span>
-          <a href="{{ '/feed.xml' | prepend: site.baseurl }}"><span class="octicon octicon-rss"></span>&nbsp;RSS</a></span>
+          <a href="{{ '/feed.xml' | prepend: site.baseurl }}" target="_blank"><span class="octicon octicon-rss"></span>&nbsp;RSS</a></span>
 
           <span class="point"> · </span>
           <span>&copy; RainyNight</span>
           <span class="point"> · </span>
-          <span>Designed by <a href="https://github.com/Gaohaoyang">HyG</a></span>
+          <span>Designed by <a href="https://github.com/Gaohaoyang" target="_blank">HyG</a></span>
 
       </div>
     </div>
