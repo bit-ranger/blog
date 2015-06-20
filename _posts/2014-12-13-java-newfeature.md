@@ -494,13 +494,17 @@ System.out.println();
 
 ##`2.7` 并发（concurrency）
 
-* `java.util.concurrent.ConcurrentHashMap`类中加入了一些新方法来支持聚集操作
+* java.util.concurrent.`ConcurrentHashMap`类中加入了一些新方法来支持聚集操作
 
-* `java.util.concurrent.ForkJoinPool`类中加入了一些新方法来支持共有资源池（common pool）
+* java.util.concurrent.`ForkJoinPool`类中加入了一些新方法来支持共有资源池（common pool）
 
-* `java.util.concurrent.locks.StampedLock`类提供基于容量的锁，这种锁有三个模型来控制读写操作
+* java.util.concurrent.locks.`StampedLock`类提供基于容量的锁，这种锁有三个模型来控制读写操作
 
-* `java.util.concurrent.atomic`包中增加新类：`DoubleAccumulator`，`DoubleAdder`，`LongAccumulator`，`LongAdder`
+* java.util.concurrent.atomic包中增加新类：<br/>
+`DoubleAccumulator`，<br/>
+`DoubleAdder`，<br/>
+`LongAccumulator`，<br/>
+`LongAdder`
 
 
 #`3` 编译器新特性

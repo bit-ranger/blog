@@ -92,7 +92,10 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 #线程安全集合
 
-* java.util.concurrent 包添加了多个新的线程安全集合类（`ConcurrentHashMap`、`CopyOnWriteArrayList`和 `CopyOnWriteArraySet`）。
+* java.util.concurrent 包添加了多个新的线程安全集合类<br/>
+`ConcurrentHashMap`、<br/>
+`CopyOnWriteArrayList`<br/>
+`CopyOnWriteArraySet`
 
 * JDK 5.0 还提供了两个新集合接口 -- `Queue` 和 `BlockingQueue`。Queue 接口与 List 类似，但它只允许从后面插入，从前面删除。`BlockingQueue`定义了一个先进先出的数据结构，当你尝试往满队列中添加元素，或者从空队列中获取元素时，将会阻塞或者超时。
 
@@ -160,7 +163,7 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 通过submit方法返回的Future对象可以读取Callable任务的执行结果，或是管理Callable任务和Runnable任务的状态。 ExecutorService也提供了批量运行Callable任务的方法。最后，ExecutorService还提供了一些关闭执行器的方法。
 
-##ScheduledExecutorService
+##ScheduledExecutor<br/>Service
 
 `ScheduledExecutorService`扩展ExecutorService接口并添加了`schedule`方法。调用schedule方法可以在指定的延时后执行一个Runnable或者Callable任务。ScheduledExecutorService接口还定义了按照指定时间间隔定期执行任务的`scheduleAtFixedRate`方法和`scheduleWithFixedDelay`方法。
 
@@ -168,15 +171,15 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 `Executors类`包含用于构造许多不同类型的 Executor 实现的静态工厂方法：
 
-* `Executors.newCachedThreadPool()` 创建不限制大小的线程池，但是当以前创建的线程可以使用时将重新使用那些线程。如果没有现有线程可用，将创建新的线程并将其添加到池中。使用不到 60 秒的线程将终止并从缓存中删除。
+* `newCachedThreadPool()` 创建不限制大小的线程池，但是当以前创建的线程可以使用时将重新使用那些线程。如果没有现有线程可用，将创建新的线程并将其添加到池中。使用不到 60 秒的线程将终止并从缓存中删除。
 
-* `Executors.newFixedThreadPool(int n)` 创建线程池，其重新使用在不受限制的队列之外运行的固定线程组。在关闭前，所有线程都会因为执行过程中的失败而终止，如果需要执行后续任务，将会有新的线程来代替这些线程。
+* `newFixedThreadPool(int n)` 创建线程池，其重新使用在不受限制的队列之外运行的固定线程组。在关闭前，所有线程都会因为执行过程中的失败而终止，如果需要执行后续任务，将会有新的线程来代替这些线程。
 
-* `Executors.newSingleThreadExecutor()` 创建 Executor，其使用在不受限制的队列之外运行的单一工作线程，与 Swing 事件线程非常相似。保证顺序执行任务，在任何给定时间，不会有多个任务处于活动状态。
+* `newSingleThreadExecutor()` 创建 Executor，其使用在不受限制的队列之外运行的单一工作线程，与 Swing 事件线程非常相似。保证顺序执行任务，在任何给定时间，不会有多个任务处于活动状态。
 
-* `Executors.newScheduledThreadPool(int n)`  创建定时任务线程池
+* `newScheduledThreadPool(int n)`  创建定时任务线程池
 
-* 如果上面的方法都不满足需要，可以尝试java.util.concurrent.`ThreadPoolExecutor`或者java.util.concurrent.`ScheduledThreadPoolExecutor`。
+* 如果上面的方法都不满足需要，可以尝试`ThreadPoolExecutor`或者`ScheduledThreadPoolExecutor`。
 
 ##定制 ThreadPoolExecutor
 
@@ -208,7 +211,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 * 或放弃队列中最早的任务以为新任务腾出空间。
 
-* `ThreadPoolExecutor.setRejectedExecutionHandler`可以设置拒绝的执行处理程序。
+* `setRejectedExecutionHandler`可以设置拒绝的执行处理程序。
 
 
 ##需要特别考虑的问题
@@ -489,7 +492,7 @@ ReentrantLock 实现的锁定规则非常简单 -- 每当一个线程具有锁�
 
 * java.util.concurrent.atomic包定义了对单一变量进行原子操作的类。所有的类都提供了`get`和`set`方法，可以使用它们像读写`volatile`变量一样读写原子类。就是说，同一变量上的一个set操作对于任意后续的get操作存在happens-before关系。原子的`compareAndSet`方法也有内存一致性特点，就像应用到整型原子变量中的简单原子算法。
 
-* 即使大多数用户将很少直接使用它们，原子变量类（`AtomicInteger`、`AtomicLong`、`AtomicReference` 等等）也有充分理由是最显著的新并发类。这些类公开对 JVM 的低级别改进，允许进行具有高度可伸缩性的**原子读-修改-写操作**。大多数现代 CPU 都有原子读-修改-写的原语，比如比较并交换（CAS）或加载链接/条件存储（LL/SC）。原子变量类使用硬件提供的最快的并发结构来实现。
+* 即使大多数用户将很少直接使用它们，原子变量类（`AtomicInteger`、`AtomicLong`、<br/>`AtomicReference` 等等）也有充分理由是最显著的新并发类。这些类公开对 JVM 的低级别改进，允许进行具有高度可伸缩性的**原子读-修改-写操作**。大多数现代 CPU 都有原子读-修改-写的原语，比如比较并交换（CAS）或加载链接/条件存储（LL/SC）。原子变量类使用硬件提供的最快的并发结构来实现。
 
 * 几乎 java.util.concurrent 中的所有类都是在 `ReentrantLock` 之上构建的，ReentrantLock 则是在**原子变量类**的基础上构建的。所以，虽然仅少数并发专家使用原子变量类，但 java.util.concurrent 类的很多可伸缩性改进都是由它们提供的。
 

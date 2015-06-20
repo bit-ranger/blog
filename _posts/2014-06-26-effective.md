@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Effective Java 提纲挈领
+title: Effective Java
 tags: Effective Java
 categories: Java
 ---
@@ -204,7 +204,9 @@ categories: Java
 
 `2`.静态公共域只能为final修饰的基本类型或者final修饰的不可变类
 
-`3`.用`Collections.unmodifiableList(Arrays.asList(arr))`将数组变成不可变列表后再提供访问；或者在访问方法中返回数组的clone()
+`3`.用`Collections.unmodifiableList(arr)`
+
+将数组变成不可变列表后再提供访问；或者在访问方法中返回数组的clone()
 
 ##`14`.在公有类中使用访问方法而非公有域
 
@@ -608,7 +610,13 @@ String s = stringLists[0].get(0);
 
 `1`.如果返回null，每次调用该方法时都会需要进行空值判断
 
-`2`.长度为0的数组是不可变的，因此返回的空数组可以自由共享（`Collections.emptySet`；`Collections.emptyList`；`Collections.emptyMap`）
+`2`.长度为0的数组是不可变的，因此返回的空数组可以自由共享
+
+（`Collections.emptySet`；
+
+`Collections.emptyList`；
+
+`Collections.emptyMap`）
 
 ##`44`.为所有导出的API元素编写文档注释
 
@@ -652,7 +660,13 @@ String s = stringLists[0].get(0);
 
 ##`47`.了解和使用类库
 
-`java.lang`；`java.util`；`java.io`；`java.util.concurrent`；
+`java.lang`；
+
+`java.util`；
+
+`java.io`；
+
+`java.util.concurrent`；
 
 ##`48`.如果需要精确的答案，请避免使用float和double
 
@@ -740,7 +754,15 @@ String s = stringLists[0].get(0);
 
 `4`.类型参数，`T`任意类型，`E`集合元素类型，`KV`键值映射类型，`X`异常，任何类型的序列可以是T,U,V或者T1,T2,t3
 
-`5`.转换对象类型，返回不同类型的独立对象的方法 `toType`；返回视图`asType`；返回一个与被调用对象相同值的基本类型的方法`typeValue`；静态工厂`valueOf`，`of`，`getInstance`，`newInstance`，`getType`，`NewType`
+`5`.转换对象类型，返回不同类型的独立对象的方法 `toType`；
+
+返回视图`asType`；
+
+返回一个与被调用对象相同值的基本类型的方法`typeValue`；
+
+静态工厂`valueOf`，`of`，`getInstance`，
+
+`newInstance`，`getType`，`NewType`
 
 ---
 
@@ -778,7 +800,9 @@ String s = stringLists[0].get(0);
 
 ##`60`.优先使用标准的异常
 
-`ConcurrentModificationException`；`UnsupportedOperationException`
+`ConcurrentModificationException`；
+
+`UnsupportedOperationException`
 
 ##`61`.抛出与抽象相对应的异常
 
