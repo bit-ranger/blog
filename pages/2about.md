@@ -5,4 +5,4 @@ permalink: /about/
 icon: glyphicon-heart
 ---
 
-只要有空一定会更新的！
+自我介绍什么的，最讨厌了！

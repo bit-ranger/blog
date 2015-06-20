@@ -1,7 +1,8 @@
-<!-- ---
+---
 layout: page
 title: 归档
-comments: false
+permalink: /archive/
+icon: glyphicon-folder-open
 ---
 
 {% for post in site.posts  %}
@@ -14,8 +15,9 @@ comments: false
       <legend id="{{this_year}}-{{this_month}}">{{this_year}}年-{{this_month}}月</legend>
       <ul>
     {% endif %}
-    <li><span>{{ post.date | date: "%Y年-%m月-%d日" }}</span> &raquo; 
-      <a class="pjaxlink" href="{{ post.url }}">{{ post.title }}</a>
+    <li><span>{{ post.date | date: "%Y年-%m月-%d日" }}</span>&nbsp;&nbsp;
+        <span class="octicon octicon-link"></span>&nbsp;&nbsp;
+        <a class="pjaxlink" href="{{ post.url }}">{{ post.title }}</a>
     </li>
   
     {% if forloop.last %}
@@ -33,4 +35,4 @@ comments: false
         {% endif %}
       {% endif %}
     {% endif %}
-{% endfor %} -->
+{% endfor %}
