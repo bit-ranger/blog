@@ -9,7 +9,7 @@ layout: default
        <button>toggle</button>
      </p> -->
       <div class="post-list-header">
-        Posts
+        <span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;Posts
       </div>
       <div class="post-list-body">
         
@@ -18,8 +18,8 @@ layout: default
             <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
               <h2>
               {{ post.title }}
+              <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
               </h2>
-              <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
             </a>
           {% endfor %}
         </div>
@@ -32,8 +32,8 @@ layout: default
                   <a href="{{ post.url }}" class="post-list-item">
                     <h2>
                     {{ post.title }}
+                    <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
                     </h2>
-                    <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
                   </a>
                 {% endif %}
               {% endfor %}
@@ -48,7 +48,7 @@ layout: default
   <div class="col-sm-3">
     <div class="shadow-corner-curl hidden-xs">
       <div class="categories-list-header">
-        Categories
+          <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Categories
       </div>
       
       <a href="javascript:;" class="categories-list-item" cate="All">
