@@ -3,6 +3,8 @@
  */
 $(document).ready(function() {
 
+    console.log("你不乖哦，你想做什么，彼此之间留点神秘感不好吗？");
+
     categoryDisplay();
     generateContent();
     backToTop();
