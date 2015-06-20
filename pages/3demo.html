@@ -4,6 +4,90 @@ title: Demo
 permalink: /demo/
 icon: glyphicon-play
 ---
+<style>
+    /**
+ * demo
+ * 瀑布流
+ * 使用多栏布局
+ */
+    #fall{
+        font-size: 0;
+        text-align: center;
+        /*margin: 0 auto;*/
+        /*background-color: #ddd;*/
+
+    }
+    #fall ul{
+        margin: 0 10px;
+        padding: 0;
+        width: 240px;
+        /*background-color: red;*/
+        display: inline-block;
+        vertical-align: top;
+        /*float: left;*/
+
+
+    }
+
+    @media screen and (max-width: 1200px) {
+        #fall ul{
+            width: 210px;
+        }
+    }
+    @media screen and (max-width: 991px){
+        #fall ul{
+            width: auto;
+        }
+    }
+    #fall li{
+        margin: 0 0 20px 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 14px;
+
+        -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
+        -moz-box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
+        -o-box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
+        box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
+
+        transition:0.1s ease-out;
+        -webkit-transition:0.1s ease-out;
+        -moz-transition:0.1s ease-out;
+        -o-transition:0.1s ease-out;
+    }
+    #fall li:hover{
+        -webkit-box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
+        -moz-box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
+        -o-box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
+        box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
+
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+    #fall li p{
+        margin: 0;
+    }
+    #fall .head{
+        font-size: 16px;
+        text-align: left;
+        margin: 0 10px;
+        padding: 10px 0 5px 0;
+        border-bottom: 1px dotted #ddd;
+        font-weight: bold;
+    }
+    #fall .description{
+        text-align: left;
+        padding: 5px 10px 10px 10px;
+        text-indent: 2em;
+    }
+    #fall a:link {color: #7676AC}		/* 未访问的链接 */
+    #fall a:visited {color: #715584}	/* 已访问的链接 */
+    #fall a:hover {color: #5989AD;text-decoration: none;}	/* 鼠标移动到链接上 */
+    #fall a:active {color: #91C3CF}	/* 选定的链接 */
+</style>
 <div id="fall">
 	<!-- 第一列 -->
 	<ul>

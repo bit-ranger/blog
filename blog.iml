@@ -7,5 +7,6 @@
       <excludeFolder url="file://$MODULE_DIR$/_site" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

@@ -40,10 +40,10 @@ table td{
 }
 
 
-#index a:link {color: #005}		/* 未访问的链接 */
-#index a:visited {color: #669}	/* 已访问的链接 */
-#index a:hover {color: #336;text-decoration: none;}	/* 鼠标移动到链接上 */
-#index a:active {color: #99b}	/* 选定的链接 */
+.index a:link {color: #005;text-decoration: none}		/* 未访问的链接 */
+.index a:visited {color: #735b3e}	/* 已访问的链接 */
+.index a:hover {color: #336;}	/* 鼠标移动到链接上 */
+.index a:active {color: #99b}	/* 选定的链接 */
 
 /* navbar */
 nav{
@@ -277,7 +277,7 @@ blockquote:last-child {
 /**
  * back to top
  */
-#top {
+.page-scrollTop {
 	position: fixed;
 	right: 25px;
 	bottom: 10px;
@@ -289,7 +289,7 @@ blockquote:last-child {
 	display: none;
 	z-index: 888;
 }
-#top .arrow{
+.page-scrollTop .arrow{
 	margin:0 auto;
 	padding-top:11px;
 	width:0;
@@ -299,7 +299,7 @@ blockquote:last-child {
 	border-bottom: 15px solid #7f7f7f;
 	
 }
-#top .stick{
+.page-scrollTop .stick{
 	margin:0 auto;
 	padding-bottom:21px;
 	width: 13px;
@@ -326,88 +326,6 @@ blockquote:last-child {
 	text-align: right;
 }
 
-/**
- * demo
- * 瀑布流
- * 使用多栏布局
- */
-#fall{
-	font-size: 0;
-	text-align: center;
-	/*margin: 0 auto;*/
-	/*background-color: #ddd;*/
-
-}
-#fall ul{
-	margin: 0 10px;
-	padding: 0;
-	width: 240px;
-	/*background-color: red;*/
-	display: inline-block;
-	vertical-align: top;
-	/*float: left;*/
-
-	
-}
-
-@media screen and (max-width: 1200px) { 
-	#fall ul{
-		width: 210px;
-	}
-}
-@media screen and (max-width: 991px){
-	#fall ul{
-		width: auto;
-	}
-}
-#fall li{
-	margin: 0 0 20px 0;
-	padding: 0;
-	list-style-type: none;
-	font-size: 14px;
-
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
-	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
-	-o-box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
-	box-shadow: 0 0 5px rgba(0,0,0,0.6),0 0 20px rgba(0,0,0,0.1) inset;
-
-	transition:0.1s ease-out; 
-	-webkit-transition:0.1s ease-out;
-	-moz-transition:0.1s ease-out;
-	-o-transition:0.1s ease-out;
-}
-#fall li:hover{
-	-webkit-box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
-	-moz-box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
-	-o-box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
-	box-shadow: 0 0 12px rgba(0,0,0,0.8),0 0 20px rgba(0,0,0,0.1) inset;
-
-	-webkit-transform: scale(1.05);
-	-moz-transform: scale(1.05);
-	-o-transform: scale(1.05);
-	-ms-transform: scale(1.05);
-	transform: scale(1.05);
-}
-#fall li p{
-	margin: 0;
-}
-#fall .head{
-	font-size: 16px;
-	text-align: left;
-	margin: 0 10px;
-	padding: 10px 0 5px 0;
-	border-bottom: 1px dotted #ddd;
-	font-weight: bold;
-}
-#fall .description{
-	text-align: left;
-	padding: 5px 10px 10px 10px;
-	text-indent: 2em;
-}
-#fall a:link {color: #7676AC}		/* 未访问的链接 */
-#fall a:visited {color: #715584}	/* 已访问的链接 */
-#fall a:hover {color: #5989AD;text-decoration: none;}	/* 鼠标移动到链接上 */
-#fall a:active {color: #91C3CF}	/* 选定的链接 */
 
 /**
  * 文章目录相关
@@ -418,21 +336,21 @@ blockquote:last-child {
 	}
 }
 
-#content a:link {color: #666}		/* 未访问的链接 */
-#content a:visited {color: #666}	/* 已访问的链接 */
-#content a:hover {color: #336;text-decoration: none;}	/* 鼠标移动到链接上 */
-#content a:active {color: #99b}	/* 选定的链接 */
+.content-navigation a:link {color: #666;text-decoration: none;}		/* 未访问的链接 */
+.content-navigation a:visited {color: #D27504  }	/* 已访问的链接 */
+.content-navigation a:hover {color: #336;}	/* 鼠标移动到链接上 */
+.content-navigation a:active {color: #99b}	/* 选定的链接 */
 
-#content{
+.content-navigation{
 	max-width: 292px;
 }
-#content .content-text{
+.content-navigation .content-navigation-text{
 	padding: 10px 0; 
 }
-#content ul{
+.content-navigation ul{
 	padding-left: 30px;
 }
-#content ul li{
+.content-navigation ul li{
 	/*list-style: none;*/
 	font-size: 15px;
 	line-height: 25px;
@@ -445,7 +363,7 @@ blockquote:last-child {
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 }
 
-#myAffix .affix{
+.myAffix .affix{
 	top:-20px;
 	bottom: 0px;
 }
@@ -468,3 +386,6 @@ blockquote:last-child {
 		padding-left: 25px;
 	}
 }
+
+#markdown-toc a:link {text-decoration: none;}
+#markdown-toc a:visited{color: #D27504}
