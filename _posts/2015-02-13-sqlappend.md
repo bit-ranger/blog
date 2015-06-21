@@ -8,7 +8,7 @@ published: true
 
 在java中进行SQL拼接是一件无比痛苦的工作，这是由于需要通过判断参数动态生成SQL
 
-而且由于拼接是产生满屏幕的加号或者append，SQL几乎失去了可读性，那么丢失`WHERE`，`AND`，逗号等语法错误将随之而来
+而且拼接时产生满屏幕的加号或者append，使SQL几乎失去了可读性，那么丢失`WHERE`，`AND`，逗号等语法错误将随之而来
 
 最近研究mybatis时发现了一个非常好用的工具类 SQL Builder [^sqlBuilder]
 
