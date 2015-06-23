@@ -22,7 +22,7 @@
           {% else %}
           <li>
         {% endif %}
-          <a href="{{ site.baseurl }}/"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Blog</a></li>
+          <a href="{{ site.baseurl }}/" class="word-keep"><span class="octicon octicon-repo"></span>&nbsp;&nbsp;Blog</a></li>
 
         {% for p in site.pages %}
           {% if p.title %}
@@ -31,7 +31,7 @@
               {% else %}
               <li>
             {% endif %}
-            <a href="{{ p.url | prepend: site.baseurl }}"><span class="octicon {{ p.icon }}"></span>&nbsp;&nbsp;{{ p.title }}</a></li>
+            <a href="{{ p.url | prepend: site.baseurl }}"  class="word-keep"><span class="octicon {{ p.icon }}"></span>&nbsp;&nbsp;{{ p.title }}</a></li>
           {% endif %}
         {% endfor %}
       </ul>
