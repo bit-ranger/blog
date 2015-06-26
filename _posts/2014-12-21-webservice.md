@@ -2,7 +2,7 @@
 layout: post
 title: WebService
 tags: WebService
-categories: Java
+categories: web
 ---
 
 * content
@@ -622,13 +622,15 @@ web发布示例集成spring
 
 #####跨域方案1：jsonp
 
-
+~~~
     <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-extension-providers</artifactId>
         <version>${cxf.version}</version>
     </dependency>
+~~~
 
+~~~
     <jaxrs:server address="/rs/user">
         <jaxrs:serviceBeans>
             <ref bean="userWS"/>
@@ -644,7 +646,9 @@ web发布示例集成spring
             <bean class="org.apache.cxf.jaxrs.provider.jsonp.JsonpPostStreamInterceptor"/>
         </jaxrs:outInterceptors>
     </jaxrs:server>
+~~~
 
+~~~
     $.ajax({
         type: 'get',
         url: 'http://localhost:8080/rs/user/1',
@@ -655,15 +659,19 @@ web发布示例集成spring
             //...
         }
     });
+~~~
 
 #####跨域方案2：cors
 
+~~~
     <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-rt-rs-security-cors</artifactId>
         <version>${cxf.version}</version>
     </dependency>
+~~~
 
+~~~
     <jaxrs:server address="/rs/user">
         <jaxrs:serviceBeans>
             <ref bean="userWS"/>
@@ -675,6 +683,7 @@ web发布示例集成spring
             </bean>
         </jaxrs:providers>
     </jaxrs:server>
+~~~
 
 allowOrigins 设置客户端域名
 

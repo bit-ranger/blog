@@ -8,7 +8,7 @@ categories: Java
 * content
 {:toc}
 
-线程拥有通过程序运行的独立的并发路径，并且每个线程都有自己的程序计数器，称为堆栈和本地变量。线程存在于进程中，它们与同一进程内的其他线程共享内存、文件句柄以及每进程状态。
+线程拥有通过程序运行的独立的并发路径，并且每个线程都有自己的程序计数器，称为堆栈和本地变量。线程存在于进程中，它们与同一进程内的其他线程共享内存、文件句柄以及进程状态。
 
 ---
 
@@ -18,7 +18,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 低级实用程序类 -- `锁定`和`原子类`。使用 CAS 作为并发原语，**ReentrantLock** 类提供与 synchronized 原语相同的锁定和内存语义，然而这样可以更好地控制锁定（如计时的锁定等待、锁定轮询和可中断的锁定等待）和提供更好的可伸缩性（竞争时的高性能）。大多数开发人员将不再直接使用 ReentrantLock 类，而是使用在 ReentrantLock 类上构建的高级类。
 
-* 高级实用程序类。这些类实现并发构建块，每个计算机科学文本中都会讲述这些类 -- `信号`、`互斥`、`闩锁`、`屏障`、`交换程序`、`线程池`和`线程安全集合类`等。大部分开发人员都可以在应用程序中用这些类，来替换许多（如果不是全部）同步、wait() 和 notify() 的使用，从而提高性能、可读性和正确性。
+* 高级实用程序类。这些类实现并发构建块，每个计算机科学文本中都会讲述这些类 -- `信号`、`互斥`、`闩锁`、`屏障`、`交换程序`、`线程池`和`线程安全集合类`等。大部分开发人员都可以在应用程序中用这些类来替换许多同步、wait() 和 notify() 的使用，从而提高性能、可读性和正确性。
 
 ---
 
@@ -26,13 +26,13 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 首先它必须在单线程环境中正确运行。如果正确实现了类，那么说明它符合规范，对该类的对象的任何顺序的操作（公共字段的读写、公共方法的调用）都不应该：
 
-	* ①使对象处于无效状态；
+	* 使对象处于无效状态；
 
-	* ②观察处于无效状态的对象；
+	* 观察处于无效状态的对象；
 
-	* ③违反类的任何变量、前置条件或后置条件。
+	* 违反类的任何变量、前置条件或后置条件。
 
-* 而且，要成为线程安全的类，在从多个线程访问时，它必须继续正确运行，而不管运行时环境执行那些线程的调度和交叉，且无需对部分调用代码执行任何其他同步。结果是对线程安全对象的操作将用于按固定的整体一致顺序出现所有线程。
+* 而且，要成为线程安全的类，在从多个线程访问时，它必须继续正确运行，而不管运行时环境执行那些线程的调度和交叉，且无需对部分调用代码执行任何其他同步。
 
 * 如果没有线程之间的某种明确协调，比如锁定，运行时可以随意在需要时在多线程中交叉操作执行。
 
@@ -42,40 +42,36 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 任何一个时刻，对象的控制权（monitor）只能被一个线程拥有。
 
-* 无论是执行对象的wait、notify还是notifyAll方法，必须保证当前运行的线程取得了该对象的控制权（monitor）
+* 无论是执行对象的`wait`、`notify`还是`notifyAll`方法，必须保证当前运行的线程取得了该对象的控制权（monitor）。
 
 * 如果在没有控制权的线程里执行对象的以上三种方法，就会报java.lang.IllegalMonitorStateException异常。
 
-* JVM基于多线程，默认情况下不能保证运行时线程的时序性
+* JVM基于多线程，默认情况下不能保证运行时线程的时序性。
 
 
 ##interrupt
 
-* 当调用th1.interrput()的时候，线程th1的中断状态(interrupted status) 会被置位。我们可以通过Thread.currentThread().isInterrupted() 来检查这个布尔型的中断状态。
+* 当调用`th.interrput()`的时候，线程th的中断状态(interrupted status) 会被置位。我们可以通过Thread.currentThread().isInterrupted() 来检查这个布尔型的中断状态。
 
-* **没有任何语言方面的需求要求一个被中断的程序应该终止。中断一个线程只是为了引起该线程的注意，被中断线程可以决定如何应对中断 **
+* **没有任何语言方面的需求要求一个被中断的程序应该终止**。中断一个线程只是为了引起该线程的注意，被中断线程可以决定如何应对中断。这说明interrupt中断的是线程的某一部分业务逻辑，前提是线程需要检查自己的中断状态(isInterrupted())。
 
-这说明: interrupt中断的是线程的某一部分业务逻辑，前提是线程需要检查自己的中断状态(isInterrupted())。
-
-* 当th1被阻塞的时候，比如被Object.wait, Thread.join和Thread.sleep三种方法之一阻塞时。调用它的interrput()方法，可想而知，没有占用CPU运行的线程是不可能给自己的中断状态置位的。这就会产生一个InterruptedException异常。
+* 当th被阻塞的时候，比如被`Object.wait`, `Thread.join`和`Thread.sleep`三种方法之一阻塞时, 调用它的interrput()方法，可想而知，没有占用CPU运行的线程是不可能给自己的中断状态置位的, 这就会产生一个InterruptedException异常。
 
 ##join
 
-Join()方法可以让一个线程等待另一个线程执行完成。若t是一个正在执行的Thread对象，
+* join方法可以让一个线程**等待**另一个线程执行完成。
 
-`t.join();  `
+* 若t是一个正在执行的Thread对象，t.join() 将会使当前线程暂停执行并等待t执行完成。重载的join()方法可以让开发者自定义等待周期。然而，和sleep()方法一样join()方法依赖于操作系统的时间处理机制，你不能假定join()方法将会精确的等待你所定义的时长。
 
-将会使当前线程暂停执行并等待t执行完成。重载的join()方法可以让开发者自定义等待周期。然而，和sleep()方法一样join()方法依赖于操作系统的时间处理机制，你不能假定join()方法将会精确的等待你所定义的时长。
-
-如同sleep()方法，join()方法响应中断并在中断时抛出InterruptedException。
+* 如同sleep()方法，join()方法响应中断并在中断时抛出InterruptedException。
 
 ##同步
 
 * 同步的构造方法没有意义，因为当这个对象被创建的时候，只有创建对象的线程能访问它。
 
-* 静态方法是和类（而不是对象）相关的，所以线程会请求类对象(Class Object)的内部锁。因此用来控制类的静态域访问的锁不同于控制对象访问的锁。
+* 静态方法是和类（而不是对象）相关的，所以线程会请求类对象(Class Object)的内部锁。因此用来控制类的**静态域**访问的锁不同于控制**对象**访问的锁。
 
-* 如果类中的两个域需要同步访问，但是两个域没有什么关联，那么可以为两个域个创建一个私有的锁对象，是两个域能分别同步。
+* 如果类中的两个域需要同步访问，但是两个域没有什么关联，那么可以为两个域个创建一个私有的锁对象，使两个域能分别同步。
 
 ##锁
 
@@ -83,7 +79,7 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 * 饥饿是指当一个线程不能正常的访问共享资源并且不能正常执行的情况。这通常在共享资源被其他“贪心”的线程长期占用时发生
 
-* 一个线程通常会有会响应其他线程的活动。如果其他线程也会响应另一个线程的活动，那么就有可能发生活锁。同死锁一样，发生活锁的线程无法继续执行。然而线程并没有阻塞——他们在忙于响应对方无法恢复工作。
+* 一个线程通常会有会响应其他线程的活动。如果其他线程也会响应另一个线程的活动，那么就有可能发生活锁。同死锁一样，发生活锁的线程无法继续执行, 然而线程并没有阻塞, 他们在忙于响应对方无法恢复工作。
 
 * wait方法，释放锁并挂起
 
@@ -92,34 +88,33 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 #线程安全集合
 
-* java.util.concurrent 包添加了多个新的线程安全集合类<br/>
-`ConcurrentHashMap`、<br/>
-`CopyOnWriteArrayList`<br/>
-`CopyOnWriteArraySet`
+* java.util.concurrent 包添加了多个新的线程安全集合类 `ConcurrentHashMap`, `CopyOnWriteArrayList`, `CopyOnWriteArraySet`
 
-* JDK 5.0 还提供了两个新集合接口 -- `Queue` 和 `BlockingQueue`。Queue 接口与 List 类似，但它只允许从后面插入，从前面删除。`BlockingQueue`定义了一个先进先出的数据结构，当你尝试往满队列中添加元素，或者从空队列中获取元素时，将会阻塞或者超时。
+* JDK 5.0 还提供了两个新集合接口 -- `Queue` 和 `BlockingQueue`。Queue 接口与 List 类似，但它只允许从后面插入，从前面删除。BlockingQueue定义了一个先进先出的数据结构，当你尝试往满队列中添加元素，或者从空队列中获取元素时，将会阻塞或者超时。
 
-* `ConcurrentMap`是java.util.Map的子接口，定义了一些有用的原子操作。移除或者替换键值对的操作只有当key存在时才能进行，而新增操作只有当key不存在时。使这些操作原子化，可以避免同步。ConcurrentMap的标准实现是`ConcurrentHashMap`，它是`HashMap`的并发模式。
+* `ConcurrentMap`是java.util.Map的子接口，定义了一些有用的原子操作。移除或者替换键值对的操作只有当key存在时才能进行，而新增操作只有当key不存在时才能进行, 使这些操作原子化，可以避免同步。ConcurrentMap的标准实现是`ConcurrentHashMap`，它是`HashMap`的并发模式。
 
-* `ConcurrentNavigableMap`是ConcurrentMap的子接口，支持近似匹配。ConcurrentNavigableMap的标准实现是`ConcurrentSkipListMap`，它是TreeMap的并发模式。
+* `ConcurrentNavigableMap`是ConcurrentMap的子接口，支持近似匹配。ConcurrentNavigableMap的标准实现是`ConcurrentSkipListMap`，它是`TreeMap`的并发模式。
 
 * 所有这些集合，通过 在集合里新增对象和访问或移除对象的操作之间，定义一个`happens-before`的关系，来帮助程序员避免内存一致性错误。
 
 ##CopyOnWriteArrayList 和 CopyOnWriteArraySet
 
-* Vector 的非常普遍的应用程序是存储通过组件注册的监听器的列表。当发生适合的事件时，该组件将在监听器的列表中迭代，调用每个监听器。为了防止ConcurrentModificationException，迭代线程必须复制列表或锁定列表，以便进行整体迭代，而这两种情况都需要大量的性能成本。
+* Vector 的常见应用是存储通过组件注册的监听器的列表。当发生适合的事件时，该组件将在监听器的列表中迭代，调用每个监听器。为了防止ConcurrentModificationException，迭代线程必须复制列表或锁定列表，以便进行整体迭代，而这两种情况都需要大量的性能成本。
 
-* CopyOnWriteArrayLis及CopyOnWriteArraySet 类通过每次添加或删除元素时创建支持数组的新副本，避免了这个问题，但是进行中的迭代保持对创建迭代器时的当前副本进行操作。虽然复制也会有一些成本，但是在许多情况下，迭代要比修改多得多，在这些情况下，写入时复制要比其他备用方法具有更好的性能和并发性。
+* CopyOnWriteArrayList及CopyOnWriteArraySet 类通过每次添加或删除元素时创建数组的新副本，避免了这个问题，但是进行中的迭代保持对创建迭代器时的副本进行操作。虽然复制也会有一些成本，但是在许多情况下，迭代要比修改多得多，在这些情况下，写入时复制要比其他备用方法具有更好的性能和并发性。
 
 ##ConcurrentHashMap
 
-* `Hashtable` 和 `synchronizedMap` 所采取的获得同步的简单方法（同步 Hashtable 中或者同步的 Map 封装器对象中的每个方法）有两个主要的不足：
+* `Hashtable` 和 `synchronizedMap` 所采取的获得同步的简单方法（同步 Hashtable 或者同步 Map 封装器对象中的每个方法）有两个主要的不足：
 
 	* 第一，这种方法对于可伸缩性是一种障碍，因为一次只能有一个线程可以访问 hash 表；
 
 	* 第二，这样仍不足以提供真正的线程安全性，许多公用的混合操作仍然需要额外的同步。虽然诸如 get() 和 put() 之类的简单操作可以在不需要额外同步的情况下安全地完成，但还是有一些公用的操作序列，例如迭代或者 put-if-absent（空则放入），需要外部的同步，以避免数据争用。
 
-* 在大多数情况下，`ConcurrentHashMap` 是 Hashtable或 Collections.synchronizedMap(new HashMap()) 的简单替换。然而，其中有一个显著不同，即 ConcurrentHashMap 实例中的同步**不锁定映射**进行独占使用。实际上，没有办法锁定 ConcurrentHashMap 进行独占使用，它被设计用于进行并发访问。为了使集合不被锁定进行独占使用，还提供了公用的混合操作的其他（原子）方法，如 **put-if-absent**。ConcurrentHashMap 返回的迭代器是弱一致的，意味着它们将不抛出ConcurrentModificationException ，将进行"合理操作"来反映迭代过程中其他线程对 Map 的修改。
+* 在大多数情况下，`ConcurrentHashMap` 是 Hashtable或 Collections.synchronizedMap(new HashMap()) 的简单替换。然而，其中有一个显著不同，即 ConcurrentHashMap 实例中的同步**不锁定**Map进行独占使用, 实际上，没有办法锁定 ConcurrentHashMap 进行独占使用，它被设计用于进行并发访问。为了使集合不被锁定进行独占使用，还提供了公用的混合操作的其他（原子）方法，如 **put-if-absent**。
+
+* ConcurrentHashMap 返回的迭代器是弱一致的，意味着它们将不抛出ConcurrentModificationException ，将进行 "合理操作" 来反映迭代过程中其他线程对 Map 的修改。
 
 ##队列
 
@@ -131,7 +126,7 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 	* `LinkedList` 已经进行了改进来实现 Queue。
 
-    * `PriorityQueue` 非线程安全的优先级对列（堆）实现，根据自然顺序或比较器返回元素。
+    * `PriorityQueue` 非线程安全的优先级队列（堆）实现，根据自然顺序或比较器返回元素。
 
     *  `ConcurrentLinkedQueue` 快速、线程安全的、无阻塞 FIFO 队列。
 
@@ -147,11 +142,14 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 * 管理一大组小任务的标准机制是**组合工作队列**和**线程池**。工作队列就是要处理的任务的队列，前面描述的 Queue 类完全适合。线程池是线程的集合，每个线程都提取公用工作队列。当一个工作线程完成任务处理后，它会返回队列，查看是否有其他任务需要处理。如果有，它会转移到下一个任务，并开始处理。
 
-* 线程池为线程生命周期间接成本问题和资源崩溃问题提供了解决方案。通过对多个任务重新使用线程，创建线程的间接成本将分布到多个任务中。作为一种额外好处，因为请求到达时，线程已经存在，从而可以消除由创建线程引起的延迟。因此，可以立即处理请求，使应用程序更易响应。而且，通过正确调整线程池中的线程数，可以强制超出特定限制的任何请求等待，直到有线程可以处理它，它们等待时所消耗的资源要少于使用额外线程所消耗的资源，这样可以防止资源崩溃。
+* 线程池为线程生命周期间接成本问题和资源崩溃问题提供了解决方案。
+    * 通过对多个任务重新使用线程，创建线程的间接成本将分布到多个任务中。
+    * 作为一种额外好处，因为请求到达时，线程已经存在，从而可以消除由创建线程引起的延迟, 因此，可以立即处理请求，使应用程序更易响应。
+    * 而且，通过正确调整线程池中的线程数，可以强制超出特定限制的任何请求等待，直到有线程可以处理它，它们等待时所消耗的资源要少于使用额外线程所消耗的资源，这样可以防止资源崩溃。
 
 #Executor 框架
 
-* `Executor接口`独自关注任务提交， 这是Executor 实现的选择，确定执行策略。这使在部署时调整执行策略（队列限制、池大小、优先级排列等等）更加容易，更改的代码最少。
+* `Executor` 接口关注任务提交，确定执行策略。这使在部署时调整执行策略（队列限制、池大小、优先级排列等等）更加容易，更改的代码最少。
 
 * 大多数 Executor 实现类还实现 `ExecutorService`接口，ExecutorService是Executor的子接口，它还管理执行服务的生命周期。这使它们更易于管理，并向生命可能比单独 Executor 的生命更长的应用程序提供服务。
 
@@ -159,45 +157,43 @@ Join()方法可以让一个线程等待另一个线程执行完成。若t是一�
 
 ##ExecutorService
 
-`ExecutorService`接口在提供了execute方法的同时，新加了更加通用的`submit`方法。
+* `ExecutorService`接口在提供了execute方法的同时，新加了更加通用的`submit`方法。
 
-通过submit方法返回的Future对象可以读取Callable任务的执行结果，或是管理Callable任务和Runnable任务的状态。 ExecutorService也提供了批量运行Callable任务的方法。最后，ExecutorService还提供了一些关闭执行器的方法。
+* 通过submit方法返回的`Future`对象可以读取`Callable`任务的执行结果，或管理Callable任务和Runnable任务的状态。
 
-##ScheduledExecutor<br/>Service
+* ExecutorService也提供了批量运行Callable任务的方法，ExecutorService还提供了一些关闭执行器的方法。
 
-`ScheduledExecutorService`扩展ExecutorService接口并添加了`schedule`方法。调用schedule方法可以在指定的延时后执行一个Runnable或者Callable任务。ScheduledExecutorService接口还定义了按照指定时间间隔定期执行任务的`scheduleAtFixedRate`方法和`scheduleWithFixedDelay`方法。
+##ScheduledExecutorService
+
+* `ScheduledExecutorService`扩展ExecutorService接口并添加了`schedule`方法。调用schedule方法可以在指定的延时后执行一个Runnable或者Callable任务。
+
+* ScheduledExecutorService接口还定义了按照指定时间间隔定期执行任务的`scheduleAtFixedRate`方法和`scheduleWithFixedDelay`方法。
 
 ##Executors
 
 `Executors类`包含用于构造许多不同类型的 Executor 实现的静态工厂方法：
 
-* `newCachedThreadPool()` 创建不限制大小的线程池，但是当以前创建的线程可以使用时将重新使用那些线程。如果没有现有线程可用，将创建新的线程并将其添加到池中。使用不到 60 秒的线程将终止并从缓存中删除。
+* `newCachedThreadPool()` 创建不限制大小的线程池，但是当以前创建的线程可以使用时将重新使用那些线程。如果没有现有线程可用，将创建新的线程并将其添加到池中。已有 60 秒钟未被使用的线程将其终止并从缓存中删除。
 
-* `newFixedThreadPool(int n)` 创建线程池，其重新使用在不受限制的队列之外运行的固定线程组。在关闭前，所有线程都会因为执行过程中的失败而终止，如果需要执行后续任务，将会有新的线程来代替这些线程。
+* `newFixedThreadPool(int n)` 创建一个可重用固定线程数的线程池，以共享的无界队列方式来运行这些线程。如果在所有线程处于活动状态时提交附加任务，则在有可用线程之前，附加任务将在队列中等待。如果在关闭前的执行期间由于失败而导致任何线程终止，那么一个新线程将代替它执行后续的任务。
 
-* `newSingleThreadExecutor()` 创建 Executor，其使用在不受限制的队列之外运行的单一工作线程，与 Swing 事件线程非常相似。保证顺序执行任务，在任何给定时间，不会有多个任务处于活动状态。
+* `newSingleThreadExecutor()` 创建一个单线程的线程池。这个线程池只有一个线程在工作，也就是相当于单线程串行执行所有任务, 此线程池保证所有任务的执行顺序按照任务的提交顺序执行。如果这个唯一的线程因为异常结束，那么会有一个新的线程来替代它。
 
-* `newScheduledThreadPool(int n)`  创建定时任务线程池
+* `newScheduledThreadPool(int n)`  创建一个大小无限的线程池, 此线程池支持定时以及周期性执行任务的需求。
 
 * 如果上面的方法都不满足需要，可以尝试`ThreadPoolExecutor`或者`ScheduledThreadPoolExecutor`。
 
 ##定制 ThreadPoolExecutor
 
-通过使用包含 `ThreadFactory` 变量的工厂方法或构造函数的版本，可以定义池线程的创建。ThreadFactory 是工厂对象，其构造执行程序要使用的新线程。
+通过使用包含 `ThreadFactory` 变量的工厂方法或构造函数的版本，可以定义线程的创建。ThreadFactory 是工厂对象，其构造执行程序要使用的新线程。
 
-~~~
+~~~java
 public class DaemonThreadFactory implements ThreadFactory {
-
     public Thread newThread(Runnable r) {
-
         Thread thread = new Thread(r);
-
         thread.setDaemon(true);
-
         return thread;
-
     }
-
 }
 ~~~
 
@@ -216,7 +212,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 ##需要特别考虑的问题
 
-如果应用程序对特定执行程序进行了特定假设，那么应该在 Executor 定义和初始化的附近对这些进行说明，从而使善意的更改不会破坏应用程序的正确功能。
+如果应用程序对特定执行程序进行了假设，那么应该在 Executor 定义和初始化的附近对这些进行说明，从而使善意的更改不会破坏应用程序的正确功能。
 
 * 一些任务可能同时等待其他任务完成。在这种情况下，当线程池没有足够的线程时，如果所有当前执行的任务都在等待另一项任务，而该任务因为线程池已满不能执行，那么线程池可能会死锁。
 
@@ -226,7 +222,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 * 如果线程池太小，资源可能不能被充分利用，在一些任务还在工作队列中等待执行时，可能会有处理器处于闲置状态。
 
-* 另一方面，如果线程池太大，则将有许多有效线程，因为大量线程或有效任务使用内存，或者因为每项任务要比使用少量线程有更多上下文切换，性能可能会受损。
+* 另一方面，如果线程池太大，则将有许多有效线程，因为大量有效线程使用内存，或者因为每项任务要比使用少量线程有更多上下文切换，性能可能会受损。
 
 * Amdahl 法则提供很好的近似公式来确定线程池的大小：
 
@@ -238,13 +234,13 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 * `FutureTask` 类实现了 Future，并包含一些构造函数，允许将 Runnable 或 Callable和 Future 接口封装。因为 FutureTask 也实现 Runnable，所以可以只将 FutureTask 提供给 Executor。一些提交方法（如 `ExecutorService.submit()`）除了提交任务之外，还将返回 Future 接口。
 
-* `Future.get()` 方法检索任务计算的结果（或如果任务完成，但有异常，则抛出 ExecutionException）。如果任务尚未完成，那么 Future.get() 将被阻塞，直到任务完成；如果任务已经完成，那么它将立即返回结果。
+* `Future.get()` 方法检索任务计算的结果, 如果任务尚未完成，那么 Future.get() 将被阻塞直到任务完成；如果任务已经完成，那么它将立即返回结果; 如果任务完成，但有异常，则抛出 ExecutionException。
 
 ##使用 Future 构建缓存
 
 该示例利用 ConcurrentHashMap 中的原子 `putIfAbsent()` 方法，确保仅有一个线程试图计算给定关键字的值。如果其他线程随后请求同一关键字的值，它仅能等待（通过 Future.get() 的帮助）第一个线程完成。因此两个线程不会计算相同的值。
 
-~~~
+~~~java
 public class Cache {
     ConcurrentMap map = new ConcurrentHashMap();
     Executor executor = Executors.newFixedThreadPool(8);
