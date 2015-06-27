@@ -241,26 +241,29 @@ public class DaemonThreadFactory implements ThreadFactory {
 该示例利用 ConcurrentHashMap 中的原子 `putIfAbsent()` 方法，确保仅有一个线程试图计算给定关键字的值。如果其他线程随后请求同一关键字的值，它仅能等待（通过 Future.get() 的帮助）第一个线程完成。因此两个线程不会计算相同的值。
 
 ~~~java
-public class Cache {
-    ConcurrentMap map = new ConcurrentHashMap();
-    Executor executor = Executors.newFixedThreadPool(8);
-    public V get(final K key) {
-        FutureTask f = map.get(key);
-        if (f == null) {
-            Callable c = new Callable() {
-                public V call() {
-                    // return value associated with key
-                }
-            };
-            f = new FutureTask(c);
-            FutureTask old = map.putIfAbsent(key, f);
+public class Cache<K,V> {
+    private ConcurrentMap<K,FutureTask<V>> map = new ConcurrentHashMap<>();
+    private Executor executor = Executors.newFixedThreadPool(8);
+
+    static class Task<V> implements Callable<V>{
+        @Override
+        public V call() throws Exception {
+            return null;
+        }
+    }
+
+    public V get(final K key) throws ExecutionException, InterruptedException {
+        FutureTask<V> ft = map.get(key);
+        if (ft == null) {
+            ft = new FutureTask(new Task());
+            FutureTask<V> old = map.putIfAbsent(key, ft);
             if (old == null){
-                executor.execute(f);
+                executor.execute(ft);
             }else{
-                f = old;
+                ft = old;
             }
         }
-        return f.get();
+        return ft.get();
     }
 }
 ~~~
@@ -271,184 +274,196 @@ public class Cache {
 
 * CompletionService 允许应用程序结构化，使用 `Producer`/`Consumer` 模式，其中生产者创建任务并提交，消费者请求完成任务的结果并处理这些结果。CompletionService 接口由 `ExecutorCompletionService` 类实现，该类使用 Executor 处理任务并从 CompletionService 导出 `submit`/`poll`/`take` 方法。
 
-* 下列代码使用 Executor 和 CompletionService 来启动许多"solver"任务，并使用第一个生成非空结果的任务的结果，然后取消其余任务：
+* 下列代码使用 Executor 和 CompletionService 来启动许多任务，并使用第一个生成的非空结果，然后取消其余任务：
 
-~~~
-void solve(Executor e, Collection solvers) throws InterruptedException {
-        CompletionService ecs = new ExecutorCompletionService(e);
-        int n = solvers.size();
-        List futures = new ArrayList(n);
-        Result result = null;
-        try {
-            for (Callable s : solvers){
-                futures.add(ecs.submit(s));
-			}
-            for (int i = 0; i < n; ++i) {
-                try {
-                    Result r = ecs.take().get();
-                    if (r != null) {
-                        result = r;
-                        break;
-                    }
-                } catch(ExecutionException ignore) {
-                }
+~~~java
+<V> V solve(Executor e, Collection<Callable<V>> tasks) throws InterruptedException, ExecutionException {
+    CompletionService<V> ecs = new ExecutorCompletionService<>(e);
+    List<Future<V>> futures = new ArrayList<>();
+    V result = null;
+
+    try {
+        tasks.forEach(p -> futures.add(ecs.submit(p)));
+        for (int i = 0; i < tasks.size(); ++i) {
+            V r = ecs.take().get();
+            if (r != null) {
+                result = r;
+                break;
             }
         }
-        finally {
-            for (Future f : futures){
-                f.cancel(true);
-			}
+    } finally {
+        for (Future<V> f : futures){
+            f.cancel(true);
         }
-        if (result != null){
-            use(result);
-        }       
     }
+
+    return result;
+}
 ~~~
 
 ##Fork/Join
 
-* `fork/join`框架是ExecutorService接口的一种具体实现，目的是为了帮助你更好地利用多处理器带来的好处。它是为那些能够被递归地拆解成子任务的工作类型量身设计的。其目的在于能够使用所有可用的运算能力来提升你的应用的性能。
+* `fork/join`框架是ExecutorService接口的一种具体实现，目的是为了更好地利用多处理器带来的好处。它是为那些能够被递归地拆解成子任务的工作类型量身设计的。其目的在于能够使用所有可用的运算能力来提升你的应用的性能。
 
 * 类似于ExecutorService接口的其他实现，fork/join框架会将任务分发给线程池中的工作线程。fork/join框架的独特之处在与它使用工作窃取(`work-stealing`)算法。完成自己的工作而处于空闲的工作线程能够从其他仍然处于忙碌(busy)状态的工作线程处窃取等待执行的任务。
 
 * fork/join框架的核心是`ForkJoinPool`类，它是对`AbstractExecutorService`类的扩展。ForkJoinPool实现了工作偷取算法，并可以执行ForkJoinTask任务。
 
-* 在Java SE 8中，java.util.Arrays类的一系列parallelSort()方法就使用了fork/join来实现。这些方法与sort()系列方法很类似，但是通过使用fork/join框架，借助了并发来完成相关工作。在多处理器系统中，对大数组的并行排序会比串行排序更快。其他采用了fork/join框架的方法还包括java.util.streams包中的一些方法，此包是作为Java SE 8发行版中Project Lambda的一部分。
+* 在Java SE 8中，java.util.`Arrays`类的一系列`parallelSort()`方法就使用了fork/join来实现。这些方法与sort()系列方法很类似，但是通过使用fork/join框架，借助了并发来完成相关工作, 在多处理器系统中，对大数组的并行排序会比串行排序更快。
+
+* 其他采用了fork/join框架的方法还有java.util.`streams`包中的一些方法，此包是Java SE 8发行版中Project Lambda的一部分。
 
 #同步工具
 
 ##Semaphore
 
-* `Semaphore` 类实现标准 Dijkstra 计数信号。计数信号可以认为具有一定数量的许可权，该许可权可以获得或释放。如果有剩余的许可权，acquire() 方法将成功，否则该方法将被阻塞，直到有可用的许可权（通过其他线程释放许可权）。线程一次可以获得多个许可权。
+* `Semaphore` 类实现标准 Dijkstra 计数信号。计数信号可以认为具有一定数量的许可权，该许可权可以获得或释放。如果有剩余的许可权，`acquire()` 方法将成功，否则该方法将被阻塞，直到其他线程释放`release()`许可权, 线程一次可以获得多个许可权。
 
 * 计数信号可以用于限制有权对资源进行并发访问的线程数。该方法对于实现资源池或限制 Web 爬虫（Web crawler）中的输出 socket 连接非常有用。
 
-* 注意信号不跟踪哪个线程拥有多少许可权；这由应用程序来决定，以确保何时线程释放许可权，该信号表示其他线程拥有许可权或者正在释放许可权，以及其他线程知道它的许可权已释放。
+* 注意信号不跟踪哪个线程拥有多少许可权, 这由应用程序来决定，以确保何时线程释放许可权，该信号表示其他线程拥有许可权或者正在释放许可权，以及其他线程知道它的许可权已释放。
 
 ##互斥
 
-* 计数信号的一种特殊情况是**互斥**，或者互斥信号。互斥就是具有单一许可权的计数信号，意味着在给定时间仅一个线程可以具有许可权（也称为二进制信号）。互斥可以用于管理对共享资源的独占访问。
+* 计数信号的一种特殊情况是**互斥**，或者互斥信号。互斥就是具有单一许可权的计数信号，意味着在给定时间仅一个线程可以具有许可权, 互斥可以用于管理对共享资源的独占访问。
 
-* 虽然互斥许多地方与锁定一样，但互斥还有一个锁定通常没有的其他功能，就是互斥可以由具有许可权的线程之外的其他线程来释放。这在死锁恢复时会非常有用。
+* 虽然互斥许多地方与锁定一样，但互斥还有一个锁定通常没有的功能，就是互斥可以由不具有许可权的其他线程来释放, 这在死锁恢复时会非常有用。
 
 ##CyclicBarrier
 
-* `CyclicBarrier` 类可以帮助同步，它允许一组线程等待整个线程组到达公共屏障点。CyclicBarrier 是使用整型变量构造的，其确定组中的线程数。当一个线程到达屏障时（通过调用 CyclicBarrier.await()），它会被阻塞，直到所有线程都到达屏障，然后在该点允许所有线程继续执行。该操作与许多家庭逛商业街相似 -- 每个家庭成员都自己走，并商定 1:00 在电影院集合。当您到电影院但不是所有人都到了时，您会坐下来等其他人到达。然后所有人一起离开。
+* `CyclicBarrier` 类可以帮助同步，它允许一组线程等待整个线程组到达公共屏障点。CyclicBarrier 是使用整型变量构造的，其确定组中的线程数。当一个线程到达屏障时（通过调用 CyclicBarrier.`await()`），它会被阻塞，直到所有线程都到达屏障，然后在该点允许所有线程继续执行。
 
-* 认为屏障是循环的是因为它可以重新使用；一旦所有线程都已经在屏障处集合并释放，则可以将该屏障重新初始化到它的初始状态。 还可以指定在屏障处等待时的超时；如果在该时间内其余线程还没有到达屏障，则认为屏障被打破，所有正在等待的线程会收到 `BrokenBarrierException`。
+* CyclicBarrier可以重新使用, 一旦所有线程都已经在屏障处集合并释放，则可以将该屏障重新初始化到它的初始状态。 还可以指定在屏障处等待时的超时；如果在该时间内其余线程还没有到达屏障，则认为屏障被打破，所有正在等待的线程会收到 `BrokenBarrierException`。
 
-* 下列代码将创建 CyclicBarrier 并启动一组线程，每个线程将计算问题的一部分，等待所有其他线程结束之后，再检查解决方案是否达成一致。该例将使用 CyclicBarrier 变量，它允许注册 Runnable，在所有线程到达屏障但还没有释放任何线程时执行 Runnable，该Runnable在每个屏障点只执行一次。
+* 下列代码将创建 CyclicBarrier 并启动一组线程，每个线程在到达屏障点前会打印出自己的名字，等待其他线程到齐后，将执行CyclicBarrier绑定的Runnable，该Runnable在每个屏障点只执行一次。
 
-~~~
-class Solver { // Code sketch
-    void solve(final Problem p, int nThreads) {
-    final CyclicBarrier barrier =
-	    new CyclicBarrier(nThreads,
-	    new Runnable() {
-	    //检查解决方案是否一致
-        public void run() { p.checkConvergence(); }}
-    );
-    for (int i = 0; i < nThreads; ++i) {
-	    final int id = i;
-        Runnable worker = new Runnable() {
-        final Segment segment = p.createSegment(id);
-        public void run() {
-          try {
-            while (!p.converged()) {
-              segment.update();
-              barrier.await();
+~~~java
+    public static void main(String[] args){
+        Runnable ready = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("ready");
             }
-          }
-          catch(Exception e) { return; }
+        };
+
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(5, ready);
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        for (int i = 0; i < 5; i++) {
+            Runnable task = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        System.out.println(Thread.currentThread().getName());
+                        cyclicBarrier.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (BrokenBarrierException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            executor.submit(task);
         }
-      };
-      new Thread(worker).start();
-   }
-}
+        executor.shutdown();
+    }
 ~~~
 
 ##CountdownLatch
 
 * `CountdownLatch` 类与 CyclicBarrier 相似，因为它的角色是对已经在它们中间分摊了问题的一组线程进行协调。它也是使用整型变量构造的，指明计数的初始值，但是与 CyclicBarrier 不同的是，CountdownLatch 不能重新使用。
 
-* 其中，CyclicBarrier 是到达屏障的所有线程的大门，只有当所有线程都已经到达屏障或屏障被打破时，才允许这些线程通过。CountdownLatch 将到达和等待功能分离，任何线程都可以通过调用 countDown() 减少当前计数，这种方式不会阻塞线程，而只是减少计数。await() 方法的行为与 CyclicBarrier.await() 稍微有所不同，调用 await() 任何线程都会被阻塞，直到闩锁计数减少为零，在该点等待的所有线程才被释放，对 await() 的后续调用将立即返回。
+* 其中，CyclicBarrier 是到达屏障的所有线程的大门，只有当所有线程都已经到达屏障或屏障被打破时，才允许这些线程通过。CountdownLatch 将到达和等待功能分离，任何线程都可以通过调用 `countDown()` 减少当前计数，这种方式不会阻塞线程，而只是减少计数。`await()` 方法的行为与 CyclicBarrier.await() 稍微有所不同，调用 await() 任何线程都会被阻塞，直到闩锁计数减少为零，在该点等待的所有线程才被释放，对 await() 的后续调用将立即返回。
 
 *  当问题已经分解为许多部分，每个线程都被分配一部分计算时，CountdownLatch 非常有用。在工作线程结束时，它们将减少计数，协调线程可以在闩锁处等待当前这一批计算结束，然后继续移至下一批计算。
 
-~~~
-public static long time(Executor exe, int concurrency, final Runable action){
-	final CountDownLatch ready = new CountDownLatch(concurrency);
-	final CountDownLatch start = new CountDownLatch(1);
-	final CountDownLatch done = new CountDownLatch(concurrency);
-	for(int i=0; i<concurrency; i++){
-		exe.execute(new Runnable(){
-			public void run(){
-				ready.countDown();//
-				start.await();
-				action.run();
-				done.countDown();
-			}
-		});
-	}
-	ready.await();
-	long startNanos = System.nanoTime();
-	start.countDown();
-	down.await();
-	return System.nanoTime();
+~~~java
+public static void main(String[] args) throws InterruptedException {
+    int concurrency = 5;
+    ExecutorService executor = Executors.newCachedThreadPool();
+
+    final CountDownLatch ready = new CountDownLatch(concurrency);
+    final CountDownLatch start = new CountDownLatch(1);
+    final CountDownLatch done = new CountDownLatch(concurrency);
+    for(int i=0; i<concurrency; i++){
+        executor.execute(new Runnable(){
+            public void run(){
+                ready.countDown();
+                try {
+                    start.await();
+                    System.out.println(Thread.currentThread().getName() + "----done");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                done.countDown();
+            }
+        });
+    }
+    ready.await();
+    System.out.println("all threads are ready");
+    start.countDown();
+    done.await();
+    System.out.println("all threads finished");
+    executor.shutdown();
 }
 ~~~
 
 ##Exchanger
 
-* `Exchanger` 类方便了两个共同操作线程之间的双向交换；这样，就像具有计数为 2 的 CyclicBarrier，并且两个线程在都到达屏障时可以"交换"一些状态。（Exchanger 模式有时也称为聚集。）
+* `Exchanger` 类方便了两个共同操作线程之间的双向交换，就像具有计数为 2 的 CyclicBarrier，并且两个线程在都到达屏障时可以"交换"一些状态。（Exchanger 模式有时也称为聚集。）
 
 * Exchanger 通常用于一个线程填充缓冲（通过读取 socket），而另一个线程清空缓冲（通过处理从 socket 收到的命令）的情况。当两个线程在屏障处集合时，它们交换缓冲。
 
 * 下列代码说明了这项技术：
 
-~~~
-class FillAndEmpty {
-   Exchanger exchanger = new Exchanger();
-   DataBuffer initialEmptyBuffer = new DataBuffer();
-   DataBuffer initialFullBuffer = new DataBuffer();
-   class FillingLoop implements Runnable {
-     public void run() {
-       DataBuffer currentBuffer = initialEmptyBuffer;
-       try {
-         while (currentBuffer != null) {
-           addToBuffer(currentBuffer);
-           if (currentBuffer.full()){
-	           currentBuffer = exchanger.exchange(currentBuffer);
-           }
-         }
-       } catch (InterruptedException ex) { ... handle ... }
-     }
-   }
-   class EmptyingLoop implements Runnable {
-     public void run() {
-       DataBuffer currentBuffer = initialFullBuffer;
-       try {
-         while (currentBuffer != null) {
-           takeFromBuffer(currentBuffer);
-           if (currentBuffer.empty()){
-               currentBuffer = exchanger.exchange(currentBuffer);
-			}
-         }
-       } catch (InterruptedException ex) { ... handle ...}
-     }
-   }
-   void start() {
-     new Thread(new FillingLoop()).start();
-     new Thread(new EmptyingLoop()).start();
-   }
- }
+~~~java
+public static void main(String[] args){
+    Exchanger<String> exchanger = new Exchanger<>();
+    ExecutorService executor = Executors.newCachedThreadPool();
+
+    Runnable producer = new Runnable() {
+        @Override
+        public void run() {
+            for (int i = 0; i < 5; i++) {
+                try {
+                    String data = "produce";
+                    System.out.println(Thread.currentThread().getName() + "-offer----" + data);
+                    exchanger.exchange(data);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+
+    Runnable consumer = new Runnable() {
+        @Override
+        public void run() {
+            for (int i = 0; i < 5; i++) {
+                try {
+                    String data = exchanger.exchange(null);
+                    System.out.println(Thread.currentThread().getName() + "-get----" + data);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    };
+
+    executor.execute(producer);
+    executor.execute(consumer);
+    executor.shutdown();
+}
 ~~~
 
 #Lock工具
 
-* `Lock` 接口将内置监视器锁定的锁定行为普遍化，允许多个锁定实现，同时提供一些内置锁定缺少的功能，如计时的等待、可中断的等待、锁定轮询、每个锁定有多个条件等待集合以及无阻塞结构的锁定。
+* `Lock` 接口将内置监视器锁定的行为普遍化，允许多个锁定实现，同时提供一些内置锁定缺少的功能，如**计时**的等待、**可中断**的等待、锁定**轮询**、每个锁定有多个**条件**等待集合以及**无阻塞**结构的锁定。
 
-* java.util.concurrent.locks包提供了复杂的锁。锁对象作用非常类似同步代码使用的隐式锁。如同隐式锁，每次只有一个线程可以获得锁对象。通过关联Condition对象，锁对象也支持wait/notify机制。 锁对象之于隐式锁最大的优势在于，它们**有能力收回获取锁的尝试**（如果获取锁失败，将不会继续请求，以免发生死锁）。如果当前锁对象不可用，或者锁请求超时（如果超时时间已指定），tryLock方法会收回获取锁的请求。如果在锁获取前，另一个线程发送了一个中断，lockInterruptibly方法也会收回获取锁的请求。
+* java.util.concurrent.`locks`包提供了复杂的锁, 锁对象作用非常类似同步代码使用的隐式锁, 每次只有一个线程可以获得锁对象。通过关联`Condition`对象，锁对象也支持`wait/notify`机制。
+
+* 锁对象之于隐式锁最大的优势在于，它们**有能力收回获取锁的尝试**（如果获取锁失败，将不会继续请求，以免发生死锁）。如果当前锁对象不可用，或者锁请求超时（如果超时时间已指定），`tryLock`方法会收回获取锁的请求。如果在锁获取前，另一个线程发送了一个中断，`lockInterruptibly`方法也会收回获取锁的请求。
 
 
 ##ReentrantLock
@@ -457,7 +472,9 @@ class FillAndEmpty {
 
 * 在竞争条件下，ReentrantLock 的实现要比现在的 synchronized 实现更具有可伸缩性。这意味着当许多线程都竞争相同锁定时，使用 ReentrantLock 的吞吐量通常要比 synchronized 好。
 
-*  虽然 ReentrantLock 类有许多优点，但是与同步相比，它有一个主要**缺点** -- 它可能忘记释放锁定。建议当获得和释放 ReentrantLock 时使用下列结构：
+* 虽然 ReentrantLock 类有许多优点，但是与同步相比，它有一个主要**缺点** -- 它可能忘记释放锁定。因为锁定失误（忘记释放锁定）的风险，所以对于基本锁定，强烈建议继续使用 synchronized，除非真的需要 ReentrantLock 额外的灵活性和可伸缩性。
+
+* 建议当获得和释放 ReentrantLock 时使用下列结构：
 
 ~~~
 Lock lock = new ReentrantLock();
@@ -474,25 +491,31 @@ finally {
 }
 ~~~
 
-因为锁定失误（忘记释放锁定）的风险，所以对于基本锁定，强烈建议继续使用 synchronized，除非真的需要 ReentrantLock 额外的灵活性和可伸缩性。
+
 
 ##Condition
 
-就像 Lock 接口是同步的具体化，`Condition` 接口是 Object 中 wait() 和 notify() 方法的具体化。Lock 中的一个方法是 `newCondition()`，它要求该锁定返回新的 Condition 对象限制。`await()`、`signal()` 和 `signalAll()` 方法类似于 wait()、notify() 和 notifyAll()，但增加了灵活性，每个 Lock 都可以创建多个条件变量。这简化了一些并发算法的实现。
+* 就像 Lock 接口是同步的具体化，`Condition` 接口是 Object 中 wait() 和 notify() 方法的具体化。Lock 中的一个方法是 `newCondition()`，它要求该锁定返回新的 Condition 对象限制。
+
+* `await()`、`signal()` 和 `signalAll()` 方法类似于 wait()、notify() 和 notifyAll()，但增加了灵活性，每个 Lock 都可以创建多个条件变量。这简化了一些并发算法的实现。
 
 ##ReadWriteLock
 
-ReentrantLock 实现的锁定规则非常简单 -- 每当一个线程具有锁定时，其他线程必须等待，直到该锁定可用。有时，当对数据结构的读取通常多于修改时，可以使用更复杂的称为读写锁定的锁定结构，它允许有多个并发读者，同时还允许一个写入者独占锁定。该方法在一般情况下（只读）提供了更大的并发性，同时在必要时仍提供独占访问的安全性。`ReadWriteLock` 接口和 `ReentrantReadWriteLock` 类提供这种功能 -- **多读者**、**单写入**者锁定规则，可以用这种功能来保护共享的易变资源。
+* ReentrantLock 实现的锁定规则非常简单 -- 每当一个线程具有锁定时，其他线程必须等待，直到该锁定可用。
+
+* 有时，当对数据结构的读取通常多于修改时，可以使用更复杂的称为读写锁定的锁定结构，它允许有多个并发读者，同时还允许一个写入者独占锁定。该方法在一般情况下（只读）提供了更大的并发性，同时在必要时仍提供独占访问的安全性。
+
+* `ReadWriteLock` 接口和 `ReentrantReadWriteLock` 类提供这种功能 -- **多读者**、**单写入**者锁定规则，可以用这种功能来保护共享的易变资源。
 
 #原子变量
 
-* java.util.concurrent.atomic包定义了对单一变量进行原子操作的类。所有的类都提供了`get`和`set`方法，可以使用它们像读写`volatile`变量一样读写原子类。就是说，同一变量上的一个set操作对于任意后续的get操作存在happens-before关系。原子的`compareAndSet`方法也有内存一致性特点，就像应用到整型原子变量中的简单原子算法。
+* java.util.concurrent.`atomic`包定义了对单一变量进行原子操作的类。所有的类都提供了`get`和`set`方法，可以使用它们像读写`volatile`变量一样读写原子类。就是说，同一变量上的一个set操作对于任意后续的get操作存在happens-before关系。原子的`compareAndSet`方法也有内存一致性特点，就像应用到整型原子变量中的简单原子算法。
 
-* 即使大多数用户将很少直接使用它们，原子变量类（`AtomicInteger`、`AtomicLong`、<br/>`AtomicReference` 等等）也有充分理由是最显著的新并发类。这些类公开对 JVM 的低级别改进，允许进行具有高度可伸缩性的**原子读-修改-写操作**。大多数现代 CPU 都有原子读-修改-写的原语，比如比较并交换（CAS）或加载链接/条件存储（LL/SC）。原子变量类使用硬件提供的最快的并发结构来实现。
+* 即使大多数用户将很少直接使用它们，原子变量类（`AtomicInteger`、`AtomicLong`、`AtomicReference` 等等）也有充分理由是最显著的新并发类。这些类公开对 JVM 的低级别改进，允许进行具有高度可伸缩性的**原子读-修改-写操作**。大多数现代 CPU 都有原子读-修改-写的原语，比如比较并交换（CAS）或加载链接/条件存储（LL/SC）。原子变量类使用硬件提供的最快的并发结构来实现。
 
 * 几乎 java.util.concurrent 中的所有类都是在 `ReentrantLock` 之上构建的，ReentrantLock 则是在**原子变量类**的基础上构建的。所以，虽然仅少数并发专家使用原子变量类，但 java.util.concurrent 类的很多可伸缩性改进都是由它们提供的。
 
-* 原子变量主要用于为原子地更新"热"字段提供有效的、细粒度的方式，"热"字段是指由多个线程频繁访问和更新的字段。另外，原子变量还是计数器或生成序号的自然机制。
+* 原子变量主要用于为原子地更新 "热" 字段提供有效的、细粒度的方式， "热" 字段是指由多个线程频繁访问和更新的字段。另外，原子变量还是计数器或生成序号的自然机制。
 
 #并发随机数
 
@@ -500,11 +523,13 @@ ReentrantLock 实现的锁定规则非常简单 -- 每当一个线程具有锁�
 
 * 对于并发访问，使用TheadLocalRandom代替Math.random()可以减少竞争，从而获得更好的性能。
 
-* 只需调用ThreadLocalRandom.current()， 然后调用它的其中一个方法去获取一个随机数即可。
+* 只需调用ThreadLocalRandom.`current()`， 然后调用它的其中一个方法去获取一个随机数即可。
 
 #性能与可伸缩性
 
-* **性能**是"**可以快速执行此任务的程度**"的评测。**可伸缩性**描述应用程序的**吞吐量如何表现为它的工作量和可用计算资源增加**。可伸缩的程序可以按比例使用更多的处理器、内存或 I/O 带宽来处理更多个工作量。当我们在并发环境中谈论可伸缩性时，我们是在问当许多线程同时访问给定类时，这个类的执行情况。
+* **性能**是 "**可以快速执行此任务的程度**" 的评测。**可伸缩性**描述应用程序的**吞吐量如何表现为它的工作量和可用计算资源增加**。
+
+* 可伸缩的程序可以按比例使用更多的处理器、内存或 I/O 带宽来处理更多个工作量。当我们在并发环境中谈论可伸缩性时，我们是在问当许多线程同时访问给定类时，这个类的执行情况。
 
 * java.util.concurrent 中的低级别类 ReentrantLock 和原子变量类的可伸缩性要比内置监视器（同步）锁定高得多。因此，使用 ReentrantLock 或原子变量类来协调共享访问的类也可能更具有可伸缩性。
 
