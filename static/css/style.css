@@ -403,5 +403,9 @@ blockquote:last-child {
     word-break: keep-all;
 }
 
+.rectangle{
+	border-radius: 0px;
+}
+
 #markdown-toc a:link {text-decoration: none;}
 #markdown-toc a:visited{color: #D27504}
