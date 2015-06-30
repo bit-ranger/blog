@@ -36,7 +36,7 @@ layout: default
 						<span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
 						</h2>
 					  </a>
-					  <p>{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 240 }}{% endif %}</p>
+					  <p>{% if post.excerpt %}{{ post.excerpt | strip_html | strip_newlines | truncate: 240 }}{% endif %}</p>
 				  </article>
                 {% endif %}
               {% endfor %}
