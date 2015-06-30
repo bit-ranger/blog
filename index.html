@@ -13,7 +13,7 @@ layout: default
       </div>
       <div class="post-list-body">
         
-        <div class="all-posts" post-cate="All">
+        <div post-cate="All">
           {% for post in site.posts %}
 			<article class="module">
 				<a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
