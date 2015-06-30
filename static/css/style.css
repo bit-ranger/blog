@@ -107,7 +107,11 @@ nav{
 }
 
 .post-list-item p{
-    color: #666
+    color: #a3a3a3;
+}
+
+.post-list-item:hover h3{
+    color: #0666c5;
 }
 
 /* categories list */
