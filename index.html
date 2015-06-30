@@ -15,7 +15,7 @@ layout: default
         
         <div post-cate="All">
           {% for post in site.posts %}
-			<article class="module">
+			<div class="module">
 				<a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
 				  <h2>
 				  {{ post.title }}
@@ -23,7 +23,7 @@ layout: default
 				  </h2>
 				</a>
 				<p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
-			</article>
+			</div>
           {% endfor %}
         </div>
         <!-- <div class="posts-in-categories"> -->
@@ -32,7 +32,7 @@ layout: default
             {% for posts in category  %}
               {% for post in posts %}
                 {% if post.url %}
-				  <article class="module">
+				  <div class="module">
 					  <a class="post-list-item" href="{{ post.url }}">
 						<h2>
 						{{ post.title }}
@@ -40,7 +40,7 @@ layout: default
 						</h2>
 					  </a>
 					  <p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
-				  </article>
+				  </div>
                 {% endif %}
               {% endfor %}
             {% endfor %}
