@@ -110,6 +110,10 @@ nav{
     color: #a3a3a3;
 }
 
+.post-list-item h3{
+    font-size: 26px;
+}
+
 .post-list-item:hover h3{
     color: #0666c5;
 }
