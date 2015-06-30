@@ -15,12 +15,15 @@ layout: default
         
         <div class="all-posts" post-cate="All">
           {% for post in site.posts %}
-            <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
-              <h2>
-              {{ post.title }}
-              <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
-              </h2>
-            </a>
+			<article class="module">
+				<a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
+				  <h2>
+				  {{ post.title }}
+				  <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
+				  </h2>
+				</a>
+				<p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
+			</article>
           {% endfor %}
         </div>
         <!-- <div class="posts-in-categories"> -->
@@ -30,13 +33,13 @@ layout: default
               {% for post in posts %}
                 {% if post.url %}
 				  <article class="module">
-					  <a href="{{ post.url }}" class="post-list-item">
+					  <a class="post-list-item" href="{{ post.url }}">
 						<h2>
 						{{ post.title }}
 						<span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
 						</h2>
 					  </a>
-					  <p>{% if post.excerpt %}{{ post.excerpt | strip_html | strip_newlines | truncate: 240 }}{% endif %}</p>
+					  <p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
 				  </article>
                 {% endif %}
               {% endfor %}
