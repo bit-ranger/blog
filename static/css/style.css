@@ -130,13 +130,17 @@ nav{
 	-webkit-transition:0.4s ease;
 	-moz-transition:0.4s ease;
 	-o-transition:0.4s ease;
+	
+	background: #34495e;
+	color: #ffffff;
+	margin-bottom: 0.2em;
 }
 .categories-list-item:last-of-type{
 	border-bottom:none; 
 }
 .categories-list-item:hover{
 	background-color: rgba(0,0,10,0.075);
-	color: #983;
+	color: #34495e;
 }
 .categories-list-item .my-badge{
 	font-size: 12px;
