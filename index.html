@@ -16,7 +16,7 @@ layout: default
 				  <h3>
 				  {{ post.title }}
 				  </h3>
-                  <p>{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
+                  <p class="hidden-xs">{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
                   <span class="small pull-right">{{ post.date | date: "%b %-d, %Y" }}</span>
 			</div>
             </a>
@@ -33,7 +33,7 @@ layout: default
 						<h3>
 						{{ post.title }}
 						</h3>
-					    <p>{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
+					    <p  class="hidden-xs">{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
                         <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
 				    </div>
                   </a>
