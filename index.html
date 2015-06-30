@@ -17,7 +17,7 @@ layout: default
 				  {{ post.title }}
 				  <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
 				  </h3>
-				<p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
+                  <p>{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
 			</div>
             </a>
           {% endfor %}
@@ -28,15 +28,15 @@ layout: default
             {% for posts in category  %}
               {% for post in posts %}
                 {% if post.url %}
-				  <div class="module">
-					  <a class="post-list-item" href="{{ post.url }}">
-						<h2>
+                  <a class="post-list-item" href="{{ post.url }}">
+				    <div class="module">
+						<h3>
 						{{ post.title }}
 						<span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
-						</h2>
-					  </a>
-					  <p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
-				  </div>
+						</h3>
+					    <p>{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
+				    </div>
+                  </a>
                 {% endif %}
               {% endfor %}
             {% endfor %}
