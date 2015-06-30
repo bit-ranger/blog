@@ -40,10 +40,8 @@ table td{
 }
 
 
-.index a:link {color: #005;text-decoration: none}		/* 未访问的链接 */
-.index a:visited {color: #735b3e}	/* 已访问的链接 */
-.index a:hover {color: #336;}	/* 鼠标移动到链接上 */
-.index a:active {color: #99b}	/* 选定的链接 */
+.index a:link {text-decoration: none}		/* 未访问的链接 */
+
 
 /* navbar */
 nav{
@@ -57,6 +55,7 @@ nav{
 .navbar-nav li{
 	text-align: left;
 }
+
 
 /* index main */
 .main{
@@ -78,8 +77,7 @@ nav{
 	font-weight: bold;
 }
 .post-list-item{
-	display: block;
-	padding:8px 30px 10px 30px; 
+	padding:6px 0px 8px 0px;
 	border-bottom:1px solid #ddd;
 
 	transition:0.4s ease; 
@@ -90,14 +88,13 @@ nav{
 .post-list-item:last-of-type{
 	border-bottom: none;
 }
-.post-list-item h2{
-	font-size: 26px;
-	margin: 8px 0 8px 0;
-	padding: 0;
+
+.post-list-item:hover .module{
+    background-color: rgba(0,0,10,0.075);
 }
 
-.post-list-item:hover{
-	background-color: rgba(0,0,6,0.05);
+.post-list-item h3 {
+    color: #428bca;
 }
 
 .module {
@@ -106,10 +103,15 @@ nav{
 	width: 100%;
 	overflow: hidden;
 	padding: 1.5em;
-	color: #212121;
-	background: #f8f8fd;
 	margin-top: 0.5em;
 	border-bottom: 2px solid #b1b1b1;
+
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    color: #212121;
+    background: #f8f8fd;
 }
 
 
@@ -120,20 +122,35 @@ nav{
 	border-bottom: 1px solid #c0c0c0;
 	font-size: 16px;
 	font-weight: bold;
+
+    background-color:#f8f8fd;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
 }
 .categories-list-item{
-	display: block;
-	padding:8px 15px; 
-	border-bottom:1px solid #ddd; 
+    display: block;
+    border-bottom: 2px solid #b1b1b1;
 
 	transition:0.4s ease;
 	-webkit-transition:0.4s ease;
 	-moz-transition:0.4s ease;
 	-o-transition:0.4s ease;
 	
-	background: #34495e;
-	color: #ffffff;
-	margin-bottom: 0.2em;
+	background: #f8f8fd;
+	margin-top: 0.5em;
+
+    padding:25px 25px 25px 25px;
+
+    font-size: 20px;
+    font-weight: 500;
+
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+
 }
 .categories-list-item:last-of-type{
 	border-bottom:none; 
@@ -165,55 +182,12 @@ nav{
 
 /* shadow */
 .shadow-corner-curl{
-	
+
 	position: relative;
-	background-color:#f8f8fd; 
 	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	-o-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
-}
-.shadow-corner-curl:before{
-	content:"";
-	position: absolute;
-	z-index: -5;
-	width: 70%;
-	height:70%;
-	left: 9%;
-	bottom: 2%;
-	background: transparent;
-	-webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-	-moz-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-	-o-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-	box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-
-	/* 向左倾斜12度，再旋转4度 */
-	-webkit-transform:skew(-11deg) rotate(-4deg);
-	-moz-transform:skew(-11deg) rotate(-4deg);
-	-o-transform:skew(-11deg) rotate(-4deg);
-	-ms-transform:skew(-11deg) rotate(-4deg);
-	transform:skew(-11deg) rotate(-4deg);
-}
-.shadow-corner-curl:after{
-	content:"";
-	position: absolute;
-	z-index: -5;
-	width: 70%;
-	height:70%;
-	right: 9%;
-	bottom: 2%;
-	background: transparent;
-	-webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-	-moz-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-	-o-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-	box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-
-	/* 向左倾斜12度，再旋转4度 */
-	-webkit-transform:skew(11deg) rotate(4deg);
-	-moz-transform:skew(11deg) rotate(4deg);
-	-o-transform:skew(11deg) rotate(4deg);
-	-ms-transform:skew(11deg) rotate(4deg);
-	transform:skew(11deg) rotate(4deg);
 }
 
 /* footer */

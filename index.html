@@ -4,10 +4,6 @@ layout: default
 <div class="row index">
   <div class="col-sm-9">
     <div class="post-area">
-      <!-- small button -->
-     <!--  <p class="pull-right visible-xs">
-       <button>toggle</button>
-     </p> -->
       <div class="post-list-header">
           <span class="mega-octicon octicon-book"></span>&nbsp;&nbsp;Posts
       </div>
@@ -15,15 +11,15 @@ layout: default
         
         <div post-cate="All">
           {% for post in site.posts %}
-			<div class="module">
-				<a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
-				  <h2>
+            <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
+			    <div class="module">
+				  <h3>
 				  {{ post.title }}
 				  <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
-				  </h2>
-				</a>
+				  </h3>
 				<p>{{ post.content | strip_html | strip_newlines | truncate: 240 }}</p>
 			</div>
+            </a>
           {% endfor %}
         </div>
         <!-- <div class="posts-in-categories"> -->
