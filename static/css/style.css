@@ -91,14 +91,24 @@ nav{
 	border-bottom: none;
 }
 .post-list-item h2{
-	font-size: 20px;
 	margin: 8px 0 8px 0;
 	padding: 0;
 }
 
 .post-list-item:hover{
 	background-color: rgba(0,0,6,0.05);
-	
+}
+
+.module {
+	position: relative;
+	float: left;
+	width: 100%;
+	overflow: hidden;
+	padding: 1.5em;
+	color: #212121;
+	background: #f8f8fd;
+	margin-top: 0.5em;
+	border-bottom: 2px solid #b1b1b1;
 }
 
 
