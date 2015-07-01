@@ -79,11 +79,11 @@ function enlargement(){
 		wrap.href = e.attr("src");
 		e.wrap(wrap);
 		e.parent().imgbox({
-			'speedIn'		: 0,
-			'speedOut'		: 0,
-			'alignment'		: 'center',
-			'overlayShow'	: true,
-			'allowMultiple'	: false
+		  alignment: 'auto',
+		  overlayShow: false,
+		  hideOnContentClick: true,
+		  slideshow: false,
+		  theme: 'dark'
 		});
 	});
 }
