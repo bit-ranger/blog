@@ -91,9 +91,8 @@ function enlargement(){
 /**
  * 多说
  */
+var duoshuoQuery = {short_name:"rainynight"};
 function duoshuoQuery(){
-	var duoshuoQuery = {short_name:"rainynight"};
-
 	var ds = document.createElement('script');
 	ds.type = 'text/javascript';
 	ds.async = true;
