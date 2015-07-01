@@ -80,7 +80,7 @@ function enlargement(){
 		wrap.href = e.attr("src");
 		e.wrap(wrap);
 	});
-	$("img-box-item-wrap").imgbox({
+	$(".img-box-item-wrap").imgbox({
 	  alignment: 'auto',
 	  overlayShow: false,
 	  hideOnContentClick: true,
