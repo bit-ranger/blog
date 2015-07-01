@@ -78,7 +78,7 @@ function enlargement(){
 		var wrap = document.createElement("a"); 
 		wrap.href = e.attr("src");
 		e.wrap(wrap);
-		$(wrap).imgbox({
+		e.parent().imgbox({
 			'speedIn'		: 0,
 			'speedOut'		: 0,
 			'alignment'		: 'center',
