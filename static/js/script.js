@@ -76,15 +76,16 @@ function enlargement(){
 	$(".post article img").each(function(i,e){
 		e = $(e);
 		var wrap = document.createElement("a"); 
+		wrap.class = "img-box-item-wrap";
 		wrap.href = e.attr("src");
 		e.wrap(wrap);
-		e.parent().imgbox({
-		  alignment: 'auto',
-		  overlayShow: false,
-		  hideOnContentClick: true,
-		  slideshow: false,
-		  theme: 'dark'
-		});
+	});
+	$("img-box-item-wrap").imgbox({
+	  alignment: 'auto',
+	  overlayShow: false,
+	  hideOnContentClick: true,
+	  slideshow: false,
+	  theme: 'dark'
 	});
 }
 
