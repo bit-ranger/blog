@@ -8,8 +8,9 @@ $(document).ready(function() {
     categoryDisplay();
     generateContent();
     backToTop();
+	enlargement();
+	duoshuoQuery();
 });
-
 
 /**
  * 分类展示
@@ -66,4 +67,51 @@ function generateContent() {
     } else {
         $(".content-navigation .content-navigation-text").html("<ul>" + $("#markdown-toc").html() + "</ul>");
     }
+}
+
+/**
+ * 图片放大
+ */
+function enlargement(){
+	$(".post article img").each(function(i,e){
+		e = $(e);
+		var wrap = document.createElement("a"); 
+		wrap.href = e.attr("src");
+		e.wrap(wrap);
+		e.parent().imgbox({
+			'speedIn'		: 0,
+			'speedOut'		: 0,
+			'alignment'		: 'center',
+			'overlayShow'	: true,
+			'allowMultiple'	: false
+		});
+	});
+}
+
+/**
+ * 多说
+ */
+function duoshuoQuery(){
+	var duoshuoQuery = {short_name:"rainynight"};
+
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';
+	ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+}
+
+//每次在有DOM插入时触发
+$(document).bind('DOMNodeInserted', function(event) {
+  addBlankTargetForLinks();
+});
+
+/**
+ * 在新窗口中打开
+ */
+function addBlankTargetForLinks() {
+  $('a[href^="http"]').each(function(){
+	  $(this).attr('target', '_blank');
+  });
 }
