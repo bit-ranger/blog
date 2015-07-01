@@ -100,7 +100,4 @@ function duoshuoQueryFunction(){
 	ds.charset = 'UTF-8';
 	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
 }
-  $('a[href^="http"]').each(function(){
-	  $(this).attr('target', '_blank');
-  });
 }
