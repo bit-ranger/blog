@@ -76,7 +76,7 @@ function enlargement(){
 	$(".post article img").each(function(i,e){
 		e = $(e);
 		var wrap = document.createElement("a"); 
-		wrap.class = "img-box-item-wrap";
+		wrap.className = "img-box-item-wrap";
 		wrap.href = e.attr("src");
 		e.wrap(wrap);
 	});
