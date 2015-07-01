@@ -8,7 +8,6 @@ $(document).ready(function() {
     categoryDisplay();
     generateContent();
     backToTop();
-	enlargement();
 	duoshuoQueryFunction();
 });
 
@@ -67,26 +66,6 @@ function generateContent() {
     } else {
         $(".content-navigation .content-navigation-text").html("<ul>" + $("#markdown-toc").html() + "</ul>");
     }
-}
-
-/**
- * 图片放大
- */
-function enlargement(){
-	$(".post article img").each(function(i,e){
-		e = $(e);
-		var wrap = document.createElement("a"); 
-		wrap.className = "img-box-item-wrap";
-		wrap.href = e.attr("src");
-		e.wrap(wrap);
-	});
-	$(".img-box-item-wrap").imgbox({
-	  alignment: 'auto',
-	  overlayShow: false,
-	  hideOnContentClick: true,
-	  slideshow: false,
-	  theme: 'dark'
-	});
 }
 
 /**
