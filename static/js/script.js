@@ -3,7 +3,7 @@
  */
 $(document).ready(function() {
 
-    console.log("你不乖哦，你想做什么，彼此之间留点神秘感不好吗？");
+    console.log("你不乖哦，彼此之间留点神秘感不好吗？");
 
     categoryDisplay();
     generateContent();
@@ -78,7 +78,7 @@ function enlargement(){
 		var wrap = document.createElement("a"); 
 		wrap.href = e.attr("src");
 		e.wrap(wrap);
-		e.parent().imgbox({
+		wrap.imgbox({
 			'speedIn'		: 0,
 			'speedOut'		: 0,
 			'alignment'		: 'center',
@@ -99,4 +99,8 @@ function duoshuoQueryFunction(){
 	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
 	ds.charset = 'UTF-8';
 	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+}
+  $('a[href^="http"]').each(function(){
+	  $(this).attr('target', '_blank');
+  });
 }
