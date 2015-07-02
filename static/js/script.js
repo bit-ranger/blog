@@ -5,29 +5,15 @@ $(document).ready(function() {
 
     console.log("你不乖哦，彼此之间留点神秘感不好吗？");
 
-    categoryDisplay();
-    generateContent();
+    hljs.initHighlightingOnLoad();
     backToTop();
-	duoshuoQueryFunction();
+    categoryDisplay();
+    duoshuoQueryFunction();
+    generateContent();
+    share();
 });
 
-/**
- * 分类展示
- * 点击右侧的分类展示时
- * 左侧的相关裂变展开或者收起
- * @return {[type]} [description]
- */
-function categoryDisplay() {
-    /*only show All*/
-    $('.post-list-body>div[post-cate!=All]').hide();
-    /*show category when click categories list*/
-    $('.categories-list-item').click(function() {
-        var cate = $(this).attr('cate'); //get category's name
 
-        $('.post-list-body>div[post-cate!=' + cate + ']').hide(250);
-        $('.post-list-body>div[post-cate=' + cate + ']').show(400);
-    });
-}
 
 /**
  * 回到顶部
@@ -54,6 +40,36 @@ function backToTop() {
     });
 }
 
+/**
+ * 分类展示
+ * 点击右侧的分类展示时
+ * 左侧的相关裂变展开或者收起
+ * @return {[type]} [description]
+ */
+function categoryDisplay() {
+    /*only show All*/
+    $('.post-list-body>div[post-cate!=All]').hide();
+    /*show category when click categories list*/
+    $('.categories-list-item').click(function() {
+        var cate = $(this).attr('cate'); //get category's name
+
+        $('.post-list-body>div[post-cate!=' + cate + ']').hide(250);
+        $('.post-list-body>div[post-cate=' + cate + ']').show(400);
+    });
+}
+
+/**
+ * 多说
+ */
+function duoshuoQueryFunction(){
+    window.duoshuoQuery = {short_name:"rainynight"};
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';
+	ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	document.body.appendChild(ds);
+}
 
 /**
  * 侧边目录
@@ -68,15 +84,7 @@ function generateContent() {
     }
 }
 
-/**
- * 多说
- */
-function duoshuoQueryFunction(){
-	duoshuoQuery = {short_name:"rainynight"};
-	var ds = document.createElement('script');
-	ds.type = 'text/javascript';
-	ds.async = true;
-	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-	ds.charset = 'UTF-8';
-	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+function share(){
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};
+    with(document)0[body.appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 }
