@@ -333,6 +333,7 @@ blockquote:last-child {
 
 .content-navigation{
 	max-width: 292px;
+    display: none;
 }
 .content-navigation .content-navigation-text{
 	padding: 10px 0; 

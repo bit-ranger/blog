@@ -8,7 +8,6 @@ layout: default
           <span class="mega-octicon octicon-book"></span>&nbsp;&nbsp;Posts
       </div>
       <div class="post-list-body">
-        
         <div post-cate="All">
           {% for post in site.posts %}
             <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
@@ -22,7 +21,6 @@ layout: default
             </a>
           {% endfor %}
         </div>
-        <!-- <div class="posts-in-categories"> -->
         {% for category in site.categories %}
           <div post-cate="{{category | first}}">
             {% for posts in category  %}
@@ -42,8 +40,6 @@ layout: default
             {% endfor %}
           </div>
         {% endfor %}
-        
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -52,7 +48,6 @@ layout: default
       <div class="categories-list-header">
           <span class="octicon octicon-git-branch"></span>&nbsp;&nbsp;Categories
       </div>
-      
       <a href="javascript:;" class="categories-list-item" cate="All">
         All<span class="my-badge"> {{site.posts | size}}</span>
       </a>
