@@ -1,7 +1,13 @@
-/**
- * Reset some basic elements
- */
-/* commom */
+.navbar-inverse {
+    background-color: #333;
+    border-color: #333;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #000;
+}
+
+
 body {
 	background-image: url(http://7u2qnl.com1.z0.glb.clouddn.com/bg-canvas_bg.jpg);
     font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
