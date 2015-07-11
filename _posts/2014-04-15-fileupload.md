@@ -236,18 +236,11 @@ public int read(byte[] b, int off, int len) throws IOException {
 
 
 
-[http-get]: http://7u2qnl.com1.z0.glb.clouddn.com/http-get.png?attname=&e=1435057247&token=gOzQwb15i_9w_EU6bG5r6DVyTIKfB-x9c6kjkszL:BlNSc6KXunF0n6GN4bTeRKu7CD8
-
-[http-post]:http://7u2qnl.com1.z0.glb.clouddn.com/http-post.png?attname=&e=1435057247&token=gOzQwb15i_9w_EU6bG5r6DVyTIKfB-x9c6kjkszL:55eJnGKL4oXosG3NQScnAlzneNg
-
-[boundary-A]:http://7u2qnl.com1.z0.glb.clouddn.com/boundary-A.png?attname=&e=1435057127&token=gOzQwb15i_9w_EU6bG5r6DVyTIKfB-x9c6kjkszL:umwdzCTZntg7vC_bH-V-2fQvGlc
-
-[boundary-B]:http://7u2qnl.com1.z0.glb.clouddn.com/boundary-B.png?attname=&e=1435057247&token=gOzQwb15i_9w_EU6bG5r6DVyTIKfB-x9c6kjkszL:oeKhvjksprDomsAw4b2GgN1hOjI
-
-[pad]:http://7u2qnl.com1.z0.glb.clouddn.com/boundary-C.png?attname=&e=1435063163&token=gOzQwb15i_9w_EU6bG5r6DVyTIKfB-x9c6kjkszL:CBKY_iCsjzn35rGRP1eBTp-_0fo
-
-[github]:https://github.com/dubuyuye/fileupload/releases
-
-[use]:https://github.com/dubuyuye/fileupload
-
-[commons-fileupload]:https://github.com/apache/commons-fileupload
+[http-get]: {{"/http-get.png" | prepend: site.imgrepo }}
+[http-post]: {{"/http-post.png" | prepend: site.imgrepo }}
+[boundary-A]: {{"/boundary-A.png" | prepend: site.imgrepo }}
+[boundary-B]: {{"/boundary-B.png" | prepend: site.imgrepo }}
+[pad]: {{"/boundary-C.png" | prepend: site.imgrepo }}
+[github]: https://github.com/dubuyuye/fileupload/releases
+[use]: https://github.com/dubuyuye/fileupload
+[commons-fileupload]: https://github.com/apache/commons-fileupload

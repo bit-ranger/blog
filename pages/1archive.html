@@ -265,7 +265,7 @@ icon: octicon-repo
 {% for post in site.posts  %}
     <div class="cd-timeline-block" id="{{ post.date | date: '%Y-%m-%d' }}">
         <div class="cd-timeline-img cd-picture">
-            <img src="http://www.helloweba.com/demo/v_timeline/img/cd-icon-picture.svg" alt="Picture">
+            <img src="{{ '/icon-picture.svg' | prepend: site.imgrepo }}" alt="Picture">
         </div>
 
         <div class="cd-timeline-content">

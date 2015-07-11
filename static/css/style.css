@@ -23,6 +23,7 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 
 .main{
     min-height: 100%;
+    padding-bottom: 130px;
 }
 
 pre{
@@ -181,7 +182,7 @@ table td{
 footer{
 	min-height: 50px;
 	line-height: 50px;
-	margin-top: 80px;
+	margin-top: -50px;
 	background: #3f4850;
 	color: #aaa;
 	text-align: center;
