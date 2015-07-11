@@ -7,5 +7,5 @@ email: "dubuyuye@yeah.net"
 description: "Born to Die"
 github_username:  "dubuyuye"
 
-#imgrepo: "http://blog.rainynight.top/static/img"
-imgrepo: "http://127.0.0.1:4000/static/img"
+imgrepo: "http://blog.rainynight.top/static/img"
+#imgrepo: "http://127.0.0.1:4000/static/img"
