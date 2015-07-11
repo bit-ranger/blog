@@ -43,10 +43,12 @@ layout: default
                   <a class="post-list-item-readmore" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
                   <div class="post-list-item-footer">
                       {% for tag in post.tags %}
-                      <a href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                      <a class="word-keep" href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
                       {% endfor %}
-                      <a class="pull-right" href="{{ post.url | prepend: site.baseurl }}#post-share"><span class="octicon octicon-file-symlink-file"></span>&nbsp;Share</a>
-                      <a class="pull-right" href="{{ post.url | prepend: site.baseurl }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;Comment</a>
+                      <span class="word-keep pull-right">
+                          <a href="{{ post.url | prepend: site.baseurl }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;Comment</a>
+                          <a href="{{ post.url | prepend: site.baseurl }}#post-share"><span class="octicon octicon-file-symlink-file"></span>&nbsp;Share</a>
+                      </span>
                   </div>
                 </div>
             </div>

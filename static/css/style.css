@@ -147,11 +147,9 @@ table td{
 .post-list-item-footer a{
     color: #999;
     text-decoration: none;
-    margin-left: 15px;
+    margin-right: 15px;
 }
-.post-list-item-footer a:first-of-type{
-    margin-left: auto;
-}
+
 .post-list-item-tag{
     float: left;
     margin-right: 10px;
