@@ -61,7 +61,7 @@ function categoryDisplay() {
     $('.post-list-body>div[post-cate!=All]').hide();
     $('.categories-list-item').click(function() {
         var cate = $(this).attr('cate'); //get category's name
-        $('.post-list-body>div[post-cate!=' + cate + ']').hide();
+        $('.post-list-body>div[post-cate!=' + cate + ']').hide(200);
         $('.post-list-body>div[post-cate=' + cate + ']').show(200);
     });
 }

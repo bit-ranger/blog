@@ -2,60 +2,87 @@
 layout: default
 ---
 <div class="row index">
-  <div class="col-sm-9">
-    <div class="post-area">
-      <div class="post-list-header">
-          <span class="mega-octicon octicon-book"></span>&nbsp;&nbsp;Posts
+
+
+  <div class="post-list-container col-sm-10 col-sm-offset-1">
+
+      <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <span class="octicon octicon-list-unordered"></span>&nbsp;Categories
+              <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li>
+                  <a href="javascript:void(0);" class="categories-list-item" cate="All">
+                      All&nbsp;<span class="my-badge"> {{site.posts | size}}</span>
+                  </a>
+              </li>
+              {% for category in site.categories %}
+              <li>
+                  <a href="javascript:void(0);" class="categories-list-item" cate="{{ category | first }}">
+                      {{ category | first }}&nbsp;<span class="my-badge">{{ category | last | size }}</span>
+                  </a>
+              </li>
+
+              {% endfor %}
+          </ul>
       </div>
+
       <div class="post-list-body">
         <div post-cate="All">
           {% for post in site.posts %}
-            <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
-			    <div class="module">
-				  <h3>
-				  {{ post.title }}
-				  </h3>
-                  <p class="hidden-xs">{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
-                  <span class="small pull-right">{{ post.date | date: "%b %-d, %Y" }}</span>
-			</div>
-            </a>
+            <div class="post-list-item">
+                <div>
+                    <a class="post-list-item-date" href="{{ site.baseurl }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
+                </div>
+                <div class="post-list-item-module">
+                  <a class="post-list-item-title" href="{{ post.url | prepend: site.baseurl }}">
+                      {{ post.title }}
+                  </a>
+                  <p>{% if post.excerpt.size > 32 %}{{ post.excerpt | strip_html | strip_newlines | truncate: 256 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 256 }}{% endif %}</p>
+                  <a class="post-list-item-readmore" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
+                  <div class="post-list-item-footer">
+                      {% for tag in post.tags %}
+                      <a href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                      {% endfor %}
+                      <a class="pull-right" href="{{ post.url | prepend: site.baseurl }}#post-share"><span class="octicon octicon-file-symlink-file"></span>&nbsp;Share</a>
+                      <a class="pull-right" href="{{ post.url | prepend: site.baseurl }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;Comment</a>
+                  </div>
+                </div>
+            </div>
           {% endfor %}
         </div>
+
+
         {% for category in site.categories %}
           <div post-cate="{{category | first}}">
             {% for posts in category  %}
               {% for post in posts %}
                 {% if post.url %}
-                  <a class="post-list-item" href="{{ post.url }}">
-				    <div class="module">
-						<h3>
-						{{ post.title }}
-						</h3>
-					    <p  class="hidden-xs">{{ post.content | strip_html | strip_newlines | truncate: 200 }}</p>
-                        <span class="pull-right small">{{ post.date | date: "%b %-d, %Y" }}</span>
-				    </div>
-                  </a>
+                  <div class="post-list-item">
+                      <div>
+                          <a class="post-list-item-date" href="{{ site.baseurl }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
+                      </div>
+                      <div class="post-list-item-module">
+                          <a class="post-list-item-title" href="{{ post.url | prepend: site.baseurl }}">
+                              {{ post.title }}
+                          </a>
+                          <p>{% if post.excerpt.size > 32 %}{{ post.excerpt | strip_html | strip_newlines | truncate: 256 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 256 }}{% endif %}</p>
+                          <a class="post-list-item-readmore" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
+                          <div class="post-list-item-footer">
+                              {% for tag in post.tags %}
+                              <a href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                              {% endfor %}
+                              <a class="pull-right" href="{{ post.url | prepend: site.baseurl }}#post-share"><span class="octicon octicon-file-symlink-file"></span>&nbsp;Share</a>
+                              <a class="pull-right" href="{{ post.url | prepend: site.baseurl }}#post-comment"><span class="octicon octicon-comment"></span>&nbsp;Comment</a>
+                          </div>
+                      </div>
+                  </div>
                 {% endif %}
               {% endfor %}
             {% endfor %}
           </div>
         {% endfor %}
       </div>
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="shadow-corner-curl hidden-xs">
-      <div class="categories-list-header">
-          <span class="octicon octicon-git-branch"></span>&nbsp;&nbsp;Categories
-      </div>
-      <a href="javascript:;" class="categories-list-item" cate="All">
-        All<span class="my-badge"> {{site.posts | size}}</span>
-      </a>
-      {% for category in site.categories %}
-        <a href="javascript:;" class="categories-list-item" cate="{{ category | first }}">
-          {{ category | first }} <span class="my-badge">{{ category | last | size }}</span>
-        </a>
-      {% endfor %}
-    </div>
   </div>
 </div>

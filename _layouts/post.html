@@ -13,7 +13,7 @@ layout: default
         {{content}}
       </article>
       <hr>
-      <div class="bdsharebuttonbox">
+      <div id="post-share" class="bdsharebuttonbox">
           <a href="#" class="bds_more" data-cmd="more"></a>
           <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
           <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
@@ -22,15 +22,15 @@ layout: default
           <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
       </div>
     </div>
-    <div class="post-area post comment">
+    <div id="post-comment" class="post-area post comment">
       <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ page.url }}"></div>
     </div>
   </div>
 
   <div class="content-navigation">
     <div class="shadow-bottom-center myAffix hidden-xs" >
-      <div class="categories-list-header">
-        Content
+      <div class="content-navigation-header">
+          <span class="octicon octicon-list-unordered"></span>&nbsp;Navigation
       </div>
       <div class="content-navigation-text"></div>
     </div>
