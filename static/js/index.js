@@ -2,7 +2,6 @@
  * 页面ready方法
  */
 $(document).ready(function() {
-    backToTop();
     categoryDisplay();
 });
 
