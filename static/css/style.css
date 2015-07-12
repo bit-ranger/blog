@@ -1,4 +1,4 @@
-.navbar-inverse, footer {
+.navbar-inverse, .footnote {
     background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
     -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%);
     background: linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
@@ -18,11 +18,15 @@
 
 html{
     height: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
 }
 body {
     background-image: url(http://7u2qnl.com1.z0.glb.clouddn.com/bg-canvas_bg.jpg);
     font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
     height: 100%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
 }
 
 body a:link {text-decoration: none}		/* 未访问的链接 */
@@ -35,37 +39,7 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     padding-bottom: 130px;
 }
 
-pre{
-	padding: 0;
-	background: none;
-}
-
-pre code{
-	font-size: 14px;
-}
-
-table{
-	border-top:2px solid #777;
-	border-bottom: 2px solid #777;
-	margin: 8px 0;
-}
-table thead{
-	border-bottom: 1px dashed #777;
-	background-color: #aaa;
-	color:#fff;
-}
-table th{
-	padding: 2px 10px;
-}
-table tr:nth-child(2n){
-	background-color: #E5EAED;
-}
-table td{
-	padding: 2px 10px;
-	vertical-align: top;
-}
-
-.post-area{
+.sheet{
     word-break: break-all;
 	background-color:#f8f8fd;
 	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
@@ -74,187 +48,32 @@ table td{
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
 }
 
-.post-list-item{
-	padding:6px 0px 8px 0px;
-    margin-top: 3em;
-}
-.post-list-item-date{
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #666;
-    margin-bottom: 1em;
-    margin-left: 5px;
-    line-height: 1em;
-    text-shadow: 0 1px #fff;
-    font-weight: bold;
-    display: block;
-}
-.post-list-item-date:hover{
-    text-decoration: none;
-}
-.post-list-item-module {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-	padding: 1.5em;
-	border-bottom: 1px solid #b1b1b1;
-    color: #555;
-    background: #f8f8fd;
-
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-}
-.post-list-item-title{
-    color: #555;
-    font-size: 2em;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-}
-.post-list-item-title:hover{
-    color: #258fb8;
-    text-decoration: none;
-}
-.post-list-item-readmore{
-    display: inline-block;
-    line-height: 1em;
-    padding: 6px 15px;
-    -webkit-border-radius: 15px;
-    border-radius: 15px;
-    background: #eee;
-    color: #999;
-    text-shadow: 0 1px #fff;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-.post-list-item-readmore:hover{
-    background: #258fb8;
-    color: #fff;
-    text-decoration: none;
-    text-shadow: 0 1px #1e7293;
-}
-.post-list-item-footer{
-    font-size: .85em;
-    line-height: 1.6em;
-    border-top: 1px solid #ddd;
-    padding-top: 1.6em;
-    margin: 0;
-}
-.post-list-item-footer a{
-    color: #999;
-    text-decoration: none;
-    margin-right: 15px;
-}
-
-.post-list-item-tag{
-    float: left;
-    margin-right: 10px;
-}
-.categories-list-item{
-	margin-top: 0.5em;
-}
-.categories-list-item .my-badge{
-	font-size: 10px;
-	color: #fff;
-	background-color: #999;
-	padding: 0 7px 1px 7px;
-	border-radius: 9px;
-	float: right;
-	transition:0.4s ease;
-	-webkit-transition:0.4s ease;
-	-moz-transition:0.4s ease;
-	-o-transition:0.4s ease;
-}
-.categories-list-item:hover .my-badge{
-	-webkit-transform:rotate(360deg) scale(1.2);
-	-moz-transform:rotate(360deg) scale(1.2);
-	-o-transform:rotate(360deg) scale(1.2);
-	-ms-transform:rotate(360deg) scale(1.2);
-	transform:rotate(360deg) scale(1.2);
-}
-.tag-item{
-    margin-top: 40px;
-    border-bottom: 1px solid #b1b1b1;
-    padding-bottom: 10px;
-}
-.tag-post-item{
-    display: inline-block;
+.content-area{
+    padding:10px 30px;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 /* footer */
-footer{
+.footnote{
 	min-height: 50px;
 	line-height: 50px;
 	margin-top: -50px;
 	background-color: #3f4850;
-	color: #aaa;
 	text-align: center;
 
+    color: #aaa;
 	-webkit-box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
 	-moz-box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
 	-o-box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
 	box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
 }
-footer a:link {color: #aaa}		/* 未访问的链接 */
-footer a:visited {color: #888}	/* 已访问的链接 */
-footer a:hover {color: #bbb;text-decoration: none;}	/* 鼠标移动到链接上 */
-footer a:active {color: #bbb}	/* 选定的链接 */
-footer .point{
+.footnote a:link {color: #aaa}		/* 未访问的链接 */
+.footnote a:visited {color: #888}	/* 已访问的链接 */
+.footnote a:hover {color: #bbb;text-decoration: none;}	/* 鼠标移动到链接上 */
+.footnote a:active {color: #bbb}	/* 选定的链接 */
+.footnote .point{
 	margin: 0 8px;
-}
-/**
- * Icons
- */
-.icon svg {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-}
-
-/* post
- * post articles area
- */
-.post{
-	padding:10px 30px;
-	font-size: 16px;
-	line-height: 1.5;
-}
-
-.post h4{
-	font-weight: bold;
-}
-
-.post img{
-	max-width: 100%;
-    vertical-align: middle;
-
-	-webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
-	-moz-box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
-	-o-box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
-	box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
-}
-/**
- * Blockquotes
- */
-blockquote {
-    color: #444;
-    border-left: 5px solid #D6DBDF;
-    padding-left: 15px;
-    font-size: 16px;
-    background: rgba(112,138,153,.1);
-    /*font-style: italic;*/
-}
-blockquote:last-child {
-    margin-bottom: 0;
-}
-
-.comment{
-	margin-top: 20px;
 }
 
 /**
@@ -290,98 +109,12 @@ blockquote:last-child {
 	background-color: #7f7f7f;
 }
 
-/**
- * page-content
- */
-.page-content table{
-	border-top: 1px dashed #ddd;
-	border-bottom: 1px dashed #ddd;
-	margin: 20px 0;
-}
-.page-content table tr td{
-	padding: 6px 10px;
-	vertical-align: top;
-
-}
-.page-content table tr td:first-of-type{
-	padding: 6px 10px 6px 10px;
-	border-right: 1px dashed #ddd; 
-	text-align: right;
-}
-
-
-/**
- * 文章目录相关
- */
-@media screen and (min-width: 768px){
-	#markdown-toc {
-		display: none;
-	}
-}
-
-.content-navigation-header {
-    display: block;
-    padding: 12px 15px;
-    border-bottom: 1px solid #c0c0c0;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #f8f8fd;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-}
-
-.content-navigation a:link {color: #666;text-decoration: none;}		/* 未访问的链接 */
-.content-navigation a:visited {color: #D27504  }	/* 已访问的链接 */
-.content-navigation a:hover {color: #336;}	/* 鼠标移动到链接上 */
-.content-navigation a:active {color: #99b}	/* 选定的链接 */
-
-.content-navigation{
-	max-width: 292px;
-    display: none;
-}
-.content-navigation .content-navigation-text{
-	padding: 10px 0; 
-}
-.content-navigation ul{
-	padding-left: 30px;
-}
-.content-navigation ul li{
-	/*list-style: none;*/
-	font-size: 15px;
-	line-height: 25px;
-}
 .shadow-bottom-center{
 	background-color:#f8f8fd; 
 	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	-o-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
-}
-
-.myAffix .affix{
-	top:-20px;
-	bottom: 0px;
-}
-
-@media screen and (max-width: 1200px){
-	.post{
-		padding:10px 10px;
-		font-size: 15px;
-		line-height: 1.4;
-	}
-	blockquote {
-		border-left: 3px solid #D6DBDF;
-    	padding-left: 5px;
-    	font-size: 14px;
-	}
-	pre code{
-		font-size: 12px;
-	}
-	.post article ul{
-		padding-left: 25px;
-	}
 }
 
 .word-keep{
@@ -392,5 +125,18 @@ blockquote:last-child {
 .rectangle{
 	border-radius: 0px;
 }
-#markdown-toc a:link {text-decoration: none;}
-#markdown-toc a:visited{color: #D27504}
+
+.pad-min,
+.pad-mid,
+.pad-lar{
+    display: block;
+}
+.pad-min{
+    height: 20px;
+}
+.pad-mid{
+    height: 50px;
+}
+.pad-lar{
+    height: 80px;
+}

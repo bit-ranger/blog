@@ -14,4 +14,5 @@
     <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.6/styles/darkula.min.css">
     <link rel="stylesheet" type="text/css" href="{{ '/static/octicons/octicons.css' | prepend: site.baseurl }}">
     <link rel="stylesheet" type="text/css" href="{{ '/static/css/style.css' | prepend: site.baseurl }}">
+    {% for style in page.styles %}<link rel="stylesheet" type="text/css" href="{{ '/static/css/' | prepend: site.baseurl | append: style}}">{%endfor%}
 </head>

@@ -2,3 +2,4 @@
     <script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.6/highlight.min.js"></script>
     <script type="text/javascript" src="{{'/static/js/script.js' | prepend:site.baseurl}}"></script>
+    {% for script in page.scripts %}<script type="text/javascript" src="{{'/static/js/' | prepend:site.baseurl | append: script}}"></script>{%endfor%}

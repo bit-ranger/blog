@@ -1,0 +1,130 @@
+pre{
+    padding: 0;
+    background: none;
+}
+
+pre code{
+    font-size: 14px;
+}
+
+table{
+    border-top:2px solid #777;
+    border-bottom: 2px solid #777;
+    margin: 8px 0;
+}
+table thead{
+    border-bottom: 1px dashed #777;
+    background-color: #aaa;
+    color:#fff;
+}
+table th{
+    padding: 2px 10px;
+}
+table tr:nth-child(2n){
+    background-color: #E5EAED;
+}
+table td{
+    padding: 2px 10px;
+    vertical-align: top;
+}
+
+/* post
+ * post articles area
+ */
+.post{
+    padding:10px 30px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.post h4{
+    font-weight: bold;
+}
+
+.post img{
+    max-width: 100%;
+    vertical-align: middle;
+
+    -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
+    -o-box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
+}
+/**
+ * Blockquotes
+ */
+blockquote {
+    color: #444;
+    border-left: 5px solid #D6DBDF;
+    padding-left: 15px;
+    font-size: 16px;
+    background: rgba(112,138,153,.1);
+    /*font-style: italic;*/
+}
+blockquote:last-child {
+    margin-bottom: 0;
+}
+
+.content-navigation a:link {color: #666;text-decoration: none;}		/* 未访问的链接 */
+.content-navigation a:visited {color: #D27504  }	/* 已访问的链接 */
+.content-navigation a:hover {color: #336;}	/* 鼠标移动到链接上 */
+.content-navigation a:active {color: #99b}	/* 选定的链接 */
+
+.content-navigation{
+    max-width: 292px;
+    display: none;
+}
+.content-navigation-header {
+    display: block;
+    padding: 12px 15px;
+    border-bottom: 1px solid #c0c0c0;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f8f8fd;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+}
+.content-navigation .content-navigation-text{
+    padding: 10px 0;
+}
+.content-navigation ul{
+    padding-left: 30px;
+}
+.content-navigation ul li{
+    /*list-style: none;*/
+    font-size: 15px;
+    line-height: 25px;
+}
+
+@media screen and (max-width: 1200px){
+    .post{
+        padding:10px 10px;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+    blockquote {
+        border-left: 3px solid #D6DBDF;
+        padding-left: 5px;
+        font-size: 14px;
+    }
+    pre code{
+        font-size: 12px;
+    }
+    .post article ul{
+        padding-left: 25px;
+    }
+}
+
+/**
+ * 文章目录相关
+ */
+@media screen and (min-width: 768px){
+    #markdown-toc {
+        display: none;
+    }
+}
+
+#markdown-toc a:link {text-decoration: none;}
+#markdown-toc a:visited{color: #D27504}

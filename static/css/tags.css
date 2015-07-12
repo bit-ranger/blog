@@ -1,0 +1,18 @@
+section{
+    margin-top: 40px;
+    border-bottom: 1px solid #b1b1b1;
+    padding-bottom: 10px;
+}
+
+article {
+    display: inline-block;
+}
+
+article header {
+    font-weight: normal;
+}
+
+article .title{
+    font-size: 1.3em;
+    font-weight: normal;
+}

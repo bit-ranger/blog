@@ -3,6 +3,7 @@ layout: page
 title: Tags
 permalink: /tags/
 icon: octicon-tag
+styles: [index.css, tags.css]
 ---
 
 <div class="dropdown">
@@ -13,8 +14,8 @@ icon: octicon-tag
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         {% for tag in site.tags %}
         <li>
-            <a href="#{{ tag | first }}" class="categories-list-item" cate="{{ category | first }}">
-                {{ tag | first }}&nbsp;<span class="my-badge">{{ tag | last | size }}</span>
+            <a href="#{{ tag | first }}" class="categories-item" cate="{{ category | first }}">
+                {{ tag | first }}&nbsp;<span class="categories-badge">{{ tag | last | size }}</span>
             </a>
         </li>
 
@@ -23,21 +24,23 @@ icon: octicon-tag
 </div>
 
 {% for tag in site.tags %}
-<div id="{{ tag | first }}" class="tag-item">
-    <h1>{{ tag | first }}</h1>
+<section id="{{ tag | first }}">
+    <h2>{{ tag | first }}</h2>
     {% for posts in tag  %}
     {% for post in posts %}
     {% if post.url %}
-    <div class="tag-post-item">
-        <div class="post-list-item-module">
-            <a class="post-list-item-date" href="{{ site.baseurl }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
-            <a class="post-list-item-title" href="{{ post.url | prepend: site.baseurl }}">
+    <article >
+        <div class="module">
+            <header>
+                <a href="{{ site.baseurl }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
+            </header>
+            <a class="title" href="{{ post.url | prepend: site.baseurl }}">
                 {{ post.title }}
             </a>
         </div>
-    </div>
+    </article>
     {% endif %}
     {% endfor %}
     {% endfor %}
-</div>
+</section>
 {% endfor %}

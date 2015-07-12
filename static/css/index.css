@@ -1,0 +1,100 @@
+article{
+    padding:6px 0px 8px 0px;
+    margin-top: 3em;
+}
+article header{
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1em;
+    margin-left: 5px;
+    line-height: 1em;
+    text-shadow: 0 1px #fff;
+    font-weight: bold;
+    display: block;
+}
+
+article header a{
+    color: #666;
+}
+
+article .module {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1.5em;
+    border-bottom: 1px solid #b1b1b1;
+    color: #555;
+    background: #f8f8fd;
+
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+}
+article .title{
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+article a{
+    color: #555;
+}
+
+article .readmore{
+    display: inline-block;
+    line-height: 1em;
+    padding: 6px 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background: #eee;
+    color: #999;
+    text-shadow: 0 1px #fff;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+article .readmore:hover{
+    background: #258fb8;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 1px #1e7293;
+}
+
+article footer{
+    font-size: .85em;
+    line-height: 1.6em;
+    border-top: 1px solid #ddd;
+    padding-top: 1.6em;
+    margin: 0;
+}
+article footer a{
+    color: #999;
+    margin-right: 15px;
+}
+
+
+.categories-item{
+    margin-top: 0.5em;
+}
+.categories-item .categories-badge{
+    font-size: 10px;
+    color: #fff;
+    background-color: #999;
+    padding: 0 7px 1px 7px;
+    border-radius: 9px;
+    float: right;
+    transition:0.4s ease;
+    -webkit-transition:0.4s ease;
+    -moz-transition:0.4s ease;
+    -o-transition:0.4s ease;
+}
+.categories-item:hover .categories-badge{
+    -webkit-transform:rotate(360deg) scale(1.2);
+    -moz-transform:rotate(360deg) scale(1.2);
+    -o-transform:rotate(360deg) scale(1.2);
+    -ms-transform:rotate(360deg) scale(1.2);
+    transform:rotate(360deg) scale(1.2);
+}
