@@ -1,29 +1,29 @@
-pre{
+.post pre{
     padding: 0;
     background: none;
 }
 
-pre code{
+.post pre code{
     font-size: 14px;
 }
 
-table{
+.post table{
     border-top:2px solid #777;
     border-bottom: 2px solid #777;
     margin: 8px 0;
 }
-table thead{
+.post table thead{
     border-bottom: 1px dashed #777;
     background-color: #aaa;
     color:#fff;
 }
-table th{
+.post table th{
     padding: 2px 10px;
 }
-table tr:nth-child(2n){
+.post table tr:nth-child(2n){
     background-color: #E5EAED;
 }
-table td{
+.post table td{
     padding: 2px 10px;
     vertical-align: top;
 }
@@ -32,9 +32,6 @@ table td{
  * post articles area
  */
 .post{
-    padding:10px 30px;
-    font-size: 16px;
-    line-height: 1.5;
 }
 
 .post h4{
@@ -53,7 +50,7 @@ table td{
 /**
  * Blockquotes
  */
-blockquote {
+.post blockquote {
     color: #444;
     border-left: 5px solid #D6DBDF;
     padding-left: 15px;
@@ -61,15 +58,41 @@ blockquote {
     background: rgba(112,138,153,.1);
     /*font-style: italic;*/
 }
-blockquote:last-child {
+.post blockquote:last-child {
     margin-bottom: 0;
 }
+@media screen and (max-width: 1200px){
+    .post blockquote {
+        border-left: 3px solid #D6DBDF;
+        padding-left: 5px;
+        font-size: 14px;
+    }
+    .post pre code{
+        font-size: 12px;
+    }
+    .post article ul{
+        padding-left: 25px;
+    }
+}
+
+/**
+ * 文章目录相关
+ */
+@media screen and (min-width: 768px){
+    .post #markdown-toc {
+        display: none;
+    }
+}
+
+.post #markdown-toc a:link {text-decoration: none;}
+.post #markdown-toc a:visited{color: #D27504}
+
+
 
 .content-navigation a:link {color: #666;text-decoration: none;}		/* 未访问的链接 */
 .content-navigation a:visited {color: #D27504  }	/* 已访问的链接 */
 .content-navigation a:hover {color: #336;}	/* 鼠标移动到链接上 */
 .content-navigation a:active {color: #99b}	/* 选定的链接 */
-
 .content-navigation{
     max-width: 292px;
     display: none;
@@ -97,34 +120,3 @@ blockquote:last-child {
     font-size: 15px;
     line-height: 25px;
 }
-
-@media screen and (max-width: 1200px){
-    .post{
-        padding:10px 10px;
-        font-size: 15px;
-        line-height: 1.4;
-    }
-    blockquote {
-        border-left: 3px solid #D6DBDF;
-        padding-left: 5px;
-        font-size: 14px;
-    }
-    pre code{
-        font-size: 12px;
-    }
-    .post article ul{
-        padding-left: 25px;
-    }
-}
-
-/**
- * 文章目录相关
- */
-@media screen and (min-width: 768px){
-    #markdown-toc {
-        display: none;
-    }
-}
-
-#markdown-toc a:link {text-decoration: none;}
-#markdown-toc a:visited{color: #D27504}

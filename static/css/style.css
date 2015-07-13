@@ -39,6 +39,11 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     padding-bottom: 130px;
 }
 
+.content{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 .sheet{
     word-break: break-all;
 	background-color:#f8f8fd;
@@ -48,10 +53,16 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 	box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
 }
 
-.content-area{
+.sheet{
     padding:10px 30px;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+@media screen and (max-width: 1200px){
+    .sheet{
+        padding:10px 10px;
+    }
 }
 
 /* footer */

@@ -1,16 +1,20 @@
 ---
 layout: default
 ---
-<div class="sheet content-area">
-    <header>
-        <h1>{{ page.title }}</h1>
-    </header>
-    <hr>
-    <article class="page-content">
-        {{ content }}
-    </article>
-</div>
-<div class="pad-min"></div>
-<div class="sheet content-area">
-    <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-url="{{ page.url }}"></div>
+<div class="row">
+    <div class="content">
+        <div class="sheet">
+            <header>
+                <h1>{{ page.title }}</h1>
+            </header>
+            <hr>
+            <article>
+                {{ content }}
+            </article>
+        </div>
+        <div class="pad-min"></div>
+        <div class="sheet">
+            <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-url="{{ page.url }}"></div>
+        </div>
+    </div>
 </div>
