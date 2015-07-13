@@ -40,8 +40,8 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 }
 
 .content{
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 .sheet{
