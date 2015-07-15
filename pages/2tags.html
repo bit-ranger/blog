@@ -3,26 +3,34 @@ layout: page
 title: Tags
 permalink: /tags/
 icon: octicon-tag
-styles: [index.css, tags.css]
+styles: [index.css, tagCloud.css, tags.css]
+scripts: [tagCloud.js, tags.js]
 ---
 
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<div class="tags-header">
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            {% for tag in site.tags %}
+            <li>
+                <a href="#{{ tag | first }}" class="categories-item" cate="{{ category | first }}">
+                    {{ tag | first }}&nbsp;<span class="categories-badge">{{ tag | last | size }}</span>
+                </a>
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tagCloud">
         {% for tag in site.tags %}
-        <li>
-            <a href="#{{ tag | first }}" class="categories-item" cate="{{ category | first }}">
-                {{ tag | first }}&nbsp;<span class="categories-badge">{{ tag | last | size }}</span>
-            </a>
-        </li>
-
+        <a href="#{{ tag | first }}">{{ tag | first }}</a>
         {% endfor %}
-    </ul>
+    </div>
 </div>
-
+<div>
 {% for tag in site.tags %}
 <section id="{{ tag | first }}">
     <h2>{{ tag | first }}</h2>
@@ -44,3 +52,4 @@ styles: [index.css, tags.css]
     {% endfor %}
 </section>
 {% endfor %}
+</div>
