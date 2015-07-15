@@ -1,73 +1,55 @@
 (function($){
     $.fn.tagCloud = function(){
-        var length = $(this).length;
-        for(var i=0; i<length;i++){
-            action($(this).get(i));
+
+        var $this = $(this);
+
+        for(var i=0; i<$this.length;i++){
+            execute($this.get(i));
         }
-        return $(this);
-        function action(oDiv){
+
+        return $this;
+
+        function execute(shell){
+            //半径
             var radius = 120;
-            var dtr = Math.PI/180;
-            var d=300;
-
-            var mcList = [];
+            //是否活动
             var active = true;
-            var lasta = 1;
-            var lastb = 1;
-            var distr = true;
-            var tspeed = 2;
-            var size = 250;
+            //是否分散
+            var scatter = true;
+            //旋转速度
+            var speed = 2;
+            //右旋偏移
+            var rightOffset = 50;
+            //下旋偏移
+            var downOffset = 0;
+            //与眼睛的距离
+            var distance=300;
 
-            var mouseX = 50;
-            var mouseY = 25;
-
-            var howElliptical=1;
-
-            var aA=null;
-
-            var i=0;
-            var oTag=null;
-
-            aA=oDiv.getElementsByTagName('a');
-
-            for(i=0;i<aA.length;i++)
+            var items = shell.getElementsByTagName('a');
+            var itemWraps = [];
+            for(var i=0; i<items.length; i++)
             {
-                oTag={};
-
-                oTag.offsetWidth=aA[i].offsetWidth;
-                oTag.offsetHeight=aA[i].offsetHeight;
-
-                mcList.push(oTag);
+                var tag = {};
+                var item = items[i];
+                tag.item = item;
+                tag.offsetWidth = item.offsetWidth;
+                tag.offsetHeight = item.offsetHeight;
+                itemWraps.push(tag);
             }
 
-            sineCosine( 0,0,0 );
+            initPosition();
 
-            positionAll();
-
-            oDiv.onmouseover=function ()
+            shell.onmouseover=function ()
             {
                 active = false;
             };
 
-            oDiv.onmouseout=function ()
+            shell.onmouseout=function ()
             {
                 active = true;
             };
 
-            /**
-            oDiv.onmousemove=function (ev)
-            {
-                var oEvent=window.event || ev;
-
-                mouseX=oEvent.clientX-(oDiv.offsetLeft+oDiv.offsetWidth/2);
-                mouseY=oEvent.clientY-(oDiv.offsetTop+oDiv.offsetHeight/2);
-
-                mouseX/=5;
-                mouseY/=5;
-            };**/
-
             setInterval(update, 30);
-
 
             function update()
             {
@@ -76,76 +58,78 @@
 
                 if(active)
                 {
-                    a = (-Math.min( Math.max( -mouseY, -size ), size ) / radius ) * tspeed;
-                    b = (Math.min( Math.max( -mouseX, -size ), size ) / radius ) * tspeed;
+                    a = (-Math.min( Math.max( -downOffset, -radius ), radius ) / radius ) * speed;
+                    b = (Math.min( Math.max( -rightOffset, -radius ), radius ) / radius ) * speed;
                 }
                 else
-                {
-                    a = lasta * 0.98;
-                    b = lastb * 0.98;
-                }
-
-                lasta=a;
-                lastb=b;
-
-                if(Math.abs(a)<=0.01 && Math.abs(b)<=0.01)
                 {
                     return;
                 }
 
-                var c=0;
-                sineCosine(a,b,c);
-                for(var j=0;j<mcList.length;j++)
-                {
-                    var rx1=mcList[j].cx;
-                    var ry1=mcList[j].cy*ca+mcList[j].cz*(-sa);
-                    var rz1=mcList[j].cy*sa+mcList[j].cz*ca;
+                with(trigonometric(a,b,0)) {
+                    for (var j = 0; j < itemWraps.length; j++) {
+                        var rx1 = itemWraps[j].x;
+                        var ry1 = itemWraps[j].y * ca + itemWraps[j].z * (-sa);
+                        var rz1 = itemWraps[j].y * sa + itemWraps[j].z * ca;
 
-                    var rx2=rx1*cb+rz1*sb;
-                    var ry2=ry1;
-                    var rz2=rx1*(-sb)+rz1*cb;
+                        var rx2 = rx1 * cb + rz1 * sb;
+                        var ry2 = ry1;
+                        var rz2 = rx1 * (-sb) + rz1 * cb;
 
-                    var rx3=rx2*cc+ry2*(-sc);
-                    var ry3=rx2*sc+ry2*cc;
-                    var rz3=rz2;
+                        var rx3 = rx2 * cc + ry2 * (-sc);
+                        var ry3 = rx2 * sc + ry2 * cc;
+                        var rz3 = rz2;
 
-                    mcList[j].cx=rx3;
-                    mcList[j].cy=ry3;
-                    mcList[j].cz=rz3;
+                        itemWraps[j].x = rx3;
+                        itemWraps[j].y = ry3;
+                        itemWraps[j].z = rz3;
 
-                    per=d/(d+rz3);
+                        var per = distance / (distance + rz3);
 
-                    mcList[j].x=(howElliptical*rx3*per)-(howElliptical*2);
-                    mcList[j].y=ry3*per;
-                    mcList[j].scale=per;
-                    mcList[j].alpha=per;
+                        itemWraps[j].scale = per;
+                        itemWraps[j].alpha = per;
 
-                    mcList[j].alpha=(mcList[j].alpha-0.6)*(10/6);
+                        itemWraps[j].alpha = (itemWraps[j].alpha - 0.6) * (10 / 6);
+                    }
                 }
-
                 doPosition();
-                depthSort();
             }
 
-            function depthSort()
+            function doPosition()
             {
-                var i=0;
-                var aTmp=[];
-
-                for(i=0;i<aA.length;i++)
+                var l=shell.offsetWidth/2;
+                var t=shell.offsetHeight/2;
+                for(var i=0;i<itemWraps.length;i++)
                 {
-                    aTmp.push(aA[i]);
+                    items[i].style.left=itemWraps[i].x+l-itemWraps[i].offsetWidth/2+'px';
+                    items[i].style.top=itemWraps[i].y+t-itemWraps[i].offsetHeight/2+'px';
+
+                    items[i].style.fontSize=Math.ceil(12*itemWraps[i].scale/2)+8+'px';
+
+                    items[i].style.filter="alpha(opacity="+100*itemWraps[i].alpha+")";
+                    items[i].style.opacity=itemWraps[i].alpha;
+                }
+                ensureDepth();
+            }
+
+            function ensureDepth()
+            {
+                var tmp=[];
+
+                for(var i=0;i<items.length;i++)
+                {
+                    tmp.push(items[i]);
                 }
 
-                aTmp.sort
+                tmp.sort
                 (
                     function (vItem1, vItem2)
                     {
-                        if(vItem1.cz>vItem2.cz)
+                        if(vItem1.z>vItem2.z)
                         {
                             return -1;
                         }
-                        else if(vItem1.cz<vItem2.cz)
+                        else if(vItem1.z<vItem2.z)
                         {
                             return 1;
                         }
@@ -156,29 +140,43 @@
                     }
                 );
 
-                for(i=0;i<aTmp.length;i++)
+                for(var i=0;i<tmp.length;i++)
                 {
-                    aTmp[i].style.zIndex=i;
+                    tmp[i].style.zIndex=i;
                 }
             }
 
-            function positionAll()
+            function trigonometric( a, b, c)
+            {
+                var dtr = Math.PI/radius;
+                var rst = {};
+                with(rst) {
+                    sa = Math.sin(a * dtr);
+                    ca = Math.cos(a * dtr);
+                    sb = Math.sin(b * dtr);
+                    cb = Math.cos(b * dtr);
+                    sc = Math.sin(c * dtr);
+                    cc = Math.cos(c * dtr);
+                }
+                return rst;
+            }
+
+
+            function initPosition()
             {
                 var phi=0;
                 var theta=0;
-                var max=mcList.length;
-                var i=0;
-
-                var aTmp=[];
+                var max=itemWraps.length;
+                var tmp=[];
                 var oFragment=document.createDocumentFragment();
 
-                //随机排序
-                for(i=0;i<aA.length;i++)
+                for(var i=0; i<items.length; i++)
                 {
-                    aTmp.push(aA[i]);
+                    tmp.push(items[i]);
                 }
 
-                aTmp.sort
+                //随机排序
+                tmp.sort
                 (
                     function ()
                     {
@@ -186,15 +184,15 @@
                     }
                 );
 
-                for(i=0;i<aTmp.length;i++)
+                for(var i=0;i<tmp.length;i++)
                 {
-                    oFragment.appendChild(aTmp[i]);
+                    oFragment.appendChild(tmp[i]);
                 }
 
-                oDiv.appendChild(oFragment);
+                shell.appendChild(oFragment);
 
                 for( var i=1; i<max+1; i++){
-                    if( distr )
+                    if( scatter )
                     {
                         phi = Math.acos(-1+(2*i-1)/max);
                         theta = Math.sqrt(max*Math.PI)*phi;
@@ -205,40 +203,15 @@
                         theta = Math.random()*(2*Math.PI);
                     }
                     //坐标变换
-                    mcList[i-1].cx = radius * Math.cos(theta)*Math.sin(phi);
-                    mcList[i-1].cy = radius * Math.sin(theta)*Math.sin(phi);
-                    mcList[i-1].cz = radius * Math.cos(phi);
+                    itemWraps[i-1].x = radius * Math.cos(theta)*Math.sin(phi);
+                    itemWraps[i-1].y = radius * Math.sin(theta)*Math.sin(phi);
+                    itemWraps[i-1].z = radius * Math.cos(phi);
 
-                    aA[i-1].style.left=mcList[i-1].cx+oDiv.offsetWidth/2-mcList[i-1].offsetWidth/2+'px';
-                    aA[i-1].style.top=mcList[i-1].cy+oDiv.offsetHeight/2-mcList[i-1].offsetHeight/2+'px';
+                    items[i-1].style.left=itemWraps[i-1].x+shell.offsetWidth/2-itemWraps[i-1].offsetWidth/2+'px';
+                    items[i-1].style.top=itemWraps[i-1].y+shell.offsetHeight/2-itemWraps[i-1].offsetHeight/2+'px';
                 }
             }
 
-            function doPosition()
-            {
-                var l=oDiv.offsetWidth/2;
-                var t=oDiv.offsetHeight/2;
-                for(var i=0;i<mcList.length;i++)
-                {
-                    aA[i].style.left=mcList[i].cx+l-mcList[i].offsetWidth/2+'px';
-                    aA[i].style.top=mcList[i].cy+t-mcList[i].offsetHeight/2+'px';
-
-                    aA[i].style.fontSize=Math.ceil(12*mcList[i].scale/2)+8+'px';
-
-                    aA[i].style.filter="alpha(opacity="+100*mcList[i].alpha+")";
-                    aA[i].style.opacity=mcList[i].alpha;
-                }
-            }
-
-            function sineCosine( a, b, c)
-            {
-                sa = Math.sin(a * dtr);
-                ca = Math.cos(a * dtr);
-                sb = Math.sin(b * dtr);
-                cb = Math.cos(b * dtr);
-                sc = Math.sin(c * dtr);
-                cc = Math.cos(c * dtr);
-            }
         }
     }
 })($);
