@@ -10,7 +10,7 @@ article header{
     margin-left: 5px;
     line-height: 1em;
     text-shadow: 0 1px #fff;
-    font-weight: 500;
+    font-weight: bold;
     display: block;
 }
 
@@ -34,7 +34,7 @@ article .module {
 }
 article .title{
     font-size: 2em;
-    font-weight: bold;
+    font-weight: 500;
     display: block;
     margin-bottom: 10px;
 }
