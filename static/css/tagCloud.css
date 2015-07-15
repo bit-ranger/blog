@@ -16,3 +16,9 @@
 .tagCloud a:hover{
     color: orchid;
 }
+
+@media screen and (max-width: 768px){
+    .tagCloud {
+        display: none;
+    }
+}
