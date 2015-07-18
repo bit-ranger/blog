@@ -62,9 +62,17 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     line-height: 1.4;
 }
 
+.st-default-search-input{
+    margin-top:8px;
+    margin-right:8px;
+}
+
 @media screen and (max-width: 1200px){
     .sheet{
         padding:10px 10px;
+    }
+    .st-default-search-input{
+    	display:none;
     }
 }
 
@@ -155,7 +163,4 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     height: 80px;
 }
 
-.st-default-search-input{
-    margin-top:8px;
-    margin-right:8px;
-}
+
