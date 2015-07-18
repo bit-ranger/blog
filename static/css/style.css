@@ -154,3 +154,8 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 .pad-lar{
     height: 80px;
 }
+
+.st-default-search-input{
+    margin-top:8px;
+    margin-right:8px;
+}
