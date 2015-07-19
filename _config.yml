@@ -1,7 +1,7 @@
 permalink: /:year-:month-:day/:title/
 markdown: kramdown
 baseurl: ""
-siteurl: "http://blog.rainynight.top"
+url: "http://blog.rainynight.top"
 
 title: "RainyNight"
 email: "dubuyuye@yeah.net"

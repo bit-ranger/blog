@@ -5,7 +5,7 @@ layout: null
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for post in site.posts %}
     <sitemap>
-        <loc>{{ post.url | prepend: site.baseurl | prepend: site.siteurl }}</loc>
+        <loc>{{ post.url | prepend: site.baseurl | prepend: site.url }}</loc>
         <lastmod>{{ site.time | date_to_rfc822 }}</lastmod>
     </sitemap>
     {% endfor %}
