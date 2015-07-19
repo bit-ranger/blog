@@ -22,12 +22,12 @@ function search(){
     var $inputs = $(".st-default-search-input");
     $inputs.each(function(i,input){
         input = $(input);
-        var width = input.attr("width");
+        var width = input.width();
         input.focus(function(){
-            input.attr("width",2*width);
+            input.width(2*width);
         });
         input.blur(function(){
-            input.attr("width",width);
+            input.width(width);
         });
     });
 
