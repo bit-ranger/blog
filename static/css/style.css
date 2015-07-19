@@ -17,8 +17,7 @@
 }
 
 .navbar-nav>li>span>.st-default-search-input{
-    height: 32px;
-    line-height: 32px;
+    height: 24px;
     border: 1px solid #fff;
     color: #fff;
     background: 0 0;
