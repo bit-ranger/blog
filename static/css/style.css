@@ -71,7 +71,7 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     .sheet{
         padding:10px 10px;
     }
-    .st-default-search-input{
+    .search-input-container{
     	display:none;
     }
 }
