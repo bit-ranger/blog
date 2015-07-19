@@ -17,12 +17,13 @@
 }
 
 .navbar-nav>li>span>.st-default-search-input{
-    height: 20px;
     border: 1px solid #fff;
     color: #fff;
     background: 0 0;
     padding-left: .5em;
     border-radius: 0px;
+    margin-left: 10px;
+    margin-top: 8px;
 }
 
 html{
