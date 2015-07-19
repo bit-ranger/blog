@@ -1,0 +1,5 @@
+---
+layout: null
+---
+{% for post in site.posts %}{{ post.url | prepend: site.baseurl | prepend: site.url }}
+{% endfor %}
