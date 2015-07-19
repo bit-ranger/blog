@@ -17,11 +17,11 @@
 }
 
 .navbar-nav>li>span>.st-default-search-input{
-    line-height: 1.7;
+    height: 32px;
+    line-height: 32px;
     border: 1px solid #fff;
     color: #fff;
     background: 0 0;
-    width: 80%;
     padding-left: .5em;
     border-radius: 0px;
 }
