@@ -18,6 +18,16 @@ function search(){
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
     _st('install','WyVgxJw2ypny5Feaxyrs','2.0.0');
+
+    var $input = $(".st-default-search-input");
+    var width = $input.attr("width");
+    $input.focus(function(){
+        $input.attr("width",2*width);
+    });
+    $input.blur(function(){
+        $input.attr("width",width);
+    });
+
 }
 
 /**
