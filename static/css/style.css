@@ -16,6 +16,15 @@
     border-color: #000;
 }
 
+.search-input{
+    line-height: 1.7;
+    border: 1px solid #fff;
+    color: #fff;
+    background: 0 0;
+    width: 80%;
+    padding-left: .5em;
+}
+
 html{
     height: 100%;
     padding: 0px 0px 0px 0px;
