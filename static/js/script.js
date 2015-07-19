@@ -24,13 +24,6 @@ function search(){
             $("#st-injected-content .st-search-escape-hide-outputs").show();
         });
     });
-
-    $(".st-ui-close-button").each(function(i,o){
-        $(o).click(function(){
-            $("#st-injected-content .st-search-escape-hide-outputs").hide();
-        });
-    });
-
 }
 
 /**
