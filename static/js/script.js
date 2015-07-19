@@ -19,18 +19,17 @@ function search(){
 
     _st('install','WyVgxJw2ypny5Feaxyrs','2.0.0');
 
-    var $inputs = $(".st-default-search-input");
-    $inputs.each(function(i,input){
-        input = $(input);
-        var width = input.width();
-        input.focus(function(){
-            input.width(2*width);
-        });
-        input.blur(function(){
-            input.width(width);
+    $(".search-button").each(function(i,o){
+        $(o).click(function(){
+            $("#st-injected-content .st-search-escape-hide-outputs").show();
         });
     });
 
+    $(".st-ui-close-button").each(function(i,o){
+        $(o).click(function(){
+            $("#st-injected-content .st-search-escape-hide-outputs").hide();
+        });
+    });
 
 }
 
