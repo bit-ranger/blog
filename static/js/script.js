@@ -19,14 +19,18 @@ function search(){
 
     _st('install','WyVgxJw2ypny5Feaxyrs','2.0.0');
 
-    var $input = $(".st-default-search-input");
-    var width = $input.attr("width");
-    $input.focus(function(){
-        $input.attr("width",2*width);
+    var $inputs = $(".st-default-search-input");
+    $inputs.each(function(i,input){
+        input = $(input);
+        var width = input.attr("width");
+        input.focus(function(){
+            input.attr("width",2*width);
+        });
+        input.blur(function(){
+            input.attr("width",width);
+        });
     });
-    $input.blur(function(){
-        $input.attr("width",width);
-    });
+
 
 }
 
