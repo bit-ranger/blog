@@ -16,7 +16,7 @@
     border-color: #000;
 }
 
-.navbar-nav>.st-default-search-input{
+.navbar-nav>li>span>.st-default-search-input{
     line-height: 1.7;
     border: 1px solid #fff;
     color: #fff;
