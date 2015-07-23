@@ -100,52 +100,28 @@ protected void initFilterBean() throws ServletException {
 * AccessDecisionManager 提供访问决策
 * SecurityMetadataSource 元数据
 
-以下代码摘自`AbstractSecurityInterceptor`， 这是`FilterSecurityInterceptor`的父类， 也正是在此处区分了web请求拦截器与方法调用拦截器。
+以下代码摘自`AbstractSecurityInterceptor`， 这是`FilterSecurityInterceptor`的父类， 也正是在此处区分了web请求拦截器与方法调用拦截器。(代码有所精简)
 
 ~~~java
 protected InterceptorStatusToken beforeInvocation(Object object) {
-	Assert.notNull(object, "Object was null");
-	final boolean debug = logger.isDebugEnabled();
 
 	if (!getSecureObjectClass().isAssignableFrom(object.getClass())) {
-		throw new IllegalArgumentException(
-				"Security invocation attempted for object "
-						+ object.getClass().getName()
-						+ " but AbstractSecurityInterceptor only configured to support secure objects of type: "
-						+ getSecureObjectClass());
+		throw new IllegalArgumentException();
 	}
 
-	Collection<ConfigAttribute> attributes = this.obtainSecurityMetadataSource()
-			.getAttributes(object);
+	Collection<ConfigAttribute> attributes =
+	        this.obtainSecurityMetadataSource().getAttributes(object);
 
 	if (attributes == null || attributes.isEmpty()) {
 		if (rejectPublicInvocations) {
-			throw new IllegalArgumentException(
-					"Secure object invocation "
-							+ object
-							+ " was denied as public invocations are not allowed via this interceptor. "
-							+ "This indicates a configuration error because the "
-							+ "rejectPublicInvocations property is set to 'true'");
+			throw new IllegalArgumentException();
 		}
-
-		if (debug) {
-			logger.debug("Public object - authentication not attempted");
-		}
-
 		publishEvent(new PublicInvocationEvent(object));
-
 		return null; // no further work post-invocation
 	}
 
-	if (debug) {
-		logger.debug("Secure object: " + object + "; Attributes: " + attributes);
-	}
-
 	if (SecurityContextHolder.getContext().getAuthentication() == null) {
-		credentialsNotFound(messages.getMessage(
-				"AbstractSecurityInterceptor.authenticationNotFound",
-				"An Authentication object was not found in the SecurityContext"),
-				object, attributes);
+	    //...
 	}
 
 	Authentication authenticated = authenticateIfRequired();
@@ -155,44 +131,9 @@ protected InterceptorStatusToken beforeInvocation(Object object) {
 		this.accessDecisionManager.decide(authenticated, object, attributes);
 	}
 	catch (AccessDeniedException accessDeniedException) {
-		publishEvent(new AuthorizationFailureEvent(object, attributes, authenticated,
-				accessDeniedException));
-
+		publishEvent(new AuthorizationFailureEvent(object, attributes,
+		            authenticated,accessDeniedException));
 		throw accessDeniedException;
-	}
-
-	if (debug) {
-		logger.debug("Authorization successful");
-	}
-
-	if (publishAuthorizationSuccess) {
-		publishEvent(new AuthorizedEvent(object, attributes, authenticated));
-	}
-
-	// Attempt to run as a different user
-	Authentication runAs = this.runAsManager.buildRunAs(authenticated, object,
-			attributes);
-
-	if (runAs == null) {
-		if (debug) {
-			logger.debug("RunAsManager did not change Authentication object");
-		}
-
-		// no further work post-invocation
-		return new InterceptorStatusToken(SecurityContextHolder.getContext(), false,
-				attributes, object);
-	}
-	else {
-		if (debug) {
-			logger.debug("Switching to RunAs Authentication: " + runAs);
-		}
-
-		SecurityContext origCtx = SecurityContextHolder.getContext();
-		SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
-		SecurityContextHolder.getContext().setAuthentication(runAs);
-
-		// need to revert to token.Authenticated post-invocation
-		return new InterceptorStatusToken(origCtx, true, attributes, object);
 	}
 }
 ~~~
@@ -201,7 +142,8 @@ protected InterceptorStatusToken beforeInvocation(Object object) {
 
 ~~~xml
 <!-- 自定义过滤器 -->
-<bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+<bean id="filterSecurityInterceptor"
+            class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
     <property name="securityMetadataSource" ref="securityMetadataSource"/>
     <property name="authenticationManager" ref="authenticationManager"/>
     <property name="accessDecisionManager" ref="accessDecisionManager"/>
@@ -226,7 +168,8 @@ AuthenticationManager处理认证请求，然而它并不直接处理，而是�
 考虑到一种常见情形，用户输入用户名密码，然后与数据比对，验证用户信息，security提供了类来处理。
 
 ~~~xml
-<bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl" >
+<bean id="userDetailsService"
+            class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl" >
      <property name="dataSource" ref="dataSource"/>
 </bean>
 ~~~
@@ -238,13 +181,15 @@ JdbcDaoImpl使用内置的SQL查询数据，这些SQL以常量的形式出现在
 <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"/>
 
 <!-- 可以缓存UserDetails的UserDetailsService -->
-<bean id="cachingUserDetailsService" class="org.springframework.security.config.authentication.CachingUserDetailsService">
+<bean id="cachingUserDetailsService"
+            class="org.springframework.security.config.authentication.CachingUserDetailsService">
     <!-- 真正加载UserDetails的UserDetailsService -->
     <constructor-arg ref="userDetailsService"/>
     <!-- 缓存UserDetails的UserCache -->
     <property name="userCache" ref="userCache"/>
 </bean>
-<bean id="userCache" class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
+<bean id="userCache"
+            class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
     <!-- 用于真正缓存的Ehcache对象 -->
     <property name="cache" ref="ehcache"/>
 </bean>
@@ -259,7 +204,8 @@ AccessDecisionManager提供访问决策，它同样不会直接处理，而是�
 
 ~~~xml
 <!-- 决策管理器 -->
-<bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased" >
+<bean id="accessDecisionManager"
+            class="org.springframework.security.access.vote.AffirmativeBased" >
     <property name="allowIfAllAbstainDecisions" value="false"/>
     <constructor-arg index="0">
         <list>
@@ -327,7 +273,8 @@ security提供了`DefaultFilterInvocationSecurityMetadataSource`来进行角色�
 
 ~~~xml
 <!-- 资源与角色关系元数据 -->
-<bean id="securityMetadataSource" class="org.springframework.security.web.access.intercept.DefaultFilterInvocationSecurityMetadataSource">
+<bean id="securityMetadataSource"
+            class="org.springframework.security.web.access.intercept.DefaultFilterInvocationSecurityMetadataSource">
     <constructor-arg index="0">
         <bean class="top.rainynight.site.core.RequestMapFactoryBean">
             <property name="dataSource" ref="dataSource"/>
