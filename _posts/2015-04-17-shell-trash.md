@@ -35,6 +35,7 @@ done
 在`/etc/profile.d`目录新建文件`trash`，将以上代码粘贴进去，然后赋予其可执行权限。
 
 命令运行效果应该如此：
+
 ![trash][trash]
 
 [trash]: {{"/shell-trash.png" | prepend: site.imgrepo }}
