@@ -586,15 +586,9 @@ public class RequestMapFactoryBean extends JdbcDaoSupport implements FactoryBean
 </beans>
 ~~~
 
-表结构
-
-![table][table]
-
 建表语句
 
 ~~~sql
-
-drop table if exists article;
 
 drop table if exists SecurityMetadata;
 
@@ -604,8 +598,6 @@ drop table if exists user_colony;
 
 drop table if exists user_role;
 
-drop table if exists articleclass;
-
 drop table if exists colony;
 
 drop table if exists role;
@@ -613,8 +605,6 @@ drop table if exists role;
 drop table if exists user;
 
 drop table if exists webResource;
-
-drop table if exists file;
 
 
 
@@ -630,35 +620,6 @@ create table SecurityMetadata
    primary key (id),
    unique key UK_SecurityMetadata (webResource_id, role_id)
 );
-
-/*==============================================================*/
-/* Table: article                                               */
-/*==============================================================*/
-create table article
-(
-   articleid            int not null auto_increment comment '文章id',
-   classid              int not null comment '分类id',
-   userid               int not null comment '发表用户id',
-   title                varchar(128) not null comment '标题',
-   content              mediumtext not null comment '内容',
-   releasetime          datetime not null comment '发布时间',
-   primary key (articleid)
-);
-
-alter table article comment '文章';
-
-/*==============================================================*/
-/* Table: articleclass                                          */
-/*==============================================================*/
-create table articleclass
-(
-   classid              int not null auto_increment comment '分类id',
-   userid               int not null comment '所属用户id',
-   name                 varchar(16) not null comment '分类名称',
-   primary key (classid)
-);
-
-alter table articleclass comment '文章分类';
 
 /*==============================================================*/
 /* Table: colony                                                */
@@ -687,19 +648,6 @@ create table colony_role
 );
 
 alter table colony_role comment '群体角色';
-
-/*==============================================================*/
-/* Table: file                                                  */
-/*==============================================================*/
-create table file
-(
-   id                   varchar(36) not null comment '文件id',
-   name                 varchar(50) not null comment '文件名',
-   body                 mediumblob not null comment '二进制文件',
-   primary key (id)
-);
-
-alter table file comment '文件';
 
 /*==============================================================*/
 /* Table: role                                                  */
@@ -779,15 +727,6 @@ alter table SecurityMetadata add constraint FK_SecurityMetadata_Reference_role f
 alter table SecurityMetadata add constraint FK_SecurityMetadata_Reference_webResource foreign key (webResource_id)
       references webResource (id) on delete restrict on update restrict;
 
-alter table article add constraint FK_article_Reference_articleclass foreign key (classid)
-      references articleclass (classid) on delete restrict on update restrict;
-
-alter table article add constraint FK_article_Reference_user foreign key (userid)
-      references user (id) on delete restrict on update restrict;
-
-alter table articleclass add constraint FK_articleclass_Reference_user foreign key (userid)
-      references user (id) on delete restrict on update restrict;
-
 alter table colony_role add constraint FK_colony_role_Reference_colony foreign key (colony_id)
       references colony (id) on delete restrict on update restrict;
 
@@ -812,4 +751,3 @@ alter table user_role add constraint FK_user_role_Reference_user foreign key (us
 [github]: https://github.com/spring-projects/spring-security
 [filter]: {{"/spring-security-filter.png" | prepend: site.imgrepo }}
 [doc]: http://docs.spring.io/spring-security/site/docs/4.0.1.RELEASE/reference/htmlsingle/
-[table]: {{"/spring-security-structure.png" | prepend: site.imgrepo }}
