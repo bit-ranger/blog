@@ -1,8 +1,10 @@
 permalink: /:year-:month-:day/:title/
 markdown: kramdown
 baseurl: ""
-url: "http://blog.rainynight.top"
 
+code_theme: "railscasts"
+
+url: "http://blog.rainynight.top"
 title: "RainyNight"
 email: "dubuyuye@yeah.net"
 description: "Born to Die"
