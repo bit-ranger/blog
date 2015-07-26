@@ -2,7 +2,7 @@ permalink: /:year-:month-:day/:title/
 markdown: kramdown
 baseurl: ""
 
-code_theme: "railscasts"
+code_theme: "monokai_sublime"
 
 url: "http://blog.rainynight.top"
 title: "RainyNight"
