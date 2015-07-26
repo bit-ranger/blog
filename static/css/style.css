@@ -16,7 +16,8 @@
 .navbar-tiffany .navbar-brand,
 .navbar-text,
 .navbar-tiffany .nav>li>a,
-.footnote-tiffany a{
+.footnote-tiffany a,
+.footnote-tiffany span{
     color:#fff;
 }
 

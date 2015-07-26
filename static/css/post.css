@@ -36,15 +36,23 @@
  */
 .post header{
     margin-left: -30px;
-    padding-left: 30px;
+    padding-left: 25px;
     border-left: 5px solid #2ca6cb;
     line-height: 1.5;
 }
 .post header h1{
     color: #2ca6cb;
 }
-.post header p{
+.post header p.post-meta{
     color: #817c7c;
+}
+
+.post header p.post-tag a{
+    display: inline-block;
+    background: #2ca6cb;
+    color: #fff;
+    padding: 2px 5px 0px 5px;
+    border: 1px solid #fff;
 }
 
 .post img{
@@ -81,6 +89,7 @@
     }
     .post header{
         margin-left: -10px;
+        padding-left: 5px;
     }
 }
 @media screen and (max-width: 1199px){
@@ -134,4 +143,8 @@
     /*list-style: none;*/
     font-size: 15px;
     line-height: 25px;
+}
+
+.boundary{
+   border-bottom: .1875em solid #ccc
 }
