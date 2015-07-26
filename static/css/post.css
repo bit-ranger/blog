@@ -70,7 +70,7 @@
 .post blockquote:last-child {
     margin-bottom: 0;
 }
-@media screen and (max-width: 1199px){
+@media screen and (max-width: 767px){
     .post blockquote {
         border-left: 3px solid #D6DBDF;
         padding-left: 5px;
@@ -81,12 +81,14 @@
     }
     .post header{
         margin-left: -10px;
-        padding-left: 10px;
     }
+}
+@media screen and (max-width: 1199px){
     .content-navigation{
         display: none!important;
     }
 }
+
 @media screen and (min-width: 1200px){
     /**
       * 文章目录相关

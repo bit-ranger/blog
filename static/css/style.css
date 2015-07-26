@@ -84,6 +84,14 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     line-height: 1.4;
 }
 
+@media screen and (max-width: 767px) {
+    .sheet{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
 /* footer */
 .footnote{
 	min-height: 50px;
