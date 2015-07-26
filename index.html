@@ -32,7 +32,7 @@ scripts: [tagCloud.js, index.js]
 
 
       <div>
-        <section post-cate="All">
+        <section class="category-slice" post-cate="All">
           {% for post in site.posts %}
             <article>
                 <header>
@@ -60,7 +60,7 @@ scripts: [tagCloud.js, index.js]
 
 
         {% for category in site.categories %}
-          <section post-cate="{{category | first}}">
+          <section class="category-slice" post-cate="{{category | first}}">
             {% for posts in category  %}
               {% for post in posts %}
                 {% if post.url %}

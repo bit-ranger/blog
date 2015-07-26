@@ -30,11 +30,23 @@ scripts: post.js
         </div>
     </div>
     <div class="content-navigation">
-      <div class="shadow-bottom-center hidden-xs" >
+      <div class="shadow-bottom-center" >
         <div class="content-navigation-header">
-          <span class="octicon octicon-list-unordered"></span>&nbsp;Navigation
+            <span class="octicon octicon-list-unordered"></span>&nbsp;Navigation
         </div>
         <div class="content-navigation-text"></div>
+        <div class="content-navigation-header">
+          <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+        </div>
+        <div class="content-navigation-tag">
+            <ul>
+            {% for tag in page.tags %}
+                <li>
+                    <a class="word-keep" href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
       </div>
     </div>
 </div>

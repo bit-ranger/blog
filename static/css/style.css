@@ -1,4 +1,4 @@
-.navbar-inverse, .footnote {
+.navbar-tiffany,.footnote-tiffany{
     background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
     -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%);
     background: linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
@@ -7,13 +7,31 @@
     background-size: 1em 1em;
 }
 
-.navbar-inverse {
-    background-color: #333;
-    border-color: #333;
+.navbar-tiffany,.footnote-tiffany {
+    background-color: #2ca6cb;
+    border-color: #2ca6cb;
+    box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
 }
 
-.navbar-inverse .navbar-toggle {
-    border-color: #000;
+.navbar-tiffany .navbar-brand,
+.navbar-text,
+.navbar-tiffany .nav>li>a,
+.footnote-tiffany a{
+    color:#fff;
+}
+
+.navbar-tiffany .nav>li>a:hover,
+.nav>li>a:hover:focus,
+.nav>li.active>a {
+    background-color: #1b7f9e;
+    color:#e9cd4c;
+}
+.navbar-tiffany .navbar-toggle{
+    border-color: #fff;
+}
+
+.navbar-tiffany .navbar-toggle .icon-bar{
+    background-color: #fff;
 }
 
 .st-ui-stamp{
@@ -66,30 +84,14 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     line-height: 1.4;
 }
 
-@media screen and (max-width: 1200px){
-    .sheet{
-        padding:10px 10px;
-    }
-}
-
 /* footer */
 .footnote{
 	min-height: 50px;
 	line-height: 50px;
 	margin-top: -50px;
-	background-color: #3f4850;
 	text-align: center;
-
-    color: #aaa;
-	-webkit-box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
-	-o-box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
-	box-shadow: 0 -2px 4px rgba(0,0,0,0.5);
 }
-.footnote a:link {color: #aaa}		/* 未访问的链接 */
-.footnote a:visited {color: #888}	/* 已访问的链接 */
-.footnote a:hover {color: #bbb;text-decoration: none;}	/* 鼠标移动到链接上 */
-.footnote a:active {color: #bbb}	/* 选定的链接 */
+
 .footnote .point{
 	margin: 0 8px;
 }

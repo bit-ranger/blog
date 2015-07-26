@@ -13,10 +13,20 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function categoryDisplay() {
-    $('section[post-cate!=All]').hide();
+    selectCategory();
     $('.categories-item').click(function() {
-        var cate = $(this).attr('cate'); //get category's name
+        window.location.hash = "#" + $(this).attr("cate");
+        selectCategory();
+    });
+}
+
+function selectCategory(){
+    var thisId = window.location.hash.substring(1);
+    if(thisId != "" && thisId != undefined){
+        var cate = thisId;
         $('section[post-cate!=' + cate + ']').hide(200);
         $('section[post-cate=' + cate + ']').show(200);
-    });
+    } else {
+        $("section[post-cate='All']").show();
+    }
 }

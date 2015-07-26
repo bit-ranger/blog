@@ -13,8 +13,8 @@ $(document).ready(function() {
 function generateContent() {
     var toc = $("#markdown-toc").html();
     if (typeof toc != "undefined") {
-        $(".content-navigation").addClass("col-sm-3").show();
-        $(".content").addClass("col-sm-9");
+        $(".content-navigation").addClass("col-lg-3").show();
+        $(".content").addClass("col-lg-9");
         $(".content-navigation .content-navigation-text").html("<ul>" + toc + "</ul>");
     }
 }

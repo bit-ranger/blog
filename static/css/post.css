@@ -34,11 +34,17 @@
 /* post
  * post articles area
  */
-.post{
+.post header{
+    margin-left: -30px;
+    padding-left: 30px;
+    border-left: 5px solid #2ca6cb;
+    line-height: 1.5;
 }
-
-.post h4{
-    font-weight: bold;
+.post header h1{
+    color: #2ca6cb;
+}
+.post header p{
+    color: #817c7c;
 }
 
 .post img{
@@ -64,7 +70,7 @@
 .post blockquote:last-child {
     margin-bottom: 0;
 }
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1199px){
     .post blockquote {
         border-left: 3px solid #D6DBDF;
         padding-left: 5px;
@@ -73,16 +79,24 @@
     .post article ul{
         padding-left: 25px;
     }
+    .post header{
+        margin-left: -10px;
+        padding-left: 10px;
+    }
+    .content-navigation{
+        display: none!important;
+    }
 }
-
-/**
- * 文章目录相关
- */
-@media screen and (min-width: 768px){
+@media screen and (min-width: 1200px){
+    /**
+      * 文章目录相关
+      */
     .post #markdown-toc {
         display: none;
     }
 }
+
+
 
 .post #markdown-toc a:link {text-decoration: none;}
 .post #markdown-toc a:visited{color: #D27504}
@@ -95,21 +109,20 @@
 .content-navigation a:active {color: #99b}	/* 选定的链接 */
 .content-navigation{
     max-width: 292px;
+    padding-left: 30px;
     display: none;
 }
 .content-navigation-header {
     display: block;
-    padding: 12px 15px;
-    border-bottom: 1px solid #c0c0c0;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #f8f8fd;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    -o-box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
+    border-bottom: .1875em solid #ccc;
+    font-size: 18px;
+    color: #2ca6cb;;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
 }
-.content-navigation .content-navigation-text{
+.content-navigation .content-navigation-text, .content-navigation-tag{
     padding: 10px 0;
 }
 .content-navigation ul{
