@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DIY的文件上传组件
+title: Custom Fileupload
 tags: fileupload
 categories: web
 published: true
