@@ -1,3 +1,6 @@
+---
+layout: null
+---
 .navbar-tiffany,.footnote-tiffany{
     background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
     -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%);
@@ -45,7 +48,7 @@ html{
     margin: 0px 0px 0px 0px;
 }
 body {
-    background-image: url(http://7u2qnl.com1.z0.glb.clouddn.com/bg-canvas_bg.jpg);
+    background-image: url({{ "/static/bg.jpg" | prepend: site.baseurl | prepend: site.url }});
     height: 100%;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
