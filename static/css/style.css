@@ -110,13 +110,13 @@ body a:active {text-decoration: none}	/* 选定的链接 */
  */
 .page-scrollTop {
 	position: fixed;
-	right: 25px;
+	right: 10px;
 	bottom: 10px;
 	width: 60px;
 	height: 60px;
 	background-color: #bbb;
 	border-radius:7px;
-	opacity: 0.8;
+	opacity: 0.7;
 	display: none;
 	z-index: 888;
 }
