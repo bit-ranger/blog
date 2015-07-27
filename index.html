@@ -1,7 +1,7 @@
 ---
 layout: default
-styles: [tagCloud.css, index.css]
-scripts: [tagCloud.js, index.js]
+styles: [index.css]
+scripts: [index.js]
 ---
 <div class="row index">
 
@@ -92,10 +92,5 @@ scripts: [tagCloud.js, index.js]
         {% endfor %}
       </div>
 
-      <div class="tagCloud">
-          {% for tag in site.tags %}
-          <a href="{{ site.baseurl }}/tags/#{{ tag | first }}">{{ tag | first }}</a>
-          {% endfor %}
-      </div>
   </div>
 </div>
