@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Java 8 新特性
-tags: Java 8 新特性
+title: Java8 新特性
+tags: Java8 新特性
 categories: Java
 ---
 

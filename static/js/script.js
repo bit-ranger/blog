@@ -43,7 +43,7 @@ function backToTop() {
 function search(){
     (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
         (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.appendChild(s);
     })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
     _st('install','WyVgxJw2ypny5Feaxyrs','2.0.0');
@@ -59,7 +59,7 @@ function duoshuoQueryFunction(){
 	ds.async = true;
 	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
 	ds.charset = 'UTF-8';
-	document.body.appendChild(ds);
+	document.getElementsByTagName("script")[0].parentNode.appendChild(ds);
 }
 
 

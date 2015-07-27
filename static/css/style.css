@@ -1,7 +1,13 @@
 ---
 layout: null
 ---
-.navbar-tiffany,.footnote-tiffany{
+ .navbar-tiffany{
+    background-color: #2ca6cb;
+    border-color: #2ca6cb;
+    box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
+}
+
+.footnote-tiffany{
     background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
     -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%);
     background: linear-gradient(45deg, rgba(255, 255, 255, 0) 48%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0) 52%),
@@ -9,11 +15,10 @@ layout: null
     -webkit-background-size: 1em 1em;
     background-size: 1em 1em;
 }
-
-.navbar-tiffany,.footnote-tiffany {
-    background-color: #2ca6cb;
+.footnote-tiffany{
+    background-color: #333333;
     border-color: #2ca6cb;
-    box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
+    box-shadow: 2px -4px 5px rgba(3,-3,3,0.2);
 }
 
 .navbar-tiffany .navbar-brand,
@@ -171,6 +176,9 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 }
 .pad-lar{
     height: 80px;
+}
+.scriptHub{
+    display: none!important;
 }
 
 

@@ -42,7 +42,7 @@ scripts: [index.js]
                   <a class="title" href="{{ post.url | prepend: site.baseurl }}">
                       {{ post.title }}
                   </a>
-                  <p>{% if post.excerpt.size > 32 %}{{ post.excerpt | strip_html | strip_newlines | truncate: 256 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 256 }}{% endif %}</p>
+                  <p>{% if post.excerpt.size > 32 %}{{ post.excerpt }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 160 }}{% endif %}</p>
                   <a class="readmore" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
                   <footer>
                       {% for tag in post.tags %}
@@ -72,7 +72,7 @@ scripts: [index.js]
                           <a class="title" href="{{ post.url | prepend: site.baseurl }}">
                               {{ post.title }}
                           </a>
-                          <p>{% if post.excerpt.size > 32 %}{{ post.excerpt | strip_html | strip_newlines | truncate: 256 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 256 }}{% endif %}</p>
+                          <p>{% if post.excerpt.size > 32 %}{{ post.excerpt }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 160 }}{% endif %}</p>
                           <a class="readmore" href="{{ post.url | prepend: site.baseurl }}">Read More</a>
                           <footer>
                               {% for tag in post.tags %}
