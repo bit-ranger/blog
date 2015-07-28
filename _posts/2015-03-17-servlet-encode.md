@@ -111,7 +111,7 @@ public class HttpServletPrint extends HttpServlet{
 }
 ~~~
 
-get与post结果如下，果然不负众望地乱码了。
+get与post结果如下，果然不负众望地乱码了(如果不乱码，我还写个毛？)。
 
 ![param][param]
 
