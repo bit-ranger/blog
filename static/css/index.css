@@ -17,22 +17,23 @@
     font-size: 72px;
     font-weight: bold;
 }
-.banner h2{
-    line-height: 2;
-}
 .banner h1,
 .banner h2,
 .banner div{
     color: #ffffff;
     text-align: center;
 }
-
+.banner h2{
+    line-height: 2;
+}
 @media screen and (max-width: 767px) {
     .banner h1{
-        font-size: 50px;
+        font-size: 36px;
     }
     .banner h2{
-        font-size: 21px;
+        font-size: 15px;
     }
-
+    article .title{
+        font-size: 1.8em;
+    }
 }
