@@ -1,0 +1,38 @@
+.banner{
+    background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 52%),
+    -webkit-linear-gradient(135deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 52%);
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 52%),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 52%);
+    -webkit-background-size: 1em 1em;
+    background-size: 1em 1em;
+}
+.banner {
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #2ca6cb;
+    margin-top: -20px;
+}
+.banner h1{
+    font-size: 72px;
+    font-weight: bold;
+}
+.banner h2{
+    line-height: 2;
+}
+.banner h1,
+.banner h2,
+.banner div{
+    color: #ffffff;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .banner h1{
+        font-size: 50px;
+    }
+    .banner h2{
+        font-size: 21px;
+    }
+
+}

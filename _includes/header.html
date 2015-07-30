@@ -31,3 +31,13 @@
             </div>
         </nav>
     </header>
+    {% if page.url == "/index.html" %}
+    <div class="banner">
+        <h1>Rainy Night</h1>
+        <h2>竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。</h2>
+        <div>
+            <a class="btn btn-default" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}"  target="_blank">Subscribe to RSS</a>&nbsp;or&nbsp;
+            <a class="btn btn-default" href="https://github.com/{{ site.github_username }}/blog"  target="_blank">View on Github</a>
+        </div>
+    </div>
+    {% endif %}

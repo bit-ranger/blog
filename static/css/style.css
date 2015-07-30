@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
- .navbar-tiffany{
+.navbar-tiffany{
     background-color: #2ca6cb;
     border-color: #2ca6cb;
     box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
@@ -22,7 +22,7 @@ layout: null
 }
 
 .navbar-tiffany .navbar-brand,
-.navbar-text,
+.navbar-tiffany .navbar-text,
 .navbar-tiffany .nav>li>a,
 .footnote-tiffany a,
 .footnote-tiffany span{
@@ -30,10 +30,10 @@ layout: null
 }
 
 .navbar-tiffany .nav>li>a:hover,
-.nav>li>a:hover:focus,
-.nav>li.active>a {
-    background-color: #1b7f9e;
-    color:#e9cd4c;
+.navbar-tiffany .nav>li>a:focus,
+.navbar-tiffany .nav>li.active>a {
+    background-color: #2ca6cb;
+    color:#ffc200;
 }
 .navbar-tiffany .navbar-toggle{
     border-color: #fff;
@@ -180,5 +180,4 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 .scriptHub{
     display: none!important;
 }
-
 
