@@ -7,7 +7,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+                    <a class="navbar-brand" href="{{ site.baseurl | prepend: site.url }}/">{{ site.title }}</a>
                     <p class="navbar-text">{{ site.description }}</p>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -15,13 +15,13 @@
                         {% if page.url == "/index.html" %}
                         <li class="active">{% else %}
                         <li>{% endif %}
-                            <a href="{{ site.baseurl }}/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                            <a href="{{ site.baseurl | prepend: site.url }}/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
                         </li>
                         {% for p in site.pages %}{% if p.title %}
                         {% if p.url == page.url %}
                         <li class="active">{% else %}
                         <li>{% endif %}
-                            <a href="{{ p.url | prepend: site.baseurl }}" class="word-keep"><span class="octicon {{ p.icon }}"></span>&nbsp;&nbsp;{{ p.title }}</a>
+                            <a href="{{ p.url | prepend: site.baseurl | prepend: site.url }}" class="word-keep"><span class="octicon {{ p.icon }}"></span>&nbsp;&nbsp;{{ p.title }}</a>
                         </li>
                         {% endif %}
                         {% endfor %}

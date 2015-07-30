@@ -6,14 +6,14 @@
     <meta name="keywords" content="{{ page.title }}, {% for category in page.categories %}{{ category }},{% endfor %} {% for tag in page.tags %}{{ tag }},{% endfor %}">
     <meta name="description" content="{{ page.title }}, {% for category in page.categories %}{{ category }},{% endfor %} {% for tag in page.tags %}{{ tag }},{% endfor %} {% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-    <link rel="shortcut icon" href="{{ '/static/favicon.ico' | prepend: site.baseurl }}">
+    <link rel="shortcut icon" href="{{ '/static/favicon.ico' | prepend: site.baseurl | prepend: site.url}}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" />
 
     <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.6/styles/{{ site.code_theme }}.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ '/static/octicons/octicons.css' | prepend: site.baseurl }}">
-    <link rel="stylesheet" type="text/css" href="{{ '/static/css/style.css' | prepend: site.baseurl }}">
-    {% for style in page.styles %}<link rel="stylesheet" type="text/css" href="{{ '/static/css/' | prepend: site.baseurl | append: style}}">
+    <link rel="stylesheet" type="text/css" href="{{ '/static/octicons/octicons.css' | prepend: site.baseurl | prepend: site.url}}">
+    <link rel="stylesheet" type="text/css" href="{{ '/static/css/style.css' | prepend: site.baseurl | prepend: site.url}}">
+    {% for style in page.styles %}<link rel="stylesheet" type="text/css" href="{{ '/static/css/' | append: style | prepend: site.baseurl | prepend: site.url}}">
     {%endfor%}
 </head>
