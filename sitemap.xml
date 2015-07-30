@@ -6,7 +6,7 @@ layout: null
     {% for post in site.posts %}
     <sitemap>
         <loc>{{ post.url | prepend: site.baseurl | prepend: site.url }}</loc>
-        <lastmod>{{ site.time | date_to_rfc822 }}</lastmod>
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     </sitemap>
     {% endfor %}
 </sitemapindex>
