@@ -26,6 +26,7 @@
 .banner h2{
     line-height: 2;
 }
+
 @media screen and (max-width: 767px) {
     .banner h1{
         font-size: 36px;
@@ -34,6 +35,9 @@
         font-size: 15px;
     }
     article .title{
-        font-size: 1.8em;
+        font-size: 1.5em;
+    }
+    .banner .btn.btn-default{
+        font-size: 11px;
     }
 }
