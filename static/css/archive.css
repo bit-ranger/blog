@@ -107,10 +107,10 @@ Main components
 }
 @media only screen and (min-width: 1170px) {
     .cd-timeline-img {
-        width: 60px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         left: 50%;
-        margin-left: -30px;
+        margin-left: -20px;
         /* Force Hardware Acceleration in WebKit */
         -webkit-transform: translateZ(0);
         -webkit-backface-visibility: hidden;
@@ -139,12 +139,11 @@ Main components
     display: table;
     clear: both;
 }
-.cd-timeline-content h2 {
+.cd-timeline-content a {
     color: #303e49;
 }
 .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 13px;
-    font-size: 0.8125rem;
 }
 .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     display: inline-block;
@@ -182,11 +181,9 @@ a.cd-read-more:hover{text-decoration:none; background-color: #424242;  }
 @media only screen and (min-width: 768px) {
     .cd-timeline-content p {
         font-size: 16px;
-        font-size: 1rem;
     }
     .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
         font-size: 14px;
-        font-size: 0.875rem;
     }
 }
 @media only screen and (min-width: 1170px) {
@@ -210,7 +207,6 @@ a.cd-read-more:hover{text-decoration:none; background-color: #424242;  }
         left: 122%;
         top: 6px;
         font-size: 16px;
-        font-size: 1rem;
     }
     .cd-timeline-block:nth-child(even) .cd-timeline-content {
         float: right;

@@ -12,9 +12,9 @@ scripts: post.js
                 <span class="octicon octicon-clock"></span> {{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
             </p>
             <p class="post-tag">
-                <span>{% for cat in page.categories %}<a href="{{ site.baseurl }}/#{{ cat }}"><span class="octicon octicon-list-unordered"></span>&nbsp;{{ cat }}</a>{% endfor %}</span>
+                <span>{% for cat in page.categories %}<a href="{{ '/category' | prepend: site.baseurl | prepend: site.url }}/#{{ cat }}"><span class="octicon octicon-list-unordered"></span>&nbsp;{{ cat }}</a>{% endfor %}</span>
                 <span>{% for tag in page.tags %}
-                    <a class="word-keep" href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                    <a class="word-keep" href="{{ '/tags' | prepend: site.baseurl | prepend: site.url }}/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
                     {% endfor %}
                 </span>
             </p>
@@ -35,7 +35,7 @@ scripts: post.js
         </div>
         <div class="pad-min"></div>
         <div id="post-comment" class="sheet post">
-          <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ page.url }}"></div>
+          <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url  }}"></div>
         </div>
     </div>
     <div class="content-navigation">
@@ -51,7 +51,7 @@ scripts: post.js
             <ul>
             {% for tag in page.tags %}
                 <li>
-                    <a class="word-keep" href="{{ site.baseurl }}/tags/#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                    <a class="word-keep" href="{{ '/tags' | prepend: site.baseurl | prepend: site.url }}#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
                 </li>
             {% endfor %}
             </ul>

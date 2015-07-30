@@ -1,14 +1,19 @@
 permalink: /:year-:month-:day/:title/
 markdown: kramdown
-baseurl: ""
 
 code_theme: "monokai_sublime"
+paginate: 10
+paginate_path: ":num"
 
-url: "http://blog.rainynight.top"
+baseurl: ""
+
 title: "RainyNight"
 email: "dubuyuye@yeah.net"
 description: "Born to Die"
 github_username:  "dubuyuye"
 
+url: "http://blog.rainynight.top"
 imgrepo: "http://blog.rainynight.top/static/img"
+#url: "http://127.0.0.1:4000"
 #imgrepo: "http://127.0.0.1:4000/static/img"
+

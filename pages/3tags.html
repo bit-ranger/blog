@@ -3,7 +3,7 @@ layout: page
 title: Tags
 permalink: /tags/
 icon: octicon-tag
-styles: [index.css, tagCloud.css, tags.css]
+styles: [article-list.css, category.css, tagCloud.css, tags.css]
 scripts: [tagCloud.js, tags.js]
 ---
 
@@ -40,9 +40,9 @@ scripts: [tagCloud.js, tags.js]
     <article >
         <div class="module">
             <header>
-                <a href="{{ site.baseurl }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
+                <a href="{{ site.baseurl | prepend: site.url  }}/archive/#{{ post.date | date: '%Y-%m-%d' }}"><span class="octicon octicon-calendar"></span>&nbsp;<span>{{ post.date | date: "%Y-%m-%d" }}</span></a>
             </header>
-            <a class="title" href="{{ post.url | prepend: site.baseurl }}">
+            <a class="title" href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
                 {{ post.title }}
             </a>
         </div>
