@@ -5,6 +5,7 @@
     linear-gradient(-45deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 52%);
     -webkit-background-size: 1em 1em;
     background-size: 1em 1em;
+    box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
 }
 .banner {
     width: 100%;
