@@ -3,6 +3,7 @@ layout: post
 title: SICP 练习(1)
 tags: SICP Lisp Scheme
 categories: Scheme
+langs: [scheme]
 ---
 
 * content
@@ -18,7 +19,7 @@ categories: Scheme
 
 ##1.3
 
-~~~
+~~~scheme
 ;;;1.3
 
 ;平方
@@ -39,7 +40,7 @@ categories: Scheme
 
 ##1.4
 
-~~~
+~~~scheme
 ;;;1.4
 ;如果b大于0，则返回+，否则返回-，此处的+与-既是值又是函数，实际上，在lisp中函数即值。
 (define (a-plus-abs-b a b)
@@ -48,7 +49,7 @@ categories: Scheme
 
 ##1.5
 
-~~~
+~~~scheme
 ;;;1.5
 (define (p) (p))
 
@@ -65,7 +66,7 @@ categories: Scheme
 
 ##1.6
 
-~~~
+~~~scheme
 ;;;1.6
 
 
@@ -119,7 +120,7 @@ categories: Scheme
 
 ##1.7
 
-~~~
+~~~scheme
 ;;;1.7
 
 
@@ -159,7 +160,7 @@ categories: Scheme
 
 ##1.8
 
-~~~
+~~~scheme
 ;;;1.8
 
 ;平方
