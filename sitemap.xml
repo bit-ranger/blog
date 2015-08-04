@@ -13,7 +13,7 @@ layout: null
         <changefreq>weekly</changefreq>
     </url>
     {% endfor %}
-    {% for post in site.pages %}{% if post.title %}
+    {% for post in site.pages %}{% if post.isNavItem %}
     <url>
         <loc>{{ post.url | prepend: site.baseurl | prepend: site.url }}</loc>
         <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>

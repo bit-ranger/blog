@@ -43,6 +43,32 @@ layout: null
     background-color: #fff;
 }
 
+.footnote .foot-item{
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 18px;
+    padding-top: 1px;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px 3px;
+    -webkit-transition: background .4s ease-in-out;
+    -moz-transition: background .4s ease-in-out;
+    -ms-transition: background .4s ease-in-out;
+    -o-transition: background .4s ease-in-out;
+    transition: background .4s ease-in-out;
+}
+
+.footnote .foot-item:hover{
+    background-color: #2ca6cb;
+    -webkit-transition: background .4s ease-in-out;
+    -moz-transition: background .4s ease-in-out;
+    -ms-transition: background .4s ease-in-out;
+    -o-transition: background .4s ease-in-out;
+    transition: background .4s ease-in-out;
+}
+
 .st-ui-stamp{
     display: none!important;
 }
@@ -109,9 +135,6 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 	text-align: center;
 }
 
-.footnote .point{
-	margin: 0 8px;
-}
 
 /**
  * back to top

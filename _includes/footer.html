@@ -1,22 +1,10 @@
     <footer  class="footnote footnote-tiffany">
         <div class="container">
-            <span class="word-keep">
-                <a href="mailto:{{ site.email }}" target="_blank"><span class="octicon octicon-mail"></span>&nbsp;Mail</a>
-            </span>
-
-            <span class="word-keep">
-                <span class="point"> · </span>
-                <a href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" target="_blank"><span class="octicon octicon-rss"></span>&nbsp;RSS</a>
-            </span>
-
-            <span class="word-keep">
-                <span class="point"> · </span>
-                <a href="https://github.com/{{ site.github_username }}" target="_blank"><span class="octicon octicon-mark-github"></span>&nbsp;Github</a>
-            </span>
-
-            <span class="word-keep">
-                <span class="point"> · </span>
+                <a class="foot-item" href="mailto:{{ site.email }}" target="_blank"><span class="octicon octicon-mail"></span></a>
+                <a class="foot-item" href="https://github.com/{{ site.github_username }}" target="_blank"><span class="octicon octicon-mark-github"></span></a>
+                <a class="foot-item" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" target="_blank"><span class="octicon octicon-rss"></span></a>
+                <a class="foot-item" href="{{ '/link/' | prepend: site.baseurl | prepend: site.url }}"><span class="octicon octicon-link-external"></span></a>
+                &nbsp;
                 <a href="http://blog.rainynight.top/"><span>&copy; RainyNight</span></a>
-            </span>
         </div>
     </footer>
