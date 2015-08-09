@@ -1,13 +1,12 @@
 .post pre{
-    padding: 0;
-    background: none;
-    font-size: inherit;
+    padding: 5px;
 }
 
 .post code{
     font-size: inherit;
     font-family:  "Menlo", "Monaco", "Consolas", "Courier New", "monospace", "Helvetica", "Tahoma", "Arial",
     "WenQuanYi Micro Hei", "文泉驿微米黑", "STXihei", "华文细黑", "Microsoft YaHei", "微软雅黑", "SimSun", "宋体", "Heiti", "黑体", sans-serif;
+    font-size: 17px;
 }
 
 .post table{
@@ -40,7 +39,7 @@
     border-left: 5px solid #2ca6cb;
     line-height: 1.5;
 }
-.post header h1{
+.post header h2{
     color: #2ca6cb;
 }
 .post header p.post-meta{

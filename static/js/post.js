@@ -3,7 +3,6 @@
  */
 $(document).ready(function() {
     generateContent();
-    hljs.initHighlightingOnLoad();
     share();
 });
 

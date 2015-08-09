@@ -103,8 +103,13 @@ body {
 
     font-family:  "Menlo", "Monaco", "Consolas", "Courier New", "monospace", "Helvetica", "Tahoma", "Arial",
     "WenQuanYi Micro Hei", "文泉驿微米黑", "STXihei", "华文细黑", "Microsoft YaHei", "微软雅黑", "SimSun", "宋体", "Heiti", "黑体", sans-serif;
-    font-size: 15px;
+    font-size: 17px;
 }
+
+.navbar-nav>li>a{
+    line-height: 1.42857143;
+}
+
 
 body a:link {text-decoration: none}		/* 未访问的链接 */
 body a:visited {text-decoration: none}	/* 已访问的链接 */
@@ -132,8 +137,7 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 
 .sheet{
     padding:10px 30px;
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: 17px;
 }
 
 @media screen and (max-width: 767px) {
@@ -248,7 +252,7 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 
 @media screen and (max-width: 767px) {
     .banner h1{
-        font-size: 42px;
+        font-size: 40px;
     }
     .banner h2{
         font-size: 21px;

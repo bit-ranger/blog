@@ -62,11 +62,13 @@ CXF：http://cxf.apache.org/
 
 ###定义接口
 
+~~~java
     //此注解必须
     @WebService
     public interface HelloService {
         String say();
     }
+~~~
 
 ###实现接口
 

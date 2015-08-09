@@ -1,10 +1,26 @@
 permalink: /:year-:month-:day/:title/
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
 
-code_theme: "monokai_sublime"
+highlighter: pygments
+markdown: redcarpet
+redcarpet:
+  extensions: [
+   "no_intra_emphasis",
+   "fenced_code_blocks",
+   "autolink",
+   "tables",
+   "strikethrough",
+   "superscript",
+   "with_toc_data",
+   "footnotes",
+   "highlight",
+   "underline",
+   "quote",
+   "lax_spacing",
+   "prettify"
+  ]
+
+
+
 paginate: 10
 paginate_path: ":num"
 

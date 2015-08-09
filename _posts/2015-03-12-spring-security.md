@@ -177,7 +177,7 @@ JdbcDaoImpl使用内置的SQL查询数据，这些SQL以常量的形式出现在
 
 每次登陆都执行一次SQL可能会存在性能问题，如果用户表数据量不太大，可以考虑缓存，Security可以方便地使用ehcache
 
-~~~
+~~~ xml
 <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"/>
 
 <!-- 可以缓存UserDetails的UserDetailsService -->

@@ -1,11 +1,6 @@
 <div class="scriptHub">
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js"></script>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    {% if page.date %}
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.6/highlight.min.js"></script>
-    {% for lang in page.langs %}<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.6/languages/{{ lang }}.min.js"></script>
-    {% endfor %}
-    {% endif %}
     <script type="text/javascript" src="{{'/static/js/script.js' | prepend:site.baseurl | prepend: site.url  }}"></script>
     {% for script in page.scripts %}<script type="text/javascript" src="{{'/static/js/' | prepend:site.baseurl | append: script | prepend: site.url }}"></script>
     {% endfor %}
