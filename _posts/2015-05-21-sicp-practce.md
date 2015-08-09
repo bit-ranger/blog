@@ -19,7 +19,7 @@ langs: [scheme]
 
 ##1.3
 
-~~~scheme
+```scheme
 ;;;1.3
 
 ;平方
@@ -36,7 +36,7 @@ langs: [scheme]
            (sum-of-square a b)]
         [else
            (max-sum-of-square c a b)]))
-~~~
+```
 
 ##1.4
 

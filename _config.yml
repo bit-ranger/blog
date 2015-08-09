@@ -1,5 +1,8 @@
 permalink: /:year-:month-:day/:title/
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 code_theme: "monokai_sublime"
 paginate: 10
