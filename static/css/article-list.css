@@ -22,7 +22,7 @@ article .module {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 1.5em;
+    padding: 25px;
     border-bottom: 1px solid #b1b1b1;
     color: #555;
     background: #f8f8fd;
@@ -37,6 +37,10 @@ article .title{
     font-weight: 500;
     display: block;
     margin-bottom: 10px;
+
+    margin-left: -25px;
+    padding-left: 20px;
+    border-left: 5px solid #2ca6cb;
 }
 
 article .readmore{

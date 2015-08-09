@@ -1,9 +1,21 @@
 ---
 layout: null
 ---
+
+.navbar-tiffany,
+.banner{
+    background: -webkit-linear-gradient(45deg, rgba(0 , 0, 0, 0) 48%, rgba(0 , 0, 0, 0.1) 50%, rgba(0 , 0, 0, 0) 52%),
+    -webkit-linear-gradient(135deg, rgba(0 , 0, 0, 0) 48%, rgba(0 , 0, 0, 0.1) 50%, rgba(0 , 0, 0, 0) 52%);
+    background: linear-gradient(45deg, rgba(0 , 0, 0, 0) 48%, rgba(0 , 0, 0, 0.1) 50%, rgba(0 , 0, 0, 0) 52%),
+    linear-gradient(-45deg, rgba(0 , 0, 0, 0) 48%, rgba(0 , 0, 0, 0.1) 50%, rgba(0 , 0, 0, 0) 52%);
+    -webkit-background-size: 1em 1em;
+    background-size: 1em 1em;
+}
+
 .navbar-tiffany{
-    background-color: #2ca6cb;
-    border-color: #2ca6cb;
+    background-color: #1F758F;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
 }
 
@@ -21,19 +33,19 @@ layout: null
     box-shadow: 2px -4px 5px rgba(3,-3,3,0.2);
 }
 
+
 .navbar-tiffany .navbar-brand,
 .navbar-tiffany .navbar-text,
-.navbar-tiffany .nav>li>a,
-.footnote-tiffany a,
-.footnote-tiffany span{
-    color:#fff;
+.navbar-tiffany .nav>li>a{
+    color: #fff;
 }
+
 
 .navbar-tiffany .nav>li>a:hover,
 .navbar-tiffany .nav>li>a:focus,
 .navbar-tiffany .nav>li.active>a {
-    background-color: #2ca6cb;
-    color:#ffc200;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
 }
 .navbar-tiffany .navbar-toggle{
     border-color: #fff;
@@ -43,6 +55,12 @@ layout: null
     background-color: #fff;
 }
 
+
+.footnote-tiffany a,
+.footnote-tiffany span{
+    color:#fff;
+
+}
 .footnote .foot-item{
     display: inline-block;
     width: 28px;
@@ -203,3 +221,36 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     display: none!important;
 }
 
+
+
+/*** banner ***/
+.banner {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #2ca6cb;
+}
+
+.banner h1{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+
+.banner h1,
+.banner h2{
+    color: #ffffff;
+    text-align: center;
+}
+.banner h2{
+    line-height: 2;
+}
+
+@media screen and (max-width: 767px) {
+    .banner h1{
+        font-size: 42px;
+    }
+    .banner h2{
+        font-size: 21px;
+    }
+}

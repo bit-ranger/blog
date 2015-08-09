@@ -1,3 +1,7 @@
+    <div class="banner">
+        <h1>Rainy <img src="{{ '/static/favicon.ico' | prepend: site.baseurl | prepend: site.url}}"/> Night</h1>
+        <h2>谁怕？一蓑烟雨任平生。</h2>
+    </div>
     <header>
         <nav class="navbar navbar-tiffany rectangle" role="navigation">
             <div class="container">
@@ -15,7 +19,7 @@
                         {% if page.url == "/index.html" %}
                         <li class="active">{% else %}
                         <li>{% endif %}
-                            <a href="{{ site.baseurl | prepend: site.url }}/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
+                        <a href="{{ site.baseurl | prepend: site.url }}/" class="word-keep"><span class="octicon octicon-book"></span></span>&nbsp;&nbsp;Blog</a>
                         </li>
                         {% for p in site.pages %}{% if p.isNavItem %}
                         {% if p.url == page.url %}
@@ -31,13 +35,4 @@
             </div>
         </nav>
     </header>
-    {% if page.url == "/index.html" %}
-    <div class="banner">
-        <h1>Rainy Night</h1>
-        <h2>谁怕？一蓑烟雨任平生。</h2>
-        <div>
-            <a class="btn btn-default" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}"  target="_blank">Subscribe to RSS</a>&nbsp;&nbsp;
-            <a class="btn btn-default" href="https://github.com/{{ site.github_username }}/blog"  target="_blank">View on Github</a>
-        </div>
-    </div>
-    {% endif %}
+
