@@ -5,8 +5,7 @@ tags: Java Concurrent
 categories: Java
 ---
 
-* content
-{:toc}
+<div class="toc"></div>
 
 线程拥有通过程序运行的独立的并发路径，并且每个线程都有自己的程序计数器，称为堆栈和本地变量。线程存在于进程中，它们与同一进程内的其他线程共享内存、文件句柄以及进程状态。
 

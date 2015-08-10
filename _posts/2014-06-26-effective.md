@@ -5,8 +5,7 @@ tags: Effective Java
 categories: Java
 ---
 
-* content
-{:toc}
+<div class="toc"></div>
 
 #`一` 创建和销毁对象
 	

@@ -5,8 +5,7 @@ tags: shell
 categories: Linux
 ---
 
-* content
-{:toc}
+<div class="toc"></div>
 
 Shell有两种执行命令的方式：
 

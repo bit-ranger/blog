@@ -6,8 +6,7 @@ categories: web
 published: true
 ---
 
-* content
-{:toc}
+<div class="toc"></div>
 
 本文的目的是简要说明如何编写一个文件上传组件，使他的功能类似 [commons-fileupload][commons-fileupload], 并在结尾处提供了完整代码的获取方式。
 

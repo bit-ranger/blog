@@ -10,11 +10,18 @@ $(document).ready(function() {
  * 侧边目录
  */
 function generateContent() {
-    var toc = $("#markdown-toc").html();
+    var $mt = $('.toc');
+    var $toc;
+    $mt.each(function(i,o){
+        $toc = $(o);
+        $toc.toc({ listType: 'ul' });
+    });
+
+    var toc = $toc.html();
     if (typeof toc != "undefined") {
         $(".content-navigation").addClass("col-lg-3").show();
         $(".content").addClass("col-lg-9");
-        $(".content-navigation .content-navigation-text").html("<ul>" + toc + "</ul>");
+        $(".content-navigation .content-navigation-text").html(toc);
     }
 }
 

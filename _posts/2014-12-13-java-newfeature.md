@@ -5,8 +5,7 @@ tags: Java8 新特性
 categories: Java
 ---
 
-* content
-{:toc}
+<div class="toc"></div>
 
 #`1` 语言新特性
 
@@ -14,17 +13,17 @@ categories: Java
 
 自动推测形参类型`e`
 
-~~~
+~~~ java
 Arrays.asList( "a", "b", "d" ).forEach( e -> System.out.println( e ) );
 ~~~
 指定形参类型`e`
 
-~~~
+~~~ java
 Arrays.asList( "a", "b", "d" ).forEach( ( String e ) -> System.out.println( e ) );
 ~~~
 方法体可以用`{}`包裹
 
-~~~
+~~~ java
 Arrays.asList( "a", "b", "d" ).forEach( e -> {
     System.out.print( e );
     System.out.print( e );
@@ -33,7 +32,7 @@ Arrays.asList( "a", "b", "d" ).forEach( e -> {
 
 **effectively final**，lambda引用的对象会自动转为final
 
-~~~
+~~~java
 String separator = ",";
 Arrays.asList( "a", "b", "d" ).forEach( 
     ( String e ) -> System.out.print( e + separator ) );
@@ -47,7 +46,7 @@ Arrays.asList( "a", "b", "d" ).forEach(
 
 `@FunctionalInterface`注解可以约束接口的行为，**默认方法**与**静态方法**不会影响函数接口
 
-~~~
+~~~java
 @FunctionalInterface
 public interface Functional {
     void method();
@@ -56,7 +55,7 @@ public interface Functional {
 
 ##`1.3` 接口默认方法
 
-~~~
+~~~java
 public interface Defaulable {
     // Interfaces now allow default methods, the implementer may or 
     // may not implement (override) them.
@@ -78,7 +77,7 @@ public  class OverridableImpl implements Defaulable {
 
 ##`1.4` 接口静态方法
 
-~~~
+~~~java
 private interface DefaulableFactory {
     // Interfaces now allow static methods
     static Defaulable create( Supplier< Defaulable > supplier ) {
@@ -91,7 +90,7 @@ private interface DefaulableFactory {
 
 可以将类中既有 方法引用为lambda
 
-~~~
+~~~java
 public static class Car {
 
     public static Car create( final Supplier< Car > supplier ) {
@@ -115,33 +114,33 @@ public static class Car {
 
 ①构造器引用，语法为 `Class::new`，效果如同 `() -> new Class()`
 
-~~~
+~~~java
 Car car = Car.create( Car::new );
 final List< Car > cars = Arrays.asList( car );
 ~~~
 
 ②静态方法引用，语法为 `Class::static_method`，效果如同 `p -> Class.static_method(p)`
 
-~~~
+~~~java
 cars.forEach( Car::collide );
 ~~~
 
 ③实例**无参**方法引用，语法为 `Class::method`，效果如同 `p -> p.method()`，该方法没有参数
 
-~~~
+~~~java
 cars.forEach( Car::repair );
 ~~~
 
 ④实例**有参**方法引用，语法为 `instance::method` ，效果如同 `p -> instance.method(p)`
 
-~~~
+~~~java
 final Car police = Car.create( Car::new );
 cars.forEach( police::follow );
 ~~~
 
 ⑤其他
 
-~~~
+~~~java
    super::methName //引用某个对象的父类方法
    TypeName[]::new //引用一个数组的构造器
 ~~~
@@ -150,7 +149,7 @@ cars.forEach( police::follow );
 
 相同的注解可以在同一地方声明多次，由 `@Repeatable` 提供此特性
 
-~~~
+~~~java
 /**
  * @Repeatable( Filters.class )
  * 表示该注解可重复使用，注解内容存放于Filters中
@@ -190,7 +189,7 @@ public static void main(String[] args) {
 
 ##`1.7` 类型推测
 
-~~~
+~~~java
 public class TypeInfer {
     public static void main(String[] args) {
 
@@ -229,7 +228,7 @@ java8几乎可以为任何东西添加注解：局部变量、泛型类、父类
 
 `ElementType.TYPE_USE`和`ElementType.TYPE_PARAMETER` 用于描述注解上下文
 
-~~~
+~~~java
 public class AnnotationEX {
     
     @Retention( RetentionPolicy.RUNTIME )
@@ -254,7 +253,7 @@ public class AnnotationEX {
 
 ##`2.1` Optional
 
-~~~
+~~~java
 //将String对象装入Optional容器
 Optional< String > stringOptional = Optional.ofNullable( null );
 
@@ -278,7 +277,7 @@ stream操作被分成了**中间操作**与**最终操作**两种
 
 **最终操作**可能直接遍历stream，产生一个结果或副作用，如forEach、sum等。当最终操作执行结束之后，stream管道被认为已经被消耗了，没有可能再被使用了。在大多数情况下，最终操作都是采用及早求值方式，及早完成底层数据源的遍历。
 
-~~~
+~~~java
 public enum Status {
     OPEN, CLOSED
 };
@@ -308,7 +307,7 @@ public class Task {
 
 ~~~
 
-~~~
+~~~java
 public static void main(String[] args){
     Collection< Task > tasks = Arrays.asList(
             new Task( Status.OPEN, 5 ),
@@ -328,7 +327,7 @@ public static void main(String[] args){
 
 原生并行处理
 
-~~~
+~~~java
 double totalPoints = tasks
    .stream()
    .parallel()
@@ -340,7 +339,7 @@ System.out.println( "Total points (all tasks): " + totalPoints );
 
 分组
 
-~~~
+~~~java
 final Map< Status, List< Task >> map = tasks
         .stream()
         .collect( Collectors.groupingBy(Task::getStatus) );
@@ -350,7 +349,7 @@ System.out.println( map );
 
 权重
 
-~~~
+~~~java
 //计算权重
 final Collection< String > result = tasks
         .stream()                                        // Stream< String >
@@ -371,7 +370,7 @@ System.out.println( result );
 
 `Clock`
 
-~~~
+~~~java
 //日期时间都有，有时区
 Clock clock = Clock.systemUTC();
 System.out.println(clock.instant());
@@ -380,7 +379,7 @@ System.out.println(clock.millis());
 
 `LocalDate`
 
-~~~
+~~~java
 //只有日期没有时间
 LocalDate localDate = LocalDate.now();
 LocalDate localDateFromClock = LocalDate.now(clock);
@@ -390,7 +389,7 @@ System.out.println(localDateFromClock);
 
 `LocalTime`
 
-~~~
+~~~java
 //只有时间没有日期
 LocalTime localTime = LocalTime.now();
 LocalTime localTimeFromClock = LocalTime.now(clock);
@@ -400,7 +399,7 @@ System.out.println(localTimeFromClock);
 
 `LocalDateTime `
 
-~~~
+~~~java
 //日期时间都有，没有时区
 LocalDateTime localDateTime = LocalDateTime.now();
 LocalDateTime localDateTimeFromClock = LocalDateTime.now(clock);
@@ -410,7 +409,7 @@ System.out.println(localDateTimeFromClock);
 
 `ZonedDateTime`
 
-~~~
+~~~java
 //指定时区，只有ZonedDateTime，没有ZoneDate与ZoneTime
 ZonedDateTime zonedDateTime = ZonedDateTime.now();
 ZonedDateTime zonedDateTimeFromClock = ZonedDateTime.now();
@@ -422,7 +421,7 @@ System.out.println(zonedDateTimeFromZone);
 
 `Duration`
 
-~~~
+~~~java
 //计算时间差
 LocalDateTime from = LocalDateTime.of( 2014, Month.APRIL, 16, 0, 0, 0 );
 LocalDateTime to = LocalDateTime.of( 2015, Month.APRIL, 16, 23, 59, 59 );
@@ -435,7 +434,7 @@ System.out.println( "Duration in hours: " + duration.toHours() );
 
 `javax.script.ScriptEngine`的另一种实现，允许js与java相互调用
 
-~~~
+~~~java
 ScriptEngineManager manager = new ScriptEngineManager();
 ScriptEngine engine = manager.getEngineByName( "JavaScript" );
          
@@ -447,7 +446,7 @@ System.out.println( "Result:" + engine.eval( "function f() { return 1; }; f() + 
 
 Base64编码已经成为Java8类库的标准
 
-~~~
+~~~java
 final String text = "Base64 finally in Java 8!";
 
 final String encoded = Base64
@@ -471,7 +470,7 @@ System.out.println( decoded );
 
 **并行数组**操作可以在多核机器上极大提高性能
 
-~~~
+~~~java
 long[] arrayOfLong = new long [ 20000 ];
 
 //对arrayLong所有元素随机赋值
@@ -515,7 +514,7 @@ System.out.println();
 
 编译时需要加上 `–parameters` ，**maven-compiler-plugin** 可进行配置
 
-~~~
+~~~java
 public class ParameterNames {
     public static void main(String[] args) throws Exception {
         Method method = ParameterNames.class.getMethod( "main", String[].class );
@@ -534,14 +533,14 @@ public class ParameterNames {
 
 创建 **func.js** 文件
 
-~~~
+~~~javascript
 function f() { 
      return 1; 
 }; 
  
 print( f() + 1 );
 ~~~
-~~~
+~~~bash
 jjs func.js
 ~~~
 
@@ -549,7 +548,7 @@ jjs func.js
 
 它可以显示Java类的包级别或类级别的依赖，它接受一个.class文件，一个目录，或者一个jar文件作为输入。jdeps默认把结果输出到系统输出（控制台）上。
 
-~~~
+~~~bash
 jdeps org.springframework.core-3.0.5.RELEASE.jar
 ~~~
 

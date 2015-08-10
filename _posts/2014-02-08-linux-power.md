@@ -5,8 +5,7 @@ tags: linux 命令
 categories: Linux
 ---
 
-* content
-{:toc}
+<div class="toc"></div>
 
 ##`chmod`
 

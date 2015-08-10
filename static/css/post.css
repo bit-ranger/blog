@@ -102,12 +102,15 @@
     /**
       * 文章目录相关
       */
-    .post #markdown-toc {
-        display: none;
+    .post .toc {
+        display: none!important;
     }
 }
 
-
+.content-navigation i,
+.toc i{
+    display: none;
+}
 
 .post #markdown-toc a:link {text-decoration: none;}
 .post #markdown-toc a:visited{color: #D27504}
@@ -136,15 +139,32 @@
 .content-navigation .content-navigation-text, .content-navigation-tag{
     padding: 10px 0;
 }
-.content-navigation ul{
-    padding-left: 30px;
-}
+
 .content-navigation ul li{
-    /*list-style: none;*/
     font-size: 15px;
     line-height: 25px;
 }
 
 .boundary{
    border-bottom: .1875em solid #ccc
+}
+
+
+.clickable-header {
+    cursor:pointer;
+}
+.clickable-header:hover:after {
+    content: '\f05c';
+    margin-left: 10px;
+
+    font: normal normal normal 16px/1 octicons;
+    display: inline-block;
+    text-decoration: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

@@ -4,19 +4,20 @@ highlighter: pygments
 markdown: redcarpet
 redcarpet:
   extensions: [
-   "no_intra_emphasis",
-   "fenced_code_blocks",
-   "autolink",
-   "tables",
-   "strikethrough",
-   "superscript",
-   "with_toc_data",
-   "footnotes",
-   "highlight",
-   "underline",
-   "quote",
-   "lax_spacing",
-   "prettify"
+   "no_intra_emphasis"
+   ,"fenced_code_blocks"
+   ,"autolink"
+   ,"tables"
+   ,"strikethrough"
+   ,"superscript"
+   ,"with_toc_data"
+   ,"footnotes"
+   ,"highlight"
+   ,"underline"
+   ,"quote"
+   ,"lax_spacing"
+   ,"prettify"
+#   ,"html_toc"
   ]
 
 
@@ -28,7 +29,7 @@ baseurl: ""
 
 title: "RainyNight"
 email: "dubuyuye@yeah.net"
-description: "Born to Die"
+description: "Developer"
 github_username:  "dubuyuye"
 
 url: "http://blog.rainynight.top"

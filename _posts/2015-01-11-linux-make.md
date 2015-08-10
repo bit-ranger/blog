@@ -6,8 +6,7 @@ categories: Linux
 ---
 
 
-* content
-{:toc}
+<div class="toc"></div>
 
 代码变成可执行文件，叫做编译（compile）；先编译这个，还是先编译那个（即编译的安排），叫做构建（build）
 

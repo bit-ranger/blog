@@ -5,9 +5,7 @@ tags: SICP Lisp Scheme
 categories: Scheme
 ---
 
-* TOC
-{:toc}
-
+<div class="toc"></div>
 
 ## 1.1
 

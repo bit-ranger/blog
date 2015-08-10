@@ -6,8 +6,7 @@ categories: Linux
 ---
 
 
-* content
-{:toc}
+<div class="toc"></div>
 
 ![](http://image.beekka.com/blog/201308/bg2013081708.png)
 
