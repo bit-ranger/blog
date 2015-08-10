@@ -7,8 +7,6 @@ $(document).ready(function() {
 
     backToTop();
     search();
-    duoshuoQueryFunction();
-
 });
 
 /**
@@ -49,18 +47,7 @@ function search(){
     _st('install','WyVgxJw2ypny5Feaxyrs','2.0.0');
 }
 
-/**
- * 多说
- */
-function duoshuoQueryFunction(){
-    window.duoshuoQuery = {short_name:"rainynight"};
-	var ds = document.createElement('script');
-	ds.type = 'text/javascript';
-	ds.async = true;
-	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-	ds.charset = 'UTF-8';
-	document.getElementsByTagName("script")[0].parentNode.appendChild(ds);
-}
+
 
 
 
