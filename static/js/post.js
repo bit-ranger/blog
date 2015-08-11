@@ -18,11 +18,13 @@ function generateContent() {
         $toc.toc({ listType: 'ul' });
     });
 
-    var toc = $toc.html();
-    if (typeof toc != "undefined") {
-        $(".content-navigation").addClass("col-lg-3").show();
-        $(".content").addClass("col-lg-9");
-        $(".content-navigation .content-navigation-text").html(toc);
+    if(typeof $toc != "undefined"){
+        var toc = $toc.html();
+        if (typeof toc != "undefined") {
+            $(".content-navigation").addClass("col-lg-3").show();
+            $(".content").addClass("col-lg-9");
+            $(".content-navigation .content-navigation-text").html(toc);
+        }
     }
 }
 
