@@ -1,9 +1,4 @@
-.post pre{
-    padding: 5px;
-}
-
 .post code{
-    font-size: inherit;
     font-family:  "Menlo", "Monaco", "Consolas", "Courier New", "monospace", "Helvetica", "Tahoma", "Arial",
     "WenQuanYi Micro Hei", "文泉驿微米黑", "STXihei", "华文细黑", "Microsoft YaHei", "微软雅黑", "SimSun", "宋体", "Heiti", "黑体", sans-serif;
     font-size: 17px;
@@ -73,7 +68,6 @@
     padding-left: 15px;
     font-size: 16px;
     background: rgba(112,138,153,.1);
-    /*font-style: italic;*/
 }
 .post blockquote:last-child {
     margin-bottom: 0;
@@ -157,7 +151,7 @@
     content: '\f05c';
     margin-left: 10px;
 
-    font: normal normal normal 16px/1 octicons;
+    font: normal normal normal 18px/1 octicons;
     display: inline-block;
     text-decoration: none;
     text-rendering: auto;
