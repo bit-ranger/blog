@@ -23,3 +23,8 @@ section.category-slice{
     -ms-transform:rotate(360deg) scale(1.2);
     transform:rotate(360deg) scale(1.2);
 }
+
+.dropdown .btn,
+.dropdown .dropdown-menu{
+    font-size: 17px;
+}
