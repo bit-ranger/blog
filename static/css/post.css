@@ -81,13 +81,13 @@
     }
 
     .post pre code{
-        font-size: 80%;
+        font-size: 85%;
     }
 }
 
 @media screen and (max-width: 991px){
     .post pre code{
-        font-size: 60%;
+        font-size: 70%;
     }
 }
 
@@ -97,7 +97,7 @@
         padding-left: 5px;
     }
     .post pre code{
-        font-size: 40%;
+        font-size: 55%;
     }
 }
 
