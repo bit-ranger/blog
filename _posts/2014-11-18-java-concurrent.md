@@ -97,7 +97,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 所有这些集合，通过 在集合里新增对象和访问或移除对象的操作之间，定义一个`happens-before`的关系，来帮助程序员避免内存一致性错误。
 
-##CopyOnWriteArrayList 和 CopyOnWriteArraySet
+##CopyOnWrite
 
 * Vector 的常见应用是存储通过组件注册的监听器的列表。当发生适合的事件时，该组件将在监听器的列表中迭代，调用每个监听器。为了防止ConcurrentModificationException，迭代线程必须复制列表或锁定列表，以便进行整体迭代，而这两种情况都需要大量的性能成本。
 

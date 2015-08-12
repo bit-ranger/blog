@@ -182,7 +182,7 @@ public class UserWSImpl implements UserWS {
 
 ####①Jetty发布
 
-#####配置依赖
+配置依赖
 
 ~~~xml
 <properties>
@@ -204,7 +204,7 @@ public class UserWSImpl implements UserWS {
 </dependencies>
 ~~~
 
-#####发布
+发布
 
 ~~~java
 public class JaxWsServer {
@@ -223,7 +223,7 @@ public class JaxWsServer {
 
 ####②Web发布
 
-#####配置依赖
+配置依赖
 
 ~~~xml
     <properties>
@@ -251,7 +251,7 @@ public class JaxWsServer {
     </dependencies>
 ~~~
 
-#####配置web.xml
+配置web.xml
 
 ~~~xml
  <listener>
@@ -274,7 +274,7 @@ public class JaxWsServer {
  </servlet-mapping>
 ~~~
 
-#####发布
+发布
 
 ~~~xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -447,7 +447,7 @@ public class UserWSImpl implements UserWS {
 
 ####①jetty发布
 
-#####配置依赖
+配置依赖
 
 ~~~xml
 <properties>
@@ -475,7 +475,7 @@ public class UserWSImpl implements UserWS {
 </dependencies>
 ~~~
 
-#####发布
+发布
 
 ~~~java
 public class Server {
@@ -509,7 +509,7 @@ public class Server {
 
 ####②web发布
 
-#####配置依赖
+配置依赖
 
 ~~~xml
     <properties>
@@ -538,7 +538,7 @@ public class Server {
     </dependencies>
 ~~~
 
-#####配置web.xml
+配置web.xml
 
 ~~~xml
  <listener>
@@ -561,7 +561,7 @@ public class Server {
  </servlet-mapping>
 ~~~
 
-#####发布
+发布
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -664,7 +664,7 @@ $.ajax({
 });
 ~~~
 
-#####跨域方案1：jsonp
+跨域方案1：jsonp
 
 ~~~xml
 <dependency>
@@ -705,7 +705,7 @@ $.ajax({
 });
 ~~~
 
-#####跨域方案2：cors
+跨域方案2：cors
 
 ~~~xml
 <dependency>

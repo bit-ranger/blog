@@ -1,9 +1,3 @@
-.post code{
-    font-family:  "Menlo", "Monaco", "Consolas", "Courier New", "monospace", "Helvetica", "Tahoma", "Arial",
-    "WenQuanYi Micro Hei", "文泉驿微米黑", "STXihei", "华文细黑", "Microsoft YaHei", "微软雅黑", "SimSun", "宋体", "Heiti", "黑体", sans-serif;
-    font-size: 17px;
-}
-
 .post table{
     border-top:2px solid #777;
     border-bottom: 2px solid #777;
@@ -63,27 +57,21 @@
  * Blockquotes
  */
 .post blockquote {
-    color: #444;
     border-left: 5px solid #D6DBDF;
-    padding-left: 15px;
-    font-size: 16px;
     background: rgba(112,138,153,.1);
+    font-size: 100%;
 }
 .post blockquote:last-child {
     margin-bottom: 0;
 }
+
 @media screen and (max-width: 767px){
-    .post blockquote {
-        border-left: 3px solid #D6DBDF;
-        padding-left: 5px;
-        font-size: 14px;
-    }
-    .post article ul{
-        padding-left: 25px;
-    }
     .post header{
         margin-left: -10px;
         padding-left: 5px;
+    }
+    .post pre code{
+        font-size: 60%;
     }
 }
 @media screen and (max-width: 1199px){
@@ -123,7 +111,7 @@
 .content-navigation-header {
     display: block;
     border-bottom: .1875em solid #ccc;
-    font-size: 18px;
+    font-size: 20px;
     color: #2ca6cb;;
     margin-left: 15px;
     margin-right: 15px;
@@ -135,8 +123,8 @@
 }
 
 .content-navigation ul li{
-    font-size: 15px;
     line-height: 25px;
+    word-break: break-all;
 }
 
 .boundary{
@@ -151,7 +139,7 @@
     content: '\f05c';
     margin-left: 10px;
 
-    font: normal normal normal 18px/1 octicons;
+    font: normal normal normal smaller/1 octicons;
     display: inline-block;
     text-decoration: none;
     text-rendering: auto;

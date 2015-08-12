@@ -55,6 +55,9 @@ layout: null
     background-color: #fff;
 }
 
+.navbar-nav>li>a{
+    line-height: 1.42857143;
+}
 
 .footnote-tiffany a,
 .footnote-tiffany span{
@@ -86,8 +89,12 @@ layout: null
     transition: background .4s ease-in-out;
 }
 
-.st-ui-stamp{
-    display: none!important;
+/* footer */
+.footnote{
+    min-height: 50px;
+    line-height: 50px;
+    margin-top: -50px;
+    text-align: center;
 }
 
 html{
@@ -100,21 +107,22 @@ body {
     height: 100%;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
+}
 
+body,code,pre{
     font-family:  "Menlo", "Monaco", "Consolas", "Courier New", "monospace", "Helvetica", "Tahoma", "Arial",
     "WenQuanYi Micro Hei", "文泉驿微米黑", "STXihei", "华文细黑", "Microsoft YaHei", "微软雅黑", "SimSun", "宋体", "Heiti", "黑体", sans-serif;
+}
+
+body,.sheet,pre,code{
     font-size: 17px;
 }
 
-.navbar-nav>li>a{
-    line-height: 1.42857143;
-}
 
-
-body a:link {text-decoration: none}		/* 未访问的链接 */
-body a:visited {text-decoration: none}	/* 已访问的链接 */
-body a:hover {text-decoration: none}	/* 鼠标移动到链接上 */
-body a:active {text-decoration: none}	/* 选定的链接 */
+a:link {text-decoration: none}		/* 未访问的链接 */
+a:visited {text-decoration: none}	/* 已访问的链接 */
+a:hover {text-decoration: none}	/* 鼠标移动到链接上 */
+a:active {text-decoration: none}	/* 选定的链接 */
 
 .main{
     min-height: 100%;
@@ -137,7 +145,6 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 
 .sheet{
     padding:10px 30px;
-    font-size: 17px;
 }
 
 @media screen and (max-width: 767px) {
@@ -146,16 +153,6 @@ body a:active {text-decoration: none}	/* 选定的链接 */
         padding-right: 10px;
     }
 }
-
-
-/* footer */
-.footnote{
-	min-height: 50px;
-	line-height: 50px;
-	margin-top: -50px;
-	text-align: center;
-}
-
 
 /**
  * back to top
@@ -178,9 +175,9 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 	width:0;
 	height: 0;
 	border-right: 15px solid transparent;
-	border-left: 15px solid transparent; 
+	border-left: 15px solid transparent;
 	border-bottom: 15px solid #7f7f7f;
-	
+
 }
 .page-scrollTop .stick{
 	margin:0 auto;
@@ -191,7 +188,7 @@ body a:active {text-decoration: none}	/* 选定的链接 */
 }
 
 .shadow-bottom-center{
-	background-color:#f8f8fd; 
+	background-color:#f8f8fd;
 	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
 	-o-box-shadow: 0 1px 5px rgba(0,0,0,0.4),0 0 20px rgba(0,0,0,0.1) inset;
@@ -225,7 +222,9 @@ body a:active {text-decoration: none}	/* 选定的链接 */
     display: none!important;
 }
 
-
+.st-ui-stamp{
+    display: none!important;
+}
 
 /*** banner ***/
 .banner {
