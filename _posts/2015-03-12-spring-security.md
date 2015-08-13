@@ -534,7 +534,7 @@ public class RequestMapFactoryBean extends JdbcDaoSupport implements FactoryBean
 
 建表语句
 
-~~~sql
+~~~mysql
 
 drop table if exists SecurityMetadata;
 

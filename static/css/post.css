@@ -65,6 +65,15 @@
     margin-bottom: 0;
 }
 
+.post pre {
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+}
+
+.post pre code{
+    white-space: pre;
+}
 
 @media screen and (min-width: 1200px){
     /**
@@ -81,13 +90,13 @@
     }
 
     .post pre code{
-        font-size: 80%;
+        font-size: 85%;
     }
 }
 
 @media screen and (max-width: 991px){
     .post pre code{
-        font-size: 60%;
+        font-size: 70%;
     }
 }
 
@@ -97,7 +106,7 @@
         padding-left: 5px;
     }
     .post pre code{
-        font-size: 40%;
+        font-size: 55%;
     }
 }
 

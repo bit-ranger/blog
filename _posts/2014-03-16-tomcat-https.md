@@ -7,7 +7,7 @@ categories: Java
 
 ####`1`.生成秘钥库
 
-~~~
+~~~bash
 keytool 
     –genkey
     –keyalg 算法(通常用RSA)
@@ -26,7 +26,7 @@ keytool
  
 ####`2`.生成浏览器证书文件
 
-~~~
+~~~bash
 keytool
     -export 
     -keystore 秘钥库文件名
@@ -37,7 +37,7 @@ keytool
 
 ####`3`.生成私钥文件
 
-~~~
+~~~bash
 keytool 
     -importkeystore 
     -srckeystore 秘钥库文件名
@@ -57,7 +57,7 @@ openssl
 
 解开注释或添加代码(443为https默认端口，不会在URL中显示)
 
-~~~
+~~~bash
 <Connector port="443" protocol="HTTP/1.1" SSLEnabled="true"
     maxThreads="150" scheme="https" secure="true"
     clientAuth="false" sslProtocol="TLS" 
@@ -71,7 +71,7 @@ openssl
 
 添加代码
 
-~~~
+~~~xml
 <!-- SSL -->
 <login-config>  
     <!-- Authorization setting for SSL -->  
