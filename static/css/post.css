@@ -110,24 +110,15 @@
     }
 }
 
-.content-navigation i,
-.toc i{
-    display: none;
-}
-
-.post #markdown-toc a:link {text-decoration: none;}
-.post #markdown-toc a:visited{color: #D27504}
-
-
 
 .content-navigation a:link {color: #666;text-decoration: none;}		/* 未访问的链接 */
 .content-navigation a:visited {color: #D27504  }	/* 已访问的链接 */
 .content-navigation a:hover {color: #336;}	/* 鼠标移动到链接上 */
 .content-navigation a:active {color: #99b}	/* 选定的链接 */
+
 .content-navigation{
     max-width: 292px;
     padding-left: 30px;
-    display: none;
 }
 .content-navigation-header {
     display: block;
@@ -139,13 +130,17 @@
     padding-top: 15px;
     padding-right: 15px;
 }
-.content-navigation .content-navigation-text, .content-navigation-tag{
+.content-navigation .content-navigation-list{
     padding: 10px 0;
 }
 
-.content-navigation ul li{
+.content-navigation .content-navigation-list ul li{
     line-height: 25px;
     word-break: break-all;
+}
+
+.toc i{
+    display: none;
 }
 
 .boundary{

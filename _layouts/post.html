@@ -4,7 +4,7 @@ styles: post.css
 scripts: [toc.js,post.js]
 ---
 <div class="row">
-    <div class="content">
+    <div class="content col-lg-9">
         <div class="sheet post">
           <header>
             <h2>{{ page.title }}</h2>
@@ -38,23 +38,67 @@ scripts: [toc.js,post.js]
           <div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ page.url | prepend: site.baseurl | prepend: site.url  }}"></div>
         </div>
     </div>
-    <div class="content-navigation">
+    <div class="content-navigation col-lg-3">
       <div class="shadow-bottom-center" >
-        <div class="content-navigation-header">
-            <span class="octicon octicon-list-unordered"></span>&nbsp;Navigation
-        </div>
-        <div class="content-navigation-text"></div>
-        <div class="content-navigation-header">
-          <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+        <div class="content-navigation-toc">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Toc
+            </div>
+            <div class="content-navigation-list toc"></div>
         </div>
         <div class="content-navigation-tag">
-            <ul>
-            {% for tag in page.tags %}
-                <li>
-                    <a class="word-keep" href="{{ '/tags' | prepend: site.baseurl | prepend: site.url }}#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
-                </li>
-            {% endfor %}
-            </ul>
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Tags
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    {% for tag in page.tags %}
+                    <li>
+                        <a class="word-keep" href="{{ '/tags' | prepend: site.baseurl | prepend: site.url }}#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="content-navigation-related">
+            <div class="content-navigation-header">
+                <span class="octicon octicon-list-unordered"></span>&nbsp;Related
+            </div>
+            <div class="content-navigation-list">
+                <ul>
+                    {% assign postsAfterFilter = '-' | split: "-" %}
+
+                    {% for p in site.posts %}
+                        {%if p.url != page.url %}
+                            {% assign commonTagCount = 0 %}
+
+                            {% for tag in p.tags %}
+                                {% if page.tags contains tag %}
+                                    {% assign commonTagCount = commonTagCount | plus: 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% for cat in p.categories %}
+                                {% if page.categories contains cat %}
+                                    {% assign commonTagCount = commonTagCount | plus: 1 %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if commonTagCount > 0 %}
+                                {% assign postsAfterFilter = postsAfterFilter | push: p %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if postsAfterFilter.size > 0 %}
+                        {% for p in postsAfterFilter limit: 15 %}
+                            <li>
+                                <a class="word-keep" href="{{ p.url | prepend: site.baseurl | prepend: site.url }}">{{ p.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
         </div>
       </div>
     </div>

@@ -17,15 +17,6 @@ function generateContent() {
         $toc = $(o);
         $toc.toc({ listType: 'ul', headers: 'h1, h2, h3' });
     });
-
-    if(typeof $toc != "undefined"){
-        var toc = $toc.html();
-        if (typeof toc != "undefined") {
-            $(".content-navigation").addClass("col-lg-3").show();
-            $(".content").addClass("col-lg-9");
-            $(".content-navigation .content-navigation-text").html(toc);
-        }
-    }
 }
 
 function share(){

@@ -235,25 +235,22 @@ a:active {text-decoration: none}	/* 选定的链接 */
 }
 
 .banner h1{
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
 }
 
 
 .banner h1,
-.banner h2{
+.banner h3{
     color: #ffffff;
     text-align: center;
 }
-.banner h2{
-    line-height: 2;
+.banner h3{
+    line-height: 1.5;
 }
 
 @media screen and (max-width: 767px) {
     .banner h1{
-        font-size: 40px;
-    }
-    .banner h2{
-        font-size: 21px;
+        font-size: 36px;
     }
 }
