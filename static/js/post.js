@@ -15,7 +15,7 @@ function generateContent() {
     var $toc;
     $mt.each(function(i,o){
         $toc = $(o);
-        $toc.toc({ listType: 'ul' });
+        $toc.toc({ listType: 'ul', headers: 'h1, h2, h3' });
     });
 
     if(typeof $toc != "undefined"){
