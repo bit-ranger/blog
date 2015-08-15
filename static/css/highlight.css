@@ -59,5 +59,6 @@
 .highlight .vg { color: #008080 } /* Name.Variable.Global */
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.highlight .lineno{ color: rgba(0,0,0,0.3); border-right: solid 1px rgba(0,0,0,0.3); padding-right: 5px;}
 
 
