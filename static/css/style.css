@@ -204,6 +204,13 @@ a:active {text-decoration: none}	/* 选定的链接 */
 	border-radius: 0px;
 }
 
+
+@media (min-width: 1200px){
+    .col-lg-offset-1_5 {
+        margin-left: 12.5%;
+    }
+}
+
 .pad-min,
 .pad-mid,
 .pad-lar{
