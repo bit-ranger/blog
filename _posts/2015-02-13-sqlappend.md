@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SQL 拼接
-tags: sql database
+tags: sql database java
 categories: database
 published: true
 ---

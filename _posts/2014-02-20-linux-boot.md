@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux启动流程
-tags: linux boot
+tags: Linux boot
 categories: Linux
 ---
 

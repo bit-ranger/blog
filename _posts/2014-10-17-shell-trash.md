@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 告别rm,自制回收站
-tags: trash shell
+tags: trash shell linux
 categories: linux
 ---
 

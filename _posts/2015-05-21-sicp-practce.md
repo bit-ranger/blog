@@ -1,8 +1,8 @@
 ---
 layout: post
 title: SICP 练习(1)
-tags: SICP Lisp Scheme
-categories: Scheme
+tags: SICP Lisp Scheme 函数式
+categories: Lisp
 ---
 
 <div class="toc"></div>

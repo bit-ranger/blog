@@ -1,7 +1,7 @@
 ---
 layout: post
 title: make
-tags: make
+tags: make linux
 categories: Linux
 ---
 

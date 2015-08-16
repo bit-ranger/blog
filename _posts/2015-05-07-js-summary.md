@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Javascript 总结
-tags: Javascript
+tags: Javascript script
 categories: front-end
 ---
 
