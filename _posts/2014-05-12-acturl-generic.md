@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 超类中的泛型
-tags: generic type java
+tags: generic type Java
 categories: java
 published: true
 ---

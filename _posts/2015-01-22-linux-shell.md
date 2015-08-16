@@ -1,7 +1,7 @@
 ---
 layout: post
 title: shell
-tags: shell linux
+tags: shell Linux script
 categories: Linux
 ---
 

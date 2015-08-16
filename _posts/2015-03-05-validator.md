@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Bean Validation
-tags: Bean Validation java
+tags: Bean Validation Java
 categories: java
 published: true
 ---
