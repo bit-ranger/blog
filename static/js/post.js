@@ -28,7 +28,7 @@ function share(){
  * 多说
  */
 function duoshuoQueryFunction(){
-    window.duoshuoQuery = {short_name:"rainynight"};
+    window.duoshuoQuery = {short_name:"rainyalley"};
     var ds = document.createElement('script');
     ds.type = 'text/javascript';
     ds.async = true;
