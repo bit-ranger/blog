@@ -170,7 +170,7 @@ get与post结果如下,Servlet将http头部解析完成后，将请求体留了�
 ![encodeURI][encodeURI]
 
 注意观察这张图片，从中发现了什么? 没错，第一次encodeURI生成了HTTP一节的示例中一样的结果。
-我们在浏览器窗口中输入 "http://localhost:8080/hsp?param=`%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C`", 会发现它变成了 "http://localhost:8080/hsp?param=你好全世界",
+我们在浏览器窗口中输入 "http://localhost:8080/hsp?param=%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C", 会发现它变成了 "http://localhost:8080/hsp?param=你好全世界",
 在url里，浏览器认为%是个转义字符，浏览器会把%与%之间的编码，两位两位取出后进行decode, 也就是变回 "你好全世界", 然后再用这个url发送请求, 最终实际发送的内容实际上还是`%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C`。
 换言之，以明文传递的这种url会被浏览器否决一次，再换言之，在js中进行一次encodeURI等于什么都没做。
 
