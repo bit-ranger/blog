@@ -54,7 +54,7 @@ scripts: [toc.js,post.js]
                 <ul>
                     {% for tag in page.tags %}
                     <li>
-                        <a class="word-keep" href="{{ '/tags' | prepend: site.baseurl | prepend: site.url }}#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
+                        <a href="{{ '/tags' | prepend: site.baseurl | prepend: site.url }}#{{ tag }}"><span class="octicon octicon-tag"></span>&nbsp;{{ tag }}</a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -93,7 +93,7 @@ scripts: [toc.js,post.js]
                     {% if postsAfterFilter.size > 0 %}
                         {% for p in postsAfterFilter limit: 15 %}
                             <li>
-                                <a class="word-keep" href="{{ p.url | prepend: site.baseurl | prepend: site.url }}">{{ p.title }}</a>
+                                <a href="{{ p.url | prepend: site.baseurl | prepend: site.url }}">{{ p.title }}</a>
                             </li>
                         {% endfor %}
                     {% endif %}
