@@ -1,3 +1,7 @@
+---
+    layout: null
+---
+
 /**
  * 页面ready方法
  */
@@ -27,7 +31,7 @@ function share(){
 
 function disqus(){
     /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'rainyalley';
+    var disqus_shortname = '{{site.disqus_shortname}}';
 
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
