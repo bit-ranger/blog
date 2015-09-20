@@ -13,7 +13,7 @@ This service is to provide on-site search function
 
 Service address： <https://swiftype.com/>
 
-After the completion of the set， you need to modify the `swiftype_searchId` in `_config.yml`
+After the setup is complete， you need to modify the `swiftype_searchId` in `_config.yml`
 
 
 ## 2.disqus
@@ -22,7 +22,7 @@ This service is to provide comment function
 
 Service address： <https://disqus.com/>
 
-After the completion of the set， you need to modify the `disqus_shortname` in `_config.yml`
+After the setup is complete， you need to modify the `disqus_shortname` in `_config.yml`
 
 
 # Other
