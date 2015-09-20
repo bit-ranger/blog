@@ -23,15 +23,3 @@ This service provides the comment function.
 Service address： <https://disqus.com/>.
 
 After the setup is complete， you need to modify the `disqus_shortname` in `_config.yml`.
-
-
-# Other
-
-The `imgrepo` in `_config.yml` is a images repository.
-
-The reason of this setting is that all the images can easily migrate to other photo storage service.
-
-So, in your article you can refer image like this '{{"/rmi.jpg" | prepend: site.imgrepo }}'.
-
-
-
