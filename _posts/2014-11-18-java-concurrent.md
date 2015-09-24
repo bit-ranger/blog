@@ -186,7 +186,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 通过使用包含 `ThreadFactory` 变量的工厂方法或构造函数的版本，可以定义线程的创建。ThreadFactory 是工厂对象，其构造执行程序要使用的新线程。
 
-~~~java
+```java
 public class DaemonThreadFactory implements ThreadFactory {
     public Thread newThread(Runnable r) {
         Thread thread = new Thread(r);
@@ -194,7 +194,7 @@ public class DaemonThreadFactory implements ThreadFactory {
         return thread;
     }
 }
-~~~
+```
 
 有时，Executor 不能执行任务，因为它已经关闭或者因为 Executor 使用受限制队列存储等待任务，而该队列已满。在这种情况下，需要咨询执行程序的`RejectedExecutionHandler` 来确定如何处理任务：
 
@@ -239,7 +239,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 该示例利用 ConcurrentHashMap 中的原子 `putIfAbsent()` 方法，确保仅有一个线程试图计算给定关键字的值。如果其他线程随后请求同一关键字的值，它仅能等待（通过 Future.get() 的帮助）第一个线程完成。因此两个线程不会计算相同的值。
 
-~~~java
+```java
 public class Cache<K,V> {
     private ConcurrentMap<K,FutureTask<V>> map = new ConcurrentHashMap<>();
     private Executor executor = Executors.newFixedThreadPool(8);
@@ -265,7 +265,7 @@ public class Cache<K,V> {
         return ft.get();
     }
 }
-~~~
+```
 
 ##CompletionService
 
@@ -275,7 +275,7 @@ public class Cache<K,V> {
 
 * 下列代码使用 Executor 和 CompletionService 来启动许多任务，并使用第一个生成的非空结果，然后取消其余任务：
 
-~~~java
+```java
 <V> V solve(Executor e, Collection<Callable<V>> tasks) throws InterruptedException, ExecutionException {
     CompletionService<V> ecs = new ExecutorCompletionService<>(e);
     List<Future<V>> futures = new ArrayList<>();
@@ -298,7 +298,7 @@ public class Cache<K,V> {
 
     return result;
 }
-~~~
+```
 
 ##Fork/Join
 
@@ -336,7 +336,7 @@ public class Cache<K,V> {
 
 * 下列代码将创建 CyclicBarrier 并启动一组线程，每个线程在到达屏障点前会打印出自己的名字，等待其他线程到齐后，将执行CyclicBarrier绑定的Runnable，该Runnable在每个屏障点只执行一次。
 
-~~~java
+```java
     public static void main(String[] args){
         Runnable ready = new Runnable() {
             @Override
@@ -366,7 +366,7 @@ public class Cache<K,V> {
         }
         executor.shutdown();
     }
-~~~
+```
 
 ##CountdownLatch
 
@@ -376,7 +376,7 @@ public class Cache<K,V> {
 
 *  当问题已经分解为许多部分，每个线程都被分配一部分计算时，CountdownLatch 非常有用。在工作线程结束时，它们将减少计数，协调线程可以在闩锁处等待当前这一批计算结束，然后继续移至下一批计算。
 
-~~~java
+```java
 public static void main(String[] args) throws InterruptedException {
     int concurrency = 5;
     ExecutorService executor = Executors.newCachedThreadPool();
@@ -405,7 +405,7 @@ public static void main(String[] args) throws InterruptedException {
     System.out.println("all threads finished");
     executor.shutdown();
 }
-~~~
+```
 
 ##Exchanger
 
@@ -415,7 +415,7 @@ public static void main(String[] args) throws InterruptedException {
 
 * 下列代码说明了这项技术：
 
-~~~java
+```java
 public static void main(String[] args){
     Exchanger<String> exchanger = new Exchanger<>();
     ExecutorService executor = Executors.newCachedThreadPool();
@@ -454,7 +454,7 @@ public static void main(String[] args){
     executor.execute(consumer);
     executor.shutdown();
 }
-~~~
+```
 
 #Lock工具
 
@@ -475,7 +475,7 @@ public static void main(String[] args){
 
 * 建议当获得和释放 ReentrantLock 时使用下列结构：
 
-~~~
+```java
 Lock lock = new ReentrantLock();
 ...
 lock.lock();
@@ -488,7 +488,7 @@ catch(Exception ex) {
 finally {
   lock.unlock();
 }
-~~~
+```
 
 
 
@@ -526,7 +526,7 @@ finally {
 
 #性能与可伸缩性
 
-* **性能**是 "**可以快速执行此任务的程度**" 的评测。**可伸缩性**描述应用程序的**吞吐量如何表现为它的工作量和可用计算资源增加**。
+* **性能**是 "可以快速执行此任务的程度" 的评测。**可伸缩性**描述应用程序的**吞吐量如何表现为它的工作量和可用计算资源增加**。
 
 * 可伸缩的程序可以按比例使用更多的处理器、内存或 I/O 带宽来处理更多个工作量。当我们在并发环境中谈论可伸缩性时，我们是在问当许多线程同时访问给定类时，这个类的执行情况。
 
