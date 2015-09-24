@@ -176,8 +176,7 @@ get与post结果如下,Servlet将http头部解析完成后，将请求体留了�
 
 再注意观察第2和第3个输出，有什么规律? 是的，从第二次开始encodeURI只是将`%`变成了`%25`，
 根据我们刚才总结出的规律可知，在encodeURI两次的情况下，最后发送到浏览器中的数据为`%25E4%25BD%25A0%25E5%25A5%25BD%25E5%2585%25A8%25E4%25B8%2596%25E7%2595%258C`,
-理所当然的，web服务器将使用默认的字符集对其decode, 然而, 无论选择哪种字符集, 将`%25`转换成`%`总是不会出错的, decode之后，`%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C` 将完整地送到Servlet手上，
-于是，愉快地`URLDecoder.decode(param,"utf-8");`吧。
+理所当然的，web服务器将使用默认的字符集对其decode, 然而, 无论选择哪种字符集, 将`%25`转换成`%`总是不会出错的, decode之后，`%E4%BD%A0%E5%A5%BD%E5%85%A8%E4%B8%96%E7%95%8C` 将完整地送到Servlet手上。
 
 ~~~java
 System.out.println(URLDecoder.decode(req.getParameter("param"),"utf-8"));
