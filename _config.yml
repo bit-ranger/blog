@@ -1,6 +1,6 @@
 permalink: /:year-:month-:day/:title/
 
-highlighter: pygments
+highlighter: rouge
 markdown: redcarpet
 redcarpet:
   extensions: [
