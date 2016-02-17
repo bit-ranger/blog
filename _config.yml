@@ -1,25 +1,12 @@
+gems: [jekyll-paginate]
+
 permalink: /:year-:month-:day/:title/
 
 highlighter: rouge
 markdown: kramdown
-redcarpet:
-  extensions: [
-   "no_intra_emphasis"
-   ,"fenced_code_blocks"
-   ,"autolink"
-   ,"tables"
-   ,"strikethrough"
-   ,"superscript"
-   ,"with_toc_data"
-   ,"footnotes"
-   ,"highlight"
-   ,"underline"
-   ,"quote"
-   ,"lax_spacing"
-   ,"prettify"
-#   ,"html_toc"
-  ]
-
+kramdown:
+  input:  GFM
+  syntax_highlighter: rouge
 
 
 paginate: 10
