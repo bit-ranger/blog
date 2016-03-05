@@ -12,12 +12,9 @@
 
     <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ '/static/octicons/octicons.css' | prepend: site.baseurl | prepend: site.url}}" />
-
-    {% if page.date %}
-    <link rel="stylesheet" type="text/css" href="{{ '/static/css/highlight.css' | prepend: site.baseurl | prepend: site.url}}" />
-    {% endif %}
-
     <link rel="stylesheet" type="text/css" href="{{ '/static/css/style.css' | prepend: site.baseurl | prepend: site.url}}" />
-    {% for style in page.styles %}<link rel="stylesheet" type="text/css" href="{{ '/static/css/' | append: style | prepend: site.baseurl | prepend: site.url}}" />
-    {%endfor%}
+
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{'/static/js/script.js' | prepend:site.baseurl | prepend: site.url  }}"></script>
 </head>
