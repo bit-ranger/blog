@@ -79,7 +79,7 @@
     /**
       * 文章目录相关
       */
-    .post .toc {
+    .post ul#markdown-toc {
         display: none!important;
     }
 }
@@ -137,10 +137,6 @@
 .content-navigation .content-navigation-list ul li{
     line-height: 25px;
     word-break: break-all;
-}
-
-.toc i{
-    display: none;
 }
 
 .boundary{

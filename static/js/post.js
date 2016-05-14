@@ -16,10 +16,9 @@ $(document).ready(function() {
  */
 function generateContent() {
     var $mt = $('.toc');
-    var $toc;
+    var toc = $(".post ul#markdown-toc").clone().get(0);
     $mt.each(function(i,o){
-        $toc = $(o);
-        $toc.toc({ listType: 'ul', headers: 'h1, h2, h3' });
+        $(o).html(toc);
     });
 }
 
