@@ -13,12 +13,25 @@ baseurl: ""
 
 
 
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      styles : [highlight.css,post.css]
+      scripts : [post.js]
+
+
+
 title: "RainyAlley"
 email: "sincerebravefight@gmail.com"
 description: "Developer"
 github_username:  "WakelessDragon"
 swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
 disqus_shortname: "rainyalley"
+
 
 
 
