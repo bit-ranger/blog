@@ -3,6 +3,8 @@ layout: post
 title: scheme 解释器
 tags: lisp scheme eval
 categories: lisp
+styles : [highlight.css,post.css]
+scripts : [post.js]
 ---
 
 * TOC
