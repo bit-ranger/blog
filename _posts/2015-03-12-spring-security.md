@@ -5,16 +5,16 @@ tags: spring security Java
 categories: web
 ---
 
-<div class="toc"></div>
-
 # 概述
 
 [Spring Security][site]这是一种基于Spring AOP和Servlet过滤器的安全框架。它提供全面的安全性解决方案，同时在Web请求级和方法调用级处理身份确认和授权。在Spring Framework基础上，Spring Security充分利用了依赖注入（DI，Dependency Injection）和面向切面技术。
 
+* TOC
+{:toc}
+
 本文的宗旨并非描述如何从零开始搭建一个 "hello world" 级的demo，或者列举有哪些可配置项（这种类似于词典的文档，没有比[参考书][doc]更合适的了），而是简单描述spring-security项目的整体结构，设计思想，以及某些重要配置做了什么。
 
 本文所有内容基于spring-security-4.0.1.RELEASE ,你可以在[Github][github]中找到它，或者使用Maven获取，引入spring-security-config是为了通过命名空间简化配置。
-
 
 ~~~xml
 <dependency>

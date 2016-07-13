@@ -13,7 +13,7 @@ published: true
 最近研究mybatis时发现了一个非常好用的工具类 SQL Builder [^sqlBuilder]
 
 
-##示例
+## 示例
 
 ~~~java
     @Test
@@ -43,7 +43,7 @@ WHERE (name = 'HanMeiMei' AND i.sex = 1)
 
 SQL的拼接词都自动生成了
 
-##源码
+## 源码
 
 事实上不必为了使用这个类而引入Mybatis，SQL Builder非常简单，简单到没有使用任何第三方类库，只需将这个类复制粘贴一下就可以直接用了。
 

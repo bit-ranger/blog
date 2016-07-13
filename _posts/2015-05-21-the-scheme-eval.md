@@ -4,11 +4,11 @@ tags: lisp scheme eval
 categories: lisp
 ---
 
-* TOC
-{:toc}
-
 前段时间针对 [scheme][scheme] 语言写了一个解释器，现在就 fork 一下当时想法，整理一下其中的脉络，做一个思维快照，以期下次用C语言来实现时可以顺利地进行。
 成品在此：[scheme-bootstrap][scheme-bootstrap]。
+
+* TOC
+{:toc}
 
 # 词法作用域
 

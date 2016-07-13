@@ -62,7 +62,7 @@ public String getTitle() {
 }
 ~~~
 
-#与Spring集成
+# 与Spring集成
 
 现在Spring4已经集成了BeanValidation，并增加了国际化支持，这个LocalValidatorFactoryBean可以注入到任何类中使用
 
