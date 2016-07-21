@@ -6,7 +6,8 @@ categories: Linux
 ---
 
 
-<div class="toc"></div>
+* TOC 
+{:toc}
 
 >`.`
 >
@@ -30,17 +31,17 @@ categories: Linux
 
 ---
 
-##`cd `
+## `cd `
 
 **变换目录**
 
 ---
 
-##`pwd`
+## `pwd`
 
 **显示目前所在的目录**
 
-[root@www ~]# `pwd [-Pl]`
+[root@www ~]#  `pwd [-Pl]`
 
 选项与参数：
 
@@ -50,11 +51,11 @@ categories: Linux
 
 ---
 
-##`mkdir`
+## `mkdir`
 
 **创建新目录**
 
-[root@www ~]# `mkdir [-mp]` 目录名称
+[root@www ~]#  `mkdir [-mp]` 目录名称
 
 选项与参数：
 
@@ -64,11 +65,11 @@ categories: Linux
 
 ---
  
-##`rmdir`
+## `rmdir`
 
 **删除『空』的目录**
 
-[root@www ~]# `rmdir [-p]` 目录名称
+[root@www ~]#  `rmdir [-p]` 目录名称
 
 选项与参数：
 
@@ -76,7 +77,7 @@ categories: Linux
 
 ---
  
-##`$PATH`
+## `$PATH`
 
 **环境变量**
 
@@ -90,15 +91,15 @@ PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运
 
 ---
  
-##`ls`
+## `ls`
 
 **查看文件与目录**
 
-[root@linux ~]# `ls [-aAdfFhilRS]` 目录名称
+[root@linux ~]#  `ls [-aAdfFhilRS]` 目录名称
 
-[root@linux ~]# `ls [--color={none,auto,always}]` 目录名称
+[root@linux ~]#  `ls [--color={none,auto,always}]` 目录名称
 
-[root@linux ~]# `ls [--full-time]` 目录名称
+[root@linux ~]#  `ls [--full-time]` 目录名称
 
 选项与参数：
 
@@ -142,13 +143,13 @@ PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运
 
 ---
 
-##`cp`
+## `cp`
 
 **复制文件或目录**
 
-[root@www ~]# `cp [-adfilprsu]` 来源档(source) 目标档(destination)
+[root@www ~]#  `cp [-adfilprsu]` 来源档(source) 目标档(destination)
 
-[root@www ~]# `cp [options]` source1 source2 source3 .... directory
+[root@www ~]#  `cp [options]` source1 source2 source3 .... directory
 
 选项与参数：
 
@@ -174,11 +175,11 @@ PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运
 
 ---
 
-##`rm`
+## `rm`
 
 **移除文件或目录**
 
-[root@www ~]# `rm [-fir]` 文件或目录
+[root@www ~]#  `rm [-fir]` 文件或目录
 
 选项与参数：
 
@@ -190,13 +191,13 @@ PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运
 
 ---
 
-##`mv`
+## `mv`
 
 **移动文件与目录，或更名**
 
-[root@www ~]# `mv [-fiu]` source destination
+[root@www ~]#  `mv [-fiu]` source destination
 
-[root@www ~]# `mv [options]` source1 source2 source3 .... directory
+[root@www ~]#  `mv [options]` source1 source2 source3 .... directory
 
 选项与参数：
 
@@ -208,25 +209,25 @@ PATH是可以修改的，所以一般使用者还是可以透过修改PATH来运
 
 ---
 
-##`basename`，`dirname`
+## `basename`，`dirname`
 
 **取得路径的文件名称与目录名称**
 
-[root@www ~]# `basename` /etc/sysconfig/network
+[root@www ~]#  `basename` /etc/sysconfig/network
 
 network        <== 很简单！就取得最后的档名～
 
-[root@www ~]# `dirname` /etc/sysconfig/network
+[root@www ~]#  `dirname` /etc/sysconfig/network
 
 /etc/sysconfig  <== 取得的变成目录名了！
 
 ---
 
-##`cat`
+## `cat`
 
 **查看文件**
 
-[root@www ~]# `cat [-AbEnTv]`
+[root@www ~]#  `cat [-AbEnTv]`
 
 选项与参数：
 
@@ -242,17 +243,17 @@ network        <== 很简单！就取得最后的档名～
 
 `-v`  ：列出一些看不出来的特殊字符
 
-##`tac`
+## `tac`
 
 **反向显示**
 
 ---
 
-##`nl`
+## `nl`
 
 **添加行号显示**
 
-[root@www ~]# `nl [-bnw]` 文件
+[root@www ~]#  `nl [-bnw]` 文件
 
 选项与参数：
 
@@ -278,11 +279,11 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`more`
+## `more`
 
 **一页一页翻动**
 
-[root@www ~]# `more` /etc/man.config
+[root@www ~]#  `more` /etc/man.config
 
 在more查看文件时可在最底行输入:
 
@@ -300,11 +301,11 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`less`
+## `less`
 
 **一页一页翻动**
 
-[root@www ~]# `less` /etc/man.config
+[root@www ~]#  `less` /etc/man.config
 
 在more查看文件时可在最底行输入:
 
@@ -326,11 +327,11 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`head`
+## `head`
 
 **取出前面几行**
 
-[root@www ~]# `head [-n number]` 文件
+[root@www ~]#  `head [-n number]` 文件
 
 选项与参数：
 
@@ -338,11 +339,11 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`tail`
+## `tail`
 
 **取出后面几行**
 
-[root@www ~]# `tail [-n number]` 文件
+[root@www ~]#  `tail [-n number]` 文件
 
 选项与参数：
 
@@ -352,11 +353,11 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`od`
+## `od`
 
 **非纯文字档**
 
-[root@www ~]# `od [-t TYPE]` 文件
+[root@www ~]#  `od [-t TYPE]` 文件
 
 选项或参数：
 
@@ -376,11 +377,11 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`touch`
+## `touch`
 
 **修改文件时间或建置新档**
 
-[root@www ~]# `touch [-acdmt]` 文件
+[root@www ~]#  `touch [-acdmt]` 文件
 
 选项与参数：
 
@@ -396,9 +397,9 @@ network        <== 很简单！就取得最后的档名～
 
 ---
 
-##`file`
+## `file`
 
 **查看文件类型**
 
-[root@www ~]# `file` 文件
+[root@www ~]#  `file` 文件
 

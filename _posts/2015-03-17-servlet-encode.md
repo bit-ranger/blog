@@ -11,7 +11,7 @@ categories: web
 {:toc}
 
 
-# HTTP
+#  HTTP
 
 我们使用ServerSocket搭建一个小服务器来看清http请求的全貌, 该服务器只有一个功能, 就是打印请求体。
 
@@ -68,7 +68,7 @@ post
 
 从post中的`Content-Type:application/x-www-form-urlencoded`可以看到，虽然数据为中文，但是在传递的时候，经过了一次urlEncode，这样一来，在数据交换层面就可以屏蔽编码的不一致性。
 
-# UrlEncode
+#  UrlEncode
 
 `urlEncode`的任务是将form中的数据进行编码, 编码过程非常简单, 任何字符只要不是`ASCII`码, 它们都将被转换成字节形式, 每个字节都写成这种形式：一个 "%" 后面跟着两位16进制的数值。
 urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别的字符，也就是十六进制数，一定是依赖于特定的字符集产生的, 字符集包括unicode,iso等。
@@ -93,7 +93,7 @@ urlEncode只能识别ASCII码，可以想象的是，那些urlEncode不能识别
 这里需要换位考虑一下，浏览器是一个客户端，应该让客户端 "迁就" 服务端, 所以浏览器请求一个服务的时候，应该让浏览器考虑服务端支持什么字符集, 得到了响应后, 用服务端告诉浏览器的字符集进行解析。
 
 
-# UrlDecode
+#  UrlDecode
 
 现在我们将目光转向Servlet, 并使用上面的html来请求服务，请确保请求的字符集为`unicode`, 应用服务器使用tomcat6。
 
@@ -156,7 +156,7 @@ get与post结果如下,Servlet将http头部解析完成后，将请求体留了�
 
 
 
-# 方案
+#  方案
 
 `urlDecode`的任务是将请求中的百分号码转换成字符，显而易见的是，使用与`urlEncode`时相同的字符集才能成功转换。通常的做法是，让服务端支持涵盖多国语言的"utf-8"，然后让客户端也用"utf-8"请求服务。
 

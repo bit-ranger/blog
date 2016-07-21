@@ -36,9 +36,9 @@ categories: common
 
 >多用组合少用继承。
 
-# 创建型
+#  创建型
 
-## 单例模式
+##  单例模式
 
 **定义**
 
@@ -72,7 +72,7 @@ NumberFormat
 
 简单工厂
 
-## 工厂模式
+##  工厂模式
 
 **分类**
 
@@ -127,9 +127,9 @@ log4j
 
 
 
-# 行为型
+#  行为型
 
-## 策略模式
+##  策略模式
 
 **定义**
 
@@ -180,7 +180,7 @@ log4j
 
 状态模式
 
-## 模板方法
+##  模板方法
 
 **定义**
 
@@ -215,7 +215,7 @@ log4j
 与策略模式不同，策略模式定义一个算法家族，算法可以互换，而模板方法定义一个算法大纲，其中个别的步骤可以有不同实现。
 
 
-## 状态模式
+##  状态模式
 
 **定义**
 
@@ -263,7 +263,7 @@ java.util.Iterator
 是策略模式的增强版，区别在于意图，策略模式虽然也可以在运行时改变行为，但是策略模式通常有一个最适合的策略对象；而状态模式需要在多个状态对象中游走，没有所谓的最适合状态。
 
 
-## 命令模式
+##  命令模式
 
 **定义**
 
@@ -313,7 +313,7 @@ javax.swing.Action
 
 组合模式
 
-## 观察者模式
+##  观察者模式
 
 **定义**
 
@@ -357,7 +357,7 @@ java.util.EventListener
 
 单例模式
 
-## 迭代器模式
+##  迭代器模式
 
 **定义**
 
@@ -387,9 +387,9 @@ java.util.Enumeration
 
 工厂方法模式，迭代器对象由实现类提供
 
-# 结构型
+#  结构型
 
-## 装饰者模式
+##  装饰者模式
 
 **定义**
 
@@ -442,7 +442,7 @@ java.io.BufferedOutputStream(OutputStream)
 
 java.util.zip.ZipOutputStream(OutputStream)
 
-java.util.Collections#checkedList|Map|Set|SortedSet|SortedMap
+java.util.Collections# checkedList|Map|Set|SortedSet|SortedMap
 
 
 **相关**
@@ -455,7 +455,7 @@ Strategy模式：用一个装饰你可以改变对象的外表；而Strategy模�
 
 
 
-## 适配器模式
+##  适配器模式
 
 **定义**
 
@@ -481,7 +481,7 @@ Strategy模式：用一个装饰你可以改变对象的外表；而Strategy模�
 
 **应用**
 
-java.util.Arrays#asList()
+java.util.Arrays# asList()
 
 java.io.InputStreamReader(InputStream)
 
@@ -493,7 +493,7 @@ java.io.OutputStreamWriter(OutputStream)
 
 外观模式
 
-## 代理模式
+##  代理模式
 
 **定义**
 
@@ -539,7 +539,7 @@ RMI
 与装饰者很类似，然而目的不同，装饰者增加行为，代理模式控制访问
 
 
-## 外观模式
+##  外观模式
 
 **定义**
 
@@ -578,7 +578,7 @@ java.lang.Class
 
 适配器模式
 
-## 组合模式
+##  组合模式
 
 **定义**
 
@@ -614,15 +614,15 @@ java.lang.Class
 
 **应用**
 
-javax.swing.JComponent#add(Component)
+javax.swing.JComponent# add(Component)
 
-java.awt.Container#add(Component)
+java.awt.Container# add(Component)
 
-java.util.Map#putAll(Map)
+java.util.Map# putAll(Map)
 
-java.util.List#addAll(Collection)
+java.util.List# addAll(Collection)
 
-java.util.Set#addAll(Collection)
+java.util.Set# addAll(Collection)
 
 **相关**
 

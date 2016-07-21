@@ -6,19 +6,20 @@ categories: Linux
 ---
 
 
-<div class="toc"></div>
+* TOC 
+{:toc}
 
 ![](http://image.beekka.com/blog/201308/bg2013081708.png)
 
-#1.加载内核
+# 1.加载内核
 
 操作系统接管硬件以后，首先读入`/boot `目录下的内核文件。
 
-#2.启动初始化进程
+# 2.启动初始化进程
 
 内核文件加载以后，就开始运行第一个程序`/sbin/init`，它的作用是初始化系统环境。
 
-#3.确定运行级别
+# 3.确定运行级别
 
 许多程序需要开机启动。它们在Windows叫做"服务"（service），在Linux就叫做"守护进程"（daemon）。
 
@@ -72,7 +73,7 @@ initdefault的值是2，表明系统启动时的运行级别为2。
 
 * 后面的两位数字表示处理顺序，数字越小越早处理，所以第一个启动的程序是motd，然后是rpcbing、nfs......数字相同时，则按照程序名的字母顺序启动，所以rsyslog会先于sudo启动。
 
-#4.加载开机启动顺序
+# 4.加载开机启动顺序
 
 七种预设的"运行级别"各自有一个目录，存放需要开机启动的程序。如果多个"运行级别"需要启动同一个程序，那么这个程序的启动脚本，就会在每一个目录里都有一个拷贝。这样会造成管理上的困扰：如果要修改启动脚本，岂不是每个目录都要改一遍？
 
@@ -86,7 +87,7 @@ Linux的解决办法，就是七个 /etc/rcN.d 目录里列出的程序，都设
 	
 /etc/init.d 这个目录名最后一个字母d，是directory的意思，表示这是一个目录，用来与程序 /etc/init 区分。
 
-#5.用户登陆
+# 5.用户登陆
 
 用户的登录方式有三种：
 
@@ -102,7 +103,7 @@ init进程调用getty程序（意为get teletype），让用户输入用户名�
 
 init进程调用显示管理器，Gnome图形界面对应的显示管理器为gdm（GNOME Display Manager），然后用户输入用户名和密码。如果密码正确，就读取/etc/gdm3/Xsession，启动用户的会话。
 
-#6.进入 login shell
+# 6.进入 login shell
 
 Debian默认的shell是Bash，它会读入一系列的配置文件，不同的登陆方式加载不同的配置文件
 
@@ -118,7 +119,7 @@ Debian默认的shell是Bash，它会读入一系列的配置文件，不同的�
 
 * 图形界面登录：只加载 /etc/profile 和 ~/.profile。~/.bash_profile 不管有没有，都不会运行。
 
-#7.打开 non-login shell
+# 7.打开 non-login shell
 
 进入 login shell完成后，Linux的启动过程就算结束了。
 

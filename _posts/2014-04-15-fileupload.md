@@ -6,11 +6,12 @@ categories: web
 published: true
 ---
 
-<div class="toc"></div>
+* TOC 
+{:toc}
 
 本文的目的是简要说明如何编写一个文件上传组件，使他的功能类似 [commons-fileupload][commons-fileupload], 并在结尾处提供了完整代码的获取方式。
 
-#HTTP
+# HTTP
 本文讨论的是基于 HTTP 协议的文件上传，下面先来看看 HTTP 请求的真面目。
 
 首先，用 JavaSe 类库中的 Socket 搭建一个超简单的服务器，这个服务器只有一个功能，就是完整地打印整个 HTTP 请求体。
@@ -77,7 +78,7 @@ public class Server {
 
 我们需要做的工作，就是利用分隔线，从请求体中分离出每个元素，分析HTTP请求头的工作可以交给Servlet。
 
-#分析
+# 分析
 
 那么，如何分离呢？
 
@@ -94,7 +95,7 @@ RandomAccessFile 或许能够满足需求，RandomAccessFile 可以提供一个�
 我们知道从 `InputStreeam` 中获取内容需要使用 `read` 方法，返回 `-1` 表示读到了流的末尾，如果我们增强一下`read`的功能，让其在读到每个元素末尾的时候返回 `-1`，这样不就可以分离出每个元素了吗，至于判断是否到了整个流的末尾，自有办法。
 
 
-#设计
+# 设计
 
 如何增强`read`方法呢？
 
@@ -126,7 +127,7 @@ RandomAccessFile 或许能够满足需求，RandomAccessFile 可以提供一个�
 
 ![pad][pad]
 
-#关键代码
+# 关键代码
 
 **在buffer中检查boundary**
 
@@ -222,7 +223,7 @@ public int read(byte[] b, int off, int len) throws IOException {
 }
 ~~~
 
-#源码获取
+# 源码获取
 
 我已经按照这套想法完整地实现了文件上传组件
 

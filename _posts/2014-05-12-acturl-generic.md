@@ -3,7 +3,7 @@ layout: post
 title: 超类中的泛型
 tags: generic type Java
 categories: java
-published: true
+published: false
 ---
 
 为了减少工作量，开发者往往喜欢将相同的特性放入超类，通过继承实现代码共享

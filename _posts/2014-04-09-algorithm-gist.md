@@ -5,9 +5,10 @@ tags: 三色旗 汉诺塔 斐波那契数列 骑士周游 算法 algorithm
 categories: algorithm
 ---
 
-<div class="toc"></div>
+* TOC 
+{:toc}
 
-#三色旗
+# 三色旗
 
 问题描述:一条绳子上悬挂了一组旗帜,旗帜分为三种颜色,现在需要把旗帜按顺序将相同的颜色的放在一起,没有旗帜的临时存放点,只能在绳子上操作,每次只能交换两个旗帜
 
@@ -82,7 +83,7 @@ public class Tricolour {
 }
 ~~~
 
-#汉诺塔
+# 汉诺塔
 
 ~~~java
 public class Hanoi {
@@ -103,7 +104,7 @@ public class Hanoi {
 }
 ~~~
 
-#斐波那契数列
+# 斐波那契数列
 
 ~~~java
 public class Fibonacci {
@@ -145,7 +146,7 @@ public class Fibonacci {
 }
 ~~~
 
-#骑士周游
+# 骑士周游
 
 骑士只能按照如图所示的方法前进,且每个格子只能路过一次,现在指定一个起点,判断骑士能否走完整个棋盘.
 
@@ -274,7 +275,7 @@ public class KnightTour {
 }
 ~~~
 
-#帕斯卡三角
+# 帕斯卡三角
 
 ~~~java
 public class Pascal extends JFrame{

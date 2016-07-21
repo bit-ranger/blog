@@ -5,7 +5,9 @@ tags: WebService Java
 categories: web
 ---
 
-<div class="toc"></div>
+* TOC
+{:toc}
+
 
 **WSDL**
 
@@ -35,7 +37,7 @@ categories: web
 
 ---
 
-#`一`、产品
+# `一`、产品
 
 **soap**风格 (JAX-WS规范JSR-224)
 
@@ -55,11 +57,11 @@ RESTEasy：http://resteasy.jboss.org/
 
 CXF：http://cxf.apache.org/
 
-#`二`、JDK发布与调用
+# `二`、JDK发布与调用
 
-##`1`.发布
+## `1`.发布
 
-###定义接口
+### 定义接口
 
 ~~~java
 //此注解必须
@@ -69,7 +71,7 @@ public interface HelloService {
 }
 ~~~
 
-###实现接口
+### 实现接口
 
 ~~~java
 @WebService(serviceName = "HelloService",
@@ -83,7 +85,7 @@ public class HelloServiceImpl implements HelloService {
 }
 ~~~
 
-###发布服务
+### 发布服务
 
 ~~~java
 public class Server {
@@ -98,9 +100,9 @@ public class Server {
 
 访问`http://localhost:8081/ws/soap/hello?wsdl`即可查看详情
 
-##`2`.调用
+## `2`.调用
 
-###静态客户端
+### 静态客户端
 
  `wsimport http://localhost:8080/ws/soap/hello?wsdl`//通过 WSDL 地址生成 class 文件
 
@@ -116,7 +118,7 @@ public static void main(String[] args){
 }
 ~~~
 
-###动态代理客户端
+### 动态代理客户端
 
 只需提供`HelloService`接口，无需jar
 
@@ -136,15 +138,15 @@ public static void main(String[] args){
 }
 ~~~
 
-#`三`、CXF
+# `三`、CXF
 
 User为自定义的POJO类
 
 web发布示例集成spring
 
-##`1.`SOAP风格
+## `1.`SOAP风格
 
-###定义接口
+### 定义接口
 
 ~~~java
 package top.rainynight.sitews.user.ws;
@@ -159,7 +161,7 @@ public interface UserWS {
 }
 ~~~
 
-###实现接口
+### 实现接口
 
 ~~~java
 package top.rainynight.sitews.user.ws;
@@ -178,9 +180,9 @@ public class UserWSImpl implements UserWS {
 ~~~
 
 
-###发布服务
+### 发布服务
 
-####①Jetty发布
+#### ①Jetty发布
 
 配置依赖
 
@@ -221,7 +223,7 @@ public class JaxWsServer {
 
 访问`http://localhost:8080/ws/user?wsdl`
 
-####②Web发布
+#### ②Web发布
 
 配置依赖
 
@@ -298,15 +300,15 @@ public class JaxWsServer {
     </jaxws:server>
     -->
 
-    <jaxws:endpoint implementor="#userWS" address="/ws/user" />
+    <jaxws:endpoint implementor="# userWS" address="/ws/user" />
 </beans>
 ~~~
 
 访问`http://localhost:8080/ws/user?wsdl`
 
-###调用服务
+### 调用服务
 
-####①静态客户端
+#### ①静态客户端
 
 ~~~java
 public class JaxWsClient {
@@ -323,7 +325,7 @@ public class JaxWsClient {
 }
 ~~~
 
-####②动态代理客户端
+#### ②动态代理客户端
 
 ~~~java
 public class JaxWsDynamicClient {
@@ -342,7 +344,7 @@ public class JaxWsDynamicClient {
 }
 ~~~
 
-####③通用动态代理客户端
+#### ③通用动态代理客户端
 
 既可调用 JAX-WS 服务，也可调用 Simple 服务
 
@@ -363,7 +365,7 @@ public class DynamicClient {
 }
 ~~~
 
-####④Spring客户端
+#### ④Spring客户端
 
 ~~~xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -394,9 +396,9 @@ public class UserWSClient{
 }
 ~~~
 
-##`2`.REST风格
+## `2`.REST风格
 
-###定义接口
+### 定义接口
 
 `!`REST 规范允许资源类没有接口
 
@@ -425,7 +427,7 @@ public interface UserWS {
 }
 ~~~
 
-###实现接口
+### 实现接口
 
 ~~~java
 package top.rainynight.sitews.user.ws;
@@ -443,9 +445,9 @@ public class UserWSImpl implements UserWS {
 }
 ~~~
 
-###发布服务
+### 发布服务
 
-####①jetty发布
+#### ①jetty发布
 
 配置依赖
 
@@ -507,7 +509,7 @@ public class Server {
 
 访问`http://localhost:8080/rs/user?_wadl`
 
-####②web发布
+#### ②web发布
 
 配置依赖
 
@@ -592,9 +594,9 @@ public class Server {
 
 访问`http://localhost:8080/rs/user?_wadl`
 
-###调用服务
+### 调用服务
 
-####①JAX-RS 1.0 客户端
+#### ①JAX-RS 1.0 客户端
 
 ~~~java
 public class JAXRSClient {
@@ -611,7 +613,7 @@ public class JAXRSClient {
 }
 ~~~
 
-####②JAX-RS 2.0 客户端
+#### ②JAX-RS 2.0 客户端
 
 ~~~java
 public class JAXRS20Client {
@@ -631,7 +633,7 @@ public class JAXRS20Client {
 }
 ~~~
 
-####③WebClient 客户端
+#### ③WebClient 客户端
 
 ~~~java
 public class CXFWebClient {
@@ -651,7 +653,7 @@ public class CXFWebClient {
 }
 ~~~
 
-####④AJAX客户端
+#### ④AJAX客户端
 
 ~~~javascript
 $.ajax({
@@ -748,5 +750,5 @@ IE8 中使用 jQuery 发送 AJAX 请求时，需要配置 `$.support.cors = true
 
 
 
-##`～～`警告`～～`
+## `～～`警告`～～`
 `!warning` 极重要，cxf在wsdl中发布的`targetNamespace`是实现类路径，而被调用时却只接受接口路径。所以，请将接口与实现类放在同一路径下，或者在实现类中指定`targetNamespace`为接口的路径；否则客户端将抛出 ..common.i18n.UncheckedException: No operation was found with the name ... 异常

@@ -3,9 +3,10 @@ layout: post
 title: Tomcat Https 配置
 tags: tomcat Http Https ssl Java
 categories: Java
+published: false
 ---
 
-####`1`.生成秘钥库
+#### `1`.生成秘钥库
 
 ~~~bash
 keytool 
@@ -24,7 +25,7 @@ keytool
     -validity 有效天数
 ~~~
  
-####`2`.生成浏览器证书文件
+#### `2`.生成浏览器证书文件
 
 ~~~bash
 keytool
@@ -35,7 +36,7 @@ keytool
     -file 证书文件名
 ~~~
 
-####`3`.生成私钥文件
+#### `3`.生成私钥文件
 
 ~~~bash
 keytool 
@@ -51,7 +52,7 @@ openssl
 	-nodes
 ~~~
 
-####`4`.Tomcat配置
+#### `4`.Tomcat配置
 
 打开 %CATALINA_HOME%/conf/server.xml
 
@@ -65,7 +66,7 @@ openssl
     SSLCertificateKeyFile="pem文件名"/>
 ~~~
 
-####`5`.强制https访问
+#### `5`.强制https访问
 
 打开 %CATALINA_HOME%/conf/web.xml
 

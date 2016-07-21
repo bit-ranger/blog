@@ -5,7 +5,9 @@ tags: Java Concurrent
 categories: Java
 ---
 
-<div class="toc"></div>
+* TOC
+{:toc}
+
 
 线程拥有通过程序运行的独立的并发路径，并且每个线程都有自己的程序计数器，称为堆栈和本地变量。线程存在于进程中，它们与同一进程内的其他线程共享内存、文件句柄以及进程状态。
 
@@ -21,7 +23,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 ---
 
-#线程安全的类
+# 线程安全的类
 
 * 首先它必须在单线程环境中正确运行。如果正确实现了类，那么说明它符合规范，对该类的对象的任何顺序的操作（公共字段的读写、公共方法的调用）都不应该：
 
@@ -37,7 +39,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 在并发编程中，一种被普遍认可的原则就是：尽可能的使用**不可变对象**来创建简单、可靠的代码。
 
-#Thread
+# Thread
 
 * 任何一个时刻，对象的控制权（monitor）只能被一个线程拥有。
 
@@ -48,7 +50,7 @@ JDK 5.0 中的并发改进可以分为三组：
 * JVM基于多线程，默认情况下不能保证运行时线程的时序性。
 
 
-##interrupt
+## interrupt
 
 * 当调用`th.interrput()`的时候，线程th的中断状态(interrupted status) 会被置位。我们可以通过Thread.currentThread().isInterrupted() 来检查这个布尔型的中断状态。
 
@@ -56,7 +58,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 当th被阻塞的时候，比如被`Object.wait`, `Thread.join`和`Thread.sleep`三种方法之一阻塞时, 调用它的interrput()方法，可想而知，没有占用CPU运行的线程是不可能给自己的中断状态置位的, 这就会产生一个InterruptedException异常。
 
-##join
+## join
 
 * join方法可以让一个线程**等待**另一个线程执行完成。
 
@@ -64,7 +66,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 如同sleep()方法，join()方法响应中断并在中断时抛出InterruptedException。
 
-##同步
+## 同步
 
 * 同步的构造方法没有意义，因为当这个对象被创建的时候，只有创建对象的线程能访问它。
 
@@ -72,7 +74,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 如果类中的两个域需要同步访问，但是两个域没有什么关联，那么可以为两个域个创建一个私有的锁对象，使两个域能分别同步。
 
-##锁
+## 锁
 
 * 死锁描述了这样一种情景，两个或多个线程永久阻塞，互相等待对方释放资源。
 
@@ -85,7 +87,7 @@ JDK 5.0 中的并发改进可以分为三组：
 * 如果在一个执行序列中，需要确定对象的状态，那么某个线程在执行这个序列时，需要获得所有这些对象的锁（如一来一回的相互鞠躬，必须保证不会同时鞠躬也不会同时静止）
 
 
-#线程安全集合
+# 线程安全集合
 
 * java.util.concurrent 包添加了多个新的线程安全集合类 `ConcurrentHashMap`, `CopyOnWriteArrayList`, `CopyOnWriteArraySet`
 
@@ -97,13 +99,13 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 所有这些集合，通过 在集合里新增对象和访问或移除对象的操作之间，定义一个`happens-before`的关系，来帮助程序员避免内存一致性错误。
 
-##CopyOnWrite
+## CopyOnWrite
 
 * Vector 的常见应用是存储通过组件注册的监听器的列表。当发生适合的事件时，该组件将在监听器的列表中迭代，调用每个监听器。为了防止ConcurrentModificationException，迭代线程必须复制列表或锁定列表，以便进行整体迭代，而这两种情况都需要大量的性能成本。
 
 * CopyOnWriteArrayList及CopyOnWriteArraySet 类通过每次添加或删除元素时创建数组的新副本，避免了这个问题，但是进行中的迭代保持对创建迭代器时的副本进行操作。虽然复制也会有一些成本，但是在许多情况下，迭代要比修改多得多，在这些情况下，写入时复制要比其他备用方法具有更好的性能和并发性。
 
-##ConcurrentHashMap
+## ConcurrentHashMap
 
 * `Hashtable` 和 `synchronizedMap` 所采取的获得同步的简单方法（同步 Hashtable 或者同步 Map 封装器对象中的每个方法）有两个主要的不足：
 
@@ -115,7 +117,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * ConcurrentHashMap 返回的迭代器是弱一致的，意味着它们将不抛出ConcurrentModificationException ，将进行 "合理操作" 来反映迭代过程中其他线程对 Map 的修改。
 
-##队列
+## 队列
 
 * `Queue` 接口比 List 简单得多，仅包含 put() 和 take() 方法，并允许比 LinkedList 更有效的实现。
 
@@ -129,7 +131,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
     *  `ConcurrentLinkedQueue` 快速、线程安全的、无阻塞 FIFO 队列。
 
-##弱一致的迭代器
+## 弱一致的迭代器
 
 * java.util 包中的集合类都返回 `fail-fast` 迭代器，这意味着它们假设线程在集合内容中进行迭代时，集合不会更改它的内容。如果 fail-fast 迭代器检测到在迭代过程中进行了更改操作，那么它会抛出 **ConcurrentModificationException**，这是不可控异常。
 
@@ -137,7 +139,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 
 
-#线程池
+# 线程池
 
 * 管理一大组小任务的标准机制是**组合工作队列**和**线程池**。工作队列就是要处理的任务的队列，前面描述的 Queue 类完全适合。线程池是线程的集合，每个线程都提取公用工作队列。当一个工作线程完成任务处理后，它会返回队列，查看是否有其他任务需要处理。如果有，它会转移到下一个任务，并开始处理。
 
@@ -146,7 +148,7 @@ JDK 5.0 中的并发改进可以分为三组：
     * 作为一种额外好处，因为请求到达时，线程已经存在，从而可以消除由创建线程引起的延迟, 因此，可以立即处理请求，使应用程序更易响应。
     * 而且，通过正确调整线程池中的线程数，可以强制超出特定限制的任何请求等待，直到有线程可以处理它，它们等待时所消耗的资源要少于使用额外线程所消耗的资源，这样可以防止资源崩溃。
 
-#Executor 框架
+# Executor 框架
 
 * `Executor` 接口关注任务提交，确定执行策略。这使在部署时调整执行策略（队列限制、池大小、优先级排列等等）更加容易，更改的代码最少。
 
@@ -154,7 +156,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * **执行策略**定义何时在哪个线程中运行任务，执行任务可能消耗的资源级别（线程、内存等等），以及如果执行程序超载该怎么办。
 
-##ExecutorService
+## ExecutorService
 
 * `ExecutorService`接口在提供了execute方法的同时，新加了更加通用的`submit`方法。
 
@@ -162,13 +164,13 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * ExecutorService也提供了批量运行Callable任务的方法，ExecutorService还提供了一些关闭执行器的方法。
 
-##ScheduledExecutorService
+## ScheduledExecutorService
 
 * `ScheduledExecutorService`扩展ExecutorService接口并添加了`schedule`方法。调用schedule方法可以在指定的延时后执行一个Runnable或者Callable任务。
 
 * ScheduledExecutorService接口还定义了按照指定时间间隔定期执行任务的`scheduleAtFixedRate`方法和`scheduleWithFixedDelay`方法。
 
-##Executors
+## Executors
 
 `Executors类`包含用于构造许多不同类型的 Executor 实现的静态工厂方法：
 
@@ -182,7 +184,7 @@ JDK 5.0 中的并发改进可以分为三组：
 
 * 如果上面的方法都不满足需要，可以尝试`ThreadPoolExecutor`或者`ScheduledThreadPoolExecutor`。
 
-##定制 ThreadPoolExecutor
+## 定制 ThreadPoolExecutor
 
 通过使用包含 `ThreadFactory` 变量的工厂方法或构造函数的版本，可以定义线程的创建。ThreadFactory 是工厂对象，其构造执行程序要使用的新线程。
 
@@ -209,7 +211,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 * `setRejectedExecutionHandler`可以设置拒绝的执行处理程序。
 
 
-##需要特别考虑的问题
+## 需要特别考虑的问题
 
 如果应用程序对特定执行程序进行了假设，那么应该在 Executor 定义和初始化的附近对这些进行说明，从而使善意的更改不会破坏应用程序的正确功能。
 
@@ -217,7 +219,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 * 一组线程必须作为共同操作组一起工作。在这种情况下，需要确保线程池能够容纳所有线程。
 
-##调整线程池
+## 调整线程池
 
 * 如果线程池太小，资源可能不能被充分利用，在一些任务还在工作队列中等待执行时，可能会有处理器处于闲置状态。
 
@@ -227,7 +229,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 >用 `WT` 表示每项任务的平均等待时间，`ST` 表示每项任务的平均服务时间（计算时间）。则 `WT/ST` 是每项任务等待所用时间的百分比。对于 N 处理器系统，池中可以近似有 `N*(1+WT/ST)` 个线程。
 
-##Future 接口
+## Future 接口
 
 * `Future` 接口允许表示已经完成的任务、正在执行过程中的任务或者尚未开始执行的任务。通过 Future 接口，可以尝试取消尚未完成的任务，查询任务已经完成还是取消了，以及提取（或等待）任务的结果值。
 
@@ -235,7 +237,7 @@ public class DaemonThreadFactory implements ThreadFactory {
 
 * `Future.get()` 方法检索任务计算的结果, 如果任务尚未完成，那么 Future.get() 将被阻塞直到任务完成；如果任务已经完成，那么它将立即返回结果; 如果任务完成，但有异常，则抛出 ExecutionException。
 
-##使用 Future 构建缓存
+## 使用 Future 构建缓存
 
 该示例利用 ConcurrentHashMap 中的原子 `putIfAbsent()` 方法，确保仅有一个线程试图计算给定关键字的值。如果其他线程随后请求同一关键字的值，它仅能等待（通过 Future.get() 的帮助）第一个线程完成。因此两个线程不会计算相同的值。
 
@@ -267,7 +269,7 @@ public class Cache<K,V> {
 }
 ```
 
-##CompletionService
+## CompletionService
 
 * `CompletionService` 将执行服务与类似 Queue 的接口组合，从任务执行中删除任务结果的处理。CompletionService 接口包含用来提交将要执行的任务的 submit() 方法和用来询问下一完成任务的 `take()`/`poll()` 方法。
 
@@ -300,7 +302,7 @@ public class Cache<K,V> {
 }
 ```
 
-##Fork/Join
+## Fork/Join
 
 * `fork/join`框架是ExecutorService接口的一种具体实现，目的是为了更好地利用多处理器带来的好处。它是为那些能够被递归地拆解成子任务的工作类型量身设计的。其目的在于能够使用所有可用的运算能力来提升你的应用的性能。
 
@@ -312,9 +314,9 @@ public class Cache<K,V> {
 
 * 其他采用了fork/join框架的方法还有java.util.`streams`包中的一些方法，此包是Java SE 8发行版中Project Lambda的一部分。
 
-#同步工具
+# 同步工具
 
-##Semaphore
+## Semaphore
 
 * `Semaphore` 类实现标准 Dijkstra 计数信号。计数信号可以认为具有一定数量的许可权，该许可权可以获得或释放。如果有剩余的许可权，`acquire()` 方法将成功，否则该方法将被阻塞，直到其他线程释放`release()`许可权, 线程一次可以获得多个许可权。
 
@@ -322,13 +324,13 @@ public class Cache<K,V> {
 
 * 注意信号不跟踪哪个线程拥有多少许可权, 这由应用程序来决定，以确保何时线程释放许可权，该信号表示其他线程拥有许可权或者正在释放许可权，以及其他线程知道它的许可权已释放。
 
-##互斥
+## 互斥
 
 * 计数信号的一种特殊情况是**互斥**，或者互斥信号。互斥就是具有单一许可权的计数信号，意味着在给定时间仅一个线程可以具有许可权, 互斥可以用于管理对共享资源的独占访问。
 
 * 虽然互斥许多地方与锁定一样，但互斥还有一个锁定通常没有的功能，就是互斥可以由不具有许可权的其他线程来释放, 这在死锁恢复时会非常有用。
 
-##CyclicBarrier
+## CyclicBarrier
 
 * `CyclicBarrier` 类可以帮助同步，它允许一组线程等待整个线程组到达公共屏障点。CyclicBarrier 是使用整型变量构造的，其确定组中的线程数。当一个线程到达屏障时（通过调用 CyclicBarrier.`await()`），它会被阻塞，直到所有线程都到达屏障，然后在该点允许所有线程继续执行。
 
@@ -368,7 +370,7 @@ public class Cache<K,V> {
     }
 ```
 
-##CountdownLatch
+## CountdownLatch
 
 * `CountdownLatch` 类与 CyclicBarrier 相似，因为它的角色是对已经在它们中间分摊了问题的一组线程进行协调。它也是使用整型变量构造的，指明计数的初始值，但是与 CyclicBarrier 不同的是，CountdownLatch 不能重新使用。
 
@@ -407,7 +409,7 @@ public static void main(String[] args) throws InterruptedException {
 }
 ```
 
-##Exchanger
+## Exchanger
 
 * `Exchanger` 类方便了两个共同操作线程之间的双向交换，就像具有计数为 2 的 CyclicBarrier，并且两个线程在都到达屏障时可以"交换"一些状态。（Exchanger 模式有时也称为聚集。）
 
@@ -456,7 +458,7 @@ public static void main(String[] args){
 }
 ```
 
-#Lock工具
+# Lock工具
 
 * `Lock` 接口将内置监视器锁定的行为普遍化，允许多个锁定实现，同时提供一些内置锁定缺少的功能，如**计时**的等待、**可中断**的等待、锁定**轮询**、每个锁定有多个**条件**等待集合以及**无阻塞**结构的锁定。
 
@@ -465,7 +467,7 @@ public static void main(String[] args){
 * 锁对象之于隐式锁最大的优势在于，它们**有能力收回获取锁的尝试**（如果获取锁失败，将不会继续请求，以免发生死锁）。如果当前锁对象不可用，或者锁请求超时（如果超时时间已指定），`tryLock`方法会收回获取锁的请求。如果在锁获取前，另一个线程发送了一个中断，`lockInterruptibly`方法也会收回获取锁的请求。
 
 
-##ReentrantLock
+## ReentrantLock
 
 * `ReentrantLock` 是具有与隐式监视器锁定（使用 synchronized 方法和语句访问）相同的基本行为和语义的 Lock 的实现，但它具有扩展的能力。
 
@@ -492,13 +494,13 @@ finally {
 
 
 
-##Condition
+## Condition
 
 * 就像 Lock 接口是同步的具体化，`Condition` 接口是 Object 中 wait() 和 notify() 方法的具体化。Lock 中的一个方法是 `newCondition()`，它要求该锁定返回新的 Condition 对象限制。
 
 * `await()`、`signal()` 和 `signalAll()` 方法类似于 wait()、notify() 和 notifyAll()，但增加了灵活性，每个 Lock 都可以创建多个条件变量。这简化了一些并发算法的实现。
 
-##ReadWriteLock
+## ReadWriteLock
 
 * ReentrantLock 实现的锁定规则非常简单 -- 每当一个线程具有锁定时，其他线程必须等待，直到该锁定可用。
 
@@ -506,7 +508,7 @@ finally {
 
 * `ReadWriteLock` 接口和 `ReentrantReadWriteLock` 类提供这种功能 -- **多读者**、**单写入**者锁定规则，可以用这种功能来保护共享的易变资源。
 
-#原子变量
+# 原子变量
 
 * java.util.concurrent.`atomic`包定义了对单一变量进行原子操作的类。所有的类都提供了`get`和`set`方法，可以使用它们像读写`volatile`变量一样读写原子类。就是说，同一变量上的一个set操作对于任意后续的get操作存在happens-before关系。原子的`compareAndSet`方法也有内存一致性特点，就像应用到整型原子变量中的简单原子算法。
 
@@ -516,7 +518,7 @@ finally {
 
 * 原子变量主要用于为原子地更新 "热" 字段提供有效的、细粒度的方式， "热" 字段是指由多个线程频繁访问和更新的字段。另外，原子变量还是计数器或生成序号的自然机制。
 
-#并发随机数
+# 并发随机数
 
 * 在JDK7中，java.util.concurrent包含了一个相当便利的类，`ThreadLocalRandom`，当应用程序期望在多个线程或ForkJoinTasks中使用随机数时。
 
@@ -524,7 +526,7 @@ finally {
 
 * 只需调用ThreadLocalRandom.`current()`， 然后调用它的其中一个方法去获取一个随机数即可。
 
-#性能与可伸缩性
+# 性能与可伸缩性
 
 * **性能**是 "可以快速执行此任务的程度" 的评测。**可伸缩性**描述应用程序的**吞吐量如何表现为它的工作量和可用计算资源增加**。
 

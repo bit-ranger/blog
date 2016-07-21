@@ -5,7 +5,7 @@ tags: spring security Java
 categories: web
 ---
 
-# 概述
+#  概述
 
 [Spring Security][site]这是一种基于Spring AOP和Servlet过滤器的安全框架。它提供全面的安全性解决方案，同时在Web请求级和方法调用级处理身份确认和授权。在Spring Framework基础上，Spring Security充分利用了依赖注入（DI，Dependency Injection）和面向切面技术。
 
@@ -30,7 +30,7 @@ categories: web
 ~~~
 
 
-# Filter
+#  Filter
 
 spring-security的业务流程是独立于项目的，我们需要在web.xml中指定其入口，注意该过滤器必须在项目的过滤器之前。
 
@@ -67,7 +67,7 @@ protected void initFilterBean() throws ServletException {
 ~~~
 
 
-# HTTP
+#  HTTP
 
 我们可以在security中声明多个`http`元素，每个http元素将产生一个`FilterChain`，这些FilterChain将按照声明顺序加入到`FilterChainProxy`中，而这个FilterChainProxy就是web.xml中定义的springSecurityFilterChain内部的`delegate`。
 
@@ -89,7 +89,7 @@ protected void initFilterBean() throws ServletException {
 
 整体来看，一个FilterChainProxy中可以包含有多个FilterChain，一个FilterChain中又可以包含有多个Filter，然而对于一个既定请求，只会使用其中一个FilterChain。
 
-# FilterChain
+#  FilterChain
 
 ![filterChain][filterChain]
 
@@ -116,7 +116,7 @@ protected void initFilterBean() throws ServletException {
 
 
 
-# FilterSecurityInterceptor
+#  FilterSecurityInterceptor
 
 如果一个http请求能够匹配security定义的规则，那么该请求将进入security处理流程，大体上，security分为三个部分：
 
@@ -191,7 +191,7 @@ private Authentication authenticateIfRequired() {
 ~~~
 
 
-# AuthenticationManager
+#  AuthenticationManager
 
 AuthenticationManager处理认证请求，然而它并不直接处理，而是将工作委托给了一个`ProviderManager`，ProviderManager又将工作委托给了一个`AuthenticationProvider`列表，只要任何一个AuthenticationProvider认证通过，则AuthenticationManager认证通过，我们可以配置一个或者多个AuthenticationProvider，还可以对密码进行加密。
 
@@ -216,7 +216,7 @@ AuthenticationManager处理认证请求，然而它并不直接处理，而是�
 JdbcDaoImpl使用内置的SQL查询数据，这些SQL以常量的形式出现在JdbcDaoImpl开头，同样可以注入修改。
 
 
-# AccessDecisionManager
+#  AccessDecisionManager
 
 AccessDecisionManager提供访问决策，它同样不会直接处理，而是仅仅抽象为一种投票规则，然后决策行为委托给所有投票人。
 
@@ -279,7 +279,7 @@ public void decide(Authentication authentication, Object object,
 ~~~
 
 
-# SecurityMetadataSource
+#  SecurityMetadataSource
 
 SecurityMetadataSource定义权限元数据（如资源与角色的关系），并提供了一个核心方法`Collection<ConfigAttribute> getAttributes(Object object)`来获取资源对应的角色列表，这种结构非常类似于Map。
 

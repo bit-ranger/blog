@@ -5,11 +5,13 @@ tags: Java 新特性
 categories: Java
 ---
 
-<div class="toc"></div>
+* TOC
+{:toc}
 
-#`1` 语言新特性
 
-##`1.1` Lambda
+# `1` 语言新特性
+
+## `1.1` Lambda
 
 自动推测形参类型`e`
 
@@ -38,7 +40,7 @@ Arrays.asList( "a", "b", "d" ).forEach(
     ( String e ) -> System.out.print( e + separator ) );
 ~~~
 
-##`1.2` FunctionalInterface
+## `1.2` FunctionalInterface
 
 函数接口就是只具有一个方法的普通接口，这样的接口，可以被隐式转换为lambda表达式，
 
@@ -53,7 +55,7 @@ public interface Functional {
 }
 ~~~
 
-##`1.3` 接口默认方法
+## `1.3` 接口默认方法
 
 ~~~java
 public interface Defaulable {
@@ -75,7 +77,7 @@ public  class OverridableImpl implements Defaulable {
 }
 ~~~
 
-##`1.4` 接口静态方法
+## `1.4` 接口静态方法
 
 ~~~java
 private interface DefaulableFactory {
@@ -86,7 +88,7 @@ private interface DefaulableFactory {
 }
 ~~~
 
-##`1.5` 方法引用
+## `1.5` 方法引用
 
 可以将类中既有 方法引用为lambda
 
@@ -145,7 +147,7 @@ cars.forEach( police::follow );
    TypeName[]::new //引用一个数组的构造器
 ~~~
 
-##`1.6` 重复注解
+## `1.6` 重复注解
 
 相同的注解可以在同一地方声明多次，由 `@Repeatable` 提供此特性
 
@@ -187,7 +189,7 @@ public static void main(String[] args) {
 }
 ~~~
 
-##`1.7` 类型推测
+## `1.7` 类型推测
 
 ~~~java
 public class TypeInfer {
@@ -222,7 +224,7 @@ class Value< T > {
 }
 ~~~
 
-##`1.8` 扩展注解
+## `1.8` 扩展注解
 
 java8几乎可以为任何东西添加注解：局部变量、泛型类、父类与接口的实现以及方法异常
 
@@ -249,9 +251,9 @@ public class AnnotationEX {
 }
 ~~~
 
-#`2` 类库新特性
+# `2` 类库新特性
 
-##`2.1` Optional
+## `2.1` Optional
 
 ~~~java
 //将String对象装入Optional容器
@@ -269,7 +271,7 @@ System.out.println(stringOptional.orElseGet( () -> "[default string]" ) );
 System.out.println(stringOptional.map( p -> "[" + p + "]" ).orElse( "Hello Optional" ) );
 ~~~
 
-##`2.2` Stream
+## `2.2` Stream
 
 stream操作被分成了**中间操作**与**最终操作**两种
 
@@ -364,7 +366,7 @@ final Collection< String > result = tasks
 System.out.println( result );
 ~~~
 
-##`2.3` Date/Time API
+## `2.3` Date/Time API
 
 时间格式均为 **ISO-8601**
 
@@ -430,7 +432,7 @@ System.out.println( "Duration in days: " + duration.toDays() );
 System.out.println( "Duration in hours: " + duration.toHours() );
 ~~~
 
-##`2.4` Nashorn
+## `2.4` Nashorn
 
 `javax.script.ScriptEngine`的另一种实现，允许js与java相互调用
 
@@ -442,7 +444,7 @@ System.out.println( engine.getClass().getName() );
 System.out.println( "Result:" + engine.eval( "function f() { return 1; }; f() + 1;" ) );
 ~~~
 
-##`2.5` Base64
+## `2.5` Base64
 
 Base64编码已经成为Java8类库的标准
 
@@ -466,7 +468,7 @@ System.out.println( decoded );
 >
 >`Base64.getMimeEncoder() Base64.getMimeDecoder()`
 
-##`2.6` 并行（parallel ）数组
+## `2.6` 并行（parallel ）数组
 
 **并行数组**操作可以在多核机器上极大提高性能
 
@@ -491,7 +493,7 @@ Arrays.stream( arrayOfLong ).limit( 10 ).forEach(
 System.out.println();
 ~~~
 
-##`2.7` 并发（concurrency）
+## `2.7` 并发（concurrency）
 
 * java.util.concurrent.`ConcurrentHashMap`类中加入了一些新方法来支持聚集操作
 
@@ -506,9 +508,9 @@ System.out.println();
 `LongAdder`
 
 
-#`3` 编译器新特性
+# `3` 编译器新特性
 
-##`3.1` 参数名
+## `3.1` 参数名
 
 方法参数的名字保留在Java字节码中，并且能够在运行时获取它们
 
@@ -525,9 +527,9 @@ public class ParameterNames {
 }
 ~~~
 
-#`4` 新的Java工具
+# `4` 新的Java工具
 
-##`4.1` Nashorn引擎 `jjs`
+## `4.1` Nashorn引擎 `jjs`
 
 它接受一些JavaScript源代码为参数，并且执行这些源代码
 
@@ -544,7 +546,7 @@ print( f() + 1 );
 jjs func.js
 ~~~
 
-##`4.2` 类依赖分析器 `jdeps`
+## `4.2` 类依赖分析器 `jdeps`
 
 它可以显示Java类的包级别或类级别的依赖，它接受一个.class文件，一个目录，或者一个jar文件作为输入。jdeps默认把结果输出到系统输出（控制台）上。
 
@@ -554,6 +556,6 @@ jdeps org.springframework.core-3.0.5.RELEASE.jar
 
 如果依赖不在classpath中，就会显示 **not found**
 
-#`5` JVM新特性
+# `5` JVM新特性
 
 **PermGen**空间被移除了，取而代之的是**Metaspace**（JEP 122）。JVM选项**-XX:PermSize**与**-XX:MaxPermSize**分别被**-XX:MetaSpaceSize**与**-XX:MaxMetaspaceSize**所代替

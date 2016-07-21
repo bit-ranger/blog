@@ -5,15 +5,16 @@ tags: Linux 命令
 categories: Linux
 ---
 
-<div class="toc"></div>
+* TOC 
+{:toc}
 
-##`chmod`
+## `chmod`
 
 **改变权限**
 
 *数字法*
 
-root@www ~]# `chmod [-R] xyz` 文件或目录
+root@www ~]#  `chmod [-R] xyz` 文件或目录
 
 选项与参数：
 
@@ -35,18 +36,18 @@ rwx
 
 >例:
 >
->[root@www ~]# chmod  u=rwx,go=rx  .bashrc
+>[root@www ~]#  chmod  u=rwx,go=rx  .bashrc
 >
->\# 注意！那个 u=rwx,go=rx 是连在一起的，中间并没有任何空格！
+>\#  注意！那个 u=rwx,go=rx 是连在一起的，中间并没有任何空格！
 
 ---
 
-##`chgrp `
+## `chgrp `
 
 
 **改变所属群组**
 
-chgrp [root@www ~]# `chgrp [-R] filename ...`
+chgrp [root@www ~]#  `chgrp [-R] filename ...`
 
 选项与参数：
 
@@ -54,13 +55,13 @@ chgrp [root@www ~]# `chgrp [-R] filename ...`
 
 ---
 
-##`chown`
+## `chown`
 
 **改变文件拥有者**
 
-[root@www ~]# `chown [-R]` 账号名称 文件或目录
+[root@www ~]#  `chown [-R]` 账号名称 文件或目录
 
-[root@www ~]# `chown [-R]` 账号名称:组名 文件或目录
+[root@www ~]#  `chown [-R]` 账号名称:组名 文件或目录
 
 选项与参数：
 
@@ -68,11 +69,11 @@ chgrp [root@www ~]# `chgrp [-R] filename ...`
 
 ---
 
-##`chattr`
+## `chattr`
 
 **配置文件隐藏属性**
 
-[root@www ~]# `chattr [+-=][ASacdistu]` 文件或目录名称
+[root@www ~]#  `chattr [+-=][ASacdistu]` 文件或目录名称
 
 选项与参数：
 
@@ -102,11 +103,11 @@ chgrp [root@www ~]# `chgrp [-R] filename ...`
 
 ---
 
-##`lsattr`
+## `lsattr`
 
 **显示文件隐藏属性**
 
-[root@www ~]# `lsattr [-adR]` 文件或目录
+[root@www ~]#  `lsattr [-adR]` 文件或目录
 
 选项与参数：
 
@@ -118,27 +119,27 @@ chgrp [root@www ~]# `chgrp [-R] filename ...`
 
 ---
 
-##`umask`
+## `umask`
 
 **被排除的权限默认值**
 
 *目前使用者在创建文件或目录时候的被排除的权限默认值*
 
-[root@www ~]# `umask`      显示`数字`型态的权限配置分数
+[root@www ~]#  `umask`      显示`数字`型态的权限配置分数
 
 0022          <==与一般权限有关的是后面三个数字，表示在777中被排除的权限，即该目录中新增文件或目录的默认权限为755，又因为新增文件默认不具有x权限，所以该目录中新增目录的默认权限为755，文件的默认权限为644
 
-[root@www ~]# `umask -S`    以`符号`类型的方式来显示出权限
+[root@www ~]#  `umask -S`    以`符号`类型的方式来显示出权限
 
 u=rwx,g=rx,o=rx
 
-[root@www ~]# `umask 002`  `指定`权限配置分数
+[root@www ~]#  `umask 002`  `指定`权限配置分数
 
 `!` 异或运算可排除权限
 
 ---
 
-##文件特殊权限
+## 文件特殊权限
 
 **`SUID`**
 
