@@ -34,8 +34,8 @@ function disqus(){
 
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    document.getElementsByTagName("script")[0].parentNode.appendChild(dsq);
-    $(dsq).ready(function(){
+    dsq.onload = function(){
         $("#post-comment").removeClass('hidden');
-    });
+    }
+    document.getElementsByTagName("script")[0].parentNode.appendChild(dsq);
 }
