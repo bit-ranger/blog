@@ -73,7 +73,7 @@ categories: algorithm
  }
  ~~~
  
- [完整代码][完整代码]  
+ [完整代码](完整代码)  
     
 [完整代码]:https://github.com/WakelessDragon/architecture/blob/93c189b0cc69f41dc9b030f75c812388e2e20d61/core/src/main/java/com/rainyalley/architecture/core/arithmetic/sort/FileSorter.java
 
