@@ -33,15 +33,12 @@ while (true){
         if(chunkRows.size() > 0){
             final int rn = rowNum;
             final List<String> cr = chunkRows;
-
             rowNum += chunkRows.size();
             chunkRows = new ArrayList<>();
-
             Future<Chunk> chunk = threadPoolExecutor.submit(() -> {
                 cr.sort(comparator);
                 return initialChunk(rn, cr, file);
             });
-
             splitFutureList.add(chunk);
         }
     }
@@ -73,7 +70,6 @@ while (true) {
             continue;
         }
     }
-
     Future<Chunk> chunk = threadPoolExecutor.submit(() -> merge(pollChunks, original));
     mergeFutureList.add(chunk);
 }
