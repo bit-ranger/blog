@@ -1,14 +1,14 @@
 ---
 title: 大文件内容对比多线程版本
-tags: java 算法 algorithm 排序
+tags: java 算法 algorithm 排序 concurrent
 categories: algorithm
 ---
 
-这是[上一篇](上一篇)的续作，对于这个算法，其中可以同时进行的部分有
+这是[上一篇][上一篇]的续作，对于这个算法，其中可以同时进行的部分有
 1. 拆分后对每一个块的排序可以同时进行
 2. 合并时的不同范围之间可以同时进行，例如拆分为10个小块，那么1-5小块的合并跟6-10小块的合并过程可以同时进行
 3. 合并的不同阶段之间不可以同时进行，因为不同阶段之间有先后顺序
-4. 不存在对同条数据的修改，所以无需进行并发控制
+4. 不存在对同一条数据的修改，所以无需进行并发控制
 
 
 ## 线程池
@@ -80,9 +80,9 @@ while (true) {
 ~~~
 
 可以看到合并任务与拆分任务有些不同，拆分任务是在循环退出后才执行`Future.get`，因为拆分不用考虑先后；
-而合并任务在每次获取当前阶段的chunk时执行`Future.get`，这样才能避免不同的阶段之间产生混乱。
+而合并任务在每次获取当前阶段的chunk结束时执行`Future.get`，这样才能避免不同的阶段之间产生混乱。
 
- [完整代码](完整代码)  
+ [完整代码][完整代码]  
     
 [上一篇]:http://blog.rainyalley.com/2018-03-26/large-file-diff
 [完整代码]:https://github.com/WakelessDragon/architecture/blob/d9083d2fb71763557e6d4eb6875f9c001fd41596/core/src/main/java/com/rainyalley/architecture/core/arithmetic/sort/FileSorter.java
@@ -94,3 +94,5 @@ while (true) {
 
 在拆分过程中，每个线程都要在内存中进行排序，
 在拆分和合并过程中，每个线程都要持有自己的读写缓冲区，这无疑会增大内存的使用量。
+
+究竟应该如何配置参数后，需要监控jvm一段时间后，再做决定。
