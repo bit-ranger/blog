@@ -25,18 +25,18 @@ defaults:
 
 
 
-title: "RainyAlley"
-email: "sincerebravefight@gmail.com"
-description: "Developer"
-github_username:  "WakelessDragon"
-swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
-disqus_shortname: "rainyalley"
+title: "Xiaoxianma"
+email: "sunweidong90@gmail.com"
+description: "A simple one"
+github_username:  "xiaoxianma"
+swiftype_searchId: "V9HfKLzBadZEfykgHCYL"
+disqus_shortname: "swdtalent"
 
 
 
 
-url: "http://blog.rainyalley.com"
-imgrepo: "http://blog.rainyalley.com/static/img"
+url: "http://xiaoxianma.github.io/weidong.github.com"
+imgrepo: "http://xiaoxianma.github.io/weidong.github.com/static/img"
 
 
 #url: "http://127.0.0.1:4000"
