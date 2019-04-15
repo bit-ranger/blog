@@ -9,7 +9,7 @@ kramdown:
 
 paginate: 10
 paginate_path: ":num"
-baseurl: ""
+baseurl: "/blog"
 
 
 
@@ -33,7 +33,7 @@ swiftype_searchId: "V9HfKLzBadZEfykgHCYL"
 disqus_shortname: "swdtalent"
 
 
-url: "https://xiaoxianma.github.io/blog/"
+url: "https://xiaoxianma.github.io/"
 imgrepo: "https://xiaoxianma.github.io/blog/static/img"
 
 
