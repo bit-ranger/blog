@@ -2,7 +2,7 @@
 
 # Blog Address
 
-<http://xiaoxianma.github.io/>
+<http://xiaoxianma.github.io/blog/>
 
 
 # Must Modify
