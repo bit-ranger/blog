@@ -1,6 +1,6 @@
 # 博客地址
 
-<http://blog.rainyalley.com/>
+<https://xiaoxianma.github.io/blog//>
 
 # 必改内容
 
