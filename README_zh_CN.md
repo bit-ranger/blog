@@ -1,6 +1,6 @@
 # 博客地址
 
-<https://xiaoxianma.github.io/blog//>
+<https://xiaoxianma.github.io/blog/>
 
 # 必改内容
 
