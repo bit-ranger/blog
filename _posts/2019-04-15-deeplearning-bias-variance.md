@@ -22,7 +22,7 @@ High variance causes overfitting that implies that the algorithm models random n
 
 
 
-# High bieis, high variance and just fit
+# High bias, high variance and just fit
 
 when a model has a high variance then the model becomes very flexible and tune itself to the data points of the training set. when a high variance model encounters a different data point that it has not learnt then it cannot make right prediction.
 
@@ -30,4 +30,5 @@ when a model has a high variance then the model becomes very flexible and tune i
 
 If we look at the diagram above, we see that a model with high bias looks very simple. A model with high variance tries to fit most of the data points making the model complex and difficult to model. This can be visible from the plot below between test and training prediction error as a function of model complexity.
 
-[Reference]: https://medium.com/datadriveninvestor/bias-and-variance-in-machine-learning-51fdd38d1f86	"Bias and Variance in Machine Learning"
+https://medium.com/datadriveninvestor/bias-and-variance-in-machine-learning-51fdd38d1f86
+
