@@ -8,7 +8,8 @@
 $(document).ready(function() {
     generateContent();
     share();
-    disqus();
+    gitment();
+    // disqus();
 });
 
 /**
@@ -28,6 +29,20 @@ function share(){
 }
 
 
+function gitment() {
+    var gitment = new Gitment({
+        id: 'window.location.pathname', // 可选。默认为 location.href
+        owner: 'WakelessDragon',
+        repo: 'blog',
+        oauth: {
+            client_id: 'a6fb73b3e790e234bab8',
+            client_secret: 'cc10aaff53a03d05ab2ee002dbf401dd7627c7a3',
+        },
+    });
+    gitment.render('#post-comment')
+}
+
+
 function disqus(){
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = '{{site.disqus_shortname}}';
@@ -39,3 +54,5 @@ function disqus(){
     }
     document.getElementsByTagName("script")[0].parentNode.appendChild(dsq);
 }
+
+
