@@ -44,7 +44,7 @@ function gitment() {
                 client_secret: 'cc10aaff53a03d05ab2ee002dbf401dd7627c7a3',
             },
         });
-        gitment.render('#post-comment')
+        gitment.render('post-comment')
     }
     document.getElementsByTagName("script")[0].parentNode.appendChild(gitmentScript);
 }
