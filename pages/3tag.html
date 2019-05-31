@@ -8,6 +8,12 @@ styles: [tagCloud.css,tags.css]
 scripts: [tagCloud.js,tags.js]
 ---
 
+<div class="tagCloud">
+    {% for tag in site.tags %}
+    <a href="#{{ tag | first }}">{{ tag | first }}</a>
+    {% endfor %}
+</div>
+
 <div>
     <ul class="tag-box inline">
         {% for tag in site.tags %}
@@ -15,7 +21,6 @@ scripts: [tagCloud.js,tags.js]
         {% endfor %}
     </ul>
 </div>
-
 
 <div>
     {% for tag in site.tags %}
@@ -28,8 +33,4 @@ scripts: [tagCloud.js,tags.js]
     {% endfor %}
 </div>
 
-<div class="tagCloud">
-    {% for tag in site.tags %}
-    <a href="#{{ tag | first }}">{{ tag | first }}</a>
-    {% endfor %}
-</div>
+
