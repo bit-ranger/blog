@@ -30,16 +30,26 @@ function share(){
 
 
 function gitment() {
-    var gitment = new Gitment({
-        id: 'window.location.pathname', // 可选。默认为 location.href
-        owner: 'WakelessDragon',
-        repo: 'blog',
-        oauth: {
-            client_id: 'a6fb73b3e790e234bab8',
-            client_secret: 'cc10aaff53a03d05ab2ee002dbf401dd7627c7a3',
-        },
-    });
-    gitment.render('#post-comment')
+    var gitmentCss = document.createElement('link'); gitmentCss.rel = 'stylesheet';
+    gitmentCss.href = "https://imsun.github.io/gitment/style/default.css";
+    document.getElementsByTagName("link")[0].parentNode.appendChild(gitmentCss);
+
+    var gitmentScript = document.createElement('script'); gitmentScript.type = 'text/javascript'; gitmentScript.async = true;
+    gitmentScript.src = "https://imsun.github.io/gitment/dist/gitment.browser.js";
+    gitmentScript.onload = function(){
+        $("#post-comment").removeClass('hidden');
+        var gitment = new Gitment({
+            id: window.location.pathname,
+            owner: 'WakelessDragon',
+            repo: 'blog',
+            oauth: {
+                client_id: 'a6fb73b3e790e234bab8',
+                client_secret: 'cc10aaff53a03d05ab2ee002dbf401dd7627c7a3',
+            },
+        });
+        gitment.render('#post-comment')
+    }
+    document.getElementsByTagName("script")[0].parentNode.appendChild(gitmentScript);
 }
 
 
