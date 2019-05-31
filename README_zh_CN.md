@@ -24,12 +24,10 @@
 </script>
 ```
 
-## 2.disqus
+## 2.gitment
 
 此服务提供评论功能
 
-服务地址：<https://disqus.com/>
+服务地址：<https://github.com/imsun/gitment>
 
-设置方法可参考 <http://blog.ihurray.com/blog/Disqus-learning.php>
-
-设置完毕后, 你需要修改 `_config.yml` 中的 `disqus_shortname` ,否则对您博客的评论将归到本人名下。
+设置完毕后, 需要修改 `_config.yml` 中的 `gitment_client_id` 和`gitment_client_id`。

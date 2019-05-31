@@ -25,10 +25,10 @@ In your swiftype engine, go to `Setup and integration` -> `Install Search`, you 
 </script>
 ```
 
-## 2.disqus
+## 2.gitment
 
 This service provides the comment function.
 
-Service address： <https://disqus.com/>.
+Service address： <https://github.com/imsun/gitment>.
 
-After the setup is complete， you need to modify the `disqus_shortname` in `_config.yml`.
+After the setup is complete， you need to modify the `gitment_client_id` and `gitment_client_secret` in `_config.yml`.
