@@ -20,7 +20,7 @@ defaults:
       type: "posts"
     values:
       layout: post
-      styles : [highlight.css,post.css]
+      styles : [highlight.css,post.css,gitment.css]
       scripts : [post.js]
 
 

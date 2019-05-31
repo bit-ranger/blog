@@ -30,9 +30,6 @@ function share(){
 
 
 function gitment() {
-    var gitmentCss = document.createElement('link'); gitmentCss.rel = 'stylesheet';
-    gitmentCss.href = "https://imsun.github.io/gitment/style/default.css";
-    document.getElementsByTagName("link")[0].parentNode.appendChild(gitmentCss);
 
     var gitmentScript = document.createElement('script'); gitmentScript.type = 'text/javascript'; gitmentScript.async = true;
     gitmentScript.src = "https://imsun.github.io/gitment/dist/gitment.browser.js";
