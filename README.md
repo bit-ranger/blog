@@ -31,4 +31,4 @@ This service provides the comment function.
 
 Service address： <https://github.com/imsun/gitment>.
 
-After the setup is complete， you need to modify the `gitment_client_id` and `gitment_client_secret` in `_config.yml`.
+After the setup is complete， you need to modify the `gitment`  in `_config.yml`.

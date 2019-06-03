@@ -31,11 +31,11 @@ function share(){
 function gitment() {
     var gitment = new Gitment({
         id: window.location.pathname,
-        owner: 'WakelessDragon',
-        repo: 'blog',
+        owner: '{{site.gitment.owner}}',
+        repo: '{{site.gitment.repo}}',
         oauth: {
-            client_id: '{{site.gitment_client_id}}',
-            client_secret: '{{site.gitment_client_secret}}',
+            client_id: '{{site.gitment.client_id}}',
+            client_secret: '{{site.gitment.client_secret}}',
         },
     });
     gitment.render('post-comment')
