@@ -29,22 +29,17 @@ function share(){
 
 
 function gitment() {
-    var gitmentScript = document.createElement('script'); gitmentScript.type = 'text/javascript'; gitmentScript.async = true;
-    gitmentScript.src = "https://imsun.github.io/gitment/dist/gitment.browser.js";
-    gitmentScript.onload = function(){
-        $("#post-comment").removeClass('hidden');
-        var gitment = new Gitment({
-            id: window.location.pathname,
-            owner: 'WakelessDragon',
-            repo: 'blog',
-            oauth: {
-                client_id: '{{site.gitment_client_id}}',
-                client_secret: '{{site.gitment_client_secret}}',
-            },
-        });
-        gitment.render('post-comment')
-    };
-    document.getElementsByTagName("script")[0].parentNode.appendChild(gitmentScript);
+    var gitment = new Gitment({
+        id: window.location.pathname,
+        owner: 'WakelessDragon',
+        repo: 'blog',
+        oauth: {
+            client_id: '{{site.gitment_client_id}}',
+            client_secret: '{{site.gitment_client_secret}}',
+        },
+    });
+    gitment.render('post-comment')
+    $("#post-comment").removeClass('hidden');
 }
 
 
