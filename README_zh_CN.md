@@ -30,4 +30,4 @@
 
 服务地址：<https://github.com/imsun/gitment>
 
-设置完毕后, 需要修改 `_config.yml` 中的 `gitment_client_id` 和`gitment_client_id`。
+设置完毕后, 需要修改 `_config.yml` 中的 `gitment`。
