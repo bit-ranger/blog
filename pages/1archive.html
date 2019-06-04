@@ -15,7 +15,7 @@ styles: archive.css
         </div>
 
         <div class="cd-timeline-content">
-            <a href="{{ post.url | prepend: site.baseurl }}"><h4>{{ post.title }}</h4></a>
+            <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}"><h4>{{ post.title }}</h4></a>
             <span class="cd-date">{{ post.date | date: '%Y-%m-%d' }}</span>
         </div>
     </div>
