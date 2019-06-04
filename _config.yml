@@ -1,4 +1,4 @@
-permalink: /:year-:month-:day/:title/
+permalink: /:categories/:title/
 
 highlighter: rouge
 markdown: kramdown
