@@ -11,7 +11,7 @@ categories: algorithm
 4. 不存在对同一条数据的修改，所以无需进行并发控制
 
 
-## 线程池
+# 线程池
 
 ~~~java
 this.threadPoolExecutor = new ThreadPoolExecutor(8, 8, 10L, TimeUnit.SECONDS,
@@ -20,7 +20,7 @@ this.threadPoolExecutor = new ThreadPoolExecutor(8, 8, 10L, TimeUnit.SECONDS,
     new ThreadPoolExecutor.CallerRunsPolicy());
 ~~~
 
-## 线程池消费拆分任务
+# 线程池消费拆分任务
 
 ~~~java
 List<Future<Chunk>> splitFutureList = new ArrayList<>();
@@ -50,7 +50,7 @@ chunkList = splitFutureList.stream().map(this::get).collect(Collectors.toList())
 ~~~
 
 
-## 线程池消费合并任务
+# 线程池消费合并任务
 
 ~~~java
 int currentLevel = INITIAL_CHUNK_LEVEL;
@@ -83,7 +83,7 @@ while (true) {
 [上一篇]:http://bit-ranger.github.io/blog/2018-03-26/large-file-diff
 [完整代码]:https://github.com/bit-ranger/architecture/blob/d9083d2fb71763557e6d4eb6875f9c001fd41596/core/src/main/java/com/rainyalley/architecture/core/arithmetic/sort/FileSorter.java
 
-## 测试
+# 测试
 
 在上一篇中，使用单线程，1千万条数据排序耗时13秒；
 在同一台电脑上，使用多线程后，耗时6秒，时间减少了一半。

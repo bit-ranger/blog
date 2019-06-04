@@ -24,7 +24,7 @@ categories: algorithm
    
 所以，这个问题可以拆分为：对A、B文件内容进行排序，双指针遍历 A、B。
 
-## 大文件内容排序
+# 大文件内容排序
 
 对大文件的内容进行排序，可以使用拆分->排序->合并的思路
 1. 按行读取文件，将读到的行放入list
@@ -78,7 +78,7 @@ categories: algorithm
 [完整代码]:https://github.com/bit-ranger/architecture/blob/93c189b0cc69f41dc9b030f75c812388e2e20d61/core/src/main/java/com/rainyalley/architecture/core/arithmetic/sort/FileSorter.java
 
 
-## 测试
+# 测试
 
 在最后的多路合并中要考虑使用多少路进行合并，更少的路数，将产生更多的临时文件
 
