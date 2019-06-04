@@ -17,7 +17,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "posts"
+      type: posts
     values:
       layout: post
       styles : [highlight.css,gitment.css,post.css]
@@ -25,11 +25,11 @@ defaults:
 
 
 
-title: "RainyAlley"
-email: "sincerebravefight@gmail.com"
-description: "Developer"
-github_username:  "WakelessDragon"
-swiftype_searchId: "ncwR9a8S9CTx2q9SgsJm"
+title: Lambda
+email: sincerebravefight@gmail.com
+description: Developer
+github_username:  WakelessDragon
+swiftype_searchId: ncwR9a8S9CTx2q9SgsJm
 gitment:
     owner: WakelessDragon
     repo: blog
