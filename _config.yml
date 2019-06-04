@@ -28,18 +28,18 @@ defaults:
 title: "λ lambda"
 email: sincerebravefight@gmail.com
 description: ""
-github_username:  WakelessDragon
+github_username:  bit-ranger
 swiftype_searchId: ncwR9a8S9CTx2q9SgsJm
 gitment:
-    owner: WakelessDragon
+    owner: bit-ranger
     repo: blog
     client_id: a6fb73b3e790e234bab8
     client_secret: cc10aaff53a03d05ab2ee002dbf401dd7627c7a3
 
 
 
-url: "http://wakelessdragon.github.io/blog"
-imgrepo: "http://wakelessdragon.github.io/blog/static/img"
+url: "http://bit-ranger.github.io/blog"
+imgrepo: "http://bit-ranger.github.io/blog/static/img"
 
 
 #url: "http://127.0.0.1:4000"

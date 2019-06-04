@@ -1,6 +1,6 @@
 # 博客地址
 
-<http://wakelessdragon.github.io/blog/>
+<http://bit-ranger.github.io/blog/>
 
 # 必改内容
 

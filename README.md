@@ -2,7 +2,7 @@
 
 # Blog Address
 
-<http://wakelessdragon.github.io/blog/>
+<http://bit-ranger.github.io/blog/>
 
 
 # Must Modify
