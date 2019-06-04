@@ -13,15 +13,15 @@ This service provides the on-site search function.
 
 Service address： <https://swiftype.com/>.
 
-After the setup is complete， you need to modify the `swiftype_searchId` in `_config.yml`.
+After the setup is complete， you need to modify the `swiftype.searchId` in `_config.yml`.
 
-In your swiftype engine, go to `Setup and integration` -> `Install Search`, you could find the `swiftype_searchId`.
+In your swiftype engine, go to `Setup and integration` -> `Install Search`, you could find the `swiftype.searchId`.
 
 ```html
 <script type="text/javascript">
 ...
 ...
-  _st('install','swiftype_searchId','2.0.0');
+  _st('install','swiftype.searchId','2.0.0');
 </script>
 ```
 

@@ -28,15 +28,14 @@ defaults:
 title: "λ lambda"
 email: sincerebravefight@gmail.com
 description: ""
-github_username:  bit-ranger
-swiftype_searchId: ncwR9a8S9CTx2q9SgsJm
+github:
+  username: bit-ranger
+swiftype:
+  searchId: ncwR9a8S9CTx2q9SgsJm
 gitment:
-    owner: bit-ranger
     repo: blog
     client_id: a6fb73b3e790e234bab8
     client_secret: cc10aaff53a03d05ab2ee002dbf401dd7627c7a3
-
-
 
 url: "http://bit-ranger.github.io/blog"
 imgrepo: "http://bit-ranger.github.io/blog/static/img"

@@ -31,7 +31,7 @@ function share(){
 function gitment() {
     var gitment = new Gitment({
         id: window.location.pathname,
-        owner: '{{site.gitment.owner}}',
+        owner: '{{site.github.username}}',
         repo: '{{site.gitment.repo}}',
         oauth: {
             client_id: '{{site.gitment.client_id}}',
