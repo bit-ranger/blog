@@ -34,9 +34,7 @@ function backToTop() {
 
     //点击回到顶部
     st.click(function() {
-        $("body").animate({
-            scrollTop: "0"
-        }, 500);
+        $window.scrollTop(0)
     });
 
 
