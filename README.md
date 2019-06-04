@@ -2,7 +2,7 @@
 
 # Blog Address
 
-<http://blog.rainyalley.com/>
+<http://wakelessdragon.github.io/blog/>
 
 
 # Must Modify

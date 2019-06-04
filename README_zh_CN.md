@@ -1,6 +1,6 @@
 # 博客地址
 
-<http://blog.rainyalley.com/>
+<http://wakelessdragon.github.io/blog/>
 
 # 必改内容
 
