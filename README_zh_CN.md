@@ -1,6 +1,6 @@
 # 博客地址
 
-<http://bit-ranger.github.io/blog/>
+<https://bit-ranger.github.io/blog/>
 
 # 必改内容
 
