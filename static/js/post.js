@@ -7,7 +7,7 @@
  */
 $(document).ready(function() {
     generateContent();
-    share();
+    // share();
     gitment();
 });
 
