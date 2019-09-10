@@ -26,7 +26,7 @@ defaults:
 
 
 title: "bit-based computing"
-email: sincerebravefight@gmail.com
+email:foysalahmmed73@gmail.com
 description: ""
 github:
   username: foysal ahmmed
@@ -38,7 +38,7 @@ gitment:
     client_secret: cc10aaff53a03d05ab2ee002dbf401dd7627c7a3
 
 url: "https://foysalahmmed.github.io"
-imgrepo: "https://bit-ranger.github.io/blog/static/img"
+imgrepo: "https://foysalahmmed.github.com/static/img"
 
 
 #url: "http://127.0.0.1:4000"
