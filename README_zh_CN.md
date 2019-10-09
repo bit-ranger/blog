@@ -8,13 +8,13 @@
 
 此服务提供站内搜索功能
 
-服务地址：<https://swiftype.com/>
+服务地址: <https://swiftype.com/>
 
-设置方法可参考 <http://opiece.me/2015/04/16/site-search-by-swiftype/>
+文档: <https://swiftype.com/documentation/site-search/crawler-quick-start/>
 
 设置完毕后，您需要修改 `_config.yml` 中 `swiftype.searchId`。
 
-在自己的引擎中，进入 `Setup and integration` -> `Install Search`, 你将找到 `swiftype.searchId`。
+在自己的引擎中，进入 `Install Search`, 你将找到 `swiftype.searchId`。
 
 ```html
 <script type="text/javascript">

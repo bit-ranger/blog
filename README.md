@@ -11,11 +11,13 @@
 
 This service provides the on-site search function.
 
-Service address： <https://swiftype.com/>.
+Service address: <https://swiftype.com/>.
+
+Documentation: <https://swiftype.com/documentation/site-search/crawler-quick-start/>
 
 After the setup is complete， you need to modify the `swiftype.searchId` in `_config.yml`.
 
-In your swiftype engine, go to `Setup and integration` -> `Install Search`, you could find the `swiftype.searchId`.
+In your swiftype engine, go to `Install Search`, you will find the `swiftype.searchId`.
 
 ```html
 <script type="text/javascript">
