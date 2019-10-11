@@ -49,7 +49,7 @@ layout: default
                         <li><a href="{{ page |  prepend: '/page/' | prepend: site.baseurl | prepend: site.url }}">{{ page }}</a></li>
                       {% endif %}
                   {% endfor %}
-                  {% if !paginator.next_page %}
+                  {% if paginator.next_page %}
                         <li><a href="{{ paginator.next_page_path | prepend: site.baseurl | prepend: site.url }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
                   {% endif %}
                 {% endif %}

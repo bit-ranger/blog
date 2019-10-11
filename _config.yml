@@ -1,3 +1,5 @@
+plugins: [jekyll-paginate]
+
 permalink: /:categories/:title/
 
 highlighter: rouge
