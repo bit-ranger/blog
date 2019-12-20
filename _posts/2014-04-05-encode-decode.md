@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Servlet乱码分析
+title: 乱码现象分析
 tags: servlet encode Java
 categories: web
 ---
