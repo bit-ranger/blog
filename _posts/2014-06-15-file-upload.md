@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Custom Fileupload
-tags: fileupload Java Http
+title: 解析HTTP, 实现文件上传
+tags: file-upload Java Http multi-part
 categories: web
 published: true
 ---
@@ -241,6 +241,6 @@ public int read(byte[] b, int off, int len) throws IOException {
 [boundary-A]: {{"/boundary-A.png" | prepend: site.imgrepo }}
 [boundary-B]: {{"/boundary-B.png" | prepend: site.imgrepo }}
 [pad]: {{"/boundary-C.png" | prepend: site.imgrepo }}
-[github]: https://github.com/dubuyuye/fileupload/releases
-[use]: https://github.com/dubuyuye/fileupload
+[github]: https://github.com/bit-ranger/http-multipart/releases
+[use]: https://github.com/bit-ranger/http-multipart
 [commons-fileupload]: https://github.com/apache/commons-fileupload
