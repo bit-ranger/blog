@@ -195,7 +195,7 @@ window.location.href="http://localhost:8080/hsp?param=" + encodeURI(encodeURI('ä
 [body-utf]: {{"/servlet-encode/body-utf.png" | prepend: site.imgrepo }}
 [enctype]: http://www.w3school.com.cn/tags/att_form_enctype.asp
 [body-iso]: {{"/servlet-encode/body-iso.png" | prepend: site.imgrepo }}
-[fileupload]: http://https://bit-ranger.github.io/blog/web/2014-03-15/file-upload
+[fileupload]: https://bit-ranger.github.io/blog/web/2014-03-15/file-upload
 [encodeURI]: {{"/servlet-encode/encodeURI.png" | prepend: site.imgrepo }}
 [encodeURI-link]: http://www.w3school.com.cn/jsref/jsref_encodeuri.asp
 [world]: {{"/servlet-encode/world.png" | prepend: site.imgrepo }}
