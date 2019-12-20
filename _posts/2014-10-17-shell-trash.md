@@ -3,6 +3,7 @@ layout: post
 title: 告别rm,自制回收站
 tags: trash shell Linux script
 categories: linux
+published: false
 ---
 
 常在河边走，哪有不湿鞋？命令敲多了，总会手欠的，笔者刚在不久前尝到了`rm`命令带来的苦果，于是一怒之下决定自制一个回收脚本，从此告别rm命令。

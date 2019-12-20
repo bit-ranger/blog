@@ -2,6 +2,7 @@
 title: 记一次在spring-mvc中踩坑的经历
 tags: spring mvc java
 categories: java
+published: false
 ---
 
 今天打算在项目中加入数据验证功能，具体可参考 [数据验证][validator]

@@ -3,6 +3,7 @@ layout: post
 title: 可重入锁
 tags: Java Concurrent Lock
 categories: Java
+published: false
 ---
 
 Java 中的锁是可重入的，当线程试图获得它自己占有的锁时，请求会成功。

@@ -3,7 +3,7 @@ layout: post
 title: Bean Validation
 tags: Bean Validation Java
 categories: java
-published: true
+published: false
 ---
 
 [BeanValidation][BeanValidation] 可以帮助开发者方便地对数据进行校验，但它只是一个标准，只有一套接口，要想使用它的功能必须选择一种实现，`hibernate-validator`是个不错的选择

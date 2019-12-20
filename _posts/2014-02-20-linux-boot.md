@@ -3,6 +3,7 @@ layout: post
 title: Linux启动流程
 tags: Linux boot
 categories: Linux
+published: false
 ---
 
 
