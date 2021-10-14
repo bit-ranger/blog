@@ -35,7 +35,9 @@ function renderComment() {
         clientSecret: '{{site.comment.client_secret}}',
         owner: '{{site.github.username}}',
         repo: '{{site.comment.repo}}',
-        admin: ['{{site.github.username}}']
+        admin: ['{{site.github.username}}'],
+        perPage: 20,
+        distractionFreeMode: true
     });
     gittalk.render('post-comment')
     $("#post-comment").removeClass('hidden');
