@@ -37,7 +37,7 @@ function renderComment() {
         repo: '{{site.comment.repo}}',
         admin: ['{{site.github.username}}'],
         perPage: 20,
-        distractionFreeMode: true
+        distractionFreeMode: false
     });
     gittalk.render('post-comment')
     $("#post-comment").removeClass('hidden');
