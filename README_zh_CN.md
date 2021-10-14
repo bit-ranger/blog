@@ -28,6 +28,6 @@
 
 此服务提供评论功能
 
-服务地址：<https://github.com/imsun/gitment>
+服务地址：<https://github.com/gitalk/gitalk>
 
-设置完毕后, 需要修改 `_config.yml` 中的 `gitment`。
+设置完毕后, 需要修改 `_config.yml` 中的 `comment`。

@@ -8,7 +8,7 @@
 $(document).ready(function() {
     generateContent();
     // share();
-    gitment();
+    renderComment();
 });
 
 /**
@@ -28,17 +28,16 @@ function share(){
 }
 
 
-function gitment() {
-    var gitment = new Gitment({
+function renderComment() {
+    var gittalk = new Gitalk({
         id: window.location.pathname,
+        clientID: '{{site.comment.client_id}}',
+        clientSecret: '{{site.comment.client_secret}}',
         owner: '{{site.github.username}}',
-        repo: '{{site.gitment.repo}}',
-        oauth: {
-            client_id: '{{site.gitment.client_id}}',
-            client_secret: '{{site.gitment.client_secret}}',
-        },
+        repo: '{{site.comment.repo}}',
+        admin: ['{{site.github.username}}']
     });
-    gitment.render('post-comment')
+    gittalk.render('post-comment')
     $("#post-comment").removeClass('hidden');
 }
 

@@ -31,6 +31,6 @@ In your swiftype engine, go to `Install Search`, you will find the `swiftype.sea
 
 This service provides the comment function.
 
-Service address： <https://github.com/imsun/gitment>.
+Service address： <https://github.com/gitalk/gitalk>.
 
-After the setup is complete， you need to modify the `gitment`  in `_config.yml`.
+After the setup is complete， you need to modify the `comment`  in `_config.yml`.
