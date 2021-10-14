@@ -27,7 +27,7 @@ In your swiftype engine, go to `Install Search`, you will find the `swiftype.sea
 </script>
 ```
 
-## 2.gitment
+## 2.gitalk
 
 This service provides the comment function.
 
